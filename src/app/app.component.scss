@@ -19,18 +19,13 @@ body{
 }
 
 .middle{
-position:absolute;
+    position:absolute;
+    width: calc(100% / 2);
     left: 50%;
     transform: translateX(-50%);
     padding:20px;
 }
 
-.right{
-    position:absolute;
-    right: 0;
-    padding:20px;
-
-}
 
 
 
