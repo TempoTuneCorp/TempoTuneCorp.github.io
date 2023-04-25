@@ -18,58 +18,104 @@
 }
 body {
   font-family: 'Source Sans Pro', sans-serif;
-  color: white;
+  color: #f5eded;
   font-weight: 300;
 }
 body ::-webkit-input-placeholder {
   /* WebKit browsers */
   font-family: 'Source Sans Pro', sans-serif;
-  color: white;
+  color: #a54747;
   font-weight: 300;
 }
 body :-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
   font-family: 'Source Sans Pro', sans-serif;
-  color: white;
+  color: #5f2323;
   opacity: 1;
   font-weight: 300;
 }
 body ::-moz-placeholder {
   /* Mozilla Firefox 19+ */
   font-family: 'Source Sans Pro', sans-serif;
-  color: white;
+  color: #c94141;
   opacity: 1;
   font-weight: 300;
 }
 body :-ms-input-placeholder {
   /* Internet Explorer 10+ */
   font-family: 'Source Sans Pro', sans-serif;
-  color: white;
+  color: #b84242;
   font-weight: 300;
+}
+p {
+  padding: 5px;
+  color: #e0e0e0;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+  font-size: 18;
+}
+a {
+  color: #ffdc00;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+  padding-left: 5px;
+  text-decoration: none;
+}
+a:hover {
+  color: #ddd296;
 }
 .wrapper {
   background: #50a3a2;
-  background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
-  background: -moz-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
-  background: -o-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
-  background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+  background: -webkit-linear-gradient(top left, #6a30b6 0%, #3b76c2 100%);
+  background: -moz-linear-gradient(top left, #6a30b6 0%, #3b76c2 100%);
+  background: -o-linear-gradient(top left, #6a30b6 0%, #3b76c2 100%);
+  background: linear-gradient(to bottom right, #6a30b6 0%, #3b76c2 100%);
   position: absolute;
-  top: 50%;
   left: 0;
   width: 100%;
-  height: 400px;
-  margin-top: -200px;
+  height: 100vh;
   overflow: hidden;
 }
 .wrapper.form-success .container h1 {
   transform: translateY(85px);
 }
+.wrapper .logo {
+  opacity: 80%;
+  z-index: 3;
+  margin: 0 auto;
+  position: relative;
+  left: 50%;
+  top: 18%;
+  height: 230px;
+  -moz-transform: translate(-50%, -50%);
+  /* Firefox */
+  -ms-transform: translate(-50%, -50%);
+  /* IE 9 */
+  -webkit-transform: translate(-50%, -50%);
+  /* Safari and Chrome*/
+  -o-transform: translate(-50%, -50%);
+  /* Opera */
+  transform: translate(-50%, -50%);
+  align-self: center;
+}
 .container {
   max-width: 600px;
-  margin: 0 auto;
+  z-index: 3;
   padding: 80px 0;
   height: 400px;
   text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -moz-transform: translate(-50%, -50%);
+  /* Firefox */
+  -ms-transform: translate(-50%, -50%);
+  /* IE 9 */
+  -webkit-transform: translate(-50%, -50%);
+  /* Safari and Chrome*/
+  -o-transform: translate(-50%, -50%);
+  /* Opera */
+  transform: translate(-50%, -50%);
 }
 .container h1 {
   font-size: 40px;
@@ -81,6 +127,10 @@ form {
   padding: 20px 0;
   position: relative;
   z-index: 2;
+}
+form ::placeholder {
+  color: #ffffff;
+  opacity: 1;
 }
 form input {
   appearance: none;
@@ -104,7 +154,7 @@ form input:hover {
 form input:focus {
   background-color: white;
   width: 300px;
-  color: #53e3a6;
+  color: var(--secondary-text-color);
 }
 form button {
   appearance: none;
@@ -112,15 +162,16 @@ form button {
   background-color: white;
   border: 0;
   padding: 10px 15px;
-  color: #53e3a6;
+  color: var(--secondary-text-color);
   border-radius: 3px;
   width: 250px;
   cursor: pointer;
   font-size: 18px;
   transition-duration: 0.25s;
+  font-weight: 300;
 }
 form button:hover {
-  background-color: #f5f7f9;
+  background-color: #c7c7c7;
 }
 .bg-bubbles {
   position: absolute;
@@ -136,12 +187,17 @@ form button:hover {
   display: block;
   width: 40px;
   height: 40px;
-  background-color: rgba(255, 255, 255, 0.15);
-  bottom: -160px;
+  background-color: transparent;
+  bottom: -180px;
   -webkit-animation: square 25s infinite;
   animation: square 25s infinite;
   -webkit-transition-timing-function: linear;
   transition-timing-function: linear;
+}
+.bg-bubbles li img {
+  width: 100%;
+  height: 100%;
+  opacity: 30%;
 }
 .bg-bubbles li:nth-child(1) {
   left: 10%;
@@ -149,9 +205,9 @@ form button:hover {
 .bg-bubbles li:nth-child(2) {
   left: 20%;
   width: 80px;
-  height: 80px;
+  height: 110px;
   animation-delay: 2s;
-  animation-duration: 17s;
+  animation-duration: 25s;
 }
 .bg-bubbles li:nth-child(3) {
   left: 25%;
@@ -161,18 +217,20 @@ form button:hover {
   left: 40%;
   width: 60px;
   height: 60px;
-  animation-duration: 22s;
-  background-color: rgba(255, 255, 255, 0.25);
+  animation-duration: 35s;
+  background-color: transparent;
 }
 .bg-bubbles li:nth-child(5) {
   left: 70%;
+  width: 80px;
+  height: 80px;
 }
 .bg-bubbles li:nth-child(6) {
   left: 80%;
   width: 120px;
-  height: 120px;
+  height: 160px;
   animation-delay: 3s;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: transparent;
 }
 .bg-bubbles li:nth-child(7) {
   left: 32%;
@@ -182,31 +240,62 @@ form button:hover {
 }
 .bg-bubbles li:nth-child(8) {
   left: 55%;
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   animation-delay: 15s;
-  animation-duration: 40s;
+  animation-duration: 60s;
 }
 .bg-bubbles li:nth-child(9) {
   left: 25%;
-  width: 10px;
-  height: 10px;
+  width: 50px;
+  height: 50px;
   animation-delay: 2s;
-  animation-duration: 40s;
-  background-color: rgba(255, 255, 255, 0.3);
+  animation-duration: 50s;
 }
 .bg-bubbles li:nth-child(10) {
   left: 90%;
   width: 160px;
   height: 160px;
-  animation-delay: 11s;
+  animation-delay: 10s;
+}
+.bg-bubbles li:nth-child(11) {
+  left: 20%;
+  width: 110px;
+  height: 150px;
+  animation-delay: 14s;
+}
+.bg-bubbles li:nth-child(12) {
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  animation-duration: 20s;
+  animation-delay: 16s;
+}
+.bg-bubbles li:nth-child(13) {
+  left: 80%;
+  width: 70px;
+  height: 70px;
+  animation-delay: 17s;
+}
+.bg-bubbles li:nth-child(14) {
+  left: 40%;
+  width: 40px;
+  height: 40px;
+  animation-delay: 12s;
+}
+.bg-bubbles li:nth-child(15) {
+  left: 30%;
+  width: 150px;
+  height: 150px;
+  animation-duration: 35s;
+  animation-delay: 20s;
 }
 @-webkit-keyframes square {
   0% {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-700px) rotate(600deg);
+    transform: translateY(-1500px) rotate(600deg);
   }
 }
 @keyframes square {
@@ -214,6 +303,6 @@ form button:hover {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-700px) rotate(600deg);
+    transform: translateY(-1500px) rotate(600deg);
   }
 }
