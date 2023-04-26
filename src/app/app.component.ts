@@ -17,7 +17,7 @@ export class AppComponent {
   constructor(private router: Router) {
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
-        if (val.url == '/login') {
+        if (val.url == '/login' || val.url == '/') {
           this.showRegister = false;
           this.showLogin = true;
         } else if (val.url == '/register') {
