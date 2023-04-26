@@ -1,4 +1,6 @@
 
 <app-background></app-background>
 <!-- <app-login></app-login> -->
-<app-register></app-register>
+<!-- <app-register></app-register> -->
+<app-login *ngIf="showLogin"></app-login>
+<app-register *ngIf="showRegister"></app-register>
