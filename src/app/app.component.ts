@@ -15,16 +15,13 @@ export class AppComponent {
 
 
   constructor(private router: Router) {
-    router.events.subscribe((val) => {
-      if (val instanceof NavigationEnd) {
-        if (val.url == '/login' || val.url == '/') {
-          this.showRegister = false;
-          this.showLogin = true;
-        } else if (val.url == '/register') {
-          this.showLogin = false;
-          this.showRegister = true;
-        }
-      }
-    })
+
   }
+
+
+  // route for button: ((click)="redirect in the html button")
+  //
+  // redirect(){
+  //   this.router.navigate(['/someComponent']);
+  // }
 }
