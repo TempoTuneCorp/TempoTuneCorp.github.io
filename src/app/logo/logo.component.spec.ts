@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BackgroundComponent } from './background.component';
+import { LogoComponent } from './logo.component';
 
-describe('BackgroundComponent', () => {
-  let component: BackgroundComponent;
-  let fixture: ComponentFixture<BackgroundComponent>;
+describe('LogoComponent', () => {
+  let component: LogoComponent;
+  let fixture: ComponentFixture<LogoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BackgroundComponent ]
+      declarations: [ LogoComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BackgroundComponent);
+    fixture = TestBed.createComponent(LogoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -20,6 +20,4 @@ describe('BackgroundComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  
 });

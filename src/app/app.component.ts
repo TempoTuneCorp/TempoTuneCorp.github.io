@@ -10,12 +10,11 @@ import { Navigation, NavigationEnd, Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'TempoTune';
-  showLogin: boolean = false;
-  showRegister: boolean = false;
+
 
 
   constructor(private router: Router) {
-
+    this.router.navigate(['/login'])
   }
 
 
@@ -23,5 +22,6 @@ export class AppComponent {
   //
   // redirect(){
   //   this.router.navigate(['/someComponent']);
-  // }
+  // 
+  
 }

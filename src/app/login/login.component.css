@@ -60,40 +60,6 @@ h1 {
   font-weight: 300;
   font-size: 18;
 }
-.wrapper {
-  background: #50a3a2;
-  background: -webkit-linear-gradient(top left, #6a30b6 0%, #3b76c2 100%);
-  background: -moz-linear-gradient(top left, #6a30b6 0%, #3b76c2 100%);
-  background: -o-linear-gradient(top left, #6a30b6 0%, #3b76c2 100%);
-  background: linear-gradient(to bottom right, #6a30b6 0%, #3b76c2 100%);
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-.wrapper.form-success .container h1 {
-  transform: translateY(85px);
-}
-.wrapper .logo {
-  opacity: 80%;
-  z-index: 3;
-  margin: 0 auto;
-  position: relative;
-  left: 50%;
-  top: 18%;
-  height: 230px;
-  -moz-transform: translate(-50%, -50%);
-  /* Firefox */
-  -ms-transform: translate(-50%, -50%);
-  /* IE 9 */
-  -webkit-transform: translate(-50%, -50%);
-  /* Safari and Chrome*/
-  -o-transform: translate(-50%, -50%);
-  /* Opera */
-  transform: translate(-50%, -50%);
-  align-self: center;
-}
 .container {
   max-width: 600px;
   z-index: 3;
