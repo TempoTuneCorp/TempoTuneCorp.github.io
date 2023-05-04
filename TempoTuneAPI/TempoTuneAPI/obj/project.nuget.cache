@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kOjw72k4ELmggdwVvjCB+t1Ar6UbFt9g2kv5vpC9FqplrvLGg+Ia+xY1DmZJ4RXhFz4OCTS6pKM0/lAu4hbNHw==",
+  "dgSpecHash": "3lQGL1yrWYddmFtBTWE778uwehxi7NsA0O4vQFxTGxP6xKfY5cYUWNLona5UeJb68G0FHvmCQAD5dP8oFgauMQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rjn\\source\\repos\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj",
+  "projectFilePath": "C:\\Users\\rjn\\Desktop\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rjn\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\rjn\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
