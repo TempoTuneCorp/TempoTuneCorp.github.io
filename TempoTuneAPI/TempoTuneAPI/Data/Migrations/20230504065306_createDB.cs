@@ -20,6 +20,7 @@ namespace TempoTuneAPI.Data.Migrations
                 },
                 constraints: table =>
                 {
+
                     table.PrimaryKey("PK_Artists", x => x.Id);
                 });
 
