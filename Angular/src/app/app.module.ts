@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,6 +8,7 @@ import { BackgroundComponent } from './background/background.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoComponent } from './logo/logo.component';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { LogoComponent } from './logo/logo.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClient
   ],
   providers: [],
   bootstrap: [AppComponent]
