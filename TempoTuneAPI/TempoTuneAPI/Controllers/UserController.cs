@@ -49,6 +49,8 @@ namespace TempoTuneAPI.Controllers
             await context.SaveChangesAsync();
             return Ok(new { Message = "User registered" });
 
+
+
         }
 
 
