@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8GuSivz6ysDugTC0YBCZm49a8sCmWCPFS1XhU1ad/IT+Gtt7mbpFKXyF+Ddt2u4SU3Fxio9APn/ZMaWikZZy4A==",
+  "dgSpecHash": "kC95I9TIkFplbobcFydZWKrNAFxwXnl9IldVbOdEpLZL9pOxfDz9jPzJZrJkmN5Wjj+exnel6181UJpABP8wew==",
   "success": true,
   "projectFilePath": "C:\\Users\\rjn\\Desktop\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\rjn\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\rjn\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\rjn\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
+    "C:\\Users\\rjn\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.16\\microsoft.aspnetcore.authentication.jwtbearer.6.0.16.nupkg.sha512",
     "C:\\Users\\rjn\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.0\\microsoft.aspnetcore.razor.language.6.0.0.nupkg.sha512",
     "C:\\Users\\rjn\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\rjn\\.nuget\\packages\\microsoft.build\\17.3.2\\microsoft.build.17.3.2.nupkg.sha512",

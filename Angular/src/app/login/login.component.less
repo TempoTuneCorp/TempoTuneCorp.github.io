@@ -111,7 +111,7 @@ form{
 		
 		border-radius: 3px;
 		padding: 10px 15px;
-		margin: 0 auto 10px auto;
+		margin: 5px auto 0px auto;
 		display: block;
 		text-align: center;
 		font-size: 18px;
@@ -133,13 +133,21 @@ form{
 		}
 	}
 	
+	small{
+		letter-spacing: 0.5px;
+		
+		color: rgb(0, 0, 0);
+	}
+	
 	button{
-		appearance: none;
+		margin-top: 5px;
+
 		outline: 0;
-		background-color: white;
+		color: white;
 		border: 0;
 		padding: 10px 15px;
-		color: var(--secondary-text-color);
+		
+		background-color: var(--secondary-text-color);
 		border-radius: 3px;
 		width: 250px;
 		cursor: pointer;
@@ -147,10 +155,23 @@ form{
 		transition-duration: 0.25s;
 		font-weight: 300;
 		
+		&:disabled {
+			color: rgba(119, 73, 119, 0.74);	
+			cursor: not-allowed;
+			background-color: white;
+			
+			&:hover{
+				color: rgba(119, 73, 119, 0.74);	
+				background-color: white;
+			}
+		}
 		
 		&:hover{
-			background-color: rgb(112, 53, 180);
+			background-color: rgb(137, 47, 240);
 			color:white;
 		}
+		
 	}
+
+	
 }

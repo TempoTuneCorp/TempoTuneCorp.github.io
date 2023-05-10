@@ -102,7 +102,7 @@ form input {
   width: 250px;
   border-radius: 3px;
   padding: 10px 15px;
-  margin: 0 auto 10px auto;
+  margin: 5px auto 0px auto;
   display: block;
   text-align: center;
   font-size: 18px;
@@ -118,13 +118,17 @@ form input:focus {
   width: 300px;
   color: var(--secondary-text-color);
 }
+form small {
+  letter-spacing: 0.5px;
+  color: #000000;
+}
 form button {
-  appearance: none;
+  margin-top: 5px;
   outline: 0;
-  background-color: white;
+  color: white;
   border: 0;
   padding: 10px 15px;
-  color: var(--secondary-text-color);
+  background-color: var(--secondary-text-color);
   border-radius: 3px;
   width: 250px;
   cursor: pointer;
@@ -132,7 +136,16 @@ form button {
   transition-duration: 0.25s;
   font-weight: 300;
 }
+form button:disabled {
+  color: rgba(119, 73, 119, 0.74);
+  cursor: not-allowed;
+  background-color: white;
+}
+form button:disabled:hover {
+  color: rgba(119, 73, 119, 0.74);
+  background-color: white;
+}
 form button:hover {
-  background-color: #7035b4;
+  background-color: #892ff0;
   color: white;
 }
