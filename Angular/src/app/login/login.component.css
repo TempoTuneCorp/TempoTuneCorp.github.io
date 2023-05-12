@@ -102,7 +102,7 @@ form input {
   width: 250px;
   border-radius: 3px;
   padding: 10px 15px;
-  margin: 5px auto 0px auto;
+  margin: 0px auto 10px auto;
   display: block;
   text-align: center;
   font-size: 18px;
@@ -123,7 +123,6 @@ form small {
   color: #000000;
 }
 form button {
-  margin-top: 5px;
   outline: 0;
   color: white;
   border: 0;

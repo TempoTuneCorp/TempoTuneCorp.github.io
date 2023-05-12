@@ -18,7 +18,7 @@ export class AuthenticationService {
     return this.http.post<any>(`${this.baseUrl}register`, userObj)
   }
 
-
+  
   
 
 }
