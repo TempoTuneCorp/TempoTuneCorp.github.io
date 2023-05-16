@@ -8,7 +8,7 @@ import { BackgroundComponent } from './background/background.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoComponent } from './logo/logo.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { HttpClient } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClient
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
