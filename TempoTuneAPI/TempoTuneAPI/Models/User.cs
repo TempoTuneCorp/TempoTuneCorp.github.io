@@ -1,7 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
+using Microsoft.EntityFrameworkCore;
 namespace TempoTuneAPI.Models
 {
+
+
+
+        [Index(nameof(UserName), IsUnique = true)]
+        [Index(nameof(Email), IsUnique = true)]
     public class User
     {
         public int Id { get; set; }
@@ -9,7 +14,7 @@ namespace TempoTuneAPI.Models
         [Required]
         public string UserName { get; set; }
 
-        [Required]
+        
         public string Email { get; set; }
 
         [Required]

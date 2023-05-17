@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rjn\\Desktop\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj": {}
+    "C:\\Users\\jjø\\Documents\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rjn\\Desktop\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj": {
+    "C:\\Users\\jjø\\Documents\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rjn\\Desktop\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj",
+        "projectUniqueName": "C:\\Users\\jjø\\Documents\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj",
         "projectName": "TempoTuneAPI",
-        "projectPath": "C:\\Users\\rjn\\Desktop\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj",
-        "packagesPath": "C:\\Users\\rjn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rjn\\Desktop\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\obj\\",
+        "projectPath": "C:\\Users\\jjø\\Documents\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj",
+        "packagesPath": "C:\\Users\\jjø\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jjø\\Documents\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\rjn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jjø\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,19 +44,23 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.5, )"
+              "version": "[6.0.16, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[7.0.5, )"
+              "version": "[6.0.16, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.5, )"
+              "version": "[6.0.16, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
@@ -64,7 +68,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.5.0, )"
+              "version": "[6.3.0, )"
             }
           },
           "imports": [
