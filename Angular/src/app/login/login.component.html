@@ -1,10 +1,10 @@
 <div class="wrapper">
 	<div class="container">
 		<h1>Login</h1>
-		<form class="form">
-			<input type="text" placeholder="Username">
-			<input type="password" placeholder="Password">
-			<button type="submit" id="login-button">Login</button>
+		<form [formGroup]="loginForm" class="form">
+			<input formControlName="username" type="text" placeholder="Username">
+			<input formControlName="password" type="password" placeholder="Password">
+			<button (click)="onLogin()" type="submit" id="login-button">Login</button>
 			<p>No Tempo? <a routerLink="/register"> Register now!</a></p>
 		</form>
 	</div>
