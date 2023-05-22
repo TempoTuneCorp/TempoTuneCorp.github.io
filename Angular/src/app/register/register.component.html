@@ -1,13 +1,11 @@
 <div class="wrapper">
 	<div class="container">
         <h1>Register</h1>
-		<form class="form" [formGroup]="registerForm">
-			<input formControlName="firstname" type="text" placeholder="First Name">
-			<input formControlName="lastname" type="text" placeholder="Last Name">
-			<input formControlName="email" type="text" placeholder="Email">
-			<input formControlName="username" type="text" placeholder="Username">			
+		<form [formGroup]="registerForm" class="form">
+			<input formControlName="username" type="text" placeholder="Username">
 			<input formControlName="password" type="password" placeholder="Password">
-			<button (click)="onSubmit()" [disabled]="registerForm.invalid" type="submit" id="register-button">Create</button>
+			<input formControlName="email" type="text" placeholder="Email">
+			<button (click)="onRegister()" [disabled]="registerForm.invalid" type="submit" id="register-button">Create</button>
 			<p>Already got Tempo? <a routerLink="/login"> Login</a></p>
 		</form>
 	</div>
