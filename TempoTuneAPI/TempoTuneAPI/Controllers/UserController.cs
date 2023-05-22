@@ -10,7 +10,7 @@ using TempoTuneAPI.Models;
 
 namespace TempoTuneAPI.Controllers
 {
-    [Route("api/User")]
+    [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -80,9 +80,10 @@ namespace TempoTuneAPI.Controllers
 
 
 
-        [HttpGet]
-        public async Task<IEnumerable<User>> Get()
+        [HttpPost("authenticate")]
+        public async Task<IActionResult> Authenticate([FromBody] User userObj)
         {
+<<<<<<< HEAD
             return await _context.Users.ToListAsync();
         }
 
@@ -92,31 +93,59 @@ namespace TempoTuneAPI.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var user = await _context.Users.FindAsync(id);
+=======
+            if (userObj == null)
+            {
+                return BadRequest();
+            }
+
+            var user = await context.Users.FirstOrDefaultAsync(x => x.UserName == userObj.UserName && x.Password == userObj.Password);
+>>>>>>> master
             if (user == null)
-                return NotFound();
-            return Ok(user);
+            {
+                return NotFound(new { Message = "user not found" });
+            }
+
+            return Ok(new { Message = "login success" });
 
         }
 
-        [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<IActionResult> Create(User user)
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] User userObj)
         {
+<<<<<<< HEAD
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
+=======
+            if (userObj == null)
+            {
+                BadRequest();
+            }
 
-            return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
+            await context.Users.AddAsync(userObj);
+            await context.SaveChangesAsync();
+            return Ok(new { Message = "User registered" });
+
+
+>>>>>>> master
+
         }
+
 
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Update(int id, User user)
+        public async Task<IActionResult> Update(int id, User userObj)
         {
-            if (id != user.Id) return BadRequest();
+            if (id != userObj.Id) return BadRequest();
 
+<<<<<<< HEAD
             _context.Entry(user).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+=======
+            context.Entry(userObj).State = EntityState.Modified;
+            await context.SaveChangesAsync();
+>>>>>>> master
 
             return NoContent();
         }
@@ -133,6 +162,7 @@ namespace TempoTuneAPI.Controllers
             return NoContent();
         }
 
+<<<<<<< HEAD
         private async Task<bool> CheckUserNameExistsAsync(string username)
         {
             return await _context.Users.AnyAsync(x=>x.UserName == username);
@@ -156,5 +186,36 @@ namespace TempoTuneAPI.Controllers
                  return sb.ToString();
             
         }
+=======
+
+        [HttpGet]
+        public async Task<IEnumerable<User>> Get()
+        {
+            return await context.Users.ToListAsync();
+        }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var user = await context.Users.FindAsync(id);
+            if (user == null)
+                return NotFound();
+            return Ok(user);
+
+        }
+
+        //[HttpPost]
+        //[ProducesResponseType(StatusCodes.Status201Created)]
+        //public async Task<IActionResult> Create(User user)
+        //{
+        //    await context.Users.AddAsync(user);
+        //    await context.SaveChangesAsync();
+
+        //    return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
+        //}
+
+>>>>>>> master
     }
 }

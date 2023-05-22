@@ -364,6 +364,7 @@ C:\Users\rjn\Desktop\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\System
 C:\Users\rjn\Desktop\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 C:\Users\rjn\Desktop\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\System.Text.Json.dll
 C:\Users\rjn\Desktop\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+<<<<<<< HEAD
 C:\Users\jjø\Documents\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\jjø\Documents\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\appsettings.json
 C:\Users\jjø\Documents\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\TempoTuneAPI.exe
@@ -631,3 +632,6 @@ C:\Users\jjø\Documents\TempoTune\TempoTuneAPI\TempoTuneAPI\obj\Debug\net6.0\Tem
 C:\Users\jjø\Documents\TempoTune\TempoTuneAPI\TempoTuneAPI\obj\Debug\net6.0\TempoTuneAPI.genruntimeconfig.cache
 C:\Users\jjø\Documents\TempoTune\TempoTuneAPI\TempoTuneAPI\obj\Debug\net6.0\ref\TempoTuneAPI.dll
 C:\Users\jjø\Documents\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
+=======
+C:\Users\rjn\Desktop\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+>>>>>>> master

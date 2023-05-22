@@ -9828,9 +9828,15 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.16",
+<<<<<<< HEAD
       "Microsoft.EntityFrameworkCore >= 6.0.16",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.16",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.16",
+=======
+      "Microsoft.EntityFrameworkCore >= 7.0.5",
+      "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.5",
+      "Microsoft.EntityFrameworkCore.Tools >= 7.0.5",
+>>>>>>> master
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.13",
       "Swashbuckle.AspNetCore >= 6.3.0"
     ]
@@ -9842,11 +9848,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\jjø\\Documents\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj",
       "projectName": "TempoTuneAPI",
       "projectPath": "C:\\Users\\jjø\\Documents\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj",
       "packagesPath": "C:\\Users\\jjø\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\jjø\\Documents\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\rjn\\Source\\Repos\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj",
+      "projectName": "TempoTuneAPI",
+      "projectPath": "C:\\Users\\rjn\\Source\\Repos\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj",
+      "packagesPath": "C:\\Users\\rjn\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rjn\\Source\\Repos\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\obj\\",
+>>>>>>> master
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
