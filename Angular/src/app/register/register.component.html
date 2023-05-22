@@ -5,7 +5,7 @@
 			<input formControlName="username" type="text" placeholder="Username">
 			<input formControlName="password" type="password" placeholder="Password">
 			<input formControlName="email" type="text" placeholder="Email">
-			<button (click)="onRegister()" type="submit" id="register-button">Create</button>
+			<button (click)="onRegister()" [disabled]="registerForm.invalid" type="submit" id="register-button">Create</button>
 			<p>Already got Tempo? <a routerLink="/login"> Login</a></p>
 		</form>
 	</div>
