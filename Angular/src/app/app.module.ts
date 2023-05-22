@@ -9,6 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoComponent } from './logo/logo.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MainComponent } from './main/main.component';
+import { MusicComponent } from './music/music.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
     BackgroundComponent,
     LoginComponent,
     RegisterComponent,
-    LogoComponent
+    LogoComponent,
+    MainComponent,
+    MusicComponent
   ],
   imports: [
     BrowserModule,
