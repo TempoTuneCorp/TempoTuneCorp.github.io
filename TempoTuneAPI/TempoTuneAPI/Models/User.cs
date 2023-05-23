@@ -7,6 +7,8 @@ namespace TempoTuneAPI.Models
 
         [Index(nameof(UserName), IsUnique = true)]
         [Index(nameof(Email), IsUnique = true)]
+
+
     public class User
     {
         public int Id { get; set; }

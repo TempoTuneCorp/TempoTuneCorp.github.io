@@ -14,10 +14,10 @@ namespace TempoTuneAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly JacobDbContext _context;
+        private readonly TempoTuneDbContext _context;
 
         //Constructor
-        public UserController(JacobDbContext context)
+        public UserController(TempoTuneDbContext context)
         {
             _context = context;
         }
