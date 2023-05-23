@@ -9828,9 +9828,15 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.16",
+<<<<<<< HEAD
       "Microsoft.EntityFrameworkCore >= 6.0.16",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.16",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.16",
+=======
+      "Microsoft.EntityFrameworkCore >= 7.0.5",
+      "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.5",
+      "Microsoft.EntityFrameworkCore.Tools >= 7.0.5",
+>>>>>>> master
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.13",
       "Swashbuckle.AspNetCore >= 6.3.0"
     ]

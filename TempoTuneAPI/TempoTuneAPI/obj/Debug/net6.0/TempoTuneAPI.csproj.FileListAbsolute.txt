@@ -364,6 +364,7 @@ C:\Users\rjn\Desktop\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\System
 C:\Users\rjn\Desktop\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 C:\Users\rjn\Desktop\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\System.Text.Json.dll
 C:\Users\rjn\Desktop\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+<<<<<<< HEAD
 C:\Users\jjø\Documents\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\jjø\Documents\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\appsettings.json
 C:\Users\jjø\Documents\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\TempoTuneAPI.exe
