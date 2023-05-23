@@ -83,7 +83,6 @@ namespace TempoTuneAPI.Controllers
         [HttpPost("authenticate")]
         public async Task<IActionResult> Authenticate([FromBody] User userObj)
         {
-<<<<<<< HEAD
             return await _context.Users.ToListAsync();
         }
 
@@ -93,14 +92,12 @@ namespace TempoTuneAPI.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var user = await _context.Users.FindAsync(id);
-=======
             if (userObj == null)
             {
                 return BadRequest();
             }
 
             var user = await context.Users.FirstOrDefaultAsync(x => x.UserName == userObj.UserName && x.Password == userObj.Password);
->>>>>>> master
             if (user == null)
             {
                 return NotFound(new { Message = "user not found" });
@@ -113,10 +110,8 @@ namespace TempoTuneAPI.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] User userObj)
         {
-<<<<<<< HEAD
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
-=======
             if (userObj == null)
             {
                 BadRequest();
@@ -127,7 +122,6 @@ namespace TempoTuneAPI.Controllers
             return Ok(new { Message = "User registered" });
 
 
->>>>>>> master
 
         }
 
@@ -139,13 +133,8 @@ namespace TempoTuneAPI.Controllers
         {
             if (id != userObj.Id) return BadRequest();
 
-<<<<<<< HEAD
             _context.Entry(user).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-=======
-            context.Entry(userObj).State = EntityState.Modified;
-            await context.SaveChangesAsync();
->>>>>>> master
 
             return NoContent();
         }
@@ -162,7 +151,6 @@ namespace TempoTuneAPI.Controllers
             return NoContent();
         }
 
-<<<<<<< HEAD
         private async Task<bool> CheckUserNameExistsAsync(string username)
         {
             return await _context.Users.AnyAsync(x=>x.UserName == username);
@@ -186,7 +174,6 @@ namespace TempoTuneAPI.Controllers
                  return sb.ToString();
             
         }
-=======
 
         [HttpGet]
         public async Task<IEnumerable<User>> Get()
@@ -216,6 +203,5 @@ namespace TempoTuneAPI.Controllers
         //    return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
         //}
 
->>>>>>> master
     }
 }

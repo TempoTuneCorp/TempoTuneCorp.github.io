@@ -20,10 +20,7 @@ namespace TempoTuneAPI.Models
 
         public string UserName { get; set; }
 
-<<<<<<< HEAD
         
-=======
->>>>>>> master
         public string Email { get; set; }
 
         public string Password { get; set; }
