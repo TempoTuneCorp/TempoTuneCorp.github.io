@@ -80,11 +80,7 @@ namespace TempoTuneAPI.Controllers
 
 
 
-        [HttpPost("authenticate")]
-        public async Task<IActionResult> Authenticate([FromBody] User userObj)
-        {
-            return await _context.Users.ToListAsync();
-        }
+    
 
         [HttpGet("id")]
         [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
@@ -92,38 +88,15 @@ namespace TempoTuneAPI.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var user = await _context.Users.FindAsync(id);
-            if (userObj == null)
-            {
-                return BadRequest();
-            }
-
-            var user = await context.Users.FirstOrDefaultAsync(x => x.UserName == userObj.UserName && x.Password == userObj.Password);
             if (user == null)
             {
-                return NotFound(new { Message = "user not found" });
+                return NotFound();
             }
-
-            return Ok(new { Message = "login success" });
+            return Ok(user);
 
         }
 
-        [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] User userObj)
-        {
-            await _context.Users.AddAsync(user);
-            await _context.SaveChangesAsync();
-            if (userObj == null)
-            {
-                BadRequest();
-            }
 
-            await context.Users.AddAsync(userObj);
-            await context.SaveChangesAsync();
-            return Ok(new { Message = "User registered" });
-
-
-
-        }
 
 
         [HttpPut("{id}")]
@@ -133,7 +106,7 @@ namespace TempoTuneAPI.Controllers
         {
             if (id != userObj.Id) return BadRequest();
 
-            _context.Entry(user).State = EntityState.Modified;
+            _context.Entry(userObj).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -178,20 +151,10 @@ namespace TempoTuneAPI.Controllers
         [HttpGet]
         public async Task<IEnumerable<User>> Get()
         {
-            return await context.Users.ToListAsync();
+            return await _context.Users.ToListAsync();
         }
 
-        [HttpGet("{id}")]
-        [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetById(int id)
-        {
-            var user = await context.Users.FindAsync(id);
-            if (user == null)
-                return NotFound();
-            return Ok(user);
 
-        }
 
         //[HttpPost]
         //[ProducesResponseType(StatusCodes.Status201Created)]
