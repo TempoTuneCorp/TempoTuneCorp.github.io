@@ -3,10 +3,10 @@ using TempoTuneAPI.Models;
 
 namespace TempoTuneAPI.Data
 {
-    public class JacobDbContext : DbContext
+    public class TempoTuneDbContext : DbContext
 
     {
-        public JacobDbContext(DbContextOptions<JacobDbContext> options)
+        public TempoTuneDbContext(DbContextOptions<TempoTuneDbContext> options)
             : base(options)
         {
 

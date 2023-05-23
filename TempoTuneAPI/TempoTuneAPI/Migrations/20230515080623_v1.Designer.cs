@@ -10,7 +10,7 @@ using TempoTuneAPI.Data;
 
 namespace TempoTuneAPI.Migrations
 {
-    [DbContext(typeof(JacobDbContext))]
+    [DbContext(typeof(Data.TempoTuneDbContext))]
     [Migration("20230515080623_v1")]
     partial class v1
     {

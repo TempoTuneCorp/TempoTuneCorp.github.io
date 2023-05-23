@@ -19,7 +19,7 @@ builder.Services.AddCors(option =>
     });
 });
 
-builder.Services.AddDbContext<TempoTuneAPI.Data.JacobDbContext>(
+builder.Services.AddDbContext<TempoTuneAPI.Data.TempoTuneDbContext>(
     o => o.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
 
 
