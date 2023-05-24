@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
+import { LogoComponent } from './logo/logo.component';
+
 
 const routes: Routes = [
   {
@@ -27,4 +28,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+
+
+
+export class AppRoutingModule {}

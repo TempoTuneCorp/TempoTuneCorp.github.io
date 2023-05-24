@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-background',
@@ -8,3 +9,5 @@ import { Component } from '@angular/core';
 export class BackgroundComponent {
 
 }
+
+

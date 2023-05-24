@@ -12,16 +12,16 @@ export class AppComponent {
   title = 'TempoTune';
 
 
+  constructor(public router: Router) {
+    this.router.navigate(['/main'])
+    //this.router.navigate(['/login'])
 
-  constructor(private router: Router) {
-    this.router.navigate(['/login'])
   }
-
 
   // route for button: ((click)="redirect in the html button")
   //
   // redirect(){
   //   this.router.navigate(['/someComponent']);
-  // 
-  
+  //
+
 }
