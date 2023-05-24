@@ -10,14 +10,14 @@ using TempoTuneAPI.Models;
 
 namespace TempoTuneAPI.Controllers
 {
-    [Route("api/User")]
+    [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly JacobDbContext _context;
+        private readonly TempoTuneDbContext _context;
 
         //Constructor
-        public UserController(JacobDbContext context)
+        public UserController(TempoTuneDbContext context)
         {
             _context = context;
         }
@@ -80,11 +80,7 @@ namespace TempoTuneAPI.Controllers
 
 
 
-        [HttpGet]
-        public async Task<IEnumerable<User>> Get()
-        {
-            return await _context.Users.ToListAsync();
-        }
+    
 
         [HttpGet("id")]
         [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
@@ -93,29 +89,24 @@ namespace TempoTuneAPI.Controllers
         {
             var user = await _context.Users.FindAsync(id);
             if (user == null)
+            {
                 return NotFound();
+            }
             return Ok(user);
 
         }
 
-        [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<IActionResult> Create(User user)
-        {
-            await _context.Users.AddAsync(user);
-            await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
-        }
+
 
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Update(int id, User user)
+        public async Task<IActionResult> Update(int id, User userObj)
         {
-            if (id != user.Id) return BadRequest();
+            if (id != userObj.Id) return BadRequest();
 
-            _context.Entry(user).State = EntityState.Modified;
+            _context.Entry(userObj).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -156,5 +147,24 @@ namespace TempoTuneAPI.Controllers
                  return sb.ToString();
             
         }
+
+        [HttpGet]
+        public async Task<IEnumerable<User>> Get()
+        {
+            return await _context.Users.ToListAsync();
+        }
+
+
+
+        //[HttpPost]
+        //[ProducesResponseType(StatusCodes.Status201Created)]
+        //public async Task<IActionResult> Create(User user)
+        //{
+        //    await context.Users.AddAsync(user);
+        //    await context.SaveChangesAsync();
+
+        //    return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
+        //}
+
     }
 }
