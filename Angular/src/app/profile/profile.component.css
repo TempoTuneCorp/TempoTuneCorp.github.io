@@ -11,6 +11,7 @@
   transform: translate(-50%, -50%);
   background-color: rgba(42, 6, 109, 0.281);
   z-index: 10;
+  border-radius: 30px;
 }
 
 .left-container {
@@ -18,6 +19,16 @@
   float: left;
   height: 100%;
   background-color: rgba(71, 171, 252, 0.473);
+  border-radius: 30px 0px 0px 30px;
+}
+.left-container .pic {
+  position: absolute;
+  top: 190px;
+  left: 190px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 10px;
 }
 
 .profile-picture-container {
@@ -28,11 +39,7 @@
   position: relative;
   transform: translate(-50%, -50%);
 }
-.profile-picture-container button {
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-}
+
 .profile-picture {
   position: relative;
   width: 100%;
@@ -133,4 +140,123 @@
   background-image: linear-gradient(to right, #743ad5 0%, #d53a9d 51%, #743ad5 100%);
   border-image-source: linear-gradient(45deg, #743ad5, #d53a9d);
   border-image-outset: 1em;
+}
+
+@media screen and (max-width: 1210px) {
+  .container {
+    margin-top: 30px;
+    width: 700px;
+    height: 730px;
+    position: absolute;
+  }
+  .left-container {
+    width: 700px;
+    float: left;
+    height: 250px;
+    border-radius: 30px 30px 0px 0px;
+  }
+  .left-container .pic {
+    position: absolute;
+    top: 165px;
+    left: 190px;
+  }
+  .profile-picture-container {
+    top: 125px;
+    left: 150px;
+  }
+  .profile-info-container-left {
+    position: absolute;
+    top: 55px;
+    left: 350px;
+  }
+  .profile-info-container-left .btn-favourites {
+    margin-top: 60px;
+  }
+  .right-container {
+    width: 700px;
+    float: right;
+    height: 100%;
+  }
+}
+@media screen and (max-width: 710px) {
+  .container {
+    width: 95%;
+    height: 85%;
+    position: absolute;
+  }
+  .left-container {
+    width: 100%;
+    float: left;
+    height: 30%;
+    border-radius: 30px 30px 0px 0px;
+    min-height: 200px;
+  }
+  .left-container .pic {
+    position: absolute;
+    top: 17%;
+    left: 57%;
+  }
+  .profile-picture-container {
+    position: absolute;
+    top: 13%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+  }
+  .profile-info-container-left {
+    position: relative;
+    width: 90%;
+    left: 50%;
+    top: 86%;
+    transform: translate(-50%, -50%);
+  }
+  .profile-info-container-left .btn-favourites {
+    display: none;
+  }
+  .right-container {
+    width: 100%;
+    float: right;
+    height: 100%;
+  }
+  .right-container .profile-info-container-right {
+    width: 95%;
+    margin-top: -30px;
+  }
+  .right-container h1 {
+    color: white;
+    font-size: 17px;
+  }
+  .right-container .profile-info-card {
+    background: rgba(0, 0, 0, 0.233);
+    border-radius: 10px;
+    margin: 17px 0px;
+    padding: 10px 20px;
+    height: 39px;
+  }
+  .right-container .profile-info-card .profile-info-box {
+    color: white;
+    float: left;
+  }
+  .right-container .profile-info-card .profile-info-box .info-hero-text {
+    font-size: 12px;
+  }
+  .right-container .profile-info-card .profile-info-box .info-user-text {
+    font-size: 17px;
+  }
+  .btn-edit {
+    float: right;
+    padding: 10px 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 500% auto;
+    font-weight: bold;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+  }
+  .btn-edit svg {
+    height: 15px;
+    width: 15px;
+  }
 }/*# sourceMappingURL=profile.component.css.map */
