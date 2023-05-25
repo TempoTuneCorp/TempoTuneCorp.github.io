@@ -10,11 +10,20 @@ import { Navigation, NavigationEnd, Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'TempoTune';
-
+  showLogo: boolean = true;
 
 
   constructor(private router: Router) {
-    this.router.navigate(['/profile'])
+    this.router.navigate(['/login'])
+    router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd) {
+        if (val.url == '/login' || val.url == '/register') {
+          this.showLogo = true;
+        } else {
+          this.showLogo = false;
+        }
+      }
+    });
   }
 
 
