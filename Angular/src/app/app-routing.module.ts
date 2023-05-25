@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
+import { MusicComponent } from './music/music.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,11 @@ const routes: Routes = [
   {
     path: 'main',
     component: MainComponent,
+  },
+
+  {
+    path: 'music',
+    component: MusicComponent,
   }
   ];
 
