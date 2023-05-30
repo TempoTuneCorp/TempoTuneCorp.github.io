@@ -58,7 +58,7 @@
   font-size: 20px;
 }
 .profile-info-container-left .btn-favourites {
-  margin-top: 150px;
+  margin-top: 170px;
   padding: 15px 45px;
   text-align: center;
   text-transform: uppercase;
@@ -142,6 +142,40 @@
   border-image-outset: 1em;
 }
 
+.btn-delete {
+  float: right;
+  padding: 15px 25px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 500% auto;
+  font-weight: bold;
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  margin-top: 63px;
+}
+.btn-delete svg {
+  color: rgb(255, 255, 255);
+  float: left;
+  margin-right: 10px;
+}
+
+.btn-delete:hover {
+  cursor: pointer;
+  background-position: right center;
+  border-image-source: linear-gradient(90deg, #0c0b0c, #202020);
+  box-shadow: 0 0 10px #2e2e2e;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px 10px #080808;
+}
+
+.red {
+  background-image: linear-gradient(to right, #f82929 0%, #f8654b 51%, #e62f2f 100%);
+  border-image-source: linear-gradient(45deg, #e62f2f, #eb2a64);
+  border-image-outset: 1em;
+}
+
 @media screen and (max-width: 1210px) {
   .container {
     margin-top: 30px;
@@ -176,6 +210,15 @@
     width: 700px;
     float: right;
     height: 100%;
+  }
+  .profile-info-container-right {
+    margin-top: -30px;
+  }
+  .btn-delete {
+    position: absolute;
+    margin-top: 10px;
+    left: 50%;
+    transform: translate(-50%);
   }
 }
 @media screen and (max-width: 710px) {
@@ -258,5 +301,19 @@
   .btn-edit svg {
     height: 15px;
     width: 15px;
+  }
+  .btn-delete {
+    padding: 10px 10px;
+    position: absolute;
+    margin-top: 20px;
+    left: 50%;
+    transform: translate(-50%);
+    min-width: 154px;
+    font-size: 14px;
+  }
+  .btn-delete svg {
+    margin-right: 10px;
+    width: 13px;
+    height: 18px;
   }
 }/*# sourceMappingURL=profile.component.css.map */

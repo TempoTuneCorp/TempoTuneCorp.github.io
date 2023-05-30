@@ -16,7 +16,7 @@ namespace TempoTuneAPI.Models
 
         public string Password { get; set; }
 
-
+        
 
     }
 }
