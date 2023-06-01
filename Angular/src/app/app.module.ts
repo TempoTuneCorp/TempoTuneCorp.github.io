@@ -13,6 +13,7 @@ import { MainComponent } from './main/main.component';
 import { MusicComponent } from './music/music.component';
 import { ProfileComponent } from './profile/profile.component';
 
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProfileComponent } from './profile/profile.component';
     MainComponent,
     MusicComponent,
     ProfileComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -34,4 +36,4 @@ import { ProfileComponent } from './profile/profile.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,0 +1,248 @@
+.NavbarText{
+  color: black;
+  font-size: large;
+  top: 40%;
+  position: absolute;
+  margin: 0;
+  padding: 0%;
+  font-style: bold;
+  z-index: 14 ;
+  text-align: center;
+
+}
+
+.NavbarDiv{
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 8%;
+  background-color: purple;
+  overflow: hidden;
+}
+
+.Topnav .icon {
+  display: none;
+}
+
+.logobutton{
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  vertical-align: 50%;
+  height: 100%;
+  left: 5%;
+  margin:0;
+  padding: 0%;
+  position: absolute;
+}
+
+.logo{
+  margin:0;
+  padding: 0%;
+  position: relative;
+  top:40%;
+  height:80%;
+  transform: translate(-50%, -50%);
+  border: 0;
+  cursor: pointer;
+  vertical-align: 50%;
+}
+
+.profilebutton{
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  height:  100%;
+  left: 30%;
+  margin:0;
+  padding: 0%;
+  position: absolute;
+}
+
+.profilebuttonText{
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  width: 7%;
+  align-self: center;
+  height:  100%;
+  left: 31%;
+  margin:0;
+  padding: 0%;
+  position: relative;
+  cursor: pointer;
+}
+
+.FavoritebuttonText{
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  width: 7%;
+  align-self: center;
+  height:  100%;
+  left: 38%;
+  margin:0;
+  padding: 0%;
+  position: relative;
+  cursor: pointer;
+}
+
+.AboutbuttonText{
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  width: 7%;
+  align-self: center;
+  height:  100%;
+  left: 47%;
+  margin:0;
+  padding: 0%;
+  position: relative;
+  cursor: pointer;
+}
+
+.LogoutbuttonText{
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  width: 7%;
+  align-self: center;
+  height:  100%;
+  left: 70%;
+  margin:0;
+  padding: 0%;
+  position: relative;
+  cursor: pointer;
+}
+
+.profilepic{
+  margin:0;
+  padding: 0%;
+  position: relative;
+  top:40%;
+  height:80%;
+  transform: translate(-50%, -50%);
+  align-self: center;
+  border: 0;
+  cursor: pointer;
+}
+
+.logobutton:hover{
+  height:110%;
+}
+
+.profilepic:hover{
+  height:90%;
+}
+
+.NavbarText:hover{
+color: aqua;
+}
+
+@media screen and (max-width: 800px) {
+  .profilebutton {display: none;}
+
+
+}
+
+@media screen and (max-width: 1080px) {
+  .logobutton {left: 10%;}
+  .LogoutbuttonText{
+    width: 10%;
+  }
+
+}
+
+@media screen and (max-width: 510px) {
+  .logobutton {left: 20%;}
+}
+
+
+@media screen and (max-width: 600px) {
+
+
+  nav .nav-list{
+    transform: translateY(-500%);
+    transition: .0s;
+  }
+
+    nav .nabar-toggler{
+      display: grid !important;
+  }
+
+  .FavoritebuttonText{
+    left: 35%;
+  }
+
+  .profilebuttonText{
+    left: 35%;
+  }
+
+  .AboutbuttonText{
+    left: 35%;
+  }
+
+  .LogoutbuttonText{
+    left: 35%;
+    align-content: center;
+    width: 15%;
+  }
+
+
+
+}
+
+nav .nabar-toggler{
+  display: none;
+  height: 19px;
+  margin: 18px -10px 0;
+  cursor: pointer;
+  left: 90%;
+  position: absolute;
+}
+
+nav .nabar-toggler .bar{
+  width: 40px;
+  height: 5px;
+  margin-bottom: 10px;
+  background-color: white;
+  border-radius: 10%;
+  transition: .4s;
+}
+
+input{
+  display: none;
+}
+
+input:checked ~ * .nav-list {
+  transform: translateY(0%);
+  transition: .0s;
+  position: fixed;
+  left: 0%;
+  top: 7%;
+  width: 100%;
+  height: 20%;
+  align-items: end;
+  display: grid;
+  background-color: purple;
+  border-top-style: dotted;
+  border-color: black;
+}
+
+input:checked ~ * .nabar-toggler .bar:nth-child(1){
+  position: absolute;
+  transform: rotate(45deg);
+  margin-top: 10px;
+}
+
+input:checked ~ * .nabar-toggler .bar:nth-child(2){
+  display: none;
+}
+
+input:checked ~ * .nabar-toggler .bar:nth-child(3){
+  position: absolute;
+  transform: rotate(-45deg);
+  margin-top: 10px;
+}
+
