@@ -23,7 +23,7 @@ import { ProfileComponent } from './profile/profile.component';
     LogoComponent,
     MainComponent,
     MusicComponent,
-    ProfileComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
