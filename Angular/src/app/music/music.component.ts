@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./music.component.css']
 })
 export class MusicComponent {
-
+  tracks: string[] = ['Woo123123hoo', 'WooYeah', 'YeahYeah', 'YeahWoo' ];
 }
