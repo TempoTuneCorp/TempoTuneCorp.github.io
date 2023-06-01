@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import {DOCUMENT} from "@angular/common"
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +8,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+  constructor(private router: Router) {
+    window.addEventListener('resize', function() {
+      if (window.matchMedia('(min-width: 580px)').matches) {
+          const ele = document.getElementById('toggle') as HTMLInputElement;
+          ele.checked = false
+      }
+  }, true);
+
+  }
+
+
+
+  onLogoClick(){
+    this.router.navigate(['main'])
+  }
+
+  onProfileClick(){
+    this.router.navigate(['login'])
+  }
+
+
 
 }
+
