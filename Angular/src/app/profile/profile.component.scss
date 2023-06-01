@@ -1,0 +1,402 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+*{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.container{
+    width:1200px;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(42, 6, 109, 0.281);
+    z-index: 10;
+    border-radius: 30px;
+
+    
+
+}
+
+.left-container{
+    width: 300px;
+    float: left;
+    height: 100%;
+    background-color: rgba(71, 171, 252, 0.473);
+    border-radius: 30px 0px 0px 30px;
+
+    .pic{
+        position:absolute;
+        top:190px;
+        left:190px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        padding: 10px;
+
+    }
+}
+
+
+.profile-picture-container{
+    width: 170px;
+    height: 170px;
+    top: 150px;
+    left: 50%;
+    position: relative;
+    transform: translate(-50%, -50%);
+}
+
+.profile-picture{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0px 0px 24px 1px rgba(63, 63, 63, 0.76);
+}
+
+.profile-info-container-left{
+    position: relative;
+
+    top: 100px;
+    text-align: center;
+
+    p{
+        color: white;
+        font-size: 20px;
+    }
+
+    .btn-favourites {
+        margin-top:170px;
+        padding: 15px 45px;
+        text-align: center;
+        text-transform: uppercase;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+        background-size: 500% auto;
+        font-weight: bold;
+        font-size: 1rem;
+        color: rgb(255, 255, 255);
+        border-radius: 10px;
+      }
+      
+      .btn-favourites:hover {
+        cursor:pointer;
+        background-position: right center;
+        border-image-source: linear-gradient(90deg, #0c0b0c,#202020 );
+        -webkit-box-shadow: 0 0 10px #161616;
+        box-shadow: 0 0 10px #2e2e2e;
+        color: rgb(255, 255, 255);
+        text-shadow: 1px 1px 10px #080808;
+      }
+}
+
+.right-container{
+    width: 900px;
+    float: right;
+    height: 100%;
+}
+
+.profile-info-container-right{
+    position: relative;
+    width: 80%;
+    height: 80%;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+ 
+    h1{
+        color:white;
+        font-size: 30px;
+    }
+
+    .profile-info-card{        
+        background: rgba(0, 0, 0, 0.233);
+        border-radius: 10px;
+        margin: 20px 0px;
+        padding: 10px 20px;
+        height:54px;
+
+        .profile-info-box{
+
+
+            color: white;
+            float:left;
+            
+    
+            .info-hero-text{      
+                font-size: 17px;     
+            }
+    
+            .info-user-text{
+                font-size: 22px;
+            }
+        }
+    }
+}
+
+.btn-edit {
+    float:right;
+    padding: 15px 15px;
+    text-align: center;
+    text-transform: uppercase;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    background-size: 500% auto;
+    font-weight: bold;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+  }
+  
+  .btn-edit:hover {
+    cursor:pointer;
+    background-position: right center;
+    border-image-source: linear-gradient(90deg, #0c0b0c,#202020 );
+    -webkit-box-shadow: 0 0 10px #161616;
+    box-shadow: 0 0 10px #2e2e2e;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 10px #080808;
+  }
+
+  .space {
+    background-image: -webkit-gradient(linear, left top, right top, from(#743ad5), color-stop(51%, #d53a9d), to(#743ad5));
+    background-image: linear-gradient(to right, #743ad5 0%, #d53a9d 51%, #743ad5 100%);
+    border-image-source: linear-gradient(45deg, #743ad5, #d53a9d );
+    border-image-outset: 1em;
+  }
+  
+  .btn-delete {
+    
+    float:right;
+    padding: 15px 25px;
+    text-align: center;
+    text-transform: uppercase;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    background-size: 500% auto;
+    font-weight: bold;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    margin-top: 63px;
+    
+    
+    svg{
+        color:rgb(255, 255, 255);
+        float:left;
+        margin-right:10px;
+    }
+    
+    
+  }
+  
+  .btn-delete:hover {
+    cursor:pointer;
+    background-position: right center;
+    border-image-source: linear-gradient(90deg, #0c0b0c,#202020 );
+    -webkit-box-shadow: 0 0 10px #161616;
+    box-shadow: 0 0 10px #2e2e2e;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 10px #080808;
+  }
+
+  .red {
+    background-image: -webkit-gradient(linear, left top, right top, from(#e62f2f), color-stop(51%, #eb612a), to(#fa0404));
+    background-image: linear-gradient(to right, #f82929 0%, #f8654b 51%, #e62f2f 100%);
+    border-image-source: linear-gradient(45deg, #e62f2f, #eb2a64);
+    border-image-outset: 1em;
+  }
+  
+
+
+
+
+
+  
+  @media screen and (max-width: 1210px) {
+
+    .container{
+        margin-top:30px;
+        width:700px;
+        height: 730px;
+        position: absolute; 
+    }
+
+    .left-container{
+        width: 700px;
+        float: left;
+        height: 250px;
+        border-radius: 30px 30px 0px 0px;
+    
+        .pic{
+            position:absolute;
+            top:165px;
+            left:190px;    
+        }
+    }
+
+
+    
+    .profile-picture-container{
+        top: 125px;
+        left: 150px;
+    }
+
+    .profile-info-container-left{
+        position: absolute;
+        top: 55px;
+        left: 350px;
+        
+        .btn-favourites {
+            margin-top:60px;
+        }
+    }
+    
+    .right-container{
+        width: 700px;
+        float: right;
+        height: 100%;
+    }
+
+    .profile-info-container-right{
+        
+        margin-top:-30px;
+    }
+
+    .btn-delete{
+        position:absolute;
+        margin-top:10px;
+        left:50%;
+        transform: translate(-50%);
+        
+    }
+
+}
+    
+
+@media screen and (max-width: 710px) {
+
+
+    .container{
+        
+        width: 95%;
+        height: 85%;
+        position: absolute; 
+    }
+
+    .left-container{
+        width: 100%;
+        float: left;
+        height: 30%;
+        border-radius: 30px 30px 0px 0px;
+        min-height: 200px;
+    
+        .pic{
+            position:absolute;
+            top:17%;
+            left:57%;    
+            
+        }
+
+        
+    }
+    
+    .profile-picture-container{
+        position:absolute;
+        top: 13%;
+        left: 50%;
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-info-container-left{
+        position: relative;
+        width: 90%;
+        left: 50%;
+        top:86%;
+        transform: translate(-50%, -50%);
+        
+        .btn-favourites {
+            display:none;
+        }
+    }
+    
+    .right-container{
+        width: 100%;
+        float: right;
+        height: 100%;
+
+        .profile-info-container-right{
+            width: 95%;
+            margin-top:-30px;
+        }
+        h1{
+            
+            color:white;
+            font-size: 17px;
+        }
+    
+        .profile-info-card{        
+            background: rgba(0, 0, 0, 0.233);
+            border-radius: 10px;
+            margin: 17px 0px;
+            padding: 10px 20px;
+            height:39px;
+    
+            .profile-info-box{    
+                color: white;
+                float:left;
+
+                .info-hero-text{      
+                    font-size: 12px;     
+                }
+        
+                .info-user-text{
+                    font-size: 17px;
+                }
+            }
+        }
+    }
+    
+    .btn-edit {
+        float:right;
+        padding: 10px 10px;
+        text-align: center;
+        text-transform: uppercase;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+        background-size: 500% auto;
+        font-weight: bold;
+        font-size: 1rem;
+        color: rgb(255, 255, 255);
+        border-radius: 10px;
+        
+        svg{
+            height:15px;
+            width: 15px;
+        }
+      }
+
+      .btn-delete{
+        padding:10px 10px;
+        position:absolute;
+        margin-top:20px;
+        left:50%;
+        transform: translate(-50%);
+        min-width: 154px;
+        font-size: 14px;
+        
+        svg{
+            margin-right: 10px;
+            width: 13px;
+            height: 18px;
+        }
+      }
+    }
+
+
+
+
+

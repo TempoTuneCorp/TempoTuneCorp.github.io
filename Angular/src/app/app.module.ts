@@ -11,6 +11,8 @@ import { LogoComponent } from './logo/logo.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './main/main.component';
 import { MusicComponent } from './music/music.component';
+import { ProfileComponent } from './profile/profile.component';
+
 import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
@@ -22,6 +24,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     LogoComponent,
     MainComponent,
     MusicComponent,
+    ProfileComponent
     NavbarComponent
   ],
   imports: [
