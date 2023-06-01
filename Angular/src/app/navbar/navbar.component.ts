@@ -25,7 +25,7 @@ export class NavbarComponent {
   }
 
   onProfileClick(){
-    this.router.navigate(['login'])
+    this.router.navigate(['profile'])
   }
 
 
