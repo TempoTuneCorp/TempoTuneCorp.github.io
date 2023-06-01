@@ -24,7 +24,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     LogoComponent,
     MainComponent,
     MusicComponent,
-    ProfileComponent
+    ProfileComponent,
     NavbarComponent
   ],
   imports: [
