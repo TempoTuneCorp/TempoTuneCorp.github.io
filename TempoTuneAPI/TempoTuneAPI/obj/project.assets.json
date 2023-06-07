@@ -10286,23 +10286,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rms\\.nuget\\packages\\": {},
+    "C:\\Users\\jjø\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rms\\Desktop\\TempoTune\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj",
+      "projectUniqueName": "C:\\Users\\jjø\\Documents\\TempoTune-1\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj",
       "projectName": "TempoTuneAPI",
-      "projectPath": "C:\\Users\\rms\\Desktop\\TempoTune\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj",
-      "packagesPath": "C:\\Users\\rms\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rms\\Desktop\\TempoTune\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\obj\\",
+      "projectPath": "C:\\Users\\jjø\\Documents\\TempoTune-1\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj",
+      "packagesPath": "C:\\Users\\jjø\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jjø\\Documents\\TempoTune-1\\TempoTuneAPI\\TempoTuneAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\rms\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jjø\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
