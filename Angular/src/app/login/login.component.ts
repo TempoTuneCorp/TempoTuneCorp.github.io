@@ -12,7 +12,12 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
   loginForm!: FormGroup;
-  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) { }
+
+  constructor(
+    private fb: FormBuilder, 
+    private auth: AuthService, 
+    private router: Router
+  ) { }
 
   ngOnInit(): void{
     this.loginForm = this.fb.group({
@@ -30,6 +35,7 @@ export class LoginComponent {
         next:(res)=>{
           alert(res.message)
           this.loginForm.reset();
+          this.auth.storeToken(res.token)
           this.router.navigate(['main'])
         },
         error:(err)=>{

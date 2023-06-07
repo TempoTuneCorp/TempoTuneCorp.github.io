@@ -155,11 +155,6 @@ namespace TempoTuneAPI.Controllers
             
         }
 
-        [HttpGet]
-        public async Task<IEnumerable<User>> Get()
-        {
-            return await _context.Users.ToListAsync();
-        }
 
         private string CreateJwt(User user)
         {
@@ -184,8 +179,11 @@ namespace TempoTuneAPI.Controllers
             return jwtTokenHandler.WriteToken(token);
         }
 
-
-
+        [HttpGet]
+        public async Task<ActionResult<User>> GetAllUsers()
+        {
+            return Ok(await _context.Users.ToListAsync());
+        }
 
         //[HttpPost]
         //[ProducesResponseType(StatusCodes.Status201Created)]
