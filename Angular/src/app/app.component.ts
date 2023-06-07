@@ -13,6 +13,7 @@ export class AppComponent {
   showLogo: boolean = true;
 
 
+
   constructor(private router: Router) {
     // this.router.navigate(['/login'])
     router.events.subscribe((val) => {
@@ -26,11 +27,10 @@ export class AppComponent {
     });
   }
 
-
   // route for button: ((click)="redirect in the html button")
   //
   // redirect(){
   //   this.router.navigate(['/someComponent']);
-  // 
-  
+  //
+
 }
