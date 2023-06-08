@@ -11,39 +11,22 @@
     border-radius: 3%;
 }
 
-.background > .text{
-    display: inline-block;
-    width: 25%;
-    text-align: center;
-}
+.header-text{
+    align-items: center;
+    justify-content: center;
+    display:flex;
+    align-content: center;
 
-.card{
-    margin-top: 15px;
-    margin-bottom: 15px;
-    padding-left: 120px;
-    padding-right: 0;
-}
-
-.card > .card-part{
-    display: inline-block;
-    width: 25%;
-}
-
-.card-part > .item {
-    display: inline-block;
-    margin-right: 5px;
-}
-
-.line{
-    margin: auto;
-    border: 0;
-    width: 90%;
-    height: 1px;
-    background-color: var(--top-text-color);
-    margin-bottom: 10px;
 }
 
 .text{
+    display: flex;
+    margin-right: auto;
+    width: 100px;
+    margin-left:80px;
+    margin-bottom: 5px;
+    margin-top:5px;
+    align-items: center;
     margin-top: 20px;
     color: var(--top-text-color);
 }
@@ -52,31 +35,52 @@
     height: 20px;
 }
 
-.small-cover{
-    width: 45px;
+.line{
+    margin: 0 auto;
+    border: 0;
+    width: 90%;
+    height: 1px;
+    background-color: var(--top-text-color);
+    margin-bottom: 10px;
+    
+
 }
 
-.card-part{
-    padding-top: 5px;
-    padding-bottom: 5px;
-    line-height: 34px;
-} 
+.card{
+    align-items: center;
+    justify-content: center;
+    display:flex;
+    align-content: center;
+}
 
-.item{
-    vertical-align: middle;
-    color: var(--white-text-color);
+.part{
+    margin-right: 8px;
 }
 
 .card:hover{
-    background-color: var(--hover-grey-color);
     cursor: pointer;
+    background-color: var(--hover-grey-color);
 }
 
-@media screen and (max-width: 1210px){
-
+.item{
+    display: flex;
+    margin-right: auto;
+    width: 100px;
+    margin-left:80px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    align-items: center;
 }
 
-@media screen and (max-width: 710px){
+.small-cover{
+    width: 35px;
+}
+
+/* @media screen and (max-width: 1210px){ 
+
+}*/
+
+/* @media screen and (max-width: 710px){
     .container{
         position: absolute;
         height: 90%;
@@ -159,4 +163,4 @@
     #album{
         display: none;
     }
-}
+} */
