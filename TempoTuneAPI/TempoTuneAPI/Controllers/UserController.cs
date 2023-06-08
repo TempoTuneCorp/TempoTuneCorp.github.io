@@ -1,9 +1,12 @@
-﻿using System.Text;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using TempoTuneAPI.Data;
 using TempoTuneAPI.Helpers;
 using TempoTuneAPI.Models;
@@ -38,8 +41,12 @@ namespace TempoTuneAPI.Controllers
                 return BadRequest(new {Message = "Password is incorrect"});
             }
 
+
+            user.Token = CreateJwt(user);
+
             return Ok(new
             {
+                Token = user.Token,
                 Message = "Login Success!"
             });
         }
@@ -153,6 +160,30 @@ namespace TempoTuneAPI.Controllers
         {
             return await _context.Users.ToListAsync();
         }
+
+        private string CreateJwt(User user)
+        {
+            var jwtTokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes("veryverysecret.....");
+            var identity = new ClaimsIdentity(new Claim[]
+            {
+                new Claim(ClaimTypes.Name, user.UserName)
+
+            });
+
+            var credentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = identity,
+                Expires = DateTime.Now.AddDays(1),
+                SigningCredentials = credentials
+            };
+
+            var token = jwtTokenHandler.CreateToken(tokenDescriptor);
+            return jwtTokenHandler.WriteToken(token);
+        }
+
 
 
 

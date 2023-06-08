@@ -11,6 +11,9 @@ import { LogoComponent } from './logo/logo.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './main/main.component';
 import { MusicComponent } from './music/music.component';
+import { ProfileComponent } from './profile/profile.component';
+
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { MusicComponent } from './music/music.component';
     RegisterComponent,
     LogoComponent,
     MainComponent,
-    MusicComponent
+    MusicComponent,
+    ProfileComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -31,4 +36,4 @@ import { MusicComponent } from './music/music.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

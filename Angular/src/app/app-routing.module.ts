@@ -1,10 +1,13 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { MusicComponent } from './music/music.component';
+import { ProfileComponent } from './profile/profile.component';
+
+import { LogoComponent } from './logo/logo.component';
+
 
 const routes: Routes = [
   {
@@ -25,6 +28,10 @@ const routes: Routes = [
   {
     path: 'music',
     component: MusicComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
   }
   ];
 
@@ -33,4 +40,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+
+
+
+export class AppRoutingModule {}
