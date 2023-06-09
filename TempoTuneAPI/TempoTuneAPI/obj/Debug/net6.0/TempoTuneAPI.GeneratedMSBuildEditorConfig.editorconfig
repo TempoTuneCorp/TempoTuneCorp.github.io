@@ -8,17 +8,9 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TempoTuneAPI
 build_property.RootNamespace = TempoTuneAPI
-<<<<<<< HEAD
-build_property.ProjectDir = c:\Users\rjn\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\
+build_property.ProjectDir = C:\Users\rjn\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\Users\rjn\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI
-=======
-build_property.ProjectDir = C:\Users\rms\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\
-build_property.RazorLangVersion = 6.0
-build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\rms\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI
->>>>>>> 030934175a2434ff6b29f2c0c7a15fc41caf581f
+build_property.MSBuildProjectDirectory = C:\Users\rjn\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI
 build_property._RazorSourceGeneratorDebug = 

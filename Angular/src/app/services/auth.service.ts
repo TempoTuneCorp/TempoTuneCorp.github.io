@@ -32,7 +32,7 @@ export class AuthService {
   }
 
   isLoggedin():boolean{
-    // !! converts string to boolean value - if there is a token return true
+    // !! converts string to boolean value - if there is a token, return true
     return !!localStorage.getItem('token')
   }
 
