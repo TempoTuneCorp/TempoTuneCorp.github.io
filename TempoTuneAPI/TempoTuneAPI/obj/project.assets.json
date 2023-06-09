@@ -10758,23 +10758,39 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
+    "C:\\Users\\rjn\\.nuget\\packages\\": {},
+=======
     "C:\\Users\\ojs\\.nuget\\packages\\": {},
+>>>>>>> d3808be09e77140c7219428b845cdf8d716c3637
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
+      "projectUniqueName": "C:\\Users\\rjn\\Desktop\\TempoTune\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj",
+      "projectName": "TempoTuneAPI",
+      "projectPath": "C:\\Users\\rjn\\Desktop\\TempoTune\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj",
+      "packagesPath": "C:\\Users\\rjn\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rjn\\Desktop\\TempoTune\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\obj\\",
+=======
       "projectUniqueName": "C:\\Users\\ojs\\Desktop\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj",
       "projectName": "TempoTuneAPI",
       "projectPath": "C:\\Users\\ojs\\Desktop\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\TempoTuneAPI.csproj",
       "packagesPath": "C:\\Users\\ojs\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\ojs\\Desktop\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\obj\\",
+>>>>>>> d3808be09e77140c7219428b845cdf8d716c3637
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
+        "C:\\Users\\rjn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
         "C:\\Users\\ojs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> d3808be09e77140c7219428b845cdf8d716c3637
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -10851,5 +10867,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\rjn\\Desktop\\TempoTune\\TempoTune\\TempoTuneAPI\\TempoTuneAPI\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
