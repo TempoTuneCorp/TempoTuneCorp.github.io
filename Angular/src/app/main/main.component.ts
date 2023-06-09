@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -8,5 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent {
+//   constructor(@Inject(DOCUMENT) document: Document) {
+//     document.getElementById('player');
+//  }
 
+  
 }
