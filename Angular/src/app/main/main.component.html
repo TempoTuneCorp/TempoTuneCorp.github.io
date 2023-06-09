@@ -1,4 +1,7 @@
 <app-music></app-music>
-
-<app-navbar></app-navbar>
-
+<audio #player id="player" src="assets\TestAudio\Free_Test_Data_1MB_MP3.mp3"></audio>
+<div> 
+    <button onclick="document.getElementById('player').play()">Play</button> 
+    <button onclick="document.getElementById('player').pause()">Pause</button> 
+</div>
+ 

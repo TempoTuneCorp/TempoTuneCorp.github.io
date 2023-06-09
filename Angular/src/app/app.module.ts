@@ -14,6 +14,7 @@ import { MusicComponent } from './music/music.component';
 import { ProfileComponent } from './profile/profile.component';
 
 import { NavbarComponent } from './navbar/navbar.component';
+import {NgToastModule} from 'ng-angular-popup';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]
