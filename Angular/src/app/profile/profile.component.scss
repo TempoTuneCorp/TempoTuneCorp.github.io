@@ -8,7 +8,7 @@
     width:1200px;
     height: 600px;
     position: absolute;
-    top: 50%;
+    top: 53%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(42, 6, 109, 0.281);
@@ -25,6 +25,7 @@
 
     .pic{
         position:absolute;
+        
         top:190px;
         left:190px;
         width: 40px;
@@ -46,6 +47,7 @@
 }
 
 .profile-picture{
+    border-radius: 50%;
     position: relative;
     width: 100%;
     height: 100%;
