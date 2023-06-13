@@ -69,6 +69,9 @@
   width: fit-content;
   position: absolute;
 }
+.profilebutton img {
+  border-radius: 50%;
+}
 
 .profilebuttonText {
   background-color: transparent;
@@ -83,8 +86,23 @@
   position: relative;
   cursor: pointer;
 }
-.profilebuttonText:hover .NavbarText {
-  color: rgb(226, 213, 26);
+.profilebuttonText:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 15px;
+  background: rgb(226, 213, 26);
+  height: 3px;
+  transition-property: left right;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+
+.profilebuttonText:hover:after,
+.profilebuttonText:focus:after,
+.profilebuttonText:active:after {
+  right: 0;
 }
 
 .FavoritebuttonText {
@@ -101,14 +119,30 @@
   position: absolute;
   cursor: pointer;
 }
-.FavoritebuttonText:hover .NavbarText {
-  color: rgb(226, 213, 26);
+.FavoritebuttonText:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 15px;
+  background: rgb(226, 213, 26);
+  height: 3px;
+  transition-property: left right;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+
+.FavoritebuttonText:hover:after,
+.FavoritebuttonText:focus:after,
+.FavoritebuttonText:active:after {
+  right: 0;
 }
 
 .AboutbuttonText {
   background-color: transparent;
   border: 0;
-  width: 7%;
+  width: -moz-fit-content;
+  width: fit-content;
   align-self: center;
   height: 100%;
   left: 70%;
@@ -118,14 +152,30 @@
   position: absolute;
   cursor: pointer;
 }
-.AboutbuttonText:hover .NavbarText {
-  color: rgb(226, 213, 26);
+.AboutbuttonText:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 15px;
+  background: rgb(226, 213, 26);
+  height: 3px;
+  transition-property: left right;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+
+.AboutbuttonText:hover:after,
+.AboutbuttonText:focus:after,
+.AboutbuttonText:active:after {
+  right: 0;
 }
 
 .LogoutbuttonText {
   background-color: transparent;
   border: 0;
-  width: 100px;
+  width: -moz-fit-content;
+  width: fit-content;
   align-self: center;
   height: 100%;
   right: 5%;
@@ -135,8 +185,23 @@
   position: relative;
   cursor: pointer;
 }
-.LogoutbuttonText:hover .NavbarText {
-  color: rgb(226, 213, 26);
+.LogoutbuttonText:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 15px;
+  background: rgb(226, 213, 26);
+  height: 3px;
+  transition-property: left right;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+
+.LogoutbuttonText:hover:after,
+.LogoutbuttonText:focus:after,
+.LogoutbuttonText:active:after {
+  right: 0;
 }
 
 .profilepic {
