@@ -35,13 +35,13 @@ export class LoginComponent {
       .subscribe({
         next:(res)=>{
           // alert(res.message)
-          this.toast.success({detail:"Success", summary:res.message, duration: 5000});
+          this.toast.success({detail:"Success", summary:res.message, duration: 3000});
           this.loginForm.reset();
           this.auth.storeToken(res.token)
           this.router.navigate(['main'])
         },
-        error:(err)=>{
-          this.toast.error({detail:"Error", summary:"Failed to login", duration: 5000});
+        error:()=>{
+          this.toast.error({detail:"Error", summary:"Failed to login", duration: 3000});
           // alert(err?.error.message)
         }
       })

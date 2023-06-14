@@ -855,9 +855,7 @@ C:\Users\rms\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\obj\Debug\net
 C:\Users\rms\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\obj\Debug\net6.0\TempoTuneAPI.pdb
 C:\Users\rms\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\obj\Debug\net6.0\TempoTuneAPI.genruntimeconfig.cache
 C:\Users\rms\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\obj\Debug\net6.0\ref\TempoTuneAPI.dll
-<<<<<<< HEAD
 >>>>>>> 030934175a2434ff6b29f2c0c7a15fc41caf581f
-=======
 C:\Users\jjø\Documents\TempoTune-1\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\jjø\Documents\TempoTune-1\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\appsettings.json
 C:\Users\jjø\Documents\TempoTune-1\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\TempoTuneAPI.exe

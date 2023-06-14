@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using System.Text;
 using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -154,10 +155,10 @@ namespace TempoTuneAPI.Controllers
         {
             StringBuilder sb = new StringBuilder();
             if(Password.Length < 8)
-               sb.Append("Your password should be atleast 8 characters"+Environment.NewLine);
+               sb.Append("Password must be atleast 8 characters."+Environment.NewLine);
 
             if(!(Regex.IsMatch(Password, "[a-z]") && Regex.IsMatch(Password, "[A-Z]") && Regex.IsMatch(Password, "[0-9]")))
-               sb.Append("Password should be Alpha Numeric"+ Environment.NewLine);
+               sb.Append("Password must be Alpha Numeric."+ Environment.NewLine);
                if(!Regex.IsMatch(Password, "[<,>,!,$,@,$,£,€]"));
                
                  return sb.ToString();
@@ -187,7 +188,9 @@ namespace TempoTuneAPI.Controllers
             var token = jwtTokenHandler.CreateToken(tokenDescriptor);
             return jwtTokenHandler.WriteToken(token);
         }
+        
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<User>> GetAllUsers()
         {
