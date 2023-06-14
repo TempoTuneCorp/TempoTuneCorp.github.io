@@ -62,22 +62,37 @@ namespace TempoTuneAPI.Controllers
         }
 
 
-        //[HttpGet("{id}")]
-        //[ProducesResponseType(typeof(Track), StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //public async Task<IActionResult> GetById(int id)
-        //{
-        //    var track = await _context.Tracks.FindAsync(id);
-        //    if (track == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    else
-        //    {
-        //        return Ok(track);
-        //    }
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(Track), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var track1 = await _context.Tracks.FindAsync(id);
+            if (track1 == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                var track = (from t in _context.Tracks
+                             join od in _context.Artists on t.Id equals od.Id
+                             into x
+                             from rt in x.DefaultIfEmpty()
+                             where t.Id == id
+                             orderby t.Id
+                             select new Track()
+                             {
+                                 Id = t.Id,
+                                 Title = t.Title,
+                                 SongPath = t.SongPath,
+                                 AlbumName = t.AlbumName,
+                                 Artist = t.Artist
+                             }).FirstOrDefault(); 
 
-        //}
+                return Ok(track);
+            }
+
+        }
 
 
 
@@ -97,6 +112,9 @@ namespace TempoTuneAPI.Controllers
 
 
         [HttpGet("GetAllTracks")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IEnumerable<Track> GetTracks()
         {
             var testTrack = (from t in _context.Tracks
@@ -116,8 +134,6 @@ namespace TempoTuneAPI.Controllers
         }
 
 
-
-
-
+      
     }
 }
