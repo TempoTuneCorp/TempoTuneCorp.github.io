@@ -54,21 +54,25 @@ namespace TempoTuneAPI.Controllers
         [HttpPost("Register")]
         public async Task<IActionResult> RegisterUser([FromBody] User userObj)
         {
-            if (userObj == null)
+             if (userObj == null)
                 return BadRequest();
              
+            if (await CheckUserNameAndEmailExistsAsync(userObj.UserName, userObj.Email))               
+                return BadRequest(new { Message = "Username and Email already exists" });
+
              //Check om username eksisterer
              if (await CheckUserNameExistsAsync(userObj.UserName))
-                   return BadRequest(new {Message = "Username exists"});
+                   return BadRequest(new {Message = "Username already exists"});
 
 
              //Check om Email eksisterer
              if (await CheckEmailExistsAsync(userObj.Email))
-                   return BadRequest(new {Message = "Email exists"});
+                   return BadRequest(new {Message = "Email already exists"});
 
+            
 
-             //Check Password Strength
-             var pass = CheckPasswordStrength(userObj.Password);
+                //Check Password Strength
+                var pass = CheckPasswordStrength(userObj.Password);
              if(!string.IsNullOrEmpty(pass))
                  return BadRequest(new {Message = pass.ToString()}  );
 
@@ -130,7 +134,10 @@ namespace TempoTuneAPI.Controllers
 
             return NoContent();
         }
-
+        private async Task<bool> CheckUserNameAndEmailExistsAsync(string username, string email)
+        {
+            return await _context.Users.AnyAsync(x => x.UserName == username && x.Email == email);
+        }
         private async Task<bool> CheckUserNameExistsAsync(string username)
         {
             return await _context.Users.AnyAsync(x=>x.UserName == username);
@@ -140,6 +147,8 @@ namespace TempoTuneAPI.Controllers
         {
             return await _context.Users.AnyAsync(x => x.Email == email);
         }
+
+        
 
         private string CheckPasswordStrength(string Password)
         {
@@ -155,11 +164,6 @@ namespace TempoTuneAPI.Controllers
             
         }
 
-        [HttpGet]
-        public async Task<IEnumerable<User>> Get()
-        {
-            return await _context.Users.ToListAsync();
-        }
 
         private string CreateJwt(User user)
         {
@@ -184,8 +188,11 @@ namespace TempoTuneAPI.Controllers
             return jwtTokenHandler.WriteToken(token);
         }
 
-
-
+        [HttpGet]
+        public async Task<ActionResult<User>> GetAllUsers()
+        {
+            return Ok(await _context.Users.ToListAsync());
+        }
 
         //[HttpPost]
         //[ProducesResponseType(StatusCodes.Status201Created)]

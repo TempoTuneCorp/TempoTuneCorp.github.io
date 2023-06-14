@@ -17,4 +17,24 @@ export class AuthService {
   login(loginObj:any){
     return this.http.post<any>(`${this.baseUrl}authenticate`,loginObj)
   }
+
+  signOut(){
+    localStorage.clear();
+    
+  }
+
+  storeToken(tokenValue:string){
+    localStorage.setItem('token', tokenValue)
+  }
+
+  getToken(){
+    return localStorage.getItem('token')
+  }
+
+  isLoggedin():boolean{
+    // !! converts string to boolean value - if there is a token, return true
+    return !!localStorage.getItem('token')
+  }
+
+
 }

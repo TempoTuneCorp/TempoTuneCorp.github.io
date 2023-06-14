@@ -3,18 +3,23 @@
 <input type="checkbox" id="toggle">
 
 <div class = "NavbarDiv" id="Topnav">
-  <button (click)="onLogoClick()" class="logobutton"> <img class="logo" src="/assets/images/tempotune-logo-transparent.png" alt=""></button>
-  <label class="nabar-toggler"for="toggle">
+  <button (click)="onLogoClick()" class="logobutton"> <img class="logo" src="/assets/images/logo-text-removebg-preview.png" alt="" ></button>
+  
+  <div class="nav-toggler-container">
+  <label class="nabar-toggler" for="toggle">
     <span class="bar"></span>
     <span class="bar"></span>
     <span class="bar"></span>
   </label>
+</div>
   <ul class="nav-list">
-    <button (click)="onProfileClick()" class="profilebuttonText"> <p class="NavbarText">Profile</p></button>
-    <button (click)="onProfileClick()" class="profilebutton"> <img class="profilepic" src="/assets/images/key1.png" alt=""> </button>
+    <button class="profile-nav-container">
+      <button (click)="onProfileClick()" class="profilebutton"> <img class="profilepic" src="/assets/images/user-profile-icon.jpg" alt=""> </button>
+      <button (click)="onProfileClick()" class="profilebuttonText"> <p class="NavbarText">Profile</p></button>
+    </button>
     <button (click)="onProfileClick()" class="FavoritebuttonText"> <p class="NavbarText">Favourites</p></button>
     <button (click)="onProfileClick()" class="AboutbuttonText"> <p class="NavbarText">About</p></button>
-    <button (click)="onProfileClick()" class="LogoutbuttonText"> <p class="NavbarText">Log out</p></button>
+    <button (click)="logout()" class="LogoutbuttonText"> <p class="NavbarText">Log out</p></button>
   </ul>
 
 </div>
