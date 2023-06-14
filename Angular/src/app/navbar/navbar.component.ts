@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import {DOCUMENT} from "@angular/common"
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,7 @@ import {DOCUMENT} from "@angular/common"
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  constructor(private router: Router) {
+  constructor(private router: Router, private auth: AuthService) {
     window.addEventListener('resize', function() {
       if (window.matchMedia('(min-width: 580px)').matches) {
           const ele = document.getElementById('toggle') as HTMLInputElement;
@@ -28,7 +29,10 @@ export class NavbarComponent {
     this.router.navigate(['profile'])
   }
 
-
+  logout(){
+    this.auth.signOut();
+    this.router.navigate(['login'])
+  }
 
 }
 
