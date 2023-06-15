@@ -32,9 +32,11 @@
 
     <audio #player id="player" src=""></audio>
         <div> 
+            <p id="timer"></p>
+            <button (click)="previousSong()">Previous</button>
             <button onclick="document.getElementById('player').play()">Play</button> 
             <button onclick="document.getElementById('player').pause()">Pause</button> 
-
+            <button (click)="skipSong()">Skip</button>
         </div>
    
     

@@ -73,6 +73,11 @@
 
 }
 
+.card::after{
+    background-color: var(--hover-grey-color);
+
+}
+
 .card:focus{
     background-color: var(--hover-grey-color);
 
