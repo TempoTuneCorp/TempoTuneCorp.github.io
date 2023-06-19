@@ -175,7 +175,8 @@ namespace TempoTuneAPI.Controllers
             var key = Encoding.ASCII.GetBytes("veryverysecret.....");
             var identity = new ClaimsIdentity(new Claim[]
             {
-                new Claim(ClaimTypes.Name, user.UserName)
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.Email, user.Email)
 
             });
 

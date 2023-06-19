@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent {
     private fb: FormBuilder, 
     private auth: AuthService, 
     private router: Router,
-    private toast: NgToastService
+    private toast: NgToastService,
+    private user: UserService
   ) { }
 
   ngOnInit(): void{
@@ -29,7 +31,7 @@ export class LoginComponent {
 
   onLogin(){
     if(this.loginForm.valid){
-      console.log(this.loginForm.value)
+
       // Send the object to database
       this.auth.login(this.loginForm.value)
       .subscribe({
@@ -38,6 +40,9 @@ export class LoginComponent {
           this.toast.success({detail:"Success", summary:res.message, duration: 3000});
           this.loginForm.reset();
           this.auth.storeToken(res.token)
+          const tokenPayload = this.auth.decodedToken();
+          this.user.setUsername(tokenPayload.unique_name);
+          this.user.setEmail(tokenPayload.email);
           this.router.navigate(['main'])
         },
         error:()=>{

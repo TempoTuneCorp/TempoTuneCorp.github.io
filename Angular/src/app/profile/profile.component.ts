@@ -1,6 +1,8 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
+import { AuthService } from '../services/auth.service';
+
 
 
 @Component({
@@ -9,16 +11,34 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./profile.component.css']
 })
 
-export class ProfileComponent{
+export class ProfileComponent implements AfterViewInit{
 
-  public users:any = [];
-  constructor(private user: UserService){}
+  public username:string = "";
+  public email:string = "";
 
-  noOnInit(){
-    this.user.getUsers()
-    .subscribe(res =>{
-      this.users = res;
+  constructor(private user: UserService, private auth: AuthService){}
+
+  ngAfterViewInit(){
+    this.user.getUsername().subscribe(val => { 
+      let usernameFromToken = this.auth.getUsernameFromToken();
+    this.username = val || usernameFromToken;
     })
-  }
+    
 
+    this.user.getEmail().subscribe ( val=> {
+      let emailFromToken = this.auth.getEmailFromToken();
+      this.email = val || emailFromToken;
+    })
+
+
+    // this.user.getUsername()
+    // .subscribe(val =>{
+    //   let usernameFromToken = this.auth.getUsernameFromToken();
+    //   this.username = val || usernameFromToken;
+    // });
+    
+    }
+    
 }
+
+
