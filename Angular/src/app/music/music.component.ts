@@ -64,20 +64,20 @@ export class MusicComponent {
     }
   }
 
-  currentSongTime(){
-    
-
-
-  }
+  
 
   ngOnInit(){
     const audio = (<HTMLAudioElement>document.getElementById('player'))
     const timer = (<HTMLParagraphElement>document.getElementById('timer'))
+    const endTimer = (<HTMLParagraphElement>document.getElementById('end-timer'))
 
     audio.addEventListener('timeupdate', () => {
       const minutes = Math.floor(audio.currentTime / 60);
       const seconds = Math.floor(audio.currentTime % 60);
+      const minutesDuration = Math.floor(audio.duration / 60);
+      const secondsDuration = Math.floor(audio.duration % 60);
       timer.innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+      endTimer.innerText = `${minutesDuration}:${secondsDuration < 10 ? '0' : ''}${secondsDuration}`;
     });
   }
 
