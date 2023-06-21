@@ -5,20 +5,36 @@ import { AuthService } from '../services/auth.service';
 
 
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 
-export class ProfileComponent implements AfterViewInit{
+export class ProfileComponent implements OnInit{
 
   public username:string = "";
   public email:string = "";
+  public updatedUsername: any;
+  editMode: boolean = false;
 
-  constructor(private user: UserService, private auth: AuthService){}
+  constructor(private user: UserService, private auth: AuthService){
+  
 
-  ngAfterViewInit(){
+  }
+
+  
+  enableEditUsername(){
+    this.editMode = true;
+    this.updatedUsername = this.username;
+  }
+
+  updateUser(){
+    this.username = this.updatedUsername;
+  }
+
+  ngOnInit(){
     this.user.getUsername().subscribe(val => { 
       let usernameFromToken = this.auth.getUsernameFromToken();
     this.username = val || usernameFromToken;

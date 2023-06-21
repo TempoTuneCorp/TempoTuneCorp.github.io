@@ -118,21 +118,25 @@
         height:54px;
 
         .profile-info-box{
-
-
             color: white;
             float:left;
             
     
             .info-hero-text{      
                 font-size: 17px;     
+                color:rgba(190, 190, 190, 0.76);
             }
     
             .info-user-text{
                 font-size: 22px;
+                
             }
         }
     }
+}
+
+input{
+    
 }
 
 .btn-edit {

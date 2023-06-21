@@ -16,6 +16,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {NgToastModule} from 'ng-angular-popup';
 import { TokenInterceptor } from './Interceptors/token.interceptor';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,13 +29,15 @@ import { TokenInterceptor } from './Interceptors/token.interceptor';
     MusicComponent,
     ProfileComponent,
     NavbarComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgToastModule
+    NgToastModule,
+    FormsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

@@ -65,12 +65,9 @@ namespace TempoTuneAPI.Controllers
              if (await CheckUserNameExistsAsync(userObj.UserName))
                    return BadRequest(new {Message = "Username already exists"});
 
-
              //Check om Email eksisterer
              if (await CheckEmailExistsAsync(userObj.Email))
                    return BadRequest(new {Message = "Email already exists"});
-
-            
 
                 //Check Password Strength
                 var pass = CheckPasswordStrength(userObj.Password);
