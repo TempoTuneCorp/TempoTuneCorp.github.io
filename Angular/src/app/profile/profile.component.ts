@@ -33,7 +33,7 @@ export class ProfileComponent implements OnInit{
     this.editMode = true;
     this.updatedUsername = this.username;
     const userData = localStorage.getItem('token');
-    this.userId = userData.userId;
+  
   }
 
   updateUser(){

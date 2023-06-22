@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 *{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    caret-color: transparent;
 }
 
 .container{
@@ -9,7 +10,7 @@
     margin: auto;
     height: 80%;
     width: 65%;
-    top: 50%;
+    top:54%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
@@ -65,17 +66,12 @@
 
 .card:hover{
     cursor: pointer;
-    background-color: var(--hover-grey-color);
+    background-color: rgba(71, 64, 97, 0.7);
 }
 
-.card:active{
-    background-color: var(--hover-grey-color);
-
-}
 
 .card:focus{
-    background-color: var(--hover-grey-color);
-
+    background-color: var(--musicplayer-background);
 }
 
 .item{
@@ -106,6 +102,172 @@ h1{
     z-index: 10;
     position: relative;
  }
+
+.progress-bar{
+    position: absolute;
+    left:50%;
+    bottom:20px;
+    transform:translate(-50%, -0%);
+    height: 2px;
+    width: 80%;
+}
+
+.bar{
+    background-color: rgb(214, 214, 214);
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    cursor:pointer;
+}
+
+.progress{
+    background-image: linear-gradient(to right, #3252bd 0%, #3e62da 100%);
+    position: absolute;
+    z-index: 20;
+    height: 8px;
+    transition: 0.3s;
+    border-radius: 5px;
+    cursor:pointer;
+}
+
+.controls{
+    position: absolute;
+    left:50%;
+    bottom:35px;
+    transform:translate(-50%, -0%);
+    align-items: center;
+    display: flex;
+}
+
+.play-button{
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 0 50px 0 50px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    background-size: 500% auto;
+    border-style:solid;
+    border-width: 2px;
+    border-color: rgb(170, 170, 170);
+
+    background-image: linear-gradient(to right, #3a5ed5 0%, #3ad5cd 51%, #3a7dd5 100%);
+    /* border-image-source: linear-gradient(45deg, #3a5ed5, #3ad5cd );
+    border-image-outset: 1em; */
+}
+
+.play-button:hover{
+    background-position: right center;
+    border-color: rgb(170, 170, 170);
+    -webkit-box-shadow: 0 0 10px #161616;
+    box-shadow: 0 0 10px #2e2e2e;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 10px #080808;
+}
+
+.play-button svg{
+    color:rgb(255, 255, 255);
+}
+
+
+.pause-button{
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    border: 0;
+    cursor: pointer;
+    margin: 0 50px 0 50px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    border-style:solid;
+    border-width: 2px;
+    border-color: rgb(170, 170, 170);
+    background-size: 500% auto;
+
+    background-image: linear-gradient(to right, #3a5ed5 0%, #3ad5cd 51%, #3a7dd5 100%);
+    border-image-outset: 1em;
+}
+
+.pause-button:hover{
+    background-position: right center;
+    border-color: rgb(170, 170, 170);
+    -webkit-box-shadow: 0 0 10px #161616;
+    box-shadow: 0 0 10px #2e2e2e;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 10px #080808;
+}
+
+.pause-button svg{
+    color:white;
+}
+
+.skip-button{
+    position: absolute;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    right:2px;
+}
+
+.skip-button svg{
+    color:white;
+
+}
+
+.skip-button:hover{
+    color:grey;
+
+}
+.skip-button:active svg{
+    height:24px;
+}
+
+.previous-button{
+    position:absolute;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    color:white;
+    transition:0.9s;
+    left:2px;
+}
+
+.previous-button:hover{
+    fill:url('#grad1');
+}
+.previous-button:active svg{
+    height:24px;
+    
+}
+
+.play-bar-container{
+    position:absolute;
+    bottom:0;
+    background-color: #08080849;
+    width: 100%;
+    height:80px;
+    
+}
+
+.timer{
+    position: absolute;
+    left:5%;
+    bottom:9px;
+    align-items: center;
+    color:white;
+}
+
+.end-timer{
+    position: absolute;
+    display:flex;
+    color:white;
+    right:5%;
+    bottom:9px;
+    justify-content: center;
+}
 
 /* @media screen and (max-width: 1210px){ 
 
