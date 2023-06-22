@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 * {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  caret-color: transparent;
 }
 
 .container {
@@ -110,11 +111,31 @@
   float: left;
 }
 .profile-info-container-right .profile-info-card .profile-info-box .info-hero-text {
-  font-size: 17px;
+  font-size: 15px;
+  margin: -2px 0px 2px 0px;
   color: rgba(190, 190, 190, 0.76);
 }
 .profile-info-container-right .profile-info-card .profile-info-box .info-user-text {
   font-size: 22px;
+}
+
+input {
+  width: 400px;
+  font-size: 20px;
+  background-color: rgba(8, 8, 8, 0.1098039216);
+  border-color: rgb(128, 128, 126);
+  border-radius: 10px;
+  border-style: solid;
+  color: white;
+  padding: 1px 40px 4px 10px;
+  margin-left: -12px;
+  transition: 0.5s;
+  outline: none;
+}
+input:focus {
+  border-color: #ffffff;
+  caret-color: rgb(128, 128, 126);
+  font-size: 20px;
 }
 
 .btn-edit {
@@ -143,6 +164,50 @@
   background-image: linear-gradient(to right, #743ad5 0%, #d53a9d 51%, #743ad5 100%);
   border-image-source: linear-gradient(45deg, #743ad5, #d53a9d);
   border-image-outset: 1em;
+}
+
+.btn-update {
+  float: right;
+  padding: 11px 11px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 500% auto;
+  font-weight: bold;
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.btn-update:hover {
+  cursor: pointer;
+  background-position: right center;
+  border-image-source: linear-gradient(90deg, #0c0b0c, #202020);
+  box-shadow: 0 0 10px #2e2e2e;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px 10px #080808;
+}
+
+.space1 {
+  background-image: linear-gradient(to right, #1d850f 0%, #10d874 51%, #1d850f 100%);
+  border-image-source: linear-gradient(45deg, #77ac17, #47d53a);
+  border-image-outset: 1em;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-cancel-update {
+  color: rgb(155, 70, 70);
+  background: none;
+  border: none;
+  padding: 0 10px 0 10px;
+  margin-left: -40px;
+}
+.btn-cancel-update:hover svg {
+  color: rgb(216, 54, 54);
 }
 
 .btn-delete {

@@ -1,12 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  private baseUrl:string = "https://localhost:7267/api/User/";
   
+
   private username$ = new BehaviorSubject<string>("");  
   private email$ = new BehaviorSubject<string>("");
 
@@ -27,5 +30,10 @@ export class UserService {
   public setEmail(email: string){
     this.email$.next(email);
   }
+
+  public updateUsername(userId: number, userObj: string){
+    return this.http.post<any>(`${this.baseUrl}update/{id}`,userId)
+  }
+
 
 }

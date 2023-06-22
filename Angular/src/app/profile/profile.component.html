@@ -23,16 +23,22 @@
             <div class="profile-info-card">
                 <div id="username-info-box" class="profile-info-box">
                     <p class="info-hero-text">Username</p>
-                    <p *ngIf="editMode" class="info-user-text" id="username" >{{username}}</p>
-                    <form *ngIf="!editMode" (submit)="updateUser()">
+                    <p *ngIf="!editMode" class="info-user-text" id="username" >{{username}}</p>
+                    <form *ngIf="editMode" (submit)="updateUser()" autocomplete="off" spellcheck="false">
                         <label for="username"></label>
-                        <input placeholder="{{username}}" type="text" id="username" [(ngModel)]="updatedUsername" required>
+                        <input placeholder="{{username}}" type="text" id="username" [(ngModel)]="updatedUsername" required maxlength="30"> 
+                        <button class="btn-cancel-update" (click)="cancelUpdate()">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="21" fill="currentColor" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
+                        </button>
                     </form>
                     
                 </div>
-                <button (click)="enableEditUsername()" class="btn-edit space"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                <button (click)="enableEditUsername()" *ngIf="!editMode" class="btn-edit space"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
                     <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-                  </svg></button>                            
+                  </svg></button>   
+                  <button (click)="updateUser()" *ngIf="editMode" class="btn-update space1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+                  </button>                         
             </div>
 
             <div class="profile-info-card">

@@ -72,7 +72,7 @@ namespace TempoTuneAPI.Controllers
                 //Check Password Strength
                 var pass = CheckPasswordStrength(userObj.Password);
              if(!string.IsNullOrEmpty(pass))
-                 return BadRequest(new {Message = pass.ToString()}  );
+                 return BadRequest(new {Message = pass.ToString()});
 
 
             userObj.Password = PasswordHasher.HashPassword(userObj.Password);
@@ -108,12 +108,16 @@ namespace TempoTuneAPI.Controllers
 
 
 
-        [HttpPut("{id}")]
+        [HttpPut("update/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Update(int id, User userObj)
         {
-            if (id != userObj.Id) return BadRequest();
+            if (id != userObj.Id) return BadRequest(new {Message= "id doesnt match"});
+
+            if (await CheckUserNameExistsAsync(userObj.UserName))
+                return BadRequest(new { Message = "Username already exists" });
+
 
             _context.Entry(userObj).State = EntityState.Modified;
             await _context.SaveChangesAsync();
@@ -135,6 +139,7 @@ namespace TempoTuneAPI.Controllers
 
             return NoContent();
         }
+
         private async Task<bool> CheckUserNameAndEmailExistsAsync(string username, string email)
         {
             return await _context.Users.AnyAsync(x => x.UserName == username && x.Email == email);
@@ -191,7 +196,7 @@ namespace TempoTuneAPI.Controllers
         }
         
 
-        [Authorize]
+
         [HttpGet]
         public async Task<ActionResult<User>> GetAllUsers()
         {
