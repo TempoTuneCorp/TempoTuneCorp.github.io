@@ -134,6 +134,60 @@ h1{
     position: absolute;
     z-index: 20;
     height: 10px;
+    transition: 0.3s;
+}
+
+.controls{
+    position: absolute;
+    left:50%;
+    bottom:35px;
+    transform:translate(-50%, -0%);
+    align-items: center;
+    display: flex;
+}
+
+.play-button{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 0;
+    cursor: pointer;
+    margin: 0 10px 0 10px;
+}
+
+.pause-button{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 0;
+    cursor: pointer;
+    margin: 0 10px 0 10px;
+}
+
+.skip-button{
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.previous-button{
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.timer{
+    position: absolute;
+    left:5%;
+    bottom:7.5px;
+    align-items: center;
+}
+
+.end-timer{
+    position: absolute;
+    right:5%;
+    bottom:7.5px;
+    align-items: center;
 }
 
 /* @media screen and (max-width: 1210px){ 

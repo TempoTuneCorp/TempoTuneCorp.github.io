@@ -14,6 +14,7 @@ export class MusicComponent {
     
   }
   CurrentId: number = 0;
+  playmode: Boolean = false;
 
 
   setCurrentSong(track: Track) {
@@ -86,6 +87,15 @@ export class MusicComponent {
     audio.addEventListener('timeupdate', () => {
       const percent = (audio.currentTime / audio.duration * 100);
       progress.style.width = `${percent}%`;
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      if (audio.paused) {
+        this.playmode = false;
+      }
+      if (!audio.paused) {
+        this.playmode = true;
+      }
     });
 
     bar.addEventListener("click", function(event) {
