@@ -27,7 +27,7 @@
         <div class="item"><p class="artist">{{track.Artist}}</p></div>
         <div class="item"><p class="album">{{track.Album}}</p></div>
         <div class="item"><p>1:33</p></div>
-            
+        
     </div>
 
     <audio #player id="player" src=""></audio>
@@ -39,6 +39,12 @@
             <button onclick="document.getElementById('player').pause()">Pause</button> 
             <button (click)="skipSong()">Skip</button>
         </div>
+    <div id="progress-bar" class="progress-bar">
+        <div id="bar" class="bar">
+            <div id="progress" class="progress"></div>
+        </div>
+    </div>
+    
    
     
         

@@ -112,6 +112,30 @@ h1{
     position: relative;
  }
 
+.progress-bar{
+    position: absolute;
+    left:50%;
+    bottom:20px;
+    transform:translate(-50%, -0%);
+    height: 2px;
+    width: 80%;
+}
+
+.bar{
+    background-color: black;
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 10px;
+}
+
+.progress{
+    background-color: white;
+    position: absolute;
+    z-index: 20;
+    height: 10px;
+}
+
 /* @media screen and (max-width: 1210px){ 
 
 }*/
