@@ -157,7 +157,7 @@ input{
         border-color:#ffffff;
         caret-color: rgb(128, 128, 126);
         font-size: 20px;
-       
+        
     }
 }
 
@@ -234,11 +234,13 @@ input{
     color:rgb(155, 70, 70);
     background:none;
     border:none;
-    padding: 0 10px 0 10px;
-    margin-left: -40px;
+    padding: 0 5px 0 5px;
+    margin-left: -35px;
+
+    cursor: pointer;
     
     &:hover svg{
-
+        
         color:rgb(216, 54, 54);
     }
 

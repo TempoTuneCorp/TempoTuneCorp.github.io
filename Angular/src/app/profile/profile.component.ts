@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit{
 
   public username:string = "";
   public email:string = "";
+  public userId: number | undefined;
   public updatedUsername: any;
   editMode: boolean = false;
 
@@ -31,6 +32,8 @@ export class ProfileComponent implements OnInit{
   enableEditUsername(){
     this.editMode = true;
     this.updatedUsername = this.username;
+    const userData = localStorage.getItem('token');
+    this.userId = userData.userId;
   }
 
   updateUser(){

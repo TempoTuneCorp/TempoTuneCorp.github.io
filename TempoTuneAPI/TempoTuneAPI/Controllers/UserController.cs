@@ -108,12 +108,13 @@ namespace TempoTuneAPI.Controllers
 
 
 
-        [HttpPut("update/{id}")]
+        [HttpPut("update")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Update(int id, User userObj)
+        public async Task<IActionResult> Update(User userObj)
         {
-            if (id != userObj.Id) return BadRequest(new {Message= "id doesnt match"});
+            var user = _context.Users.FirstOrDefaultAsync(u => u.Id == userObj.Id);
+            if (user == null) return BadRequest(new {Message= "user not found"});
 
             if (await CheckUserNameExistsAsync(userObj.UserName))
                 return BadRequest(new { Message = "Username already exists" });
