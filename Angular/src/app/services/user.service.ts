@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class UserService {
   private username$ = new BehaviorSubject<string>("");  
   private email$ = new BehaviorSubject<string>("");
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private auth:AuthService) { }
 
   public getUsername(){
     return this.username$.asObservable();
@@ -31,9 +31,17 @@ export class UserService {
     this.email$.next(email);
   }
 
-  public updateUsername(userId: number, userObj: string){
-    return this.http.post<any>(`${this.baseUrl}update/{id}`,userId)
+  // public updateUsername(userId: number, userObj: string){
+  //   return this.http.post<any>(`${this.baseUrl}update/{id}`,userId)
+  // }
+
+  updateUsername(userObj: any): Observable<any>{
+    // const useridtoint = parseInt(userId);
+    // const updateUser = {useridtoint, username};
+    // console.log(typeof useridtoint);
+    // console.log(useridtoint);
+    console.log(userObj);
+    return this.http.put<any>(`${this.baseUrl}update`, userObj);
+
   }
-
-
 }

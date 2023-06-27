@@ -178,6 +178,18 @@ input:focus {
   color: rgb(255, 255, 255);
   border-radius: 10px;
 }
+.btn-update:disabled {
+  color: rgba(119, 73, 119, 0.74);
+  cursor: not-allowed;
+  background-color: #5b7758;
+  background-image: none;
+  border-image-outset: 0px;
+  border-image-source: linear-gradient(45deg, #5b7758, #aed6c2);
+}
+.btn-update:disabled:hover {
+  color: grey;
+  cursor: not-allowed;
+}
 
 .btn-update:hover {
   cursor: pointer;

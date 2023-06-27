@@ -100,6 +100,12 @@ export class MusicComponent {
       }
     });
 
+    audio.addEventListener('timeupdate', () => {
+      if (audio.ended) {
+        this.skipSong();
+      }
+    });
+
     bar.addEventListener("click", function(event) {
       var rect = bar.getBoundingClientRect();
       var x = event.clientX - rect.left;

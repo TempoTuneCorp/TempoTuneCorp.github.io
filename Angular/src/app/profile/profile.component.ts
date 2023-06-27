@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 
@@ -14,7 +15,7 @@ import { AuthService } from '../services/auth.service';
 
 export class ProfileComponent implements OnInit{
 
-  
+  updateUsernameForm: FormGroup;
 
 
   public username:string = "";
@@ -23,24 +24,41 @@ export class ProfileComponent implements OnInit{
   public updatedUsername: any;
   editMode: boolean = false;
 
-  constructor(private user: UserService, private auth: AuthService){
-  
+  constructor(
+    private user: UserService, 
+    private auth: AuthService,
+    private formBuilder: FormBuilder){
+
+      this.updateUsernameForm = this.formBuilder.group({
+        username: ['', Validators.required]
+      });
 
   }
 
   
   enableEditUsername(){
     this.editMode = true;
-    this.updatedUsername = this.username;
+    // this.updatedUsername = this.username;
     const userData = localStorage.getItem('token');
   
   }
 
-  updateUser(){
+  updateUsername(){
+    this.editMode = false;
+    const Id = this.auth.getUserIdFromToken();
+    const UserName = this.updateUsernameForm.get('username')?.value;
+    console.log(this.auth.getUsernameFromToken());
+    console.log(UserName);
+    console.log(Id);
     
-    this.username = this.updatedUsername;
-    
+    const userObj = {Id, UserName}
+    console.log(userObj);
+    this.user.updateUsername(userObj)
+    .subscribe( () => {
+      this.updatedUsername = UserName;
+    })
   }
+
 
   cancelUpdate(){
     this.editMode = false;
@@ -58,12 +76,6 @@ export class ProfileComponent implements OnInit{
       this.email = val || emailFromToken;
     })
 
-
-    // this.user.getUsername()
-    // .subscribe(val =>{
-    //   let usernameFromToken = this.auth.getUsernameFromToken();
-    //   this.username = val || usernameFromToken;
-    // });
     
     }
     

@@ -111,16 +111,23 @@ namespace TempoTuneAPI.Controllers
         [HttpPut("update")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Update(User userObj)
+        public async Task<IActionResult> Update(User UserObj)
         {
-            var user = _context.Users.FirstOrDefaultAsync(u => u.Id == userObj.Id);
-            if (user == null) return BadRequest(new {Message= "user not found"});
 
-            if (await CheckUserNameExistsAsync(userObj.UserName))
+           System.Diagnostics.Debug.Print("##################\n" + UserObj.Id + "\n###############");
+
+            //var user = await _context.Users.FindAsync(userObj.Id);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == UserObj.Id);
+            if (user == null)
+                return BadRequest(new { Message = "User not found" });
+
+
+
+            if (await CheckUserNameExistsAsync(UserObj.UserName))
                 return BadRequest(new { Message = "Username already exists" });
 
-
-            _context.Entry(userObj).State = EntityState.Modified;
+            user.UserName = UserObj.UserName;
+            _context.Entry(user).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -179,7 +186,9 @@ namespace TempoTuneAPI.Controllers
             var identity = new ClaimsIdentity(new Claim[]
             {
                 new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(ClaimTypes.Email, user.Email)
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim("id", user.Id.ToString()),
+                new Claim("password", user.Password)
 
             });
 

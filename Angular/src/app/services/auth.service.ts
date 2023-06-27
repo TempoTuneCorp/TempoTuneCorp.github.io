@@ -56,4 +56,9 @@ export class AuthService {
     if(this.userPayload)
     return this.userPayload.email;
   }
+
+  getUserIdFromToken(){
+    if(this.userPayload)
+    return this.userPayload.id;
+  }
 }

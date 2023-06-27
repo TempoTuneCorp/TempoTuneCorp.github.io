@@ -191,6 +191,7 @@ input{
     border-image-source: linear-gradient(45deg, #743ad5, #d53a9d );
     border-image-outset: 1em;
   }
+
   .btn-update {
     float:right;
     padding: 11px 11px;
@@ -203,7 +204,19 @@ input{
     font-size: 1rem;
     color: rgb(255, 255, 255);
     border-radius: 10px;
-    
+
+    &:disabled{
+        color: rgba(119, 73, 119, 0.74);	
+			cursor: not-allowed;
+			background-color: #5b7758;
+            background-image: none;
+            border-image-outset: 0px;
+            border-image-source: linear-gradient(45deg, #5b7758, #aed6c2 );
+        &:hover{
+            color:grey;
+            cursor: not-allowed;
+        }
+    }
     
   }
   
