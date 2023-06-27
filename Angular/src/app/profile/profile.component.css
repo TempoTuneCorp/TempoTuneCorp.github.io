@@ -179,16 +179,18 @@ input:focus {
   border-radius: 10px;
 }
 .btn-update:disabled {
-  color: rgba(119, 73, 119, 0.74);
+  color: rgba(174, 218, 181, 0.74);
   cursor: not-allowed;
   background-color: #5b7758;
-  background-image: none;
-  border-image-outset: 0px;
+  background-image: linear-gradient(to right, #5b7758 0%, #5b7758 51%, #5b7758 100%);
   border-image-source: linear-gradient(45deg, #5b7758, #aed6c2);
 }
 .btn-update:disabled:hover {
-  color: grey;
   cursor: not-allowed;
+  background-position: right center;
+  border-image-source: linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(32, 32, 32, 0));
+  box-shadow: none;
+  color: rgba(174, 218, 181, 0.74);
 }
 
 .btn-update:hover {
