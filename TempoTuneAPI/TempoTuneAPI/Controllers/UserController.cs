@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using System.Text;
 using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -64,17 +65,14 @@ namespace TempoTuneAPI.Controllers
              if (await CheckUserNameExistsAsync(userObj.UserName))
                    return BadRequest(new {Message = "Username already exists"});
 
-
              //Check om Email eksisterer
              if (await CheckEmailExistsAsync(userObj.Email))
                    return BadRequest(new {Message = "Email already exists"});
 
-            
-
                 //Check Password Strength
                 var pass = CheckPasswordStrength(userObj.Password);
              if(!string.IsNullOrEmpty(pass))
-                 return BadRequest(new {Message = pass.ToString()}  );
+                 return BadRequest(new {Message = pass.ToString()});
 
 
             userObj.Password = PasswordHasher.HashPassword(userObj.Password);
@@ -110,14 +108,26 @@ namespace TempoTuneAPI.Controllers
 
 
 
-        [HttpPut("{id}")]
+        [HttpPut("update")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Update(int id, User userObj)
+        public async Task<IActionResult> Update(User UserObj)
         {
-            if (id != userObj.Id) return BadRequest();
 
-            _context.Entry(userObj).State = EntityState.Modified;
+           System.Diagnostics.Debug.Print("##################\n" + UserObj.Id + "\n###############");
+
+            //var user = await _context.Users.FindAsync(userObj.Id);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == UserObj.Id);
+            if (user == null)
+                return BadRequest(new { Message = "User not found" });
+
+
+
+            if (await CheckUserNameExistsAsync(UserObj.UserName))
+                return BadRequest(new { Message = "Username already exists" });
+
+            user.UserName = UserObj.UserName;
+            _context.Entry(user).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -137,6 +147,7 @@ namespace TempoTuneAPI.Controllers
 
             return NoContent();
         }
+
         private async Task<bool> CheckUserNameAndEmailExistsAsync(string username, string email)
         {
             return await _context.Users.AnyAsync(x => x.UserName == username && x.Email == email);
@@ -157,10 +168,10 @@ namespace TempoTuneAPI.Controllers
         {
             StringBuilder sb = new StringBuilder();
             if(Password.Length < 8)
-               sb.Append("Your password should be atleast 8 characters"+Environment.NewLine);
+               sb.Append("Password must be atleast 8 characters."+Environment.NewLine);
 
             if(!(Regex.IsMatch(Password, "[a-z]") && Regex.IsMatch(Password, "[A-Z]") && Regex.IsMatch(Password, "[0-9]")))
-               sb.Append("Password should be Alpha Numeric"+ Environment.NewLine);
+               sb.Append("Password must be Alpha Numeric."+ Environment.NewLine);
                if(!Regex.IsMatch(Password, "[<,>,!,$,@,$,£,€]"));
                
                  return sb.ToString();
@@ -174,7 +185,10 @@ namespace TempoTuneAPI.Controllers
             var key = Encoding.ASCII.GetBytes("veryverysecret.....");
             var identity = new ClaimsIdentity(new Claim[]
             {
-                new Claim(ClaimTypes.Name, user.UserName)
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim("id", user.Id.ToString()),
+                new Claim("password", user.Password)
 
             });
 
@@ -190,6 +204,8 @@ namespace TempoTuneAPI.Controllers
             var token = jwtTokenHandler.CreateToken(tokenDescriptor);
             return jwtTokenHandler.WriteToken(token);
         }
+        
+
 
         [HttpGet]
         public async Task<ActionResult<User>> GetAllUsers()

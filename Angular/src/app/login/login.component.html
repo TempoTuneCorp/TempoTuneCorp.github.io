@@ -1,9 +1,18 @@
+<app-logo></app-logo>
 <div class="wrapper">
 	<div class="container">
 		<h1>Login</h1>
 		<form class="form" [formGroup]="loginForm">
-			<input formControlName="username" type="text" placeholder="Username">
-			<input formControlName="password" type="password" placeholder="Password">
+			<div class="input-box">
+				<input formControlName="username" type="text" required>
+				<i>Username</i>
+			</div>
+
+		<div class="input-box">
+			<input formControlName="password" type="password" required>
+			<i>Password</i>
+		</div>
+
 			<button (click)="onLogin()" [disabled]="loginForm.invalid" type="submit" id="login-button">Login</button>
 			<p>No Tempo? <a routerLink="/register"> Register now!</a></p>
 		</form>

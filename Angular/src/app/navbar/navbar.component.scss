@@ -1,3 +1,8 @@
+*{
+  caret-color: transparent;
+}
+
+
 .NavbarText{
   color: black;
   font-size: large;
@@ -92,9 +97,7 @@
   padding: 0px 10px 0px 10px;
   position: relative;
   cursor: pointer;
-  &:hover .NavbarText{
 
-  }
   
 }
 
@@ -107,6 +110,7 @@
   bottom: 15px;
   background: rgb(226, 213, 26);
   height: 3px;
+  border-radius: 10px;
   transition-property: left right;
   transition-duration: 0.3s;
   transition-timing-function: ease-out;
@@ -125,14 +129,13 @@
   align-self: center;
   height:  100%;
   left: 50%;
+  
   transform: translate(-50%, -0%);
   margin:0;
   padding: 0px 10px 0px 10px;
   position: absolute;
   cursor: pointer;
-  &:hover .NavbarText{
 
-  }
   
 }
 
@@ -145,6 +148,7 @@
   bottom: 15px;
   background: rgb(226, 213, 26);
   height: 3px;
+  border-radius: 10px;
   transition-property: left right;
   transition-duration: 0.3s;
   transition-timing-function: ease-out;
@@ -168,9 +172,7 @@
   padding: 0px 10px 0px 10px;
   position: absolute;
   cursor: pointer;
-  &:hover .NavbarText{
 
-  }
   
 }
 
@@ -183,6 +185,7 @@
   bottom: 15px;
   background: rgb(226, 213, 26);
   height: 3px;
+  border-radius: 10px;
   transition-property: left right;
   transition-duration: 0.3s;
   transition-timing-function: ease-out;
@@ -206,9 +209,7 @@
   padding: 0px 10px 0px 10px;
   position: relative;
   cursor: pointer;
-  &:hover .NavbarText{
-    
-  }
+
   
   }
 
@@ -219,6 +220,7 @@
     left: 0;
     right: 100%;
     bottom: 15px;
+    border-radius: 10px;
     background: rgb(226, 213, 26);
     height: 3px;
     transition-property: left right;

@@ -1,3 +1,7 @@
+* {
+  caret-color: transparent;
+}
+
 .NavbarText {
   color: black;
   font-size: large;
@@ -86,6 +90,7 @@
   position: relative;
   cursor: pointer;
 }
+
 .profilebuttonText:after {
   content: "";
   position: absolute;
@@ -94,6 +99,7 @@
   bottom: 15px;
   background: rgb(226, 213, 26);
   height: 3px;
+  border-radius: 10px;
   transition-property: left right;
   transition-duration: 0.3s;
   transition-timing-function: ease-out;
@@ -119,6 +125,7 @@
   position: absolute;
   cursor: pointer;
 }
+
 .FavoritebuttonText:after {
   content: "";
   position: absolute;
@@ -127,6 +134,7 @@
   bottom: 15px;
   background: rgb(226, 213, 26);
   height: 3px;
+  border-radius: 10px;
   transition-property: left right;
   transition-duration: 0.3s;
   transition-timing-function: ease-out;
@@ -152,6 +160,7 @@
   position: absolute;
   cursor: pointer;
 }
+
 .AboutbuttonText:after {
   content: "";
   position: absolute;
@@ -160,6 +169,7 @@
   bottom: 15px;
   background: rgb(226, 213, 26);
   height: 3px;
+  border-radius: 10px;
   transition-property: left right;
   transition-duration: 0.3s;
   transition-timing-function: ease-out;
@@ -185,12 +195,14 @@
   position: relative;
   cursor: pointer;
 }
+
 .LogoutbuttonText:after {
   content: "";
   position: absolute;
   left: 0;
   right: 100%;
   bottom: 15px;
+  border-radius: 10px;
   background: rgb(226, 213, 26);
   height: 3px;
   transition-property: left right;

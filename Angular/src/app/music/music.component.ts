@@ -21,6 +21,11 @@ export class MusicComponent {
     (<HTMLAudioElement>document.getElementById('player')).src = track.Path;
     (<HTMLAudioElement>document.getElementById('player')).play();
     this.CurrentId = track.Id;
+    const player:any = <HTMLAudioElement>document.getElementById('player');
+    player.src = track.Path;
+    player.play();
+    this.CurrentId = track.Id;
+    // (<HTMLDivElement>document.getElementById('card')).style.backgroundColor = `red`;  
   }
 
   skipSong(){
@@ -100,9 +105,9 @@ export class MusicComponent {
 
     audio.addEventListener('timeupdate', () => {
       if (audio.ended) {
-        this.skipSong()
+        this.skipSong();
       }
-    })
+    });
 
     bar.addEventListener("click", function(event) {
       var rect = bar.getBoundingClientRect();
@@ -124,6 +129,10 @@ export class MusicComponent {
 
     });
   }
+
+  
+
+
  
   
 
