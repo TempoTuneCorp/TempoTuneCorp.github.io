@@ -1,0 +1,80 @@
+
+*{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.ContainerBox{
+  width:1200px;
+  height: 600px;
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(42, 6, 109, 0.281);
+  z-index: 10;
+  border-radius: 30px;
+    .Headline{
+      margin-top: 1%;
+      width: 94%;
+    }
+}
+
+.ContainerBoxRight{
+  width: 400px;
+  float: right;
+  height: 100%;
+  background-color: rgba(71, 171, 252, 0.473);
+  border-radius: 0px 30px 30px 0px;
+    .Headline{
+      width: 55%;
+      margin-top: 1%;
+    }
+}
+
+.Headline{
+  color: white;
+  font-size: 250%;
+  margin: auto;
+  position: static;
+}
+
+.BreadText{
+  color: white;
+  font-size: 160%;
+  margin: auto;
+  width: 94%;
+  margin-top: 1%;
+  margin-right: 5%;
+  margin-bottom: 5%;
+}
+
+input[type=text], select, textarea{
+  width: 100%;
+  padding: 3%;
+  resize: none;
+  border: 2px solid #691ab3;
+  margin-top: 1px;
+  margin-bottom: 12px;
+
+}
+
+input[type=submit]{
+  background-color: #691ab3;
+  color:white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  position: absolute;
+  left: 80%;
+
+}
+
+input[type=submit]:hover{
+  background-color: #561396;
+}
+
+label{
+  color: rgb(0, 0, 0);
+}
+

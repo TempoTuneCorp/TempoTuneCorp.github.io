@@ -25,7 +25,7 @@
 
     .pic{
         position:absolute;
-        
+
         top:190px;
         left:190px;
         width: 40px;
@@ -79,7 +79,7 @@
         color: rgb(255, 255, 255);
         border-radius: 10px;
       }
-      
+
       .btn-favourites:hover {
         cursor:pointer;
         background-position: right center;
@@ -104,13 +104,13 @@
     left: 50%;
     top:50%;
     transform: translate(-50%, -50%);
- 
+
     h1{
         color:white;
         font-size: 30px;
     }
 
-    .profile-info-card{        
+    .profile-info-card{
         background: rgba(0, 0, 0, 0.233);
         border-radius: 10px;
         margin: 20px 0px;
@@ -122,12 +122,12 @@
 
             color: white;
             float:left;
-            
-    
-            .info-hero-text{      
-                font-size: 17px;     
+
+
+            .info-hero-text{
+                font-size: 17px;
             }
-    
+
             .info-user-text{
                 font-size: 22px;
             }
@@ -148,7 +148,7 @@
     color: rgb(255, 255, 255);
     border-radius: 10px;
   }
-  
+
   .btn-edit:hover {
     cursor:pointer;
     background-position: right center;
@@ -165,9 +165,9 @@
     border-image-source: linear-gradient(45deg, #743ad5, #d53a9d );
     border-image-outset: 1em;
   }
-  
+
   .btn-delete {
-    
+
     float:right;
     padding: 15px 25px;
     text-align: center;
@@ -180,17 +180,17 @@
     color: rgb(255, 255, 255);
     border-radius: 10px;
     margin-top: 63px;
-    
-    
+
+
     svg{
         color:rgb(255, 255, 255);
         float:left;
         margin-right:10px;
     }
-    
-    
+
+
   }
-  
+
   .btn-delete:hover {
     cursor:pointer;
     background-position: right center;
@@ -207,20 +207,20 @@
     border-image-source: linear-gradient(45deg, #e62f2f, #eb2a64);
     border-image-outset: 1em;
   }
-  
 
 
 
 
 
-  
+
+
   @media screen and (max-width: 1210px) {
 
     .container{
         margin-top:30px;
         width:700px;
         height: 730px;
-        position: absolute; 
+        position: absolute;
     }
 
     .left-container{
@@ -228,16 +228,16 @@
         float: left;
         height: 250px;
         border-radius: 30px 30px 0px 0px;
-    
+
         .pic{
             position:absolute;
             top:165px;
-            left:190px;    
+            left:190px;
         }
     }
 
 
-    
+
     .profile-picture-container{
         top: 125px;
         left: 150px;
@@ -247,12 +247,12 @@
         position: absolute;
         top: 55px;
         left: 350px;
-        
+
         .btn-favourites {
             margin-top:60px;
         }
     }
-    
+
     .right-container{
         width: 700px;
         float: right;
@@ -260,7 +260,7 @@
     }
 
     .profile-info-container-right{
-        
+
         margin-top:-30px;
     }
 
@@ -269,20 +269,20 @@
         margin-top:10px;
         left:50%;
         transform: translate(-50%);
-        
+
     }
 
 }
-    
+
 
 @media screen and (max-width: 710px) {
 
 
     .container{
-        
+
         width: 95%;
         height: 85%;
-        position: absolute; 
+        position: absolute;
     }
 
     .left-container{
@@ -291,17 +291,17 @@
         height: 30%;
         border-radius: 30px 30px 0px 0px;
         min-height: 200px;
-    
+
         .pic{
             position:absolute;
             top:17%;
-            left:57%;    
-            
+            left:57%;
+
         }
 
-        
+
     }
-    
+
     .profile-picture-container{
         position:absolute;
         top: 13%;
@@ -316,12 +316,12 @@
         left: 50%;
         top:86%;
         transform: translate(-50%, -50%);
-        
+
         .btn-favourites {
             display:none;
         }
     }
-    
+
     .right-container{
         width: 100%;
         float: right;
@@ -332,33 +332,33 @@
             margin-top:-30px;
         }
         h1{
-            
+
             color:white;
             font-size: 17px;
         }
-    
-        .profile-info-card{        
+
+        .profile-info-card{
             background: rgba(0, 0, 0, 0.233);
             border-radius: 10px;
             margin: 17px 0px;
             padding: 10px 20px;
             height:39px;
-    
-            .profile-info-box{    
+
+            .profile-info-box{
                 color: white;
                 float:left;
 
-                .info-hero-text{      
-                    font-size: 12px;     
+                .info-hero-text{
+                    font-size: 12px;
                 }
-        
+
                 .info-user-text{
                     font-size: 17px;
                 }
             }
         }
     }
-    
+
     .btn-edit {
         float:right;
         padding: 10px 10px;
@@ -371,7 +371,7 @@
         font-size: 1rem;
         color: rgb(255, 255, 255);
         border-radius: 10px;
-        
+
         svg{
             height:15px;
             width: 15px;
@@ -386,7 +386,7 @@
         transform: translate(-50%);
         min-width: 154px;
         font-size: 14px;
-        
+
         svg{
             margin-right: 10px;
             width: 13px;
