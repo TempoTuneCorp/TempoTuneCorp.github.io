@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+*{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
 .container{
     position: absolute;
     margin: auto;
@@ -62,6 +68,21 @@
     background-color: var(--hover-grey-color);
 }
 
+.card:active{
+    background-color: var(--hover-grey-color);
+
+}
+
+.card::after{
+    background-color: var(--hover-grey-color);
+
+}
+
+.card:focus{
+    background-color: var(--hover-grey-color);
+
+}
+
 .item{
     display: flex;
     margin-right: auto;
@@ -70,11 +91,26 @@
     margin-bottom: 10px;
     margin-top: 10px;
     align-items: center;
+    color: var(--white-text-color);
 }
 
 .small-cover{
     width: 35px;
 }
+
+h1{
+    position: absolute;
+ }
+ 
+ audio{
+    position: absolute;
+    z-index: 10;
+ }
+ 
+ button{
+    z-index: 10;
+    position: relative;
+ }
 
 /* @media screen and (max-width: 1210px){ 
 
