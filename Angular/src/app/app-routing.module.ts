@@ -12,6 +12,9 @@ import { LogoComponent } from './logo/logo.component';
 
 const routes: Routes = [
   {
+    path:'', redirectTo: 'profile', pathMatch: 'full'
+  },
+  {
     path: 'login',
     component: LoginComponent,
   },

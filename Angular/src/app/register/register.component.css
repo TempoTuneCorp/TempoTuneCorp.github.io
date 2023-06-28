@@ -90,11 +90,27 @@ form {
   position: relative;
   z-index: 2;
 }
-form ::placeholder {
+form .input-box {
+  position: relative;
+  height: 48px;
+  margin-bottom: 10px;
+}
+form .input-box i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-style: normal;
   color: #ffffff;
+  font-weight: 300;
+  font-family: sans-serif;
+  font-size: 20;
   opacity: 1;
+  pointer-events: none;
+  transition: 0.25s ease-in;
 }
 form input {
+  height: 48px;
   appearance: none;
   outline: 0;
   border: 1px solid rgba(255, 255, 255, 0.4);
@@ -102,23 +118,38 @@ form input {
   width: 250px;
   border-radius: 3px;
   padding: 10px 15px;
-  margin: 0 auto 10px auto;
+  margin: 0px auto 10px auto;
   display: block;
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
   color: white;
   transition-duration: 0.25s;
-  font-weight: 300;
+  font-weight: 600;
 }
 form input:hover {
   background-color: rgba(255, 255, 255, 0.4);
 }
 form input:focus {
   background-color: white;
-  width: 300px;
   color: var(--secondary-text-color);
 }
-form button {
+form input:focus ~ i {
+  font-size: 12px;
+  top: 2px;
+  left: 5px;
+  transform: translate(1%, 1%);
+  color: #919191;
+  font-family: sans-serif;
+  font-weight: 600;
+  transition: 0.25s ease-out;
+}
+form input:valid ~ i {
+  font-size: 12px;
+  top: 2px;
+  left: 5px;
+  transform: translate(1%, 1%);
+}
+button {
   outline: 0;
   color: white;
   border: 0;
@@ -131,16 +162,16 @@ form button {
   transition-duration: 0.25s;
   font-weight: 300;
 }
-form button:disabled {
+button:disabled {
   color: rgba(119, 73, 119, 0.74);
   cursor: not-allowed;
   background-color: white;
 }
-form button:disabled:hover {
+button:disabled:hover {
   color: rgba(119, 73, 119, 0.74);
   background-color: white;
 }
-form button:hover {
+button:hover {
   background-color: #892ff0;
   color: white;
 }
