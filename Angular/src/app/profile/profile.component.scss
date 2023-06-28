@@ -3,7 +3,7 @@
 *{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     caret-color: transparent;
-    
+
 }
 
 .container{
@@ -27,7 +27,7 @@
 
     .pic{
         position:absolute;
-        
+
         top:190px;
         left:190px;
         width: 40px;
@@ -81,7 +81,7 @@
         color: rgb(255, 255, 255);
         border-radius: 10px;
       }
-      
+
       .btn-favourites:hover {
         cursor:pointer;
         background-position: right center;
@@ -106,15 +106,15 @@
     left: 50%;
     top:50%;
     transform: translate(-50%, -50%);
- 
+
     h1{
         color:white;
         font-size: 30px;
 
-    
+
     }
 
-    .profile-info-card{        
+    .profile-info-card{
         background: rgba(0, 0, 0, 0.233);
         border-radius: 10px;
         margin: 20px 0px;
@@ -124,17 +124,17 @@
         .profile-info-box{
             color: white;
             float:left;
-            
-    
-            .info-hero-text{      
+
+
+            .info-hero-text{
                 font-size: 15px;
-                margin:-2px 0px 2px 0px;     
+                margin:-2px 0px 2px 0px;
                 color:rgba(190, 190, 190, 0.76);
             }
-    
+
             .info-user-text{
                 font-size: 22px;
-                
+
             }
         }
     }
@@ -157,7 +157,7 @@ input{
         border-color:#ffffff;
         caret-color: rgb(128, 128, 126);
         font-size: 20px;
-        
+
     }
 }
 
@@ -174,7 +174,7 @@ input{
     color: rgb(255, 255, 255);
     border-radius: 10px;
   }
-  
+
   .btn-edit:hover {
     cursor:pointer;
     background-position: right center;
@@ -192,81 +192,8 @@ input{
     border-image-outset: 1em;
   }
 
-  .btn-update {
-    float:right;
-    padding: 11px 11px;
-    text-align: center;
-    text-transform: uppercase;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    background-size: 500% auto;
-    font-weight: bold;
-    font-size: 1rem;
-    color: rgb(255, 255, 255);
-    border-radius: 10px;
-
-    &:disabled{
-        color: rgba(174, 218, 181, 0.74);		
-			cursor: not-allowed;
-			background-color: #5b7758;
-            background-image: linear-gradient(to right, #5b7758 0%, #5b7758 51%, #5b7758 100%);;
-            
-            border-image-source: linear-gradient(45deg, #5b7758, #aed6c2 );
-        &:hover{
-            cursor: not-allowed;
-            background-position: right center;
-        border-image-source: linear-gradient(90deg, #00000000,#20202000 );
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        color: rgba(174, 218, 181, 0.74);	
-        
-        }
-    }
-    
-  }
-  
-  .btn-update:hover {
-    cursor:pointer;
-    background-position: right center;
-    border-image-source: linear-gradient(90deg, #0c0b0c,#202020 );
-    -webkit-box-shadow: 0 0 10px #161616;
-    box-shadow: 0 0 10px #2e2e2e;
-    color: rgb(255, 255, 255);
-    text-shadow: 1px 1px 10px #080808;
-  }
-
-  .space1 {
-    background-image: -webkit-gradient(linear, left top, right top, from(#3ad547), color-stop(51%, #3ad547), to(#3ad547));
-    background-image: linear-gradient(to right, #1d850f 0%, #10d874 51%, #1d850f 100%);
-    border-image-source: linear-gradient(45deg, #77ac17, #47d53a );
-    border-image-outset: 1em;
-  }
-
-  form{
-    display:flex;
-    
-    justify-content: center;
-  }
-
-  .btn-cancel-update{
-    color:rgb(155, 70, 70);
-    background:none;
-    border:none;
-    padding: 0 5px 0 5px;
-    margin-left: -35px;
-
-    cursor: pointer;
-    
-    &:hover svg{
-        
-        color:rgb(216, 54, 54);
-    }
-
-
-  }
-  
   .btn-delete {
-    
+
     float:right;
     padding: 15px 25px;
     text-align: center;
@@ -279,17 +206,17 @@ input{
     color: rgb(255, 255, 255);
     border-radius: 10px;
     margin-top: 63px;
-    
-    
+
+
     svg{
         color:rgb(255, 255, 255);
         float:left;
         margin-right:10px;
     }
-    
-    
+
+
   }
-  
+
   .btn-delete:hover {
     cursor:pointer;
     background-position: right center;
@@ -306,20 +233,20 @@ input{
     border-image-source: linear-gradient(45deg, #e62f2f, #eb2a64);
     border-image-outset: 1em;
   }
-  
 
 
 
 
 
-  
+
+
   @media screen and (max-width: 1210px) {
 
     .container{
         margin-top:30px;
         width:700px;
         height: 730px;
-        position: absolute; 
+        position: absolute;
     }
 
     .left-container{
@@ -327,16 +254,16 @@ input{
         float: left;
         height: 250px;
         border-radius: 30px 30px 0px 0px;
-    
+
         .pic{
             position:absolute;
             top:165px;
-            left:190px;    
+            left:190px;
         }
     }
 
 
-    
+
     .profile-picture-container{
         top: 125px;
         left: 150px;
@@ -346,12 +273,12 @@ input{
         position: absolute;
         top: 55px;
         left: 350px;
-        
+
         .btn-favourites {
             margin-top:60px;
         }
     }
-    
+
     .right-container{
         width: 700px;
         float: right;
@@ -359,7 +286,7 @@ input{
     }
 
     .profile-info-container-right{
-        
+
         margin-top:-30px;
     }
 
@@ -368,20 +295,20 @@ input{
         margin-top:10px;
         left:50%;
         transform: translate(-50%);
-        
+
     }
 
 }
-    
+
 
 @media screen and (max-width: 710px) {
 
 
     .container{
-        
+
         width: 95%;
         height: 85%;
-        position: absolute; 
+        position: absolute;
     }
 
     .left-container{
@@ -390,17 +317,17 @@ input{
         height: 30%;
         border-radius: 30px 30px 0px 0px;
         min-height: 200px;
-    
+
         .pic{
             position:absolute;
             top:17%;
-            left:57%;    
-            
+            left:57%;
+
         }
 
-        
+
     }
-    
+
     .profile-picture-container{
         position:absolute;
         top: 13%;
@@ -415,12 +342,12 @@ input{
         left: 50%;
         top:86%;
         transform: translate(-50%, -50%);
-        
+
         .btn-favourites {
             display:none;
         }
     }
-    
+
     .right-container{
         width: 100%;
         float: right;
@@ -431,33 +358,33 @@ input{
             margin-top:-30px;
         }
         h1{
-            
+
             color:white;
             font-size: 17px;
         }
-    
-        .profile-info-card{        
+
+        .profile-info-card{
             background: rgba(0, 0, 0, 0.233);
             border-radius: 10px;
             margin: 17px 0px;
             padding: 10px 20px;
             height:39px;
-    
-            .profile-info-box{    
+
+            .profile-info-box{
                 color: white;
                 float:left;
 
-                .info-hero-text{      
-                    font-size: 12px;     
+                .info-hero-text{
+                    font-size: 12px;
                 }
-        
+
                 .info-user-text{
                     font-size: 17px;
                 }
             }
         }
     }
-    
+
     .btn-edit {
         float:right;
         padding: 10px 10px;
@@ -470,7 +397,7 @@ input{
         font-size: 1rem;
         color: rgb(255, 255, 255);
         border-radius: 10px;
-        
+
         svg{
             height:15px;
             width: 15px;
@@ -485,7 +412,7 @@ input{
         transform: translate(-50%);
         min-width: 154px;
         font-size: 14px;
-        
+
         svg{
             margin-right: 10px;
             width: 13px;
