@@ -96,12 +96,32 @@ form{
 	position: relative;
 	z-index: 2;
 
-	::placeholder{
-		color: rgb(255, 255, 255);
-		opacity: 1;
+	.input-box{
+		position:relative;
+		height:48px;
+		margin-bottom:10px;
+
+
+		
+		
+		i{
+			position:absolute;
+			top:50%;
+			left: 50%;
+			transform: translate(-50%, -50%;);
+			font-style: normal;
+			color: rgb(255, 255, 255);
+			font-weight: 300;
+			font-family: sans-serif;
+			font-size: 20;
+			opacity: 1;
+			pointer-events: none;
+			transition: 0.25s ease-in;
+		}
 	}
 	
 	input{
+		height:48px;
 		display: block;
 		appearance: none;
 		outline: 0;
@@ -113,12 +133,10 @@ form{
 		margin: 0px auto 10px auto;
 		display: block;
 		text-align: center;
-		font-size: 18px;
-		
+		font-size: 16px;
 		color: white;
-		
 		transition-duration: 0.25s;
-		font-weight: 300;
+		font-weight: 600;
 		
 		&:hover{
 			background-color: fade(white, 40%);
@@ -126,11 +144,34 @@ form{
 		
 		&:focus{
 			background-color: white;
-			width: 300px;
-			
+
 			color: var(--secondary-text-color);
+			&~i{
+				font-size: 12px;
+				top:2px;
+				left:5px;
+				transform: translate(1%, 1%;);
+				color:rgb(145, 145, 145);
+				font-family: sans-serif;
+				font-weight: 600;
+				transition: 0.25s ease-out;
+			}		
 		}
+		&:valid{
+			&~i{
+				font-size: 12px;
+				top:2px;
+				left:5px;
+				transform: translate(1%, 1%;);
+			}
+		}
+
+		
+		
 	}
+
+	}
+	
 	
 	small{
 		letter-spacing: 0.5px;
@@ -173,4 +214,3 @@ form{
 	}
 
 	
-}

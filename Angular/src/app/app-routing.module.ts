@@ -11,6 +11,9 @@ import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   {
+    path:'', redirectTo: 'profile', pathMatch: 'full'
+  },
+  {
     path: 'login',
     component: LoginComponent,
   },

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { Navigation, NavigationEnd, Router } from '@angular/router';
 
 
@@ -8,9 +8,9 @@ import { Navigation, NavigationEnd, Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'TempoTune';
-  showLogo: boolean = true;
+  showNavbar: boolean = true;
 
 
 
@@ -18,14 +18,15 @@ export class AppComponent {
     this.router.navigate(['/login'])
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
-        if (val.url == '/login' || val.url == '/register') {
-          this.showLogo = true;
+        if (val.url == '/login' || val.url == '/register' || val.url == '/') {
+          this.showNavbar = true;
         } else {
-          this.showLogo = false;
+          this.showNavbar = false;
         }
       }
     });
   }
+
 
   // route for button: ((click)="redirect in the html button")
   //
