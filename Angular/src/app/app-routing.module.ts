@@ -9,6 +9,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { LogoComponent } from './logo/logo.component';
 import { AboutComponent } from './about/about.component';
 
+
 const routes: Routes = [
   {
     path:'', redirectTo: 'profile', pathMatch: 'full'

@@ -3,10 +3,11 @@
   <div class ="ContainerBoxRight">
     <p class = "Headline">Contact Us</p>
     <p class = "BreadText">Wanna work with us, or maybe you found errors on the site? Write to us below!</p>
-    <form action="sendMailform.php" method="post" enctype="text/plain">
+    <form action="https://formsubmit.co/el/semaga" method="POST">
+    <input type="hidden" name="_next" value="/main">
+
         <label for="name">Your name:</label>
         <input type="text" id="name" name="name" placeholder="Your Name...">
-
         <label for="messageTopic">Messages topic:</label>
         <select id="messageTopic" name="messageTopic">
           <option value="error">Reporting an error/bug:</option>
@@ -15,9 +16,9 @@
         </select>
 
         <label for="message">Your Message:</label>
-        <textarea name="message" id="message" cols="30" rows="8">Your message here</textarea>
+        <textarea name="message" id="message" cols="30" rows="8">Your message here </textarea>
 
-        <input type="submit" value="submit">
+        <button type="submit">send</button>
 
     </form>
   </div>
