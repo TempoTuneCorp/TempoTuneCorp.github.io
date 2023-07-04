@@ -33,6 +33,9 @@ export class NavbarComponent {
     this.auth.signOut();
     this.router.navigate(['login'])
   }
+  onAboutClick(){
+    this.router.navigate(['about'])
+  }
 
 }
 
