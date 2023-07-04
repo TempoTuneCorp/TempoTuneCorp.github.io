@@ -19,6 +19,15 @@
     }
 }
 
+.ContainerBoxLeft{
+  width: 65%;
+
+  .BreadText{
+    font-size: 160%;
+
+  }
+}
+
 .ContainerBoxRight{
   width: 400px;
   float: right;
@@ -45,7 +54,6 @@
   width: 94%;
   margin-top: 1%;
   margin-bottom: 5%;
-  align-self: center;
 
 }
 
@@ -53,10 +61,11 @@ input[type=text], select, textarea{
   width: 100%;
   padding: 3%;
   resize: none;
-  border: 2px solid #691ab3;
+  border: 2px solid #320958;
   margin-top: 1px;
   margin-bottom: 12px;
-
+  background-color: #272727;
+  color: white;
 }
 
 input[type=submit]{
@@ -72,9 +81,13 @@ input[type=submit]{
 }
 
 input[type=submit]:hover{
-  background-color: #561396;
+  background-color: #320958;
 }
 
 label{
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  align-self: center;
+  text-align: center;
+  display: block;
+  font-size: 130%;
 }
