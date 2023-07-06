@@ -3,16 +3,18 @@
 
     <div class="left-container">
         <div class="profile-picture-container">
-            <img class="profile-picture" src="/assets/images/user-profile-icon.jpg" alt="Profile picture">           
+            <img class="profile-picture" src="/assets/images/user-profile-icon.jpg" alt="Profile picture">      
+            <button class="btn-edit space pic"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+              </svg></button>     
         </div>
-        <button class="btn-edit space pic"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-            <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-          </svg></button>
+        
         <div class="profile-info-container-left">
-            <p>Profile</p>
-            <button class="btn-favourites space">Favourites</button>
+            <p>Welcome to your profile page. You can edit and update your user information as you like. </p>
+            
           
         </div>
+        <button class="btn-favourites space">Favourites</button>
         
     </div>
 
@@ -23,34 +25,50 @@
             <div class="profile-info-card">
                 <div id="username-info-box" class="profile-info-box">
                     <p class="info-hero-text">Username</p>
-                    <p *ngIf="!editMode" class="info-user-text" id="username" >{{username}}</p>
+                    <p *ngIf="!editUsernameMode" class="info-user-text" id="username" >{{username}}</p>
 
-                    <form *ngIf="editMode" [formGroup]="updateUsernameForm" autocomplete="off" spellcheck="false">
+                    <form *ngIf="editUsernameMode" [formGroup]="updateUsernameForm" autocomplete="off" spellcheck="false">
                         <label for="username"></label>
-                        <input placeholder="{{username}}" type="text" formControlName="username" id="username" [(ngModel)]="updatedUsername" required maxlength="30"> 
-                        <button class="btn-cancel-update" (click)="cancelUpdate()">
+                        <input placeholder="{{username}}" type="text" formControlName="username" id="username" required maxlength="30"> 
+                        <button class="btn-cancel-update" (click)="cancelUsernameUpdate()">
                             <svg xmlns="http://www.w3.org/2000/svg" height="21" fill="currentColor" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
                         </button>
                     </form>
                     
                 </div>
-                <button (click)="enableEditUsername()" *ngIf="!editMode" class="btn-edit space"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                <button (click)="enableEditUsername()" *ngIf="!editUsernameMode" class="btn-edit space"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
                     <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
                   </svg></button>   
-                  <button  (click)="updateUsername()" *ngIf="editMode" class="btn-update space1" [disabled]="updateUsernameForm.invalid">
+                  <button  (click)="updateUsername()" *ngIf="editUsernameMode" class="btn-update space1" [disabled]="updateUsernameForm.invalid">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
                   </button>                         
             </div>
 
+
             <div class="profile-info-card">
-                <div class="profile-info-box">
+                <div id="username-info-box" class="profile-info-box">
                     <p class="info-hero-text">Email</p>
-                    <p class="info-user-text">{{email}}</p>
+                    <p *ngIf="!editEmailMode" class="info-user-text" id="email" >{{email}}</p>
+
+                    <form *ngIf="editEmailMode" [formGroup]="updateEmailForm" autocomplete="off" spellcheck="false">
+                        <label for="email"></label>
+                        <input placeholder="{{email}}" type="text" formControlName="email" id="email" required maxlength="30"> 
+                        <button class="btn-cancel-update" (click)="cancelEmailUpdate()">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="21" fill="currentColor" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/></svg>
+                        </button>
+                    </form>
+                    
                 </div>
-                <button class="btn-edit space"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                <button (click)="enableEditEmail()" *ngIf="!editEmailMode" class="btn-edit space"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
                     <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-                  </svg></button>                        
+                  </svg></button>   
+                  <button  (click)="updateEmail()" *ngIf="editEmailMode" class="btn-update space1" [disabled]="updateEmailForm.invalid">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+                  </button>                         
             </div>
+
+
+
             
             <div class="profile-info-card">
                 <div class="profile-info-box">
@@ -62,7 +80,7 @@
                   </svg></button>                          
             </div>
 
-            <button class="btn-delete red">delete profile<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="15" height="22" fill="currentColor"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/>
+            <button (click)="deleteUser()" class="btn-delete red">delete profile<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="15" height="22" fill="currentColor"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/>
             </svg></button>
         </div>
         

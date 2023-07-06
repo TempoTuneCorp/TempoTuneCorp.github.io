@@ -43,6 +43,7 @@ namespace TempoTuneAPI.Controllers
             }
 
 
+
             user.Token = CreateJwt(user);
 
             return Ok(new
@@ -73,6 +74,12 @@ namespace TempoTuneAPI.Controllers
                 var pass = CheckPasswordStrength(userObj.Password);
              if(!string.IsNullOrEmpty(pass))
                  return BadRequest(new {Message = pass.ToString()});
+
+            if (!isValidEmail(userObj.Email))
+                return BadRequest(new { Message = "Email must be right format: a1@b2.c3" });
+
+            //if (!isValidEmail(userObj.Email))
+            //    return BadRequest(new { Message = "Email must be the right format" });
 
 
             userObj.Password = PasswordHasher.HashPassword(userObj.Password);
@@ -108,10 +115,10 @@ namespace TempoTuneAPI.Controllers
 
 
 
-        [HttpPut("update")]
+        [HttpPut("updateUsername")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Update(User UserObj)
+        public async Task<IActionResult> UpdateUsername(User UserObj)
         {
 
            System.Diagnostics.Debug.Print("##################\n" + UserObj.Id + "\n###############");
@@ -121,31 +128,82 @@ namespace TempoTuneAPI.Controllers
             if (user == null)
                 return BadRequest(new { Message = "User not found" });
 
-
+           
 
             if (await CheckUserNameExistsAsync(UserObj.UserName))
                 return BadRequest(new { Message = "Username already exists" });
+
+
 
             user.UserName = UserObj.UserName;
             _context.Entry(user).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            user.Token = CreateJwt(user);
+            
+            return Ok(new
+            {
+                Token = user.Token,
+                Message = "Your username was updated succesfully"
+            });
+            //return NoContent();
+
+            
         }
 
-        [HttpDelete("{id}")]
+        [HttpPut("updateEmail")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> UpdateEmail(User UserObj)
+        {
+
+            System.Diagnostics.Debug.Print("##################\n" + UserObj.Id + "\n###############");
+
+            //var user = await _context.Users.FindAsync(userObj.Id);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == UserObj.Id);
+            if (user == null)
+                return BadRequest(new { Message = "User not found" });
+
+
+            if (await CheckEmailExistsAsync(UserObj.Email))
+                return BadRequest(new { Message = "Email already exists" });
+
+            if (!isValidEmail(user.Email))
+                return BadRequest(new { Message = "Email must be the right format: a1@b2.c3" });
+
+            user.Email = UserObj.Email;
+            _context.Entry(user).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            user.Token = CreateJwt(user);
+
+            return Ok(new
+            {
+                Token = user.Token,
+                Message = "Your email was updated succesfully"
+            });
+            //return NoContent();
+
+
+        }
+
+        [HttpDelete("deleteUser")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Delete(int id)
         {
+            
+            
             var userToDelete = await _context.Users.FindAsync(id);
-            if (userToDelete == null) return NotFound();
+            System.Diagnostics.Debug.Print("##################\n" + id + "\n###############");
 
+            if (userToDelete == null) return NotFound(new { Message = "User not found" });  
+               
             _context.Users.Remove(userToDelete);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(new { Message = "User was deleted" });
         }
 
         private async Task<bool> CheckUserNameAndEmailExistsAsync(string username, string email)
@@ -162,7 +220,12 @@ namespace TempoTuneAPI.Controllers
             return await _context.Users.AnyAsync(x => x.Email == email);
         }
 
-        
+        private bool isValidEmail(string email)
+        {
+            string pattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
+            Regex regex = new Regex(pattern, RegexOptions.Compiled);
+            return regex.IsMatch(email);
+        }
 
         private string CheckPasswordStrength(string Password)
         {
@@ -172,7 +235,7 @@ namespace TempoTuneAPI.Controllers
 
             if(!(Regex.IsMatch(Password, "[a-z]") && Regex.IsMatch(Password, "[A-Z]") && Regex.IsMatch(Password, "[0-9]")))
                sb.Append("Password must be Alpha Numeric."+ Environment.NewLine);
-               if(!Regex.IsMatch(Password, "[<,>,!,$,@,$,£,€]"));
+            if (!Regex.IsMatch(Password, "[<,>,!,$,@,$,£,€]")) ;
                
                  return sb.ToString();
             
@@ -205,7 +268,6 @@ namespace TempoTuneAPI.Controllers
             return jwtTokenHandler.WriteToken(token);
         }
         
-
 
         [HttpGet]
         public async Task<ActionResult<User>> GetAllUsers()
