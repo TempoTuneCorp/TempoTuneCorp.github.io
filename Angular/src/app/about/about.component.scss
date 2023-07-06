@@ -1,9 +1,13 @@
 
+/*#region fonts*/
 *{
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
+/*#endregion*/
 
+/*#region Containers*/
 .ContainerBox{
+  overflow: hidden;
   width:1200px;
   height: 600px;
   position: absolute;
@@ -39,7 +43,9 @@
       margin-top: 1%;
     }
 }
+/*#endregion Containers*/
 
+/*#region Text*/
 .Headline{
   color: white;
   font-size: 250%;
@@ -56,8 +62,10 @@
   margin-bottom: 5%;
 
 }
+/*#endregion Text*/
 
-input[type=text], select, textarea{
+/*#region Form*/
+[type=text], select, textarea{
   width: 100%;
   padding: 3%;
   resize: none;
@@ -91,3 +99,153 @@ label{
   display: block;
   font-size: 130%;
 }
+/*#endregion Form*/
+
+/*#region media 1210*/
+@media screen and (max-width: 1210px) {
+/*#region Containers*/
+.ContainerBox{
+  margin-top:30px;
+  width:700px;
+  height: 730px;
+  position: absolute;
+}
+
+.ContainerBoxRight{
+  width: 700px;
+  float: left;
+  height: 60%;
+  border-radius: 30px 30px 0px 0px;
+
+    .Headline{
+      width: 100%;
+      text-align: center;
+    }
+
+    .BreadText{
+      margin-bottom: 0%;
+      visibility: hidden;
+    }
+}
+.ContainerBoxLeft{
+  width: 100%;
+
+  .BreadText{
+    font-size: 160%;
+  }
+}
+
+/*#endregion Containers*/
+
+
+/*#region Text*/
+.BreadText{
+  color: white;
+  font-size: 130%;
+  margin: auto;
+  width: 94%;
+  margin-top: 1%;
+  margin-bottom: 0%;
+}
+
+.Headline{
+  color: white;
+  font-size: 250%;
+  margin-top: 0%;
+  position: static;
+  width: 94%;
+}
+
+/*#endregion Text*/
+
+
+/*#region Form*/
+[type=text]{
+  width: 35%;
+  padding: 2%;
+  resize: none;
+  border: 2px solid #320958;
+  margin-top: 1px;
+  margin-bottom: 12px;
+  margin-left: 5%;
+  background-color: #272727;
+  color: white;
+  position: relative;
+}
+
+select{
+  width: 35%;
+  padding: 2%;
+  margin-left: 2%;
+  position: relative;
+  margin-bottom: 5%;
+}
+
+textarea{
+  width: 90%;
+  left: 5%;
+  position: relative;
+}
+
+input[type=submit]{
+  background-color: #691ab3;
+  color:white;
+  padding: 2.5% 5%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  position: absolute;
+  left: 79%;
+  top: 17%
+}
+
+.labelName{
+  position: absolute;
+  width: 30%;
+  text-align: left;
+  left: 5%;
+  top: 12%;
+}
+
+.labelTopic{
+  position: absolute;
+  width: 30%;
+  text-align: left;
+  left: 42%;
+  top: 12%;
+}
+
+.labelMessage{
+  position: absolute;
+  width: 30%;
+  text-align: left;
+  left: 5%;
+  top: 24%;
+}
+
+
+/*#endregion Form*/
+
+}
+/*#endregion media 1210*/
+
+/*#region media 710*/
+@media screen and (max-width: 710px) {
+
+.ContainerBox{
+    width: 95%;
+    height: 85%;
+    position: absolute;
+}
+
+
+.ContainerBoxRight{
+  width: 100%;
+  float: left;
+  height: 30%;
+  border-radius: 30px 30px 0px 0px;
+  min-height: 200px;
+}
+
+}
+/*#endregion media 710*/
