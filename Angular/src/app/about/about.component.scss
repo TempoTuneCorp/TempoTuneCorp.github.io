@@ -76,16 +76,37 @@
   color: white;
 }
 
-input[type=submit]{
-  background-color: #691ab3;
-  color:white;
-  padding: 12px 20px;
-  border: none;
-  cursor: pointer;
-  display: flex;
+
+.submit {
+  float:right;
+  padding: 12px 15px;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-size: 500% auto;
+  font-weight: bold;
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  background-image: -webkit-gradient(linear, left top, right top, from(#743ad5), color-stop(51%, #d53a9d), to(#743ad5));
+  background-image: linear-gradient(to right, #743ad5 0%, #d53a9d 51%, #743ad5 100%);
+  border-image-source: linear-gradient(45deg, #743ad5, #d53a9d );
+  border-image-outset: 1em;
   position: absolute;
   left: 80%;
+  display: flex;
 
+}
+
+.submit:hover {
+  cursor:pointer;
+  background-position: right center;
+  border-image-source: linear-gradient(90deg, #0c0b0c,#202020 );
+  -webkit-box-shadow: 0 0 10px #161616;
+  box-shadow: 0 0 10px #2e2e2e;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px 10px #080808;
 }
 
 input[type=submit]:hover{
@@ -188,22 +209,21 @@ textarea{
 }
 
 input[type=submit]{
-  background-color: #691ab3;
   color:white;
-  padding: 2.5% 5%;
+  padding: 2.2% 3.3%;
   border: none;
   cursor: pointer;
   display: flex;
   position: absolute;
   left: 79%;
-  top: 17%
+  top: 16.6%
 }
 
 .labelName{
   position: absolute;
   width: 30%;
   text-align: left;
-  left: 5%;
+  left: 4%;
   top: 12%;
 }
 
@@ -221,6 +241,8 @@ input[type=submit]{
   text-align: left;
   left: 5%;
   top: 24%;
+
+
 }
 
 
