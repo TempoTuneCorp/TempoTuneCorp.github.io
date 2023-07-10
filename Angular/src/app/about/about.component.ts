@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
-
 
 
 @Component({
@@ -19,15 +17,13 @@ export class AboutComponent implements OnInit {
 constructor(
   private auth: AuthService,
   private user: UserService,
-
-) { }
+) {}
 
 ngOnInit(): void {
     let emailFromToken = this.auth.getEmailFromToken();
     this.Email = emailFromToken;
-    console.log(this.Email);
+    //lockJS();
 }
 
+
 }
-
-
