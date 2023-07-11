@@ -36,6 +36,9 @@ export class NavbarComponent {
   onAboutClick(){
     this.router.navigate(['about'])
   }
+  onFavClick(){
+    this.router.navigate(['mini-game'])
+  }
 
 }
 

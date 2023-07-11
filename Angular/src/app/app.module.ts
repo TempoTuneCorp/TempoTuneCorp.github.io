@@ -18,6 +18,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {NgToastModule} from 'ng-angular-popup';
 import { AboutComponent } from './about/about.component';
 import { TokenInterceptor } from './Interceptors/token.interceptor';
+import { MiniGameComponent } from './mini-game/mini-game.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { TokenInterceptor } from './Interceptors/token.interceptor';
     MusicComponent,
     ProfileComponent,
     NavbarComponent,
-    AboutComponent
+    AboutComponent,
+    MiniGameComponent
   ],
   imports: [
     BrowserModule,
