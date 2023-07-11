@@ -1,6 +1,7 @@
 function lockJS(){
-    //lock(portrait);
-    alert("Hello Call JS Function From TypeScript ");
+    var myScreenOrientation = window.screen.orientation;
+    myScreenOrientation.lock("portrait");
+    console.log("Hello Call JS Function From TypeScript ");
   }
 
-  alert("Pop up")
+  alert("Pop up");

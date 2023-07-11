@@ -3,6 +3,8 @@ import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 
 
+declare function lockJS(params:void):any;
+
 @Component({
   selector: 'app-about',
   styleUrls: ['./about.component.scss'],
@@ -22,7 +24,7 @@ constructor(
 ngOnInit(): void {
     let emailFromToken = this.auth.getEmailFromToken();
     this.Email = emailFromToken;
-    //lockJS();
+    lockJS();
 }
 
 
