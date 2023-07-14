@@ -251,8 +251,7 @@ namespace TempoTuneAPI.Controllers
                 new Claim(ClaimTypes.Name, user.UserName),
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim("id", user.Id.ToString()),
-                new Claim("password", user.Password),
-                new Claim("pictureURL", user.profilePictureURL)
+                new Claim("password", user.Password)
 
             });
 
