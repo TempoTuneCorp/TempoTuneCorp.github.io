@@ -12,12 +12,14 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './main/main.component';
 import { MusicComponent } from './music/music.component';
 import { ProfileComponent } from './profile/profile.component';
+import { FormsModule } from '@angular/forms';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import {NgToastModule} from 'ng-angular-popup';
 import { AboutComponent } from './about/about.component';
 import { TokenInterceptor } from './Interceptors/token.interceptor';
-import { FormsModule } from '@angular/forms';
+import { MiniGameComponent } from './mini-game/mini-game.component';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { FormsModule } from '@angular/forms';
     MusicComponent,
     ProfileComponent,
     NavbarComponent,
-    AboutComponent
+    AboutComponent,
+    MiniGameComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,7 @@ import { FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     HttpClientModule,
     NgToastModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
