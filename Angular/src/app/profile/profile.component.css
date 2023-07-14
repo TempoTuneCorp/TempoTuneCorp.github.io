@@ -48,6 +48,10 @@
   text-shadow: 1px 1px 10px #080808;
 }
 
+.file-input {
+  display: none;
+}
+
 .profile-picture-container {
   width: 170px;
   height: 170px;
@@ -125,7 +129,7 @@
   font-size: 22px;
 }
 
-input {
+.update-input {
   width: 400px;
   font-size: 20px;
   background-color: rgba(8, 8, 8, 0.1098039216);
@@ -138,7 +142,7 @@ input {
   transition: 0.5s;
   outline: none;
 }
-input:focus {
+.update-input:focus {
   border-color: #ffffff;
   caret-color: rgb(128, 128, 126);
   font-size: 20px;
@@ -415,12 +419,12 @@ form {
   .profile-info-box {
     width: 80%;
   }
-  .profile-info-box input {
+  .profile-info-box .update-input {
     align-items: left;
     width: 100%;
     font-size: 15px;
   }
-  .profile-info-box input:focus {
+  .profile-info-box .update-input:focus {
     font-size: 15px;
   }
 }/*# sourceMappingURL=profile.component.css.map */

@@ -56,6 +56,9 @@
       }
 }
 
+.file-input{
+    display:none;
+}
 
 .profile-picture-container{
     width: 170px;
@@ -152,7 +155,7 @@
     }
 }
 
-input{
+.update-input{
 
 
     width: 400px;
@@ -521,7 +524,7 @@ input{
       {
         width: 80%;
 
-        input{
+        .update-input{
         align-items: left;
         width: 100%;
         font-size: 15px;

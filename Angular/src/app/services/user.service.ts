@@ -44,7 +44,16 @@ export class UserService {
     const options = {
       params: params
     };
-  
     return this.http.delete<any>(`${this.baseUrl}deleteUser`, options);
   }
+
+  uploadProfilePicture(file: File, id: any): Observable<any>{
+    const params = new HttpParams().set('file', file.name).set('id', id);
+    const options = {
+      params: params
+    };
+    return this.http.delete<any>(`${this.baseUrl}uploadPicture`, options);
+  }
+
+
 }

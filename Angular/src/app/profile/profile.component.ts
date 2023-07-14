@@ -4,7 +4,7 @@ import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgToastService } from 'ng-angular-popup';
-import { HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 
 
@@ -31,7 +31,8 @@ export class ProfileComponent implements OnInit{
     private auth: AuthService,
     private formBuilder: FormBuilder,
     private toast: NgToastService,
-    private router: Router){
+    private router: Router,
+    private http: HttpClient){
 
       this.updateUsernameForm = this.formBuilder.group({
         username: ['', Validators.required]
@@ -40,6 +41,10 @@ export class ProfileComponent implements OnInit{
         email: ['', Validators.required]
       });
 
+  }
+
+  uploadPicture(){
+    
   }
 
   enableEditUsername(){
@@ -139,6 +144,8 @@ export class ProfileComponent implements OnInit{
     })
   }
     
+
+
 }
 
 

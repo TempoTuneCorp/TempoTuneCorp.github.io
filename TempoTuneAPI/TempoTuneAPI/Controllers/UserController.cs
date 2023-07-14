@@ -251,7 +251,8 @@ namespace TempoTuneAPI.Controllers
                 new Claim(ClaimTypes.Name, user.UserName),
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim("id", user.Id.ToString()),
-                new Claim("password", user.Password)
+                new Claim("password", user.Password),
+                new Claim("pictureURL", user.profilePictureURL)
 
             });
 
@@ -274,6 +275,32 @@ namespace TempoTuneAPI.Controllers
         {
             return Ok(await _context.Users.ToListAsync());
         }
+
+        [HttpPost("uploadPicture")]
+        public async Task<IActionResult> UploadPicture(IFormFile file, int id)
+        {
+            // Perform validation on the file size, type, etc.
+
+            // Generate a unique filename or use the user's ID
+            var fileExtension = Path.GetExtension(file.FileName);
+            
+            var fileName = $"{id}{fileExtension}";
+
+            // Save the file to the file server
+            var filePath = Path.Combine("C:\\Users\\rjn\\Desktop\\profilepicture", fileName);
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            // Update the user's profile with the file path or URL in the database
+
+            // Return a response with the file path or URL
+            System.Diagnostics.Debug.Print("##################\n" + filePath+ "\n###############");
+            return Ok(new { FilePath = filePath });
+            
+        }
+
 
         //[HttpPost]
         //[ProducesResponseType(StatusCodes.Status201Created)]
