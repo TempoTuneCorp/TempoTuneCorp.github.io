@@ -2,7 +2,7 @@ const chr1spells =[];
 const chr2spells =[];
 const chr3spells =[];
 const chrSpells = [chr1spells,chr2spells,chr3spells];
-const enemyHp = [0,10,0];
+const enemyHp = [0,12,0];
 var gold = 0;
 
 function callStart(){
@@ -11,20 +11,28 @@ function callStart(){
 }
 
 
-function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
+
+//#region Enemy
+
+function updateEnemy(enemyThatNeedsUpdate){
+enemyThatNeedsUpdate.name = enemyThatNeedsUpdate.name;
+enemyThatNeedsUpdate.hp = enemyHp[enemyThatNeedsUpdate.space];
+
+return enemyThatNeedsUpdate;
+
 }
+//#endregion Enemy
 
 
-
+//#region spells
 
 function useSpell(Spell){
   rndfound = false;
 
   while(rndfound == false)
   {
-    rnd= getRandomArbitrary(1, 4);//1 til 3
-    if(enemyHp[rnd] >= 0){rndfound=true}
+    rnd= Math.floor(Math.random() * (3 - 0) + 0); //0 til 2
+    if(enemyHp[rnd] > 0){rndfound=true}
   }
 
 if(Spell.isAOE){
@@ -54,7 +62,17 @@ if(ch == "chr1"){
 }
 
 
-//spells
+function findAndCastSpell(spellName)
+{
+  spellArray.forEach(item => {
+    if(spellName==item.name)
+    {
+      foundSpell = item;
+    }
+  })
+  useSpell(foundSpell);
+}
+
 
 function Spell(cost, damage, cooldown, name,isAOE,spechial,minigame) {
   this.cost= cost;
@@ -65,7 +83,6 @@ function Spell(cost, damage, cooldown, name,isAOE,spechial,minigame) {
   this.spechial = spechial;
   this.minigame = minigame;
 }
-
 
 
 const spellArray =[
@@ -86,3 +103,5 @@ const spellArray =[
 
   )
 ]
+
+//#endregion spells
