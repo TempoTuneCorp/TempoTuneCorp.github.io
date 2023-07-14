@@ -4,9 +4,11 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     caret-color: transparent;
 
+
 }
 
 .container{
+    overflow:hidden;
     width:1200px;
     height: 600px;
     position: absolute;
@@ -25,51 +27,12 @@
     background-color: rgba(71, 171, 252, 0.473);
     border-radius: 30px 0px 0px 30px;
 
-    .pic{
-        position:absolute;
-
-        top:190px;
-        left:190px;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        padding: 10px;
-
-    }
-}
-
-
-.profile-picture-container{
-    width: 170px;
-    height: 170px;
-    top: 150px;
-    left: 50%;
-    position: relative;
-    transform: translate(-50%, -50%);
-}
-
-.profile-picture{
-    border-radius: 50%;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    box-shadow: 0px 0px 24px 1px rgba(63, 63, 63, 0.76);
-}
-
-.profile-info-container-left{
-    position: relative;
-
-    top: 100px;
-    text-align: center;
-
-    p{
-        color: white;
-        font-size: 20px;
-    }
-
+    
     .btn-favourites {
-        margin-top:170px;
+        position: relative;
+        top: 194px;
+        left: 50%;
+        transform: translate(-50%);
         padding: 15px 45px;
         text-align: center;
         text-transform: uppercase;
@@ -91,6 +54,58 @@
         color: rgb(255, 255, 255);
         text-shadow: 1px 1px 10px #080808;
       }
+}
+
+.file-input{
+    display:none;
+}
+
+.profile-picture-container{
+    width: 170px;
+    height: 170px;
+    top: 150px;
+    left: 50%;
+    position: relative;
+    transform: translate(-50%, -50%);
+    overflow:visible;
+    
+    .pic{
+        position:absolute;
+
+        top:130px;
+        left:130px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        padding: 10px;
+
+    }
+}
+
+.profile-picture{
+    border-radius: 50%;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0px 0px 24px 1px rgba(63, 63, 63, 0.76);
+    
+    
+}
+
+.profile-info-container-left{
+    position: relative;
+    top: 100px;
+    text-align: center;
+
+    p{
+        color: white;
+        font-size: 18px;
+       
+        padding:0 40px 0 40px;
+    }
+
+    
 }
 
 .right-container{
@@ -140,7 +155,9 @@
     }
 }
 
-input{
+.update-input{
+
+
     width: 400px;
     font-size: 20px;
     background-color: #0808081c;
@@ -164,15 +181,13 @@ input{
 .btn-edit {
     float:right;
     padding: 15px 15px;
-    text-align: center;
     text-transform: uppercase;
     -webkit-transition: 0.5s;
     transition: 0.5s;
-    background-size: 500% auto;
-    font-weight: bold;
-    font-size: 1rem;
+    background-size: 1000% auto;
     color: rgb(255, 255, 255);
     border-radius: 10px;
+
   }
 
   .btn-edit:hover {
@@ -189,7 +204,8 @@ input{
     background-image: -webkit-gradient(linear, left top, right top, from(#743ad5), color-stop(51%, #d53a9d), to(#743ad5));
     background-image: linear-gradient(to right, #743ad5 0%, #d53a9d 51%, #743ad5 100%);
     border-image-source: linear-gradient(45deg, #743ad5, #d53a9d );
-    border-image-outset: 1em;
+    border-image-outset: 0em;
+    
   }
 
   .btn-delete {
@@ -234,7 +250,66 @@ input{
     border-image-outset: 1em;
   }
 
+  form{
+    display:flex;
+    justify-content: center;
+    
+  }
+  .btn-cancel-update {
+    color: rgb(155, 70, 70);
+    background: none;
+    border: none;
+    padding: 0 5px 0 5px;
+    margin-left: -35px;
+    cursor: pointer;
 
+
+  }
+  .btn-cancel-update:hover svg {
+    color: rgb(216, 54, 54);
+  }
+
+  .btn-update {
+    float: right;
+    padding: 11px 11px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 500% auto;
+    font-weight: bold;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+  }
+  .btn-update:disabled {
+    color: rgba(174, 218, 181, 0.74);
+    cursor: not-allowed;
+    background-color: #5b7758;
+    background-image: linear-gradient(to right, #5b7758 0%, #5b7758 51%, #5b7758 100%);
+    border-image-source: linear-gradient(45deg, #5b7758, #aed6c2);
+  }
+  .btn-update:disabled:hover {
+    cursor: not-allowed;
+    background-position: right center;
+    border-image-source: linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(32, 32, 32, 0));
+    box-shadow: none;
+    color: rgba(174, 218, 181, 0.74);
+  }
+  
+  .btn-update:hover {
+    cursor: pointer;
+    background-position: right center;
+    border-image-source: linear-gradient(90deg, #0c0b0c, #202020);
+    box-shadow: 0 0 10px #2e2e2e;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 10px #080808;
+  }
+
+  .space1 {
+    background-image: linear-gradient(to right, #1d850f 0%, #10d874 51%, #1d850f 100%);
+    border-image-source: linear-gradient(45deg, #77ac17, #47d53a);
+    border-image-outset: 1em;
+  }
 
 
 
@@ -242,6 +317,7 @@ input{
 
   @media screen and (max-width: 1210px) {
 
+    
     .container{
         margin-top:30px;
         width:700px;
@@ -254,29 +330,33 @@ input{
         float: left;
         height: 250px;
         border-radius: 30px 30px 0px 0px;
+        position: relative;
 
-        .pic{
-            position:absolute;
-            top:165px;
-            left:190px;
+        .btn-favourites {
+        position:absolute;
+        left: 470px;
+            top:160px;
         }
     }
 
+    
 
 
     .profile-picture-container{
         top: 125px;
         left: 150px;
+        position:relative;
+        
+
+
+  
     }
 
     .profile-info-container-left{
         position: absolute;
+        width: 340px;
         top: 55px;
-        left: 350px;
-
-        .btn-favourites {
-            margin-top:60px;
-        }
+        left: 300px;
     }
 
     .right-container{
@@ -303,6 +383,7 @@ input{
 
 @media screen and (max-width: 710px) {
 
+    
 
     .container{
 
@@ -318,34 +399,44 @@ input{
         border-radius: 30px 30px 0px 0px;
         min-height: 200px;
 
-        .pic{
-            position:absolute;
-            top:17%;
-            left:57%;
-
-        }
+        
 
 
     }
 
     .profile-picture-container{
-        position:absolute;
-        top: 13%;
+        position:relative;
+        top: 40%;
         left: 50%;
         width: 120px;
         height: 120px;
+
+        .pic{
+            position:absolute;
+            top:85px;
+            left:85px;
+
+        }
     }
 
+    .btn-favourites {
+            display:none;
+        }
+
     .profile-info-container-left{
-        position: relative;
+        position: absolute;
         width: 90%;
         left: 50%;
         top:86%;
         transform: translate(-50%, -50%);
 
-        .btn-favourites {
-            display:none;
+        p{
+            font-size: 14px;
+            padding:1px;
         }
+        
+
+        
     }
 
     .right-container{
@@ -386,17 +477,9 @@ input{
     }
 
     .btn-edit {
-        float:right;
         padding: 10px 10px;
-        text-align: center;
-        text-transform: uppercase;
-        -webkit-transition: 0.5s;
-        transition: 0.5s;
-        background-size: 500% auto;
-        font-weight: bold;
-        font-size: 1rem;
-        color: rgb(255, 255, 255);
-        border-radius: 10px;
+
+
 
         svg{
             height:15px;
@@ -419,6 +502,39 @@ input{
             height: 18px;
         }
       }
+
+      .btn-cancel-update
+      {
+        svg{
+            height: 18px;
+            width: 18px;
+            margin-left:3px;
+        }
+      }
+
+      .btn-update {
+        padding: 6.5px;
+        svg{
+            height:22px;
+            width: 22px;
+        }
+      }
+
+      .profile-info-box
+      {
+        width: 80%;
+
+        .update-input{
+        align-items: left;
+        width: 100%;
+        font-size: 15px;
+
+        &:focus{
+        font-size: 15px;
+        }
+      }
+      }
+      
     }
 
 

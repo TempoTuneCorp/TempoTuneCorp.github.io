@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -31,17 +31,29 @@ export class UserService {
     this.email$.next(email);
   }
 
-  // public updateUsername(userId: number, userObj: string){
-  //   return this.http.post<any>(`${this.baseUrl}update/{id}`,userId)
-  // }
-
   updateUsername(userObj: any): Observable<any>{
-    // const useridtoint = parseInt(userId);
-    // const updateUser = {useridtoint, username};
-    // console.log(typeof useridtoint);
-    // console.log(useridtoint);
-    console.log(userObj);
-    return this.http.put<any>(`${this.baseUrl}update`, userObj);
-
+    return this.http.put<any>(`${this.baseUrl}updateUsername`, userObj);
   }
+
+  updateEmail(userObj: any): Observable<any>{
+    return this.http.put<any>(`${this.baseUrl}updateEmail`, userObj);
+  }
+
+  deleteUser(id: any): Observable<any>{
+    const params = new HttpParams().set('id', id);
+    const options = {
+      params: params
+    };
+    return this.http.delete<any>(`${this.baseUrl}deleteUser`, options);
+  }
+
+  uploadProfilePicture(file: File, id: any): Observable<any>{
+    const params = new HttpParams().set('file', file.name).set('id', id);
+    const options = {
+      params: params
+    };
+    return this.http.delete<any>(`${this.baseUrl}uploadPicture`, options);
+  }
+
+
 }

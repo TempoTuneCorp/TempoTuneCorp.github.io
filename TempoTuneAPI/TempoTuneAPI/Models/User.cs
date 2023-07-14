@@ -18,5 +18,6 @@ namespace TempoTuneAPI.Models
 
         public string Token { get; set; }
 
+        public string profilePictureURL { get; set; }
     }
 }

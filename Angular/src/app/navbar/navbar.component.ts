@@ -29,6 +29,9 @@ export class NavbarComponent {
     this.router.navigate(['profile'])
   }
 
+  onAboutClick(){
+    this.router.navigate(['about'])
+  }
   logout(){
     this.auth.signOut();
     this.router.navigate(['login'])
