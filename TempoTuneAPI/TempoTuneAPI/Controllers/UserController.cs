@@ -235,7 +235,7 @@ namespace TempoTuneAPI.Controllers
 
             if(!(Regex.IsMatch(Password, "[a-z]") && Regex.IsMatch(Password, "[A-Z]") && Regex.IsMatch(Password, "[0-9]")))
                sb.Append("Password must be Alpha Numeric."+ Environment.NewLine);
-            if (!Regex.IsMatch(Password, "[<,>,!,$,@,$,£,€]")) ;
+            if (!Regex.IsMatch(Password, "[<,>,!,$,@,$,£,€]"));
                
                  return sb.ToString();
             
@@ -251,8 +251,7 @@ namespace TempoTuneAPI.Controllers
                 new Claim(ClaimTypes.Name, user.UserName),
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim("id", user.Id.ToString()),
-                new Claim("password", user.Password),
-                new Claim("pictureURL", user.profilePictureURL)
+                new Claim("password", user.Password)
 
             });
 
