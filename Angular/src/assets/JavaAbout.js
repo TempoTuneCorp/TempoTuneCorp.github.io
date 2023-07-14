@@ -4,4 +4,3 @@ function lockJS(){
     console.log("Hello Call JS Function From TypeScript ");
   }
 
-  alert("Pop up");
