@@ -38,9 +38,9 @@ export class MiniGameComponent implements OnInit {
   chr3 = "chr3";
   gold = "1";
   Chr1Spell = "0";
-  enemy2:Enemy = enemy2;
-  enemy1:Enemy = enemy1;
-  enemy3:Enemy = enemy3;
+  enemy2 = enemy2;
+  enemy1 = enemy1;
+  enemy3 = enemy3;
 
   ngOnInit(): void {
     callStart();
