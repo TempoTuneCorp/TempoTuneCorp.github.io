@@ -45,6 +45,9 @@ export class MiniGameComponent implements OnInit {
   ngOnInit(): void {
     callStart();
     this.Chr1Spell = setSpell("chr1","stab");
+    enemy2 = enemy2;
+    enemy1 = enemy1;
+    enemy3 = enemy3;
 
   }
 
