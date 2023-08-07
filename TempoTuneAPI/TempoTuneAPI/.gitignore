@@ -64,7 +64,8 @@ dlldata.c
 *.pidb
 *.svclog
 *.scc
-
+*.dll
+*.pdb
 # Chutzpah Test files
 _Chutzpah*
 
