@@ -66,7 +66,10 @@ dlldata.c
 *.scc
 *.pdb
 *.dll
-
+*.editorconfig
+*.cache
+*.sentinel
+*.props
 # Chutzpah Test files
 _Chutzpah*
 
@@ -239,3 +242,4 @@ TempoTuneAPI/TempoTuneAPI/obj/TempoTuneAPI.csproj.nuget.dgspec.json
 TempoTuneAPI/TempoTuneAPI/obj/staticwebassets.pack.sentinel
 TempoTuneAPI/TempoTuneAPI/obj/project.nuget.cache
 TempoTuneAPI/TempoTuneAPI/obj/project.assets.json
+TempoTuneAPI/TempoTuneAPI/obj/Debug/net6.0/TempoTuneAPI.GeneratedMSBuildEditorConfig.editorconfig
