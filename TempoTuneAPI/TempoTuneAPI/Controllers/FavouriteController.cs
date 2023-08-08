@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections;
 using TempoTuneAPI.Data;
 using TempoTuneAPI.Models;
+using Xunit;
 
 namespace TempoTuneAPI.Controllers
 {
@@ -16,6 +18,39 @@ namespace TempoTuneAPI.Controllers
       {
         _context = context;
       }
+        [HttpGet("GetAllFavourites")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> GetAllFavorites()
+        {
+            var allList = await _context.Favourites.ToListAsync();
+            var anotherList = new List<IActionResult>();
+
+            foreach (var item in allList)
+            {
+                var track = (from f in _context.Favourites
+                             join t in _context.Tracks on f.Id equals t.Id
+                             into x
+                             from rt in x.DefaultIfEmpty()
+                             where f.Id == item.Id
+                             orderby f.Id
+                             select new
+                             {
+                                 Id = f.Id,
+                                 User = f.User,
+                                 Track = f.Track
+
+                             }).FirstOrDefault();
+                anotherList.Add(Ok(track));
+
+            } 
+
+
+            return Ok(allList);
+        }
+
+
 
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
