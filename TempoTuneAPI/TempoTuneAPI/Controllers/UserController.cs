@@ -196,10 +196,8 @@ namespace TempoTuneAPI.Controllers
             
             
             var userToDelete = await _context.Users.FindAsync(id);
-            System.Diagnostics.Debug.Print("##################\n" + id + "\n###############");
-
-            if (userToDelete == null) return NotFound(new { Message = "User not found" });  
-               
+            System.Diagnostics.Debug.Print("################\n" + id + "\n################");
+            if (userToDelete == null) return NotFound(new { Message = "User not found" });          
             _context.Users.Remove(userToDelete);
             await _context.SaveChangesAsync();
 
@@ -235,7 +233,7 @@ namespace TempoTuneAPI.Controllers
 
             if(!(Regex.IsMatch(Password, "[a-z]") && Regex.IsMatch(Password, "[A-Z]") && Regex.IsMatch(Password, "[0-9]")))
                sb.Append("Password must be Alpha Numeric."+ Environment.NewLine);
-            if (!Regex.IsMatch(Password, "[<,>,!,$,@,$,£,€]")) ;
+            if (!Regex.IsMatch(Password, "[<,>,!,$,@,$,£,€]"));
                
                  return sb.ToString();
             

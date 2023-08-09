@@ -3,9 +3,11 @@
 *{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     caret-color: transparent;
+    
 }
 
 .container{
+  
     position: absolute;
     margin: auto;
     height: 80%;

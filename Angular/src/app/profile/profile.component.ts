@@ -9,6 +9,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -22,6 +23,7 @@ export class ProfileComponent implements OnInit{
 
   public username:string = "";
   public email:string = "";
+  public id:any;
 
   editUsernameMode: boolean = false;
   editEmailMode: boolean = false;
@@ -113,8 +115,14 @@ export class ProfileComponent implements OnInit{
   })
   }
 
+
+
+
   deleteUser(){
-    const id = this.auth.getUserIdFromToken();
+    if(confirm('Are you sure u want to delete your user?'))
+    {
+    const id = this.auth.decodedToken().id;
+    console.log(id);
     this.user.deleteUser(id)
     .subscribe({
       next:(res) => {
@@ -129,6 +137,9 @@ export class ProfileComponent implements OnInit{
 
       }
     })
+    }
+   
+    
   }
 
   ngOnInit(){
@@ -142,10 +153,6 @@ export class ProfileComponent implements OnInit{
       let emailFromToken = this.auth.getEmailFromToken();
       this.email = val || emailFromToken;
     })
+  
   }
-    
-
-
 }
-
-
