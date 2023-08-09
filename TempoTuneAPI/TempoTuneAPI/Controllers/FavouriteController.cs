@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections;
 using TempoTuneAPI.Data;
 using TempoTuneAPI.Models;
+using Xunit;
 
 namespace TempoTuneAPI.Controllers
 {
@@ -16,8 +18,77 @@ namespace TempoTuneAPI.Controllers
       {
         _context = context;
       }
+        [HttpGet("GetAllFavourites")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> GetAllFavorites()
+        {
+            var allList = await _context.Favourites.ToListAsync();
 
-        [HttpGet("{id}")]
+
+            foreach (var item in allList)
+            {
+                var track = (from f in _context.Favourites
+                             join t in _context.Tracks on f.Id equals t.Id
+                             into x
+                             from rt in x.DefaultIfEmpty()
+                             where f.Id == item.Id
+                             orderby f.Id
+                             select new
+                             {
+                                 Id = f.Id,
+                                 User = f.User,
+                                 Track = f.Track
+
+                             }).FirstOrDefault();
+
+            } 
+
+
+            return Ok(allList);
+        }
+
+        [HttpGet("GetFavByUser{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> GetAllFavByUserID(int id)
+        {
+
+            var allList = await _context.Favourites.ToListAsync();
+            var user = await _context.Users.FindAsync(id);
+            var newList = new List<Favourite>();
+
+
+            foreach (var item in allList)
+            {
+                        var track = (from f in _context.Favourites
+                                     join t in _context.Tracks on f.Id equals t.Id
+                                     into x
+                                     from rt in x.DefaultIfEmpty()
+                                     where f.Id == item.Id
+                                     orderby f.Id
+                                     select new
+                                     {
+                                         Id = f.Id,
+                                         User = f.User,
+                                         Track = f.Track
+
+                                     }).FirstOrDefault();
+              }
+            foreach (var item in allList)
+            {
+                if (item.User == user)
+                {
+                    newList.Add(item);
+                }
+            }
+
+            return Ok(newList);
+        }
+
+            [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
