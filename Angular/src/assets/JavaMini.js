@@ -1,9 +1,13 @@
+
 const chr1spells =[];
 const chr2spells =[];
 const chr3spells =[];
 const chrSpells = [chr1spells,chr2spells,chr3spells];
-const enemyHp = [0,12,0];
+const enemyHp = [0,12000000,0];
 var gold = 0;
+
+
+
 
 function callStart(){
 

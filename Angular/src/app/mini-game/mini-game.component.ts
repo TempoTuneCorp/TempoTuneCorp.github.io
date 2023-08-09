@@ -11,15 +11,15 @@ interface Enemy {
 
 
 var enemy1:Enemy ={space:0};
-var enemy2:Enemy ={space:1, name:"firstenemy",hp:12};
+var enemy2:Enemy ={space:1, name:"firstenemy",hp:0};
 var enemy3:Enemy ={space:2};
 
 declare function callStart():void;
 declare function findAndCastSpell(spellName:string):void;
 declare function setSpell(ch: string,spellName: string):string;
 declare function updateEnemy(enemy:Enemy):Enemy;
-
 var chr1Cooldown = 10;
+
 setInterval(() => {
   findAndCastSpell("stab");
   updateEnemy(enemy2);
@@ -36,18 +36,16 @@ export class MiniGameComponent implements OnInit {
   chr1 = "chr1";
   chr2 = "chr2";
   chr3 = "chr3";
-  gold = "1";
+  gold = "100";
   Chr1Spell = "0";
-  enemy2 = enemy2;
-  enemy1 = enemy1;
-  enemy3 = enemy3;
+  enemy2prop =updateEnemy(enemy2);
+  enemy1prop = enemy1;
+  enemy3prop = enemy3;
 
   ngOnInit(): void {
     callStart();
     this.Chr1Spell = setSpell("chr1","stab");
-    enemy2 = enemy2;
-    enemy1 = enemy1;
-    enemy3 = enemy3;
+    this.enemy2prop =updateEnemy(enemy2);
 
   }
 
