@@ -9,6 +9,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { LogoComponent } from './logo/logo.component';
 import { AboutComponent } from './about/about.component';
 import { MiniGameComponent } from './mini-game/mini-game.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,10 @@ const routes: Routes = [
   {
     path: 'mini-game',
     component: MiniGameComponent,
+  },
+  {
+    path: 'favourites',
+    component: FavoritesComponent,
   }
   ];
 
