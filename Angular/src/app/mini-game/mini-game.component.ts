@@ -26,7 +26,7 @@ export class MiniGameComponent implements OnInit {
 
 
   enemy1Name = "enemy";
-  enemy1Hp = "10";
+  enemy1Hp = "2000000";
   enemy2Name = "";
   enemy2Hp = "";
   enemy3Name = "";
