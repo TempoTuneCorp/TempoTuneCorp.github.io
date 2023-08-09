@@ -196,10 +196,8 @@ namespace TempoTuneAPI.Controllers
             
             
             var userToDelete = await _context.Users.FindAsync(id);
-            System.Diagnostics.Debug.Print("##################\n" + id + "\n###############");
-
-            if (userToDelete == null) return NotFound(new { Message = "User not found" });  
-               
+            System.Diagnostics.Debug.Print("################\n" + id + "\n################");
+            if (userToDelete == null) return NotFound(new { Message = "User not found" });          
             _context.Users.Remove(userToDelete);
             await _context.SaveChangesAsync();
 
