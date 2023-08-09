@@ -13,6 +13,7 @@ export class UserService {
   private username$ = new BehaviorSubject<string>("");  
   private email$ = new BehaviorSubject<string>("");
 
+
   constructor(private http : HttpClient, private auth:AuthService) { }
 
   public getUsername(){
@@ -22,6 +23,8 @@ export class UserService {
   public setUsername(username: string){
     this.username$.next(username);
   }
+
+
 
   public getEmail(){
     return this.email$.asObservable();
@@ -55,5 +58,6 @@ export class UserService {
     return this.http.delete<any>(`${this.baseUrl}uploadPicture`, options);
   }
 
+  
 
 }
