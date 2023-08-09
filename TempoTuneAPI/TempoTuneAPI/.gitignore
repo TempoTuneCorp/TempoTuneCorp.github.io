@@ -230,3 +230,17 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+TempoTuneAPI/TempoTuneAPI/obj/Debug/net6.0/TempoTuneAPI.GeneratedMSBuildEditorConfig.editorconfig
+TempoTuneAPI/TempoTuneAPI/obj/Debug/net6.0/TempoTuneAPI.csproj.CoreCompileInputs.cache
+TempoTuneAPI/TempoTuneAPI/obj/Debug/net6.0/TempoTuneAPI.assets.cache
+TempoTuneAPI/TempoTuneAPI/obj/TempoTuneAPI.csproj.nuget.g.props
+TempoTuneAPI/TempoTuneAPI/obj/TempoTuneAPI.csproj.nuget.dgspec.json
+TempoTuneAPI/TempoTuneAPI/obj/staticwebassets.pack.sentinel
+TempoTuneAPI/TempoTuneAPI/obj/project.nuget.cache
+TempoTuneAPI/TempoTuneAPI/obj/project.assets.json
+TempoTuneAPI/TempoTuneAPI/obj/Debug/net6.0/TempoTuneAPI.GeneratedMSBuildEditorConfig.editorconfig
+TempoTuneAPI/.vs/slnx.sqlite
+TempoTuneAPI/.vs/slnx.sqlite
+TempoTuneAPI/.vs/TempoTuneAPI/DesignTimeBuild/.dtbcache.v2
+TempoTuneAPI/TempoTuneAPI/bin/Debug/net6.0/TempoTuneAPI.dll
+TempoTuneAPI/TempoTuneAPI/bin/Debug/net6.0/TempoTuneAPI.pdb
