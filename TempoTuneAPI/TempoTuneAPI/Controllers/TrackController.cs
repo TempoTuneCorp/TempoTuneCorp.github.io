@@ -86,7 +86,8 @@ namespace TempoTuneAPI.Controllers
                                  Title = t.Title,
                                  SongPath = t.SongPath,
                                  AlbumName = t.AlbumName,
-                                 Artist = t.Artist
+                                 Artist = t.Artist,
+                                 Url = t.Url
                              }).FirstOrDefault(); 
 
                 return Ok(track);
@@ -128,7 +129,8 @@ namespace TempoTuneAPI.Controllers
                                 Title = t.Title,
                                 SongPath = t.SongPath,
                                 AlbumName = t.AlbumName,
-                                Artist = t.Artist
+                                Artist = t.Artist,
+                                Url = t.Url
                              }).ToList();
             return testTrack;
         }
