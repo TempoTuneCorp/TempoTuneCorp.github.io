@@ -20,6 +20,10 @@ import { AboutComponent } from './about/about.component';
 import { TokenInterceptor } from './Interceptors/token.interceptor';
 import { MiniGameComponent } from './mini-game/mini-game.component';
 
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatIcon, MatIconModule} from '@angular/material/icon';
+import { FavoritesComponent } from './favorites/favorites.component';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +37,8 @@ import { MiniGameComponent } from './mini-game/mini-game.component';
     ProfileComponent,
     NavbarComponent,
     AboutComponent,
-    MiniGameComponent
+    MiniGameComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,12 +47,14 @@ import { MiniGameComponent } from './mini-game/mini-game.component';
     HttpClientModule,
     NgToastModule,
     FormsModule,
+    MatIconModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule {}
