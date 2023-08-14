@@ -22,6 +22,7 @@ import { MiniGameComponent } from './mini-game/mini-game.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {MatIcon, MatIconModule} from '@angular/material/icon';
     NavbarComponent,
     AboutComponent,
     MiniGameComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule,
