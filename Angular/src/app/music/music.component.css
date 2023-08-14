@@ -18,6 +18,23 @@
     border-radius: 3%;
 }
 
+.song-cards-div{
+    height: 70%;
+    overflow-y: scroll;
+
+}
+
+.song-cards-div::-webkit-scrollbar{
+    height: auto;
+    width: 10px;
+}
+
+.song-cards-div::-webkit-scrollbar-thumb{
+    background-color: rgb(214, 214, 214);
+    border-radius: 20px;
+    
+}
+
 .header-text{
     align-items: center;
     justify-content: center;
@@ -64,20 +81,25 @@
     margin-right: 8px;
 }
 
+.item svg{
+    padding-left: 20px;
+    
+}
+
 .card:hover{
     cursor: pointer;
     background-color: rgba(71, 64, 97, 0.7);
 }
 
 
-.card::after{
+/* .card::after{
     background-color: var(--hover-grey-color);
 
-}
+} */
 
 .card:focus{
     background-color: var(--musicplayer-background);
-}
+} 
 
 .item{
     display: flex;
