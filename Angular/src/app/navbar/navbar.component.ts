@@ -38,7 +38,7 @@ export class NavbarComponent {
   }
 
   onFavClick(){
-    this.router.navigate(['mini-game'])
+    this.router.navigate(['favourites'])
   }
 
 }

@@ -23,6 +23,8 @@ import { MiniGameComponent } from './mini-game/mini-game.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
 import { ImageCropperComponent } from './image-cropper/image-cropper.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { ImageCropperComponent } from './image-cropper/image-cropper.component';
     NavbarComponent,
     AboutComponent,
     MiniGameComponent,
-    ImageCropperComponent
+    ImageCropperComponent,
+    FavoritesComponent,
+
   ],
   imports: [
     BrowserModule,
