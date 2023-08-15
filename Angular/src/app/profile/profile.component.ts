@@ -5,6 +5,9 @@ import { AuthService } from '../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgToastService } from 'ng-angular-popup';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { ImageCropperComponent } from '../image-cropper/image-cropper.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs/internal/Observable';
 
 
 
@@ -20,10 +23,14 @@ export class ProfileComponent implements OnInit{
 
   updateUsernameForm: FormGroup;
   updateEmailForm: FormGroup;
+ 
+  selectedFile: File | any;
 
   public username:string = "";
   public email:string = "";
   public id:any;
+
+  file: string = '';
 
   editUsernameMode: boolean = false;
   editEmailMode: boolean = false;
@@ -34,7 +41,8 @@ export class ProfileComponent implements OnInit{
     private formBuilder: FormBuilder,
     private toast: NgToastService,
     private router: Router,
-    private http: HttpClient){
+    private http: HttpClient,
+    private dialog: MatDialog){
 
       this.updateUsernameForm = this.formBuilder.group({
         username: ['', Validators.required]
@@ -45,9 +53,87 @@ export class ProfileComponent implements OnInit{
 
   }
 
-  uploadPicture(){
-    
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0]; // Get the selected file
+    const id = this.id; 
+    console.log(file);
+    console.log(id);
+    if (file) {
+      this.user.uploadProfilePicture(file, id).subscribe(
+        response => {
+          // Handle successful response
+          console.log('Profile picture uploaded successfully:', response);
+        },
+        error => {
+          // Handle error
+          console.error('Error uploading profile picture:', error);
+        }
+      );
+    }
   }
+
+
+  onSubmit(): void {
+    if (this.selectedFile) {
+      const formData = new FormData();
+      formData.append('file', this.selectedFile);
+
+      this.http.post<any>('api/uploadProfilePicture', formData).subscribe(
+        (response) => {
+          console.log('File uploaded successfully.', response);
+          // Perform any additional actions after successful upload
+        },
+        (error) => {
+          console.error('Error uploading file:', error);
+          // Handle error
+        }
+      );
+    }
+  }
+
+  // onFileSelected(files: FileList): void {
+  //   this.selectedFile = files.item(0);
+
+  // uploadPicture(){
+    
+  // }
+
+//   onFileChange(event: any) {
+//     const files = event.target.files as FileList;
+
+//     if (files.length > 0) {
+//       const _file = URL.createObjectURL(files[0]);
+//       this.file = _file;
+//       this.resetInput();
+//       this.openAvatarEditor(_file)
+//       .subscribe(
+//         (result: string) => {
+//           if(result){
+//             this.file = result;
+//           }
+//         }  
+//       )
+//     }
+//  }
+
+//  openAvatarEditor(image: string): Observable<any> {
+//   const dialogRef = this.dialog.open(ImageCropperComponent, {
+//     maxWidth: '80px',
+//     maxHeight: '80px',
+//     data: image,
+    
+//   });
+
+//   return dialogRef.afterClosed();
+// }
+ 
+
+//  resetInput(){
+//   const input = document.getElementById('profile-picture-input-file') as HTMLInputElement;
+//   if(input){
+//     input.value = "";
+//   }
+// }
 
   enableEditUsername(){
     this.editUsernameMode = true;
@@ -153,6 +239,12 @@ export class ProfileComponent implements OnInit{
       let emailFromToken = this.auth.getEmailFromToken();
       this.email = val || emailFromToken;
     })
+
+    this.user.getUserId().subscribe ( val=> {
+      let idFromToken = this.auth.getUserIdFromToken();
+      this.id = val || idFromToken;
+    })
   
   }
 }
+

@@ -98,9 +98,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/cropperjs/dist/cropper.css"
             ],
-            "scripts": []
+            "scripts": ["node_modules/cropperjs/dist/cropper.js"]
           }
         }
       }
