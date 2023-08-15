@@ -34,7 +34,8 @@
             ],
             "scripts": [
               "src/assets/JavaAbout.js",
-              "src/assets/JavaMini.js"
+              "src/assets/JavaMini.js",
+              "src/assets/JavaSongs.js"
             ]
           },
           "configurations": {

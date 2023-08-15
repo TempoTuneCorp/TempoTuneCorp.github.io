@@ -4,6 +4,16 @@ using Microsoft.EntityFrameworkCore;
 using TempoTuneAPI.Models;
 using TempoTuneAPI.Data;
 using System.Collections;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Formatting;
+using System.Web;
+using System.Web.Http;
+using HttpGetAttribute = Microsoft.AspNetCore.Mvc.HttpGetAttribute;
+using HttpPutAttribute = Microsoft.AspNetCore.Mvc.HttpPutAttribute;
+using HttpPostAttribute = Microsoft.AspNetCore.Mvc.HttpPostAttribute;
+using HttpDeleteAttribute = Microsoft.AspNetCore.Mvc.HttpDeleteAttribute;
+using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
 namespace TempoTuneAPI.Controllers
 {
@@ -42,7 +52,7 @@ namespace TempoTuneAPI.Controllers
         }
 
 
-         [HttpDelete("DeleteTrack")]
+        [HttpDelete("DeleteTrack")]
         [ProducesResponseType(typeof(Track), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(Track track)
@@ -135,7 +145,59 @@ namespace TempoTuneAPI.Controllers
             return testTrack;
         }
 
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public byte[] GetFilesFromTracks(int id)
+        {
+            var track = _context.Tracks.FindAsync(id);
+            string path = Environment.CurrentDirectory + ("/Songs/") + id + ".mp3";
 
-      
+            //converting Track file into bytes array
+            byte[] audiobyte = System.IO.File.ReadAllBytes(path);
+
+
+            return audiobyte;
+
+
+        }
+        /*
+            public HttpResponseMessage GetFilesFromTracks(int id)
+            {
+                var track = _context.Tracks.FindAsync(id);
+                string path = Environment.CurrentDirectory + ("/Songs/") + id+".mp3";
+
+
+                //converting Track file into bytes array
+                byte[] audiobyte = System.IO.File.ReadAllBytes(path);
+
+                //adding bytes to memory stream
+                var dataStream = new MemoryStream(audiobyte);
+
+                //adding memoryStream to object to the HttpResponseMessage Content
+                HttpResponseMessage httpResponseMessage = new(HttpStatusCode.OK);
+                httpResponseMessage.Content = new StreamContent(dataStream);
+
+                //Modifiying the headers
+                httpResponseMessage.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment");
+                httpResponseMessage.Content.Headers.ContentDisposition.FileName = id.ToString();
+                httpResponseMessage.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/mp3");
+
+                //recreating AudioFile
+                string path2 = "C:/Users/rms/Desktop/Songs";
+                using (var byteToImage = new FileStream(path2 + "\\" + id +".mp3", FileMode.Create))
+                {
+                    byteToImage.Write(audiobyte, 0, audiobyte.Length);//pass byte array here
+                }
+
+
+                return httpResponseMessage;
+                
+
+        }
+            */
+
+
     }
 }
