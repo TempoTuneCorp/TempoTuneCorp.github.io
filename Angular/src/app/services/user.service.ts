@@ -12,7 +12,7 @@ export class UserService {
 
   private username$ = new BehaviorSubject<string>("");  
   private email$ = new BehaviorSubject<string>("");
-
+  private id$ = new BehaviorSubject<number> (0);
 
   constructor(private http : HttpClient, private auth:AuthService) { }
 
@@ -24,7 +24,13 @@ export class UserService {
     this.username$.next(username);
   }
 
+  public getUserId(){
+    return this.id$.asObservable();
+  }
 
+  public setUserId(id: any){
+    this.id$.next(id);
+  }
 
   public getEmail(){
     return this.email$.asObservable();
@@ -55,7 +61,7 @@ export class UserService {
     const options = {
       params: params
     };
-    return this.http.delete<any>(`${this.baseUrl}uploadPicture`, options);
+    return this.http.post<any>(`${this.baseUrl}uploadPicture`, options);
   }
 
   

@@ -22,6 +22,7 @@ import { MiniGameComponent } from './mini-game/mini-game.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
+import { ImageCropperComponent } from './image-cropper/image-cropper.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {MatIcon, MatIconModule} from '@angular/material/icon';
     NavbarComponent,
     AboutComponent,
     MiniGameComponent,
+    ImageCropperComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ import {MatIcon, MatIconModule} from '@angular/material/icon';
     HttpClientModule,
     NgToastModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
