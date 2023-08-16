@@ -79,14 +79,9 @@
   border-radius: 50%;
   padding: 10px;
 }
-.profile-picture-container .profile-picture .pic input[type=file] {
-  display: none;
-}
-.profile-picture-container .profile-picture.placeholder {
-  background-image: url("/assets/images/user-profile-icon.jpg");
-}
-.profile-picture-container .profile-picture.placeholder input[type=file] {
-  display: none;
+.profile-picture-container .profile-picture .pic input {
+  width: 20px;
+  height: 20px;
 }
 
 .profile-info-container-left {
@@ -117,6 +112,7 @@
 .profile-info-container-right h1 {
   color: white;
   font-size: 30px;
+  position: relative;
 }
 .profile-info-container-right .profile-info-card {
   background: rgba(0, 0, 0, 0.233);
