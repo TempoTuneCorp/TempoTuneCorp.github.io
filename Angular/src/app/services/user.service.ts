@@ -8,9 +8,9 @@ import { AuthService } from './auth.service';
 })
 export class UserService {
   private baseUrl:string = "https://localhost:7267/api/User/";
-  
 
-  private username$ = new BehaviorSubject<string>("");  
+
+  private username$ = new BehaviorSubject<string>("");
   private email$ = new BehaviorSubject<string>("");
   private id$ = new BehaviorSubject<number> (0);
 
@@ -64,6 +64,6 @@ export class UserService {
     return this.http.post<any>(`${this.baseUrl}uploadPicture`, options);
   }
 
-  
+
 
 }

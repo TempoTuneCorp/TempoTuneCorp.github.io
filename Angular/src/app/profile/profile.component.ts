@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit{
 
   updateUsernameForm: FormGroup;
   updateEmailForm: FormGroup;
- 
+
   selectedFile: File | any;
 
   public username:string = "";
@@ -36,7 +36,7 @@ export class ProfileComponent implements OnInit{
   editEmailMode: boolean = false;
 
   constructor(
-    private user: UserService, 
+    private user: UserService,
     private auth: AuthService,
     private formBuilder: FormBuilder,
     private toast: NgToastService,
@@ -55,7 +55,7 @@ export class ProfileComponent implements OnInit{
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0]; // Get the selected file
-    const id = this.id; 
+    const id = this.id;
     console.log(file);
     console.log(id);
     if (file) {
@@ -95,7 +95,7 @@ export class ProfileComponent implements OnInit{
   //   this.selectedFile = files.item(0);
 
   // uploadPicture(){
-    
+
   // }
 
 //   onFileChange(event: any) {
@@ -111,7 +111,7 @@ export class ProfileComponent implements OnInit{
 //           if(result){
 //             this.file = result;
 //           }
-//         }  
+//         }
 //       )
 //     }
 //  }
@@ -121,12 +121,12 @@ export class ProfileComponent implements OnInit{
 //     maxWidth: '80px',
 //     maxHeight: '80px',
 //     data: image,
-    
+
 //   });
 
 //   return dialogRef.afterClosed();
 // }
- 
+
 
 //  resetInput(){
 //   const input = document.getElementById('profile-picture-input-file') as HTMLInputElement;
@@ -138,7 +138,7 @@ export class ProfileComponent implements OnInit{
   enableEditUsername(){
     this.editUsernameMode = true;
   }
-  
+
   cancelUsernameUpdate(){
     this.editUsernameMode = false;
   }
@@ -155,7 +155,7 @@ export class ProfileComponent implements OnInit{
       this.editUsernameMode = false;
       console.log(res);
       this.auth.removeToken(localStorage.getItem('token')); //remove existing token
-      this.auth.storeToken(res.token); //get new token  
+      this.auth.storeToken(res.token); //get new token
       this.username = this.auth.decodedToken().unique_name; //decode new token and get new username from payload
       this.user.setUsername(this.username); //set new username so it can be shown when onInit
       this.toast.success({detail:"Success", summary:res.message, duration: 3000});
@@ -188,7 +188,7 @@ export class ProfileComponent implements OnInit{
       this.editEmailMode = false;
       console.log(res);
       this.auth.removeToken(localStorage.getItem('token')); //remove existing token
-      this.auth.storeToken(res.token); //get new token  
+      this.auth.storeToken(res.token); //get new token
       this.email = this.auth.decodedToken().unique_name; //decode new token and get new username from payload
       this.user.setEmail(this.email); //set new username so it can be shown when onInit
       this.toast.success({detail:"Success", summary:res.message, duration: 3000});
@@ -212,7 +212,7 @@ export class ProfileComponent implements OnInit{
     this.user.deleteUser(id)
     .subscribe({
       next:(res) => {
-        
+
         this.toast.success({detail:"Success", summary:res.message, duration: 3000});
         this.auth.signOut();
         this.router.navigate(['login'])
@@ -224,16 +224,16 @@ export class ProfileComponent implements OnInit{
       }
     })
     }
-   
-    
+
+
   }
 
   ngOnInit(){
-    this.user.getUsername().subscribe(val => { 
+    this.user.getUsername().subscribe(val => {
       let usernameFromToken = this.auth.getUsernameFromToken();
     this.username = val || usernameFromToken;
     })
-    
+
 
     this.user.getEmail().subscribe ( val=> {
       let emailFromToken = this.auth.getEmailFromToken();
@@ -244,7 +244,7 @@ export class ProfileComponent implements OnInit{
       let idFromToken = this.auth.getUserIdFromToken();
       this.id = val || idFromToken;
     })
-  
+
   }
 }
 

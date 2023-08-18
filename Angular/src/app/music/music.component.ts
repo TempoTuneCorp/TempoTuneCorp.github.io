@@ -1,15 +1,12 @@
-<<<<<<< HEAD
 import { Component, Inject, ViewEncapsulation,OnInit  } from '@angular/core';
-=======
-import { Component, Inject, ViewEncapsulation } from '@angular/core';
->>>>>>> fb15c9123a9d931784749d5c369db149fbe59305
 import { Track } from '../models/track.model'
 import { DOCUMENT } from '@angular/common'
 import { ExpressionType } from '@angular/compiler';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SongsService } from '../services/songs.service';
+import { bindCallback } from 'rxjs';
 
-
-declare function playByteArray():void;
+declare function playByteArray(byteArray: any):void;
 
 @Component({
   selector: 'app-music',
@@ -17,35 +14,29 @@ declare function playByteArray():void;
   styleUrls: ['./music.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class MusicComponent {
-  constructor(@Inject(DOCUMENT) document: Document){
+export class MusicComponent implements OnInit{
+
+  constructor(@Inject(DOCUMENT) document: Document,private songs: SongsService){
 
   }
+
+
   CurrentId: number = 0;
   playmode: Boolean = false;
 
   setFavorite(track: Track){
-<<<<<<< HEAD
     track.Favorite = true;
   }
 
   deleteFavorite(track: Track){
     track.Favorite = false;
-=======
-    track.Favorite = true;    
->>>>>>> fb15c9123a9d931784749d5c369db149fbe59305
   }
 
-  deleteFavorite(track: Track){
-    track.Favorite = false;    
-  }
-  
   setCurrentSong(track: Track) {
     const player:any = <HTMLAudioElement>document.getElementById('player');
     player.src = track.Path;
     player.play();
     this.CurrentId = track.Id;
-<<<<<<< HEAD
     (<HTMLDivElement>document.getElementById('card')).focus();
   }
 
@@ -53,11 +44,13 @@ export class MusicComponent {
   playSongFromDB(id: any)
   {
     var track;
+    this.songs.getSongByteArray(id).subscribe({
+      next:(res)=> {
+        track = res;
+        playByteArray(track);
+      }});
 
     return;
-=======
-    (<HTMLDivElement>document.getElementById('card')).focus();  
->>>>>>> fb15c9123a9d931784749d5c369db149fbe59305
   }
 
   skipSong(){
@@ -116,11 +109,7 @@ export class MusicComponent {
     for (const track of this.tracks) {
       var divCard = document.createElement("Div");
       divCard.setAttribute("class", "card");
-<<<<<<< HEAD
 
-=======
-      
->>>>>>> fb15c9123a9d931784749d5c369db149fbe59305
 
       var divItemBig = document.createElement("Div");
       divItemBig.setAttribute("class", "item");
@@ -140,11 +129,7 @@ export class MusicComponent {
 
       divItemBig.append(divPartNum, divPartCov, divPartTit);
 
-<<<<<<< HEAD
 
-=======
-      
->>>>>>> fb15c9123a9d931784749d5c369db149fbe59305
       var divItemArt = document.createElement("Div");
       this.createDivWithParagraph(divItemArt, track.Artist, "item", "artist");
 
@@ -159,11 +144,6 @@ export class MusicComponent {
 
     }
   }
-<<<<<<< HEAD
-
-=======
-  
->>>>>>> fb15c9123a9d931784749d5c369db149fbe59305
 
   ngOnInit(){
     // this.createCards();
@@ -172,7 +152,10 @@ export class MusicComponent {
     const endTimer = (<HTMLParagraphElement>document.getElementById('end-timer'))
     const progress = (<HTMLDivElement>document.getElementById('progress'))
     const bar = (<HTMLDivElement>document.getElementById('bar'))
-    
+
+    this.playSongFromDB("6");
+
+
     audio.addEventListener('timeupdate', () => {
       const minutes = Math.floor(audio.currentTime / 60);
       const seconds = Math.floor(audio.currentTime % 60);

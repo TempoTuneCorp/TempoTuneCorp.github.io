@@ -145,19 +145,17 @@ namespace TempoTuneAPI.Controllers
             return testTrack;
         }
 
-        [HttpGet]
+        [HttpGet("GetFilesFromTrack")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public byte[] GetFilesFromTracks(int id)
+        public byte[] GetFilesFromTrack(int id)
         {
             var track = _context.Tracks.FindAsync(id);
             string path = Environment.CurrentDirectory + ("/Songs/") + id + ".mp3";
 
             //converting Track file into bytes array
-            byte[] audiobyte = System.IO.File.ReadAllBytes(path);
-
-
+            byte[] audiobyte  = System.IO.File.ReadAllBytes(path);
             return audiobyte;
 
 
