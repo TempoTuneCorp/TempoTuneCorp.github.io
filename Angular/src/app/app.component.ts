@@ -13,8 +13,8 @@ export class AppComponent{
   showNavbar: boolean = true;
 
   constructor(private router: Router) {
-    this.router.navigate(['/favourites'])
 
+    this.router.navigate(['/profile'])
 
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
