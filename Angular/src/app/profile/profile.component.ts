@@ -10,7 +10,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs/internal/Observable';
 
 
-
+class ImageSnippet{
+  constructor(public src:string, public file: File) {}
+}
 
 
 @Component({
@@ -24,11 +26,11 @@ export class ProfileComponent implements OnInit{
   updateUsernameForm: FormGroup;
   updateEmailForm: FormGroup;
  
-  selectedFile: File | any;
+  selectedFile: ImageSnippet | any;
 
   public username:string = "";
   public email:string = "";
-  public id:any;
+  public id:string ="";
 
   file: string = '';
 
@@ -53,43 +55,68 @@ export class ProfileComponent implements OnInit{
 
   }
 
+
+// processFile(imageInput:any) {
+//   const file: File = imageInput.files[0];
+//   const reader = new FileReader();
+//   const id = this.id;
+//   reader.addEventListener('load', (event:any)=>{
+//     this.selectedFile = new ImageSnippet(event.target.result, file);
+
+//     this.user.uploadProfilePicture(this.selectedFile, id).subscribe(
+//       (res) => {
+        
+//       },
+//       (err) => {
+      
+//       }
+//     )
+//   })
+//   reader.readAsDataURL(file);
+// }
+
   onFileSelected(event: any) {
-    const file: File = event.target.files[0]; // Get the selected file
+    const file: File = event.target.files[0];
+    
     const id = this.id; 
-    console.log(file);
+    
     console.log(id);
-    if (file) {
-      this.user.uploadProfilePicture(file, id).subscribe(
-        response => {
-          // Handle successful response
-          console.log('Profile picture uploaded successfully:', response);
+    console.log(file);
+    if (file) 
+    {
+      this.user.uploadProfilePicture(file, "23")
+      .subscribe({
+
+        next:(res)=>{
+          console.log(file, id)
+          this.toast.success({detail:"Success", summary:"uploaded picture succesfully", duration: 5000});
         },
-        error => {
-          // Handle error
-          console.error('Error uploading profile picture:', error);
+        error:(err)=>{
+          this.toast.error({detail:"Error", summary: "oops", duration: 5000});
         }
-      );
+      })
+      
     }
   }
 
 
-  onSubmit(): void {
-    if (this.selectedFile) {
-      const formData = new FormData();
-      formData.append('file', this.selectedFile);
+  // onSubmit(): void {
+  //   if (this.selectedFile) {
+  //     const formData = new FormData();
+  //     formData.append('file', this.selectedFile);
 
-      this.http.post<any>('api/uploadProfilePicture', formData).subscribe(
-        (response) => {
-          console.log('File uploaded successfully.', response);
-          // Perform any additional actions after successful upload
-        },
-        (error) => {
-          console.error('Error uploading file:', error);
-          // Handle error
-        }
-      );
-    }
-  }
+  //     this.http.post<any>('api/uploadProfilePicture', formData).subscribe(
+  //       (response) => {
+  //         console.log('File uploaded successfully.', response);
+  //         // Perform any additional actions after successful upload
+  //       },
+  //       (error) => {
+  //         console.error('Error uploading file:', error);
+  //         // Handle error
+  //       }
+  //     );
+  //   }
+  // }
 
   // onFileSelected(files: FileList): void {
   //   this.selectedFile = files.item(0);
