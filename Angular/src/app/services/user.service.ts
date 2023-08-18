@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -12,6 +12,7 @@ export class UserService {
 
   private username$ = new BehaviorSubject<string>("");  
   private email$ = new BehaviorSubject<string>("");
+  private id$ = new BehaviorSubject<number>(0);
 
   constructor(private http : HttpClient, private auth:AuthService) { }
 
@@ -23,6 +24,14 @@ export class UserService {
     this.username$.next(username);
   }
 
+  public getUserId(){
+    return this.id$.asObservable();
+  }
+
+  public setUserId(id: any){
+    this.id$.next(id);
+  }
+
   public getEmail(){
     return this.email$.asObservable();
   }
@@ -31,17 +40,41 @@ export class UserService {
     this.email$.next(email);
   }
 
-  // public updateUsername(userId: number, userObj: string){
-  //   return this.http.post<any>(`${this.baseUrl}update/{id}`,userId)
+  updateUsername(userObj: any): Observable<any>{
+    return this.http.put<any>(`${this.baseUrl}updateUsername`, userObj);
+  }
+
+  updateEmail(userObj: any): Observable<any>{
+    return this.http.put<any>(`${this.baseUrl}updateEmail`, userObj);
+  }
+
+  deleteUser(id: any): Observable<any>{
+    const params = new HttpParams().set('id', id);
+    const options = {
+      params: params
+    };
+    return this.http.delete<any>(`${this.baseUrl}deleteUser`, options);
+  }
+
+  // uploadProfilePicture(file: File, id: number): Observable<any>{
+  //   const params = new HttpParams().set('file', file).set('id', id);
+  //   const options = {
+  //     params: params
+  //   };
+  //   return this.http.post<any>(`${this.baseUrl}uploadPicture`, options);
   // }
 
-  updateUsername(userObj: any): Observable<any>{
-    // const useridtoint = parseInt(userId);
-    // const updateUser = {useridtoint, username};
-    // console.log(typeof useridtoint);
-    // console.log(useridtoint);
-    console.log(userObj);
-    return this.http.put<any>(`${this.baseUrl}update`, userObj);
+  uploadProfilePicture(file: File, id:string): Observable<any>{
+    const formData = new FormData();
+
+    formData.append('file', file);
+    formData.append('id', id);
+    console.log(id.toString());
+    console.log(typeof(id));
+    console.log(formData);
+    return this.http.post<any>(`${this.baseUrl}uploadPicture`, formData);
 
   }
+  
+
 }

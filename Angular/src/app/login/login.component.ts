@@ -41,12 +41,13 @@ export class LoginComponent {
           this.loginForm.reset();
           this.auth.storeToken(res.token)
           const tokenPayload = this.auth.decodedToken();
+          
           this.user.setUsername(tokenPayload.unique_name);
           this.user.setEmail(tokenPayload.email);
           this.router.navigate(['main'])
         },
-        error:()=>{
-          this.toast.error({detail:"Error", summary:"Failed to login", duration: 3000});
+        error:(err)=>{
+          this.toast.error({detail:"Error", summary:err?.error.message, duration: 3000});
           // alert(err?.error.message)
         }
       })

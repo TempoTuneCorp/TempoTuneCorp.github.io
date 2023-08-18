@@ -6,9 +6,10 @@ import { MainComponent } from './main/main.component';
 import { MusicComponent } from './music/music.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
-
 import { LogoComponent } from './logo/logo.component';
-
+import { AboutComponent } from './about/about.component';
+import { MiniGameComponent } from './mini-game/mini-game.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,18 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+  },
+  {
+    path: 'about',
+    component: AboutComponent,
+  },
+  {
+    path: 'mini-game',
+    component: MiniGameComponent,
+  },
+  {
+    path: 'favourites',
+    component: FavoritesComponent,
   }
   ];
 

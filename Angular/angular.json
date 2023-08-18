@@ -32,7 +32,10 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/JavaAbout.js",
+              "src/assets/JavaMini.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -95,9 +98,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/cropperjs/dist/cropper.css"
             ],
-            "scripts": []
+            "scripts": ["node_modules/cropperjs/dist/cropper.js"]
           }
         }
       }

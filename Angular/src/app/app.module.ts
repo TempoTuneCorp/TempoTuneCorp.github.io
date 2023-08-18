@@ -12,11 +12,20 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './main/main.component';
 import { MusicComponent } from './music/music.component';
 import { ProfileComponent } from './profile/profile.component';
+import { FormsModule } from '@angular/forms';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import {NgToastModule} from 'ng-angular-popup';
+import { AboutComponent } from './about/about.component';
 import { TokenInterceptor } from './Interceptors/token.interceptor';
-import { FormsModule } from '@angular/forms';
+import { MiniGameComponent } from './mini-game/mini-game.component';
+
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatIcon, MatIconModule} from '@angular/material/icon';
+import { ImageCropperComponent } from './image-cropper/image-cropper.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+
+
 
 @NgModule({
   declarations: [
@@ -28,8 +37,12 @@ import { FormsModule } from '@angular/forms';
     MainComponent,
     MusicComponent,
     ProfileComponent,
-    NavbarComponent
-    
+    NavbarComponent,
+    AboutComponent,
+    MiniGameComponent,
+    ImageCropperComponent,
+    FavoritesComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -37,13 +50,16 @@ import { FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     HttpClientModule,
     NgToastModule,
-    FormsModule
+    FormsModule,
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule {}
