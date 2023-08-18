@@ -12,10 +12,9 @@ export class AppComponent{
   title = 'TempoTune';
   showNavbar: boolean = true;
 
-
-
   constructor(private router: Router) {
     this.router.navigate(['/favourites'])
+
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
         if (val.url == '/login' || val.url == '/register' || val.url == '/') {
