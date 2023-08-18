@@ -5,7 +5,15 @@
   position: relative;
   left: 50%;
   top: 18%;
-  height: 25%; /* Firefox */ /* IE 9 */ /* Safari and Chrome*/ /* Opera */
+  height: 25%;
+  /* Firefox */
+  /* IE 9 */
+  -webkit-transform: translate(-50%, -50%);
+  /* Safari and Chrome*/
+  /* Opera */
   transform: translate(-50%, -50%);
-  align-self: center;
-}/*# sourceMappingURL=logo.component.css.map */
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+/*# sourceMappingURL=logo.component.css.map */

@@ -40,6 +40,7 @@
 #chr1spells {
   position: absolute;
   width: 30%;
+  display: -ms-grid;
   display: grid;
   grid-auto-flow: column;
 }
@@ -48,6 +49,7 @@
   position: absolute;
   width: 30%;
   left: 30%;
+  display: -ms-grid;
   display: grid;
   grid-auto-flow: column;
 }
@@ -56,6 +58,7 @@
   position: absolute;
   width: 30%;
   left: 60%;
+  display: -ms-grid;
   display: grid;
   grid-auto-flow: column;
 }
@@ -64,4 +67,5 @@
   position: relative;
   width: 100%;
   height: 100%;
-}/*# sourceMappingURL=mini-game.component.css.map */
+}
+/*# sourceMappingURL=mini-game.component.css.map */

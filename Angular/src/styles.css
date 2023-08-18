@@ -6,9 +6,11 @@
   --musicplayer-background: rgba(45, 40, 62, 0.7);
   --white-text-color: rgb(243, 243, 245);
   --hover-grey-color: rgb(76, 73, 93, 0.8);
-  --top-text-color: rgb(158, 156, 173) ;
+  --top-text-color: rgb(158, 156, 173)
+;
 }
 
 * {
   margin: 0;
-}/*# sourceMappingURL=styles.css.map */
+}
+/*# sourceMappingURL=styles.css.map */

@@ -11,7 +11,7 @@
   font-style: bold;
   z-index: 10;
   text-align: center;
-  color: rgb(37, 32, 105);
+  color: #252069;
 }
 
 .NavbarDiv {
@@ -21,9 +21,10 @@
   width: 99%;
   top: 10px;
   left: 50%;
-  transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
   height: 70px;
-  background-color: rgb(71, 171, 252);
+  background-color: #47abfc;
 }
 
 .Topnav .icon {
@@ -47,7 +48,8 @@
   position: absolute;
   top: 50%;
   height: 20px;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   border: 0;
   cursor: pointer;
 }
@@ -56,10 +58,12 @@
   background-color: transparent;
   border: 0;
   height: 100%;
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   left: 30%;
-  transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
   margin: 0;
   padding: 0%;
   position: absolute;
@@ -69,10 +73,12 @@
   background-color: transparent;
   border: 0;
   height: 100%;
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   position: absolute;
 }
+
 .profilebutton img {
   border-radius: 50%;
 }
@@ -80,9 +86,12 @@
 .profilebuttonText {
   background-color: transparent;
   border: 0;
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   height: 100%;
   left: 40px;
   margin: 0;
@@ -97,12 +106,15 @@
   left: 0;
   right: 100%;
   bottom: 15px;
-  background: rgb(226, 213, 26);
+  background: #e2d51a;
   height: 3px;
   border-radius: 10px;
+  -webkit-transition-property: left right;
   transition-property: left right;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-out;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+          transition-timing-function: ease-out;
 }
 
 .profilebuttonText:hover:after,
@@ -114,12 +126,16 @@
 .FavoritebuttonText {
   background-color: transparent;
   border: 0;
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   height: 100%;
   left: 50%;
-  transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
   margin: 0;
   padding: 0px 10px 0px 10px;
   position: absolute;
@@ -132,12 +148,15 @@
   left: 0;
   right: 100%;
   bottom: 15px;
-  background: rgb(226, 213, 26);
+  background: #e2d51a;
   height: 3px;
   border-radius: 10px;
+  -webkit-transition-property: left right;
   transition-property: left right;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-out;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+          transition-timing-function: ease-out;
 }
 
 .FavoritebuttonText:hover:after,
@@ -149,12 +168,16 @@
 .AboutbuttonText {
   background-color: transparent;
   border: 0;
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   height: 100%;
   left: 70%;
-  transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
   margin: 0;
   padding: 0px 10px 0px 10px;
   position: absolute;
@@ -167,12 +190,15 @@
   left: 0;
   right: 100%;
   bottom: 15px;
-  background: rgb(226, 213, 26);
+  background: #e2d51a;
   height: 3px;
   border-radius: 10px;
+  -webkit-transition-property: left right;
   transition-property: left right;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-out;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+          transition-timing-function: ease-out;
 }
 
 .AboutbuttonText:hover:after,
@@ -184,9 +210,12 @@
 .LogoutbuttonText {
   background-color: transparent;
   border: 0;
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   height: 100%;
   right: 5%;
   float: right;
@@ -203,11 +232,14 @@
   right: 100%;
   bottom: 15px;
   border-radius: 10px;
-  background: rgb(226, 213, 26);
+  background: #e2d51a;
   height: 3px;
+  -webkit-transition-property: left right;
   transition-property: left right;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-out;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+          transition-timing-function: ease-out;
 }
 
 .LogoutbuttonText:hover:after,
@@ -222,8 +254,11 @@
   position: absolute;
   top: 50%;
   height: 80%;
-  transform: translate(-50%, -50%);
-  align-self: center;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   border: 0;
   cursor: pointer;
 }
@@ -243,46 +278,63 @@
   .profile-nav-container {
     position: relative;
     left: 50%;
-    transform: translate(-50%, 0%);
+    -webkit-transform: translate(-50%, 0%);
+            transform: translate(-50%, 0%);
+    width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
-    align-self: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
   }
   .profilebuttonText {
     left: 50%;
-    transform: translate(-50%, 0%);
+    -webkit-transform: translate(-50%, 0%);
+            transform: translate(-50%, 0%);
   }
   .nav-list {
-    transform: translateY(-500%);
-    transition: 0s;
-    justify-content: center;
+    -webkit-transform: translateY(-500%);
+            transform: translateY(-500%);
+    -webkit-transition: .0s;
+    transition: .0s;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   .nabar-toggler {
+    display: -ms-grid !important;
     display: grid !important;
   }
   .AboutbuttonText {
     width: 100%;
     left: 50%;
-    transform: translate(-50%, 0%);
+    -webkit-transform: translate(-50%, 0%);
+            transform: translate(-50%, 0%);
     position: relative;
   }
   .LogoutbuttonText {
-    align-content: center;
+    -ms-flex-line-pack: center;
+        align-content: center;
     width: 100%;
     left: 50%;
-    transform: translate(-50%, 0%);
+    -webkit-transform: translate(-50%, 0%);
+            transform: translate(-50%, 0%);
   }
   .FavoritebuttonText {
     position: relative;
   }
 }
+
 .nav-toggler-container {
   width: 50px;
   height: 45px;
   position: absolute;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   top: 50%;
-  transform: translate(0%, -50%);
+  -webkit-transform: translate(0%, -50%);
+          transform: translate(0%, -50%);
   right: 30px;
   cursor: pointer;
 }
@@ -290,12 +342,15 @@
 .nabar-toggler {
   display: none;
   position: relative;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
   height: 100%;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   cursor: pointer;
 }
 
@@ -305,7 +360,8 @@
   margin-bottom: 10px;
   background-color: white;
   border-radius: 20px;
-  transition: 0.4s;
+  -webkit-transition: .4s;
+  transition: .4s;
   pointer-events: none;
 }
 
@@ -322,18 +378,23 @@ input {
 }
 
 input:checked ~ * .nav-list {
-  transform: translate(-50%, 33%);
+  -webkit-transform: translate(-50%, 33%);
+          transform: translate(-50%, 33%);
   padding: 0%;
-  transition: 0s;
+  -webkit-transition: .0s;
+  transition: .0s;
   position: fixed;
   left: 50%;
   top: 0%;
   width: 99.5%;
   height: 300%;
-  align-items: end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  display: -ms-grid;
   display: grid;
   z-index: 1000;
-  background-color: rgb(71, 171, 252);
+  background-color: #47abfc;
   border-radius: 10px;
   border-width: 2px;
   border-top-style: groove;
@@ -344,7 +405,8 @@ input:checked ~ * .nabar-toggler .bar:nth-child(1) {
   position: absolute;
   top: 14px;
   left: 6px;
-  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
 
 input:checked ~ * .nabar-toggler .bar:nth-child(2) {
@@ -355,5 +417,7 @@ input:checked ~ * .nabar-toggler .bar:nth-child(3) {
   position: absolute;
   top: 18px;
   left: 6px;
-  transform: rotate(-45deg);
-}/*# sourceMappingURL=navbar.component.css.map */
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+/*# sourceMappingURL=navbar.component.css.map */
