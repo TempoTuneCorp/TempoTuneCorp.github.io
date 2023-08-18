@@ -1725,7 +1725,6 @@ C:\Users\rms\Desktop\newTempo\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6
 C:\Users\rms\Desktop\newTempo\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\Microsoft.Extensions.Diagnostics.HealthChecks.dll
 C:\Users\rms\Desktop\newTempo\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
 C:\Users\rms\Desktop\newTempo\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\xunit.assert.dll
-<<<<<<< HEAD
 C:\Users\ojs\Desktop\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\Jaeger.Thrift.dll
 C:\Users\ojs\Desktop\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\Jaeger.Thrift.VendoredThrift.dll
 C:\Users\ojs\Desktop\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\MassTransit.dll
@@ -1733,7 +1732,6 @@ C:\Users\ojs\Desktop\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\MassTr
 C:\Users\ojs\Desktop\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\Microsoft.Extensions.Diagnostics.HealthChecks.dll
 C:\Users\ojs\Desktop\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
 C:\Users\ojs\Desktop\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\xunit.assert.dll
-=======
 C:\Users\rjn\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\Jaeger.Thrift.dll
 C:\Users\rjn\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\Jaeger.Thrift.VendoredThrift.dll
 C:\Users\rjn\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\MassTransit.dll
