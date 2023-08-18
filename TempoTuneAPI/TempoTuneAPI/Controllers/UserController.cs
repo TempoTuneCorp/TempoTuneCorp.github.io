@@ -273,9 +273,11 @@ namespace TempoTuneAPI.Controllers
             return Ok(await _context.Users.ToListAsync());
         }
 
+        
         [HttpPost("uploadPicture")]
         public async Task<IActionResult> UploadPicture(IFormFile file, int id)
         {
+
             // Perform validation on the file size, type, etc.
 
             // Generate a unique filename or use the user's ID
@@ -292,22 +294,26 @@ namespace TempoTuneAPI.Controllers
 
             // Update the user's profile with the file path or URL in the database
 
+            //var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+            //user.profilePictureURL = file.FileName;
+
             // Return a response with the file path or URL
-            System.Diagnostics.Debug.Print("##################\n" + filePath+ "\n###############");
+            System.Diagnostics.Debug.Print("##################\n" + filePath+ "\n##################");
             return Ok(new { FilePath = filePath });
-            
+
         }
 
 
-        //[HttpPost]
-        //[ProducesResponseType(StatusCodes.Status201Created)]
-        //public async Task<IActionResult> Create(User user)
-        //{
-        //    await context.Users.AddAsync(user);
-        //    await context.SaveChangesAsync();
 
-        //    return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
-        //}
+            //[HttpPost]
+            //[ProducesResponseType(StatusCodes.Status201Created)]
+            //public async Task<IActionResult> Create(User user)
+            //{
+            //    await context.Users.AddAsync(user);
+            //    await context.SaveChangesAsync();
 
-    }
+            //    return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
+            //}
+
+        }
 }

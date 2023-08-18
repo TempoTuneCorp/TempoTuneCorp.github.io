@@ -77,6 +77,13 @@
     background-size: cover;
     background-position: center;
 
+    .placeholder-image{
+        border-radius:50%;
+        width: 100%;
+        height: 100%;
+        
+    }
+
     .pic{
         position:absolute;
         display:flex;
@@ -132,6 +139,7 @@
         color:white;
         font-size: 30px;
         position:relative;
+
     }
 
     .profile-info-card{

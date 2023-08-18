@@ -15,7 +15,9 @@ export class AppComponent{
 
 
   constructor(private router: Router) {
-    this.router.navigate(['/favourites'])
+
+    this.router.navigate(['/profile'])
+
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
         if (val.url == '/login' || val.url == '/register' || val.url == '/') {
