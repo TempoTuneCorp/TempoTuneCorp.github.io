@@ -12,7 +12,7 @@ export class UserService {
 
   private username$ = new BehaviorSubject<string>("");  
   private email$ = new BehaviorSubject<string>("");
-  private id$ = new BehaviorSubject<number> (0);
+  private id$ = new BehaviorSubject<number>(0);
 
   constructor(private http : HttpClient, private auth:AuthService) { }
 
@@ -56,14 +56,25 @@ export class UserService {
     return this.http.delete<any>(`${this.baseUrl}deleteUser`, options);
   }
 
-  uploadProfilePicture(file: File, id: any): Observable<any>{
-    const params = new HttpParams().set('file', file.name).set('id', id);
-    const options = {
-      params: params
-    };
-    return this.http.post<any>(`${this.baseUrl}uploadPicture`, options);
-  }
+  // uploadProfilePicture(file: File, id: number): Observable<any>{
+  //   const params = new HttpParams().set('file', file).set('id', id);
+  //   const options = {
+  //     params: params
+  //   };
+  //   return this.http.post<any>(`${this.baseUrl}uploadPicture`, options);
+  // }
 
+  uploadProfilePicture(file: File, id:string): Observable<any>{
+    const formData = new FormData();
+
+    formData.append('file', file);
+    formData.append('id', id);
+    console.log(id.toString());
+    console.log(typeof(id));
+    console.log(formData);
+    return this.http.post<any>(`${this.baseUrl}uploadPicture`, formData);
+
+  }
   
 
 }
