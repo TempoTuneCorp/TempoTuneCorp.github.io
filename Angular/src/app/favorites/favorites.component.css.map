@@ -1,5 +1,1 @@
-
-{"version":3,"sources":["favorites.component.scss","favorites.component.css"],"names":[],"mappings":"AAAA;EACE,UAAA;EACA,OAAA;EACA,WAAA;EACA,WAAA;EACA,kBAAA;EACA,gBAAA;ACCF;;ADGA;EACE,UAAA;EACA,kBAAA;EACA,kBAAA;EACA,OAAA;EACA,eAAA;EACA,iBAAA;EACA,YAAA;ACAF","file":"favorites.component.css"}
-
 {"version":3,"sources":["favorites.component.scss","favorites.component.css"],"names":[],"mappings":"AAAA;EACE,YAAA;EACA,eAAA;EACA,kBAAA;EACA,SAAA;EACA,8BAAA;EACA,SAAA;EACA,YAAA;ACCF","file":"favorites.component.css"}
-

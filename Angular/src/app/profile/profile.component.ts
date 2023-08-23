@@ -26,13 +26,15 @@ export class ProfileComponent implements OnInit{
   updateUsernameForm: FormGroup;
   updateEmailForm: FormGroup;
  
-  selectedFile: ImageSnippet | any;
+  selectedFile: File | null=null;
 
   public username:string = "";
   public email:string = "";
   public id:string ="";
+  public pictureUrl: string ="";
 
-  file: string = '';
+
+
 
   editUsernameMode: boolean = false;
   editEmailMode: boolean = false;
@@ -55,112 +57,26 @@ export class ProfileComponent implements OnInit{
 
   }
 
-
-// processFile(imageInput:any) {
-//   const file: File = imageInput.files[0];
-//   const reader = new FileReader();
-//   const id = this.id;
-//   reader.addEventListener('load', (event:any)=>{
-//     this.selectedFile = new ImageSnippet(event.target.result, file);
-
-//     this.user.uploadProfilePicture(this.selectedFile, id).subscribe(
-//       (res) => {
-        
-//       },
-//       (err) => {
-      
-//       }
-//     )
-//   })
-//   reader.readAsDataURL(file);
-// }
-
   onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    
-    const id = this.id; 
-    
-    console.log(id);
-    console.log(file);
-    if (file) 
-    {
-      this.user.uploadProfilePicture(file, "23")
-      .subscribe({
+    this.selectedFile = event.target.files[0] as File;
+    console.log(this.selectedFile)
 
-        next:(res)=>{
-          console.log(file, id)
-          this.toast.success({detail:"Success", summary:"uploaded picture succesfully", duration: 5000});
+    if (this.selectedFile) {
+      console.log(this.id)
+      this.user.uploadProfilePicture(this.id, this.selectedFile).subscribe({
+        next:(res)=> {
+          
+          console.log(this.pictureUrl);
+          this.toast.success({detail:"Success", summary:('Image uploaded successfully'), duration: 3000});
         },
         error:(err)=>{
-          this.toast.error({detail:"Error", summary: "oops", duration: 5000});
+          console.log(err);
+          this.toast.error({detail:"Error", summary:err?.error.message, duration: 3000});
         }
-      })
-      
-    }
+    });
   }
+}
 
-
-  // onSubmit(): void {
-  //   if (this.selectedFile) {
-  //     const formData = new FormData();
-  //     formData.append('file', this.selectedFile);
-
-  //     this.http.post<any>('api/uploadProfilePicture', formData).subscribe(
-  //       (response) => {
-  //         console.log('File uploaded successfully.', response);
-  //         // Perform any additional actions after successful upload
-  //       },
-  //       (error) => {
-  //         console.error('Error uploading file:', error);
-  //         // Handle error
-  //       }
-  //     );
-  //   }
-  // }
-
-  // onFileSelected(files: FileList): void {
-  //   this.selectedFile = files.item(0);
-
-  // uploadPicture(){
-    
-  // }
-
-//   onFileChange(event: any) {
-//     const files = event.target.files as FileList;
-
-//     if (files.length > 0) {
-//       const _file = URL.createObjectURL(files[0]);
-//       this.file = _file;
-//       this.resetInput();
-//       this.openAvatarEditor(_file)
-//       .subscribe(
-//         (result: string) => {
-//           if(result){
-//             this.file = result;
-//           }
-//         }  
-//       )
-//     }
-//  }
-
-//  openAvatarEditor(image: string): Observable<any> {
-//   const dialogRef = this.dialog.open(ImageCropperComponent, {
-//     maxWidth: '80px',
-//     maxHeight: '80px',
-//     data: image,
-    
-//   });
-
-//   return dialogRef.afterClosed();
-// }
- 
-
-//  resetInput(){
-//   const input = document.getElementById('profile-picture-input-file') as HTMLInputElement;
-//   if(input){
-//     input.value = "";
-//   }
-// }
 
   enableEditUsername(){
     this.editUsernameMode = true;
@@ -271,7 +187,11 @@ export class ProfileComponent implements OnInit{
       let idFromToken = this.auth.getUserIdFromToken();
       this.id = val || idFromToken;
     })
-  
+
+    this.user.getPictureUrl(this.id).subscribe ( val=> {
+      console.log(val);
+      this.pictureUrl = val;
+    })
   }
 }
 

@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -56,24 +56,20 @@ export class UserService {
     return this.http.delete<any>(`${this.baseUrl}deleteUser`, options);
   }
 
-  // uploadProfilePicture(file: File, id: number): Observable<any>{
-  //   const params = new HttpParams().set('file', file).set('id', id);
-  //   const options = {
-  //     params: params
-  //   };
-  //   return this.http.post<any>(`${this.baseUrl}uploadPicture`, options);
-  // }
+  getUserById(id: any): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}getById`, id);
+  }
 
-  uploadProfilePicture(file: File, id:string): Observable<any>{
+  uploadProfilePicture(id: any, file: File): Observable<any>{
     const formData = new FormData();
-
     formData.append('file', file);
-    formData.append('id', id);
-    console.log(id.toString());
-    console.log(typeof(id));
+    
     console.log(formData);
-    return this.http.post<any>(`${this.baseUrl}uploadPicture`, formData);
+    return this.http.post<any>(`${this.baseUrl}uploadPicture/${id}`, formData);
+  }
 
+  getPictureUrl(id: any): Observable<string>{
+    return this.http.get<string>(`${this.baseUrl}getPictureUrl/${id}`);
   }
   
 

@@ -93,11 +93,6 @@ namespace TempoTuneAPI.Controllers
 
         }
 
-
-
-
-    
-
         [HttpGet("id")]
         [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -109,11 +104,7 @@ namespace TempoTuneAPI.Controllers
                 return NotFound();
             }
             return Ok(user);
-
         }
-
-
-
 
         [HttpPut("updateUsername")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -239,7 +230,6 @@ namespace TempoTuneAPI.Controllers
             
         }
 
-
         private string CreateJwt(User user)
         {
             var jwtTokenHandler = new JwtSecurityTokenHandler();
@@ -274,46 +264,52 @@ namespace TempoTuneAPI.Controllers
         }
 
         
-        [HttpPost("uploadPicture")]
+        [HttpPost("uploadPicture/{id}")]
         public async Task<IActionResult> UploadPicture(IFormFile file, int id)
         {
-
             // Perform validation on the file size, type, etc.
+            if (file == null || file.Length <= 0)
+                return BadRequest(new { Message = "choose a file to upload" });
 
-            // Generate a unique filename or use the user's ID
-            var fileExtension = Path.GetExtension(file.FileName);
+            User user = await _context.Users.FindAsync(id);
             
-            var fileName = $"{id}{fileExtension}";
+            //var fileExtension = Path.GetExtension(file.FileName);
+            string fileName = $"{id}_{file.FileName}";
 
             // Save the file to the file server
-            var filePath = Path.Combine("C:\\Users\\rjn\\Desktop\\profilepicture", fileName);
+            //var filePath = Path.Combine(@"C:\Users\rjn\Desktop\profilepicture\", fileName);
+            var filePath = Path.Combine(@"http://192.168.23.122/ProfilePicture/", fileName);
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await file.CopyToAsync(stream);
             }
 
-            // Update the user's profile with the file path or URL in the database
+            // Update the user table with pictureURL
+ 
+            if (user.profilePictureURL == null)
+            {
+                user.profilePictureURL = filePath;
+            }               
 
-            //var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
-            //user.profilePictureURL = file.FileName;
+            else
+            {
+                user.profilePictureURL = filePath;
+                _context.Entry(user).State = EntityState.Modified;
+            }
+             
+            await _context.SaveChangesAsync();
 
             // Return a response with the file path or URL
             System.Diagnostics.Debug.Print("##################\n" + filePath+ "\n##################");
-            return Ok(new { FilePath = filePath });
-
+            return Ok(new { FilePath = filePath});
         }
 
-
-
-            //[HttpPost]
-            //[ProducesResponseType(StatusCodes.Status201Created)]
-            //public async Task<IActionResult> Create(User user)
-            //{
-            //    await context.Users.AddAsync(user);
-            //    await context.SaveChangesAsync();
-
-            //    return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
-            //}
-
+        [HttpGet("getPictureUrl/{id}")]
+        public async Task<IActionResult> GetPictureUrl(int id)
+        {
+            User user = await _context.Users.FindAsync(id);
+            string pictureUrl = user.profilePictureURL;
+            return Ok(pictureUrl);
         }
+    }
 }
