@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs/internal/Observable';
 
 
+
 class ImageSnippet{
   constructor(public src:string, public file: File) {}
 }
@@ -31,10 +32,8 @@ export class ProfileComponent implements OnInit{
   public username:string = "";
   public email:string = "";
   public id:string ="";
-  public pictureUrl: string ="";
-
-
-
+  // public pictureUrl: string ="";
+  public image: string ="";
 
   editUsernameMode: boolean = false;
   editEmailMode: boolean = false;
@@ -63,10 +62,24 @@ export class ProfileComponent implements OnInit{
 
     if (this.selectedFile) {
       console.log(this.id)
-      this.user.uploadProfilePicture(this.id, this.selectedFile).subscribe({
+      this.user.uploadProfilePicture(this.selectedFile, this.id).subscribe({
         next:(res)=> {
           
-          console.log(this.pictureUrl);
+          this.user.getPictureUrl(this.id).subscribe({
+            next: (base64Data:string) => { 
+              this.image = 'data:image;base64,' + base64Data;
+              this.user.setProfilePicture(this.image);
+              
+
+              // const reader = new FileReader();
+              // this.image = base64Data;
+              // reader.readAsDataURL(new Blob([this.image]));
+              // console.log(base64Data);
+            
+            console.log(this.image);
+          }})
+              
+          // console.log(res);
           this.toast.success({detail:"Success", summary:('Image uploaded successfully'), duration: 3000});
         },
         error:(err)=>{
@@ -77,6 +90,10 @@ export class ProfileComponent implements OnInit{
   }
 }
 
+clickme()
+{
+  console.log(this.image);
+}
 
   enableEditUsername(){
     this.editUsernameMode = true;
@@ -144,9 +161,6 @@ export class ProfileComponent implements OnInit{
   })
   }
 
-
-
-
   deleteUser(){
     if(confirm('Are you sure u want to delete your user?'))
     {
@@ -188,10 +202,10 @@ export class ProfileComponent implements OnInit{
       this.id = val || idFromToken;
     })
 
-    this.user.getPictureUrl(this.id).subscribe ( val=> {
-      console.log(val);
-      this.pictureUrl = val;
+    this.user.getPictureUrl(this.id).subscribe( val => {
+      this.image = 'data:image;base64,' + val;
     })
+
   }
 }
 
