@@ -14,7 +14,7 @@
 </div>
   <ul class="nav-list">
     <button class="profile-nav-container">
-      <button (click)="onProfileClick()" class="profilebutton"> <img class="profilepic" src="/assets/images/user-profile-icon.jpg" alt=""> </button>
+      <button (click)="onProfileClick()" class="profilebutton"> <img class="profilepic" [src]="image" alt=""> </button>
       <button (click)="onProfileClick()" class="profilebuttonText"> <p class="NavbarText">Profile</p></button>
     </button>
     <button (click)="onFavClick()" class="FavoritebuttonText"> <p class="NavbarText">Favourites</p></button>
