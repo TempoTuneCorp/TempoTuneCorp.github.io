@@ -270,10 +270,10 @@ namespace TempoTuneAPI.Controllers
             User user = await _context.Users.FindAsync(id);
             if (picture != null && picture.Length > 0)
             {
-                if (picture.Length > 200000 * 1024) // Check if the file size is more than 200 KB
+                if (picture.Length > 400 * 1024) // Check if the file size is more than 400 KB
                 {
                     // File size is too large, return a warning
-                    return BadRequest("The profile picture exceeds the maximum allowed size.");
+                    return BadRequest(new { Message = "The picture exceeds the maximum file size of 400KB" });
                 }
 
                 using (var memoryStream = new MemoryStream())
@@ -358,7 +358,7 @@ namespace TempoTuneAPI.Controllers
             //    image = Image.FromStream(ms);
             //}
 
-            return Ok(user.profilePictureURL);
+            return Ok(pictureUrl);
         }
     }
 }

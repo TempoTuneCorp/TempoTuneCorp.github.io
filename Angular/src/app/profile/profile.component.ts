@@ -69,14 +69,7 @@ export class ProfileComponent implements OnInit{
             next: (base64Data:string) => { 
               this.image = 'data:image;base64,' + base64Data;
               this.user.setProfilePicture(this.image);
-              
-
-              // const reader = new FileReader();
-              // this.image = base64Data;
-              // reader.readAsDataURL(new Blob([this.image]));
-              // console.log(base64Data);
             
-            console.log(this.image);
           }})
               
           // console.log(res);
