@@ -8,6 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { ImageCropperComponent } from '../image-cropper/image-cropper.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs/internal/Observable';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 
 
@@ -45,7 +46,8 @@ export class ProfileComponent implements OnInit{
     private toast: NgToastService,
     private router: Router,
     private http: HttpClient,
-    private dialog: MatDialog){
+    private dialog: MatDialog,
+    ){
 
       this.updateUsernameForm = this.formBuilder.group({
         username: ['', Validators.required]
@@ -83,9 +85,8 @@ export class ProfileComponent implements OnInit{
   }
 }
 
-clickme()
-{
-  console.log(this.image);
+onFavClick(){
+  this.router.navigate(['favourites'])
 }
 
   enableEditUsername(){
@@ -195,9 +196,20 @@ clickme()
       this.id = val || idFromToken;
     })
 
-    this.user.getPictureUrl(this.id).subscribe( val => {
-      this.image = 'data:image;base64,' + val;
-    })
+    this.user.getPictureUrl(this.id).subscribe({
+      next: (base64Data:string) => { 
+        this.image = 'data:image;base64,' + base64Data;
+        this.user.setProfilePicture(this.image);
+      
+    }})
+    this.user.getProfilePicture().subscribe (val =>{
+      this.image = val;
+    });
+    // this.user.getProfilePicture().subscribe (val => {
+    //   this.image = 'data:image;base64,'+val;
+    //   console.log(val)
+    // })
+
 
   }
 }
