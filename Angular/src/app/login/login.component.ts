@@ -44,6 +44,12 @@ export class LoginComponent {
           
           this.user.setUsername(tokenPayload.unique_name);
           this.user.setEmail(tokenPayload.email);
+          this.user.setUserId(tokenPayload.id)
+          this.user.getPictureUrl(tokenPayload.id).subscribe({
+            next: (base64Data:string) => { 
+              this.user.setProfilePicture('data:image;base64,' + base64Data);
+            
+          }})
           this.router.navigate(['main'])
         },
         error:(err)=>{

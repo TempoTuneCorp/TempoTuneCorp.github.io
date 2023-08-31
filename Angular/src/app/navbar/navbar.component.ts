@@ -56,9 +56,10 @@ export class NavbarComponent implements OnInit {
       this.id = val || idFromToken;
     })
 
-    this.user.getPictureUrl(this.id).subscribe( val => {
-      this.image = 'data:image;base64,' + val;
-    })
+
+    this.user.getProfilePicture().subscribe(val => {
+    this.image = val;
+   })
   }
 }
 

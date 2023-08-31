@@ -67,6 +67,6 @@ export class AuthService {
   }
   getProfilePictureFromToken(){
     if(this.userPayload)
-    return this.userPayload.picture;
+    return this.userPayload.profilePicture;
   }
 }
