@@ -8,9 +8,13 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { ImageCropperComponent } from '../image-cropper/image-cropper.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs/internal/Observable';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 
 
+class ImageSnippet{
+  constructor(public src:string, public file: File) {}
+}
 
 
 @Component({
@@ -24,11 +28,14 @@ export class ProfileComponent implements OnInit{
   updateUsernameForm: FormGroup;
   updateEmailForm: FormGroup;
 
-  selectedFile: File | any;
+  selectedFile: File | null=null;
+
 
   public username:string = "";
   public email:string = "";
-  public id:any;
+  public id:string ="";
+  // public pictureUrl: string ="";
+  public image: string ="";
 
   file: string = '';
 
@@ -42,7 +49,8 @@ export class ProfileComponent implements OnInit{
     private toast: NgToastService,
     private router: Router,
     private http: HttpClient,
-    private dialog: MatDialog){
+    private dialog: MatDialog,
+    ){
 
       this.updateUsernameForm = this.formBuilder.group({
         username: ['', Validators.required]
@@ -54,23 +62,35 @@ export class ProfileComponent implements OnInit{
   }
 
   onFileSelected(event: any) {
-    const file: File = event.target.files[0]; // Get the selected file
-    const id = this.id;
-    console.log(file);
-    console.log(id);
-    if (file) {
-      this.user.uploadProfilePicture(file, id).subscribe(
-        response => {
-          // Handle successful response
-          console.log('Profile picture uploaded successfully:', response);
+    this.selectedFile = event.target.files[0] as File;
+    console.log(this.selectedFile)
+
+    if (this.selectedFile) {
+      console.log(this.id)
+      this.user.uploadProfilePicture(this.selectedFile, this.id).subscribe({
+        next:(res)=> {
+
+          this.user.getPictureUrl(this.id).subscribe({
+            next: (base64Data:string) => {
+              this.image = 'data:image;base64,' + base64Data;
+              this.user.setProfilePicture(this.image);
+
+          }})
+
+          // console.log(res);
+          this.toast.success({detail:"Success", summary:('Image uploaded successfully'), duration: 3000});
         },
-        error => {
-          // Handle error
-          console.error('Error uploading profile picture:', error);
+        error:(err)=>{
+          console.log(err);
+          this.toast.error({detail:"Error", summary:err?.error.message, duration: 3000});
         }
-      );
-    }
+    });
   }
+}
+
+onFavClick(){
+  this.router.navigate(['favourites'])
+}
 
 
   onSubmit(): void {
@@ -201,9 +221,6 @@ export class ProfileComponent implements OnInit{
   })
   }
 
-
-
-
   deleteUser(){
     if(confirm('Are you sure u want to delete your user?'))
     {
@@ -244,6 +261,21 @@ export class ProfileComponent implements OnInit{
       let idFromToken = this.auth.getUserIdFromToken();
       this.id = val || idFromToken;
     })
+
+    this.user.getPictureUrl(this.id).subscribe({
+      next: (base64Data:string) => {
+        this.image = 'data:image;base64,' + base64Data;
+        this.user.setProfilePicture(this.image);
+
+    }})
+    this.user.getProfilePicture().subscribe (val =>{
+      this.image = val;
+    });
+    // this.user.getProfilePicture().subscribe (val => {
+    //   this.image = 'data:image;base64,'+val;
+    //   console.log(val)
+    // })
+
 
   }
 }

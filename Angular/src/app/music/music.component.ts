@@ -145,6 +145,7 @@ export class MusicComponent implements OnInit{
     }
   }
 
+
   ngOnInit(){
     // this.createCards();
     const audio = (<HTMLAudioElement>document.getElementById('player'))

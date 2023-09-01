@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -12,9 +12,18 @@ export class UserService {
 
   private username$ = new BehaviorSubject<string>("");
   private email$ = new BehaviorSubject<string>("");
-  private id$ = new BehaviorSubject<number> (0);
+  private id$ = new BehaviorSubject<number>(0);
+  private profilePicture$ = new BehaviorSubject<string>("");
 
   constructor(private http : HttpClient, private auth:AuthService) { }
+
+  public getProfilePicture(){
+    return this.profilePicture$.asObservable();
+  }
+
+  public setProfilePicture(profilePicture: string){
+    this.profilePicture$.next(profilePicture);
+  }
 
   public getUsername(){
     return this.username$.asObservable();
@@ -56,14 +65,20 @@ export class UserService {
     return this.http.delete<any>(`${this.baseUrl}deleteUser`, options);
   }
 
-  uploadProfilePicture(file: File, id: any): Observable<any>{
-    const params = new HttpParams().set('file', file.name).set('id', id);
-    const options = {
-      params: params
-    };
-    return this.http.post<any>(`${this.baseUrl}uploadPicture`, options);
+  getUserById(id: any): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}getById`, id);
   }
 
+  uploadProfilePicture(picture: File, id:any): Observable<any>{
+    const formData = new FormData();
+    formData.append('picture', picture);
+    return this.http.post<any>(`${this.baseUrl}uploadProfilePicture/${id}`, formData);
+  }
 
+  getPictureUrl(id: any): Observable<string> {
+    return this.http.get(`${this.baseUrl}getPictureUrl/${id}`, {
+      responseType: 'text' // Specify that you expect a text response
+    }) as Observable<string>; // Cast the result to Observable<string>
+  }
 
 }

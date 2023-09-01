@@ -1,4 +1,5 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using System.Drawing;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -37,9 +38,9 @@ namespace TempoTuneAPI.Controllers
             if (user == null)
                 return NotFound(new { Message = "User not found" });
 
-            if(!PasswordHasher.VerifyPassword(userObj.Password, user.Password))
+            if (!PasswordHasher.VerifyPassword(userObj.Password, user.Password))
             {
-                return BadRequest(new {Message = "Password is incorrect"});
+                return BadRequest(new { Message = "Password is incorrect" });
             }
 
 
@@ -56,24 +57,24 @@ namespace TempoTuneAPI.Controllers
         [HttpPost("Register")]
         public async Task<IActionResult> RegisterUser([FromBody] User userObj)
         {
-             if (userObj == null)
+            if (userObj == null)
                 return BadRequest();
-             
-            if (await CheckUserNameAndEmailExistsAsync(userObj.UserName, userObj.Email))               
+
+            if (await CheckUserNameAndEmailExistsAsync(userObj.UserName, userObj.Email))
                 return BadRequest(new { Message = "Username and Email already exists" });
 
-             //Check om username eksisterer
-             if (await CheckUserNameExistsAsync(userObj.UserName))
-                   return BadRequest(new {Message = "Username already exists"});
+            //Check om username eksisterer
+            if (await CheckUserNameExistsAsync(userObj.UserName))
+                return BadRequest(new { Message = "Username already exists" });
 
-             //Check om Email eksisterer
-             if (await CheckEmailExistsAsync(userObj.Email))
-                   return BadRequest(new {Message = "Email already exists"});
+            //Check om Email eksisterer
+            if (await CheckEmailExistsAsync(userObj.Email))
+                return BadRequest(new { Message = "Email already exists" });
 
-                //Check Password Strength
-                var pass = CheckPasswordStrength(userObj.Password);
-             if(!string.IsNullOrEmpty(pass))
-                 return BadRequest(new {Message = pass.ToString()});
+            //Check Password Strength
+            var pass = CheckPasswordStrength(userObj.Password);
+            if (!string.IsNullOrEmpty(pass))
+                return BadRequest(new { Message = pass.ToString() });
 
             if (!isValidEmail(userObj.Email))
                 return BadRequest(new { Message = "Email must be right format: a1@b2.c3" });
@@ -93,11 +94,6 @@ namespace TempoTuneAPI.Controllers
 
         }
 
-
-
-
-    
-
         [HttpGet("id")]
         [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -109,11 +105,7 @@ namespace TempoTuneAPI.Controllers
                 return NotFound();
             }
             return Ok(user);
-
         }
-
-
-
 
         [HttpPut("updateUsername")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -121,14 +113,14 @@ namespace TempoTuneAPI.Controllers
         public async Task<IActionResult> UpdateUsername(User UserObj)
         {
 
-           System.Diagnostics.Debug.Print("##################\n" + UserObj.Id + "\n###############");
+            System.Diagnostics.Debug.Print("##################\n" + UserObj.Id + "\n###############");
 
             //var user = await _context.Users.FindAsync(userObj.Id);
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == UserObj.Id);
             if (user == null)
                 return BadRequest(new { Message = "User not found" });
 
-           
+
 
             if (await CheckUserNameExistsAsync(UserObj.UserName))
                 return BadRequest(new { Message = "Username already exists" });
@@ -140,7 +132,7 @@ namespace TempoTuneAPI.Controllers
             await _context.SaveChangesAsync();
 
             user.Token = CreateJwt(user);
-            
+
             return Ok(new
             {
                 Token = user.Token,
@@ -148,7 +140,7 @@ namespace TempoTuneAPI.Controllers
             });
             //return NoContent();
 
-            
+
         }
 
         [HttpPut("updateEmail")]
@@ -193,11 +185,11 @@ namespace TempoTuneAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Delete(int id)
         {
-            
-            
+
+
             var userToDelete = await _context.Users.FindAsync(id);
             System.Diagnostics.Debug.Print("################\n" + id + "\n################");
-            if (userToDelete == null) return NotFound(new { Message = "User not found" });          
+            if (userToDelete == null) return NotFound(new { Message = "User not found" });
             _context.Users.Remove(userToDelete);
             await _context.SaveChangesAsync();
 
@@ -210,7 +202,7 @@ namespace TempoTuneAPI.Controllers
         }
         private async Task<bool> CheckUserNameExistsAsync(string username)
         {
-            return await _context.Users.AnyAsync(x=>x.UserName == username);
+            return await _context.Users.AnyAsync(x => x.UserName == username);
         }
 
         private async Task<bool> CheckEmailExistsAsync(string email)
@@ -228,17 +220,16 @@ namespace TempoTuneAPI.Controllers
         private string CheckPasswordStrength(string Password)
         {
             StringBuilder sb = new StringBuilder();
-            if(Password.Length < 8)
-               sb.Append("Password must be atleast 8 characters."+Environment.NewLine);
+            if (Password.Length < 8)
+                sb.Append("Password must be atleast 8 characters." + Environment.NewLine);
 
-            if(!(Regex.IsMatch(Password, "[a-z]") && Regex.IsMatch(Password, "[A-Z]") && Regex.IsMatch(Password, "[0-9]")))
-               sb.Append("Password must be Alpha Numeric."+ Environment.NewLine);
-            if (!Regex.IsMatch(Password, "[<,>,!,$,@,$,£,€]"));
-               
-                 return sb.ToString();
-            
+            if (!(Regex.IsMatch(Password, "[a-z]") && Regex.IsMatch(Password, "[A-Z]") && Regex.IsMatch(Password, "[0-9]")))
+                sb.Append("Password must be Alpha Numeric." + Environment.NewLine);
+            if (!Regex.IsMatch(Password, "[<,>,!,$,@,$,£,€]")) ;
+
+            return sb.ToString();
+
         }
-
 
         private string CreateJwt(User user)
         {
@@ -265,7 +256,7 @@ namespace TempoTuneAPI.Controllers
             var token = jwtTokenHandler.CreateToken(tokenDescriptor);
             return jwtTokenHandler.WriteToken(token);
         }
-        
+
 
         [HttpGet]
         public async Task<ActionResult<User>> GetAllUsers()
@@ -273,41 +264,101 @@ namespace TempoTuneAPI.Controllers
             return Ok(await _context.Users.ToListAsync());
         }
 
-        [HttpPost("uploadPicture")]
-        public async Task<IActionResult> UploadPicture(IFormFile file, int id)
+        [HttpPost("uploadProfilePicture/{id}")]
+        public async Task<IActionResult> UploadPicture(IFormFile picture, int id)
         {
-            // Perform validation on the file size, type, etc.
-
-            // Generate a unique filename or use the user's ID
-            var fileExtension = Path.GetExtension(file.FileName);
-            
-            var fileName = $"{id}{fileExtension}";
-
-            // Save the file to the file server
-            var filePath = Path.Combine("C:\\Users\\rjn\\Desktop\\profilepicture", fileName);
-            using (var stream = new FileStream(filePath, FileMode.Create))
+            User user = await _context.Users.FindAsync(id);
+            if (picture != null && picture.Length > 0)
             {
-                await file.CopyToAsync(stream);
+                if (picture.Length > 400 * 1024) // Check if the file size is more than 400 KB
+                {
+                    // File size is too large, return a warning
+                    return BadRequest(new { Message = "The picture exceeds the maximum file size of 400KB" });
+                }
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    await picture.CopyToAsync(memoryStream);
+                    var imageBytes = memoryStream.ToArray();
+
+                    // Convert the image bytes to base64 string
+                    var base64String = Convert.ToBase64String(imageBytes);
+
+                    // Save the base64 string to the database
+                    user.profilePictureURL = base64String;
+                    _context.Entry(user).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
+                }
+
+
+
+                return Ok();
             }
-
-            // Update the user's profile with the file path or URL in the database
-
-            // Return a response with the file path or URL
-            System.Diagnostics.Debug.Print("##################\n" + filePath+ "\n###############");
-            return Ok(new { FilePath = filePath });
-            
+            // No file was provided, return an error
+            return BadRequest("No profile picture file was uploaded.");
         }
 
 
-        //[HttpPost]
-        //[ProducesResponseType(StatusCodes.Status201Created)]
-        //public async Task<IActionResult> Create(User user)
-        //{
-        //    await context.Users.AddAsync(user);
-        //    await context.SaveChangesAsync();
 
-        //    return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
+
+        //[HttpPost("uploadPicture/{id}")]
+        //public async Task<IHttpActionResult> UploadPicture(IFormFile file, int id)
+        //{
+        //    // Perform validation on the file size, type, etc.
+        //    if (file == null || file.Length <= 0)
+        //        return BadRequest(new { Message = "choose a file to upload" });
+
+        //    User user = await _context.Users.FindAsync(id);
+
+        //    //var fileExtension = Path.GetExtension(file.FileName);
+        //    string fileName = $"{id}_{file.FileName}";
+
+        //    // Save the file to the file server
+        //    //var filePath = Path.Combine("\\Users\\rjn\\Desktop\\profilepicture\\", fileName);
+        //    var filePath = $"http://localhost:3000/profilepictures/{fileName}";
+
+        //    using (var stream = new FileStream(filePath, FileMode.Create))
+        //    {
+        //        await file.CopyToAsync(stream);
+        //    }
+
+        //    // Update the user table with pictureURL
+
+        //    if (user.profilePictureURL == null)
+        //    {
+        //        user.profilePictureURL = filePath;
+        //    }               
+
+        //    else
+        //    {
+        //        user.profilePictureURL = filePath;
+        //        _context.Entry(user).State = EntityState.Modified;
+        //    }
+
+        //    await _context.SaveChangesAsync();
+
+        //    // Return a response with the file path or URL
+        //    System.Diagnostics.Debug.Print("##################\n" + filePath+ "\n##################");
+        //    return Ok(filePath);
         //}
 
+        
+        [HttpGet("getPictureUrl/{id}")]
+        public async Task<ActionResult> GetPictureUrl(int id)
+        {
+        User user = await _context.Users.FindAsync(id);
+
+        string pictureUrl = user.profilePictureURL;
+
+            //byte[] bytes = Convert.FromBase64String(pictureUrl);
+
+            //Image image;
+            //using (MemoryStream ms = new MemoryStream(bytes))
+            //{
+            //    image = Image.FromStream(ms);
+            //}
+
+            return Ok(pictureUrl);
+        }
     }
 }

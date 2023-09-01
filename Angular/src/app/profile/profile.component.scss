@@ -77,6 +77,16 @@
     background-size: cover;
     background-position: center;
 
+<<<<<<< HEAD
+=======
+    .placeholder-image{
+        border-radius:50%;
+        width: 100%;
+        height: 100%;
+        
+    }
+
+>>>>>>> 84f087f87cd3d7384d8d37093aaccf936d4c3849
     .pic{
         position:absolute;
         display:flex;
@@ -131,7 +141,7 @@
     h1{
         color:white;
         font-size: 30px;
-
+        position:relative;
 
     }
 

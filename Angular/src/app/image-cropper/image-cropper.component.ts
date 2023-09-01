@@ -3,7 +3,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import Cropper from 'cropperjs';
 
-
 @Component({
   selector: 'app-image-cropper',
   templateUrl: './image-cropper.component.html',
@@ -11,8 +10,9 @@ import Cropper from 'cropperjs';
 })
 export class ImageCropperComponent implements OnInit {
   sanitizedUrl: any;
+  cropper!: Cropper;
   constructor(
-    private cropper: Cropper,
+
     public dialogRef: MatDialogRef<ImageCropperComponent>,
     @Inject(MAT_DIALOG_DATA) public image: string,
     private sanitizer: DomSanitizer
