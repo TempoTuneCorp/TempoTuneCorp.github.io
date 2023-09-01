@@ -153,6 +153,7 @@ namespace TempoTuneAPI.Controllers
         {
             var track = _context.Tracks.FindAsync(id);
             string path = Environment.CurrentDirectory + ("/Songs/") + id + ".mp3";
+            string pat2h = HttpContext.Current.Server.MapPath("");
 
             //converting Track file into bytes array
             byte[] audiobyte  = System.IO.File.ReadAllBytes(path);

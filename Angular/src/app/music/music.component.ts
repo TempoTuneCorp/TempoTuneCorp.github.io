@@ -43,13 +43,13 @@ export class MusicComponent implements OnInit{
 
   playSongFromDB(id: any)
   {
-    var track;
+    var track
     this.songs.getSongByteArray(id).subscribe({
       next:(res)=> {
         track = res;
-        playByteArray(track);
-      }});
 
+      }});
+  playByteArray(track);
     return;
   }
 
@@ -153,7 +153,8 @@ export class MusicComponent implements OnInit{
     const progress = (<HTMLDivElement>document.getElementById('progress'))
     const bar = (<HTMLDivElement>document.getElementById('bar'))
 
-    this.playSongFromDB("6");
+    //this.playSongFromDB("6");
+    this.playSongFromDB(6);
 
 
     audio.addEventListener('timeupdate', () => {
