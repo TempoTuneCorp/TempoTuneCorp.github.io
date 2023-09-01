@@ -72,8 +72,6 @@ export class UserService {
   uploadProfilePicture(picture: File, id:any): Observable<any>{
     const formData = new FormData();
     formData.append('picture', picture);
-    
-    console.log(formData);
     return this.http.post<any>(`${this.baseUrl}uploadProfilePicture/${id}`, formData);
   }
 
