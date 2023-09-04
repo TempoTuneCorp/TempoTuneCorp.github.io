@@ -8,11 +8,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { ImageCropperComponent } from '../image-cropper/image-cropper.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs/internal/Observable';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 
-class ImageSnippet{
-  constructor(public src:string, public file: File) {}
-}
 
 
 @Component({
@@ -26,13 +24,13 @@ export class ProfileComponent implements OnInit{
   updateUsernameForm: FormGroup;
   updateEmailForm: FormGroup;
  
-  selectedFile: ImageSnippet | any;
+  selectedFile: File | null=null;
 
   public username:string = "";
   public email:string = "";
   public id:string ="";
-
-  file: string = '';
+  // public pictureUrl: string ="";
+  public image: string ="";
 
   editUsernameMode: boolean = false;
   editEmailMode: boolean = false;
@@ -44,7 +42,8 @@ export class ProfileComponent implements OnInit{
     private toast: NgToastService,
     private router: Router,
     private http: HttpClient,
-    private dialog: MatDialog){
+    private dialog: MatDialog,
+    ){
 
       this.updateUsernameForm = this.formBuilder.group({
         username: ['', Validators.required]
@@ -76,91 +75,35 @@ export class ProfileComponent implements OnInit{
 // }
 
   onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    
-    const id = this.id; 
-    
-    console.log(id);
-    console.log(file);
-    if (file) 
-    {
-      this.user.uploadProfilePicture(file, "23")
-      .subscribe({
+    this.selectedFile = event.target.files[0] as File;
+    console.log(this.selectedFile)
 
-        next:(res)=>{
-          console.log(file, id)
-          this.toast.success({detail:"Success", summary:"uploaded picture succesfully", duration: 5000});
+    if (this.selectedFile) {
+      console.log(this.id)
+      this.user.uploadProfilePicture(this.selectedFile, this.id).subscribe({
+        next:(res)=> {
+          
+          this.user.getPictureUrl(this.id).subscribe({
+            next: (base64Data:string) => { 
+              this.image = 'data:image;base64,' + base64Data;
+              this.user.setProfilePicture(this.image);
+            
+          }})
+              
+          // console.log(res);
+          this.toast.success({detail:"Success", summary:('Image uploaded successfully'), duration: 3000});
         },
         error:(err)=>{
-          this.toast.error({detail:"Error", summary: "oops", duration: 5000});
+          console.log(err);
+          this.toast.error({detail:"Error", summary:err?.error.message, duration: 3000});
         }
-      })
-      
-    }
+    });
   }
+}
 
-
-  // onSubmit(): void {
-  //   if (this.selectedFile) {
-  //     const formData = new FormData();
-  //     formData.append('file', this.selectedFile);
-
-  //     this.http.post<any>('api/uploadProfilePicture', formData).subscribe(
-  //       (response) => {
-  //         console.log('File uploaded successfully.', response);
-  //         // Perform any additional actions after successful upload
-  //       },
-  //       (error) => {
-  //         console.error('Error uploading file:', error);
-  //         // Handle error
-  //       }
-  //     );
-  //   }
-  // }
-
-  // onFileSelected(files: FileList): void {
-  //   this.selectedFile = files.item(0);
-
-  // uploadPicture(){
-    
-  // }
-
-//   onFileChange(event: any) {
-//     const files = event.target.files as FileList;
-
-//     if (files.length > 0) {
-//       const _file = URL.createObjectURL(files[0]);
-//       this.file = _file;
-//       this.resetInput();
-//       this.openAvatarEditor(_file)
-//       .subscribe(
-//         (result: string) => {
-//           if(result){
-//             this.file = result;
-//           }
-//         }  
-//       )
-//     }
-//  }
-
-//  openAvatarEditor(image: string): Observable<any> {
-//   const dialogRef = this.dialog.open(ImageCropperComponent, {
-//     maxWidth: '80px',
-//     maxHeight: '80px',
-//     data: image,
-    
-//   });
-
-//   return dialogRef.afterClosed();
-// }
- 
-
-//  resetInput(){
-//   const input = document.getElementById('profile-picture-input-file') as HTMLInputElement;
-//   if(input){
-//     input.value = "";
-//   }
-// }
+onFavClick(){
+  this.router.navigate(['favourites'])
+}
 
   enableEditUsername(){
     this.editUsernameMode = true;
@@ -228,9 +171,6 @@ export class ProfileComponent implements OnInit{
   })
   }
 
-
-
-
   deleteUser(){
     if(confirm('Are you sure u want to delete your user?'))
     {
@@ -271,7 +211,22 @@ export class ProfileComponent implements OnInit{
       let idFromToken = this.auth.getUserIdFromToken();
       this.id = val || idFromToken;
     })
-  
+
+    this.user.getPictureUrl(this.id).subscribe({
+      next: (base64Data:string) => { 
+        this.image = 'data:image;base64,' + base64Data;
+        this.user.setProfilePicture(this.image);
+      
+    }})
+    this.user.getProfilePicture().subscribe (val =>{
+      this.image = val;
+    });
+    // this.user.getProfilePicture().subscribe (val => {
+    //   this.image = 'data:image;base64,'+val;
+    //   console.log(val)
+    // })
+
+
   }
 }
 
