@@ -17,7 +17,7 @@ export class MusicComponent {
   }
   CurrentId: number = 0;
   playmode: Boolean = false;
-  tracks: Track[] = this.trackService.tracks;
+  tracks: Track[] = [];
   
 
   setFavorite(track: Track){
@@ -37,7 +37,7 @@ export class MusicComponent {
   }
 
   skipSong(){
-    for (const track of this.trackService.tracks) {
+    for (const track of this.tracks) {
       if (track.Id === this.CurrentId + 1) {
         console.log("First loop");
         console.log(track);
@@ -50,7 +50,7 @@ export class MusicComponent {
       }
     }
     
-    for (const track of this.trackService.tracks) {
+    for (const track of this.tracks) {
       if (track.Id === 1) {
         console.log("second loop");
         console.log(track);
@@ -65,7 +65,7 @@ export class MusicComponent {
   }
 
   previousSong(){
-    for (const track of this.trackService.tracks) {
+    for (const track of this.tracks) {
       if (track.Id === this.CurrentId - 1) {
         console.log("First loop");
         console.log(track);
@@ -89,7 +89,7 @@ export class MusicComponent {
   }
 
   createCards() {
-    for (const track of this.trackService.tracks) {
+    for (const track of this.tracks) {
       var divCard = document.createElement("Div");
       divCard.setAttribute("class", "card");
       
@@ -131,10 +131,12 @@ export class MusicComponent {
 
   ngOnInit(){
     var dbTracks;
+
     this.trackService.getAllTracks().subscribe({
       next:(res) => {
         dbTracks = res;
         console.log(dbTracks);
+        this.tracks = this.trackService.dbTracksToList(dbTracks);
       }
     })
 

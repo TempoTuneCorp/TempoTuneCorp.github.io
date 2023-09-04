@@ -7,6 +7,7 @@ namespace TempoTuneAPI.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
+        public ICollection<Track> Tracks { get; } = new List<Track>();
 
 
     }

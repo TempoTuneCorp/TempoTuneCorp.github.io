@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Context\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

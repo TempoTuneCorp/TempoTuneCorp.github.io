@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace TempoTuneAPI.Data.Migrations
+namespace TempoTuneAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class notRequired : Migration
+    public partial class newDatabase3 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

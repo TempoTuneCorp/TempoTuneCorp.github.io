@@ -20,11 +20,14 @@ namespace TempoTuneAPI.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().ToTable("users");
-            modelBuilder.Entity<Artist>().ToTable("Artists");
+            modelBuilder.Entity<Artist>().ToTable("Artists")
+                .HasMany(e => e.Tracks)
+                .WithOne(e => e.Artist)
+                .HasForeignKey(e => e.ArtistId)
+                .IsRequired();
+                
             modelBuilder.Entity<Track>().ToTable("Tracks");
             modelBuilder.Entity<Favourite>().ToTable("Favourites");
         }
-
-
     }
 }

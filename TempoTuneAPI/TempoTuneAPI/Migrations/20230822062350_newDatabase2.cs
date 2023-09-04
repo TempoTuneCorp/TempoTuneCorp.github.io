@@ -5,14 +5,14 @@
 namespace TempoTuneAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class addProfilePictureURLtoUserEntity : Migration
+    public partial class newDatabase2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "profilePictureURL",
-                table: "users",
+                name: "Name",
+                table: "Artists",
                 type: "nvarchar(max)",
                 nullable: true);
         }
@@ -21,8 +21,8 @@ namespace TempoTuneAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "profilePictureURL",
-                table: "users");
+                name: "Name",
+                table: "Artists");
         }
     }
 }

@@ -18,6 +18,8 @@ namespace TempoTuneAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private readonly HttpClient _httpClient = new HttpClient();
+        private readonly string _fileServerUrl = "http://192.168.23.122/";
         private readonly TempoTuneDbContext _context;
 
         //Constructor
@@ -273,7 +275,56 @@ namespace TempoTuneAPI.Controllers
             return Ok(await _context.Users.ToListAsync());
         }
 
-        
+
+
+        [HttpPost("upload")]
+        public async Task<IActionResult> UploadFile(IFormFile file)
+        {
+            // Read file data from client request
+
+            // Prepare the API endpoint on the file server
+            var uploadUrl = $"{_fileServerUrl}api/user/upload";
+
+            // Send the file data to the file server
+            using (var streamContent = new StreamContent(file.OpenReadStream()))
+            {
+                using (var response = await _httpClient.PostAsync(uploadUrl, streamContent))
+                {
+                    // Handle the response from the file server
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return Ok("File uploaded successfully.");
+                    }
+                    else
+                    {
+                        // Handle errors
+                        return BadRequest("Failed to upload file.");
+                    }
+                }
+            }
+        }
+
+        [HttpGet("download/{fileName}")]
+        public async Task<IActionResult> DownloadFile(string fileName)
+        {
+            // Prepare the API endpoint on the file server
+            var downloadUrl = $"{_fileServerUrl}api/download/{fileName}";
+
+            // Fetch the file data from the file server
+            var response = await _httpClient.GetAsync(downloadUrl);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var fileStream = await response.Content.ReadAsStreamAsync();
+                return File(fileStream, "application/octet-stream", fileName);
+            }
+            else
+            {
+                // Handle errors
+                return NotFound("File not found on the server.");
+            }
+        }
+
         [HttpPost("uploadPicture")]
         public async Task<IActionResult> UploadPicture(IFormFile file, int id)
         {
