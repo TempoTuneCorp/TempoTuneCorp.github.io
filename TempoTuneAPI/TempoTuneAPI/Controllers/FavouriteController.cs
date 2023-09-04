@@ -22,7 +22,7 @@ namespace TempoTuneAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetAllFavorites()
+        public async Task<IEnumerable<Favourite>> GetAllFavorites()
         {
             var allList = await _context.Favourites.ToListAsync();
 
@@ -35,57 +35,68 @@ namespace TempoTuneAPI.Controllers
                              from rt in x.DefaultIfEmpty()
                              where f.Id == item.Id
                              orderby f.Id
-                             select new
+                             select new Favourite
                              {
                                  Id = f.Id,
                                  User = f.User,
                                  Track = f.Track
 
-                             }).FirstOrDefault();
+                             }).ToList();
 
             } 
 
 
-            return Ok(allList);
+            return allList;
         }
 
         [HttpGet("GetFavByUser{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetAllFavByUserID(int id)
+        public async Task<IEnumerable<Track>> GetAllFavByUserID(int id)
         {
 
-            var allList = await _context.Favourites.ToListAsync();
+            
             var user = await _context.Users.FindAsync(id);
-            var newList = new List<Favourite>();
+            var listOfFavID = new List<int>();
+            var allListFav = new List<Favourite>();
+            allListFav = (List<Favourite>)await GetAllFavorites();
+            var newFavList = new List<Track>();
+
+            var tracks = (from t in _context.Tracks
+                          join od in _context.Artists on t.Id equals od.Id
+                          into x
+                          from rt in x.DefaultIfEmpty()
+                          orderby t.Id
+                          select new Track()
+                          {
+                              Id = t.Id,
+                              Title = t.Title,
+                              SongPath = t.SongPath,
+                              AlbumName = t.AlbumName,
+                              Artist = new Artist {Name = t.Artist.Name , Id = t.Artist.Id}
+
+                              
+                          }).ToList();
 
 
-            foreach (var item in allList)
+            foreach (var item in allListFav)
             {
-                        var track = (from f in _context.Favourites
-                                     join t in _context.Tracks on f.Id equals t.Id
-                                     into x
-                                     from rt in x.DefaultIfEmpty()
-                                     where f.Id == item.Id
-                                     orderby f.Id
-                                     select new
-                                     {
-                                         Id = f.Id,
-                                         User = f.User,
-                                         Track = f.Track
-
-                                     }).FirstOrDefault();
-              }
-            foreach (var item in allList)
-            {
-                if (item.User == user)
+                if(item.User == user) 
                 {
-                    newList.Add(item);
+                listOfFavID.Add(item.Track.Id);
                 }
             }
 
-            return Ok(newList);
+            foreach (var item in tracks)
+            {
+                if (listOfFavID.Contains(item.Id)) 
+                {
+                    newFavList.Add(item);
+                }
+            }
+
+            return newFavList;
         }
 
             [HttpGet("{id}")]

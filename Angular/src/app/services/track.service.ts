@@ -18,10 +18,14 @@ export class TrackService {
     return this.http.get<any>(`${this.baseUrl}GetAllTracks`);
   }
 
+  getAllFavTracks(id:any): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}GetFavByUser`,id);
+  }
+
   dbTracksToList(dbTracks: Array<any>){
     var i = 0;
     var tracks: Track[] = [];
-    
+
     for(const dbTrack of dbTracks){
       var track = new Track(0, "", "", "", "", "", false);
       track.Id = i+1;
@@ -29,9 +33,9 @@ export class TrackService {
       track.Path = dbTrack.songPath;
       track.Album = dbTrack.albumName;
       track.Artist = dbTrack.artist.name;
-      track.Time = "1:21";                            
-        
-      
+      track.Time = "1:21";
+
+
       console.log(track.Id);
       console.log(track.Title);
 
@@ -44,7 +48,7 @@ export class TrackService {
     }
     return tracks;
   }
-  
+
 
 
   //   {
