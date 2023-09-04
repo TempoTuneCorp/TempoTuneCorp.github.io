@@ -26,11 +26,13 @@ namespace TempoTuneAPI.Controllers
          [ProducesResponseType(StatusCodes.Status404NotFound)]
          public async Task<IActionResult> Create(Track track)
         {
+            
             try
             {
-
                 _context.Tracks.Add(track);
-               
+                var artist = await _context.Artists.FindAsync(track.ArtistId);
+                
+
                 await _context.SaveChangesAsync();
                 return Ok(track);
             }
@@ -45,19 +47,22 @@ namespace TempoTuneAPI.Controllers
          [HttpDelete("DeleteTrack")]
         [ProducesResponseType(typeof(Track), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Delete(Track track)
+        public async Task<IActionResult> Delete(int id)
         {
+            var trackToDelete = await _context.Tracks.FindAsync(id);
+            if (trackToDelete == null) return NotFound(new { Message = "track not found" });
+            _context.Tracks.Remove(trackToDelete);
+            foreach (var favoritesTrack in _context.Favourites)
+            {
+                if (favoritesTrack.Track == trackToDelete)
+                {
+                    _context.Favourites.Remove(favoritesTrack);
+                }
+            }
+            await _context.SaveChangesAsync();
 
-            try
-            {
-                _context.Tracks.Remove(track);
-                await _context.SaveChangesAsync();
-                return Ok(track);
-            }
-            catch(Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return Ok(new { Message = "track was deleted :-)" });
+
 
         }
 

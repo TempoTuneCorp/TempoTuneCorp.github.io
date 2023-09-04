@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TempoTuneAPI.Data;
 
@@ -11,9 +12,11 @@ using TempoTuneAPI.Data;
 namespace TempoTuneAPI.Migrations
 {
     [DbContext(typeof(TempoTuneDbContext))]
-    partial class JacobDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230822062100_newDatabase")]
+    partial class newDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,9 +32,6 @@ namespace TempoTuneAPI.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -72,7 +72,7 @@ namespace TempoTuneAPI.Migrations
                     b.Property<string>("AlbumName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ArtistId")
+                    b.Property<int>("ArtistId")
                         .HasColumnType("int");
 
                     b.Property<string>("SongPath")
@@ -142,10 +142,17 @@ namespace TempoTuneAPI.Migrations
             modelBuilder.Entity("TempoTuneAPI.Models.Track", b =>
                 {
                     b.HasOne("TempoTuneAPI.Models.Artist", "Artist")
-                        .WithMany()
-                        .HasForeignKey("ArtistId");
+                        .WithMany("Tracks")
+                        .HasForeignKey("ArtistId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Artist");
+                });
+
+            modelBuilder.Entity("TempoTuneAPI.Models.Artist", b =>
+                {
+                    b.Navigation("Tracks");
                 });
 #pragma warning restore 612, 618
         }

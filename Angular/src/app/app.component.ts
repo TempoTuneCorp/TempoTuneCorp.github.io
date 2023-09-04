@@ -12,8 +12,6 @@ export class AppComponent{
   title = 'TempoTune';
   showNavbar: boolean = true;
 
-
-
   constructor(private router: Router) {
 
     this.router.navigate(['/profile'])

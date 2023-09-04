@@ -12,8 +12,8 @@ using TempoTuneAPI.Data;
 namespace TempoTuneAPI.Migrations
 {
     [DbContext(typeof(TempoTuneDbContext))]
-    [Migration("20230706083439_addProfilePictureURLtoUserEntity")]
-    partial class addProfilePictureURLtoUserEntity
+    [Migration("20230822062350_newDatabase2")]
+    partial class newDatabase2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -75,7 +75,7 @@ namespace TempoTuneAPI.Migrations
                     b.Property<string>("AlbumName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ArtistId")
+                    b.Property<int>("ArtistId")
                         .HasColumnType("int");
 
                     b.Property<string>("SongPath")
@@ -145,10 +145,17 @@ namespace TempoTuneAPI.Migrations
             modelBuilder.Entity("TempoTuneAPI.Models.Track", b =>
                 {
                     b.HasOne("TempoTuneAPI.Models.Artist", "Artist")
-                        .WithMany()
-                        .HasForeignKey("ArtistId");
+                        .WithMany("Tracks")
+                        .HasForeignKey("ArtistId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Artist");
+                });
+
+            modelBuilder.Entity("TempoTuneAPI.Models.Artist", b =>
+                {
+                    b.Navigation("Tracks");
                 });
 #pragma warning restore 612, 618
         }

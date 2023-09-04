@@ -19,6 +19,8 @@ namespace TempoTuneAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private readonly HttpClient _httpClient = new HttpClient();
+        private readonly string _fileServerUrl = "http://192.168.23.122/";
         private readonly TempoTuneDbContext _context;
 
         //Constructor

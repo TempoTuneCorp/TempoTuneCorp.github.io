@@ -1,1 +1,9 @@
-{"version":3,"sources":["favorites.component.scss","favorites.component.css"],"names":[],"mappings":"AAAA;EACE,YAAA;EACA,eAAA;EACA,kBAAA;EACA,SAAA;EACA,8BAAA;EACA,SAAA;EACA,YAAA;ACCF","file":"favorites.component.css"}
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,CAAC,CAAA;EACC,OAAO,EAAE,GAAG;EACZ,SAAS,EAAE,IAAI;EACf,QAAQ,EAAC,QAAQ;EACjB,IAAI,EAAC,GAAG;EACR,SAAS,EAAE,mBAAmB;EAC9B,GAAG,EAAC,IAAI;EACR,KAAK,EAAC,KAAK;CACZ",
+    "sources": [
+        "favorites.component.scss"
+    ],
+    "names": [],
+    "file": "favorites.component.css"
+}

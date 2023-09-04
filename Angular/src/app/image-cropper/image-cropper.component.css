@@ -10,17 +10,25 @@
 ::ng-deep .cropper-face {
   border-radius: 50%;
 }
+
 ::ng-deep .cropper-view-box {
   outline: 0;
-  box-shadow: 0 0 0 1px #39f;
+  -webkit-box-shadow: 0 0 0 1px #39f;
+          box-shadow: 0 0 0 1px #39f;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .crop-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 100%;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   margin-top: 1rem;
-}/*# sourceMappingURL=image-cropper.component.css.map */
+}
+/*# sourceMappingURL=image-cropper.component.css.map */

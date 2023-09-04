@@ -12,10 +12,6 @@ import { NavbarComponent } from '../navbar/navbar.component';
 
 
 
-class ImageSnippet{
-  constructor(public src:string, public file: File) {}
-}
-
 
 @Component({
   selector: 'app-profile',
@@ -57,6 +53,26 @@ export class ProfileComponent implements OnInit{
       });
 
   }
+
+
+// processFile(imageInput:any) {
+//   const file: File = imageInput.files[0];
+//   const reader = new FileReader();
+//   const id = this.id;
+//   reader.addEventListener('load', (event:any)=>{
+//     this.selectedFile = new ImageSnippet(event.target.result, file);
+
+//     this.user.uploadProfilePicture(this.selectedFile, id).subscribe(
+//       (res) => {
+        
+//       },
+//       (err) => {
+      
+//       }
+//     )
+//   })
+//   reader.readAsDataURL(file);
+// }
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0] as File;
