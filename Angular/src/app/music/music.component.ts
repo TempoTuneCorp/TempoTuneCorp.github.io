@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { Track } from '../models/track.model'
 import { DOCUMENT } from '@angular/common'
@@ -5,6 +6,7 @@ import { ExpressionType } from '@angular/compiler';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TrackService } from '../services/track.service';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-music',
@@ -13,13 +15,14 @@ import { ActivatedRoute } from '@angular/router';
   encapsulation: ViewEncapsulation.None,
 })
 export class MusicComponent {
-  constructor(@Inject(DOCUMENT) document: Document, private trackService:TrackService,private route: ActivatedRoute){
+  constructor(@Inject(DOCUMENT) document: Document, private trackService:TrackService,private route: ActivatedRoute,private auth: AuthService){
 
   }
   CurrentId: number = 0;
   playmode: Boolean = false;
   tracks: Track[] = [];
   isOnFav: Boolean = false;
+  userID: number = 0;
 
 
   setFavorite(track: Track){
@@ -133,6 +136,8 @@ export class MusicComponent {
 
   ngOnInit(){
     var dbTracks;
+    let userIdFromToken = this.auth.getUserIdFromToken();
+    this.userID = userIdFromToken;
 
     //checks route
     this.route.url.subscribe(([url]) => {
@@ -141,7 +146,7 @@ export class MusicComponent {
       {
 
       //gets favorite songs
-      this.trackService.getAllFavTracks(1).subscribe({
+      this.trackService.getAllFavTracks(this.userID).subscribe({
         next:(res) => {
           dbTracks = res;
           console.log(dbTracks);
@@ -159,7 +164,7 @@ export class MusicComponent {
         }
       })}
     });
-    //getting favorite songs
+
 
 
     // this.createCards();
