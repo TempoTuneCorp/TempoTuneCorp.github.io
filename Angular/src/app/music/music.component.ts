@@ -4,7 +4,7 @@ import { DOCUMENT } from '@angular/common'
 import { ExpressionType } from '@angular/compiler';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TrackService } from '../services/track.service';
-
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-music',
@@ -13,7 +13,7 @@ import { TrackService } from '../services/track.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class MusicComponent {
-  constructor(@Inject(DOCUMENT) document: Document, private trackService:TrackService){
+  constructor(@Inject(DOCUMENT) document: Document, private trackService:TrackService,private route: ActivatedRoute){
 
   }
   CurrentId: number = 0;
@@ -134,27 +134,34 @@ export class MusicComponent {
   ngOnInit(){
     var dbTracks;
 
+    //checks route
+    this.route.url.subscribe(([url]) => {
+      const { path, parameters } = url;
+      if(path != "main")
+      {
+
+      //gets favorite songs
+      this.trackService.getAllFavTracks(1).subscribe({
+        next:(res) => {
+          dbTracks = res;
+          console.log(dbTracks);
+          this.tracks = this.trackService.dbTracksToList(dbTracks);
+        }
+      })}
+
+      //getting all songs
+      else{
+      this.trackService.getAllTracks().subscribe({
+        next:(res) => {
+          dbTracks = res;
+          console.log(dbTracks);
+          this.tracks = this.trackService.dbTracksToList(dbTracks);
+        }
+      })}
+    });
     //getting favorite songs
 
-    if(this.isOnFav == true)
-    {
-    this.trackService.getAllFavTracks(1).subscribe({
-      next:(res) => {
-        dbTracks = res;
-        console.log(dbTracks);
-        this.tracks = this.trackService.dbTracksToList(dbTracks);
-      }
-    })}
 
-    //getting all songs
-    else{
-    this.trackService.getAllTracks().subscribe({
-      next:(res) => {
-        dbTracks = res;
-        console.log(dbTracks);
-        this.tracks = this.trackService.dbTracksToList(dbTracks);
-      }
-    })}
     // this.createCards();
     const audio = (<HTMLAudioElement>document.getElementById('player'))
     const timer = (<HTMLParagraphElement>document.getElementById('timer'))
@@ -211,147 +218,6 @@ export class MusicComponent {
 
     });
   }
-
-
-
-  // tracks: Track[] = [
-  //   {
-  //     Id: 1,
-  //     Title: "poohead",
-  //     Path: "assets\\TestAudio\\Free_Test_Data_1MB_MP3.mp3",
-  //     Album: "WooYeah",
-  //     Artist: "Rasmus",
-  //     Time: "1:11",
-  //     Favorite: false,
-  //   },
-  //   {
-  //     Id: 2,
-  //     Title: "Dumme",
-  //     Path: "assets\\TestAudio\\Hvad er det farligste dyr i verden.mp3",
-  //     Album: "WooYeah",
-  //     Artist: "Rasmus",
-  //     Time: "1:11",
-  //     Favorite: false,
-  //   },
-  //   {
-  //     Id: 3,
-  //     Title: "Grimme",
-  //     Path: "assets\\TestAudio\\Mcdonalds Idioten.mp3",
-  //     Album: "WooYeah",
-  //     Artist: "Rasmus",
-  //     Time: "1:11",
-  //     Favorite: false,
-  //   },
-  //   {
-  //     Id: 4,
-  //     Title: "Rasmus",
-  //     Path: "assets\\TestAudio\\Steen med det ekstra ben.mp3",
-  //     Album: "WooYeah",
-  //     Artist: "Rasmus",
-  //     Time: "1:11",
-  //     Favorite: false,
-  //   },
-  //   {
-  //     Id: 5,
-  //     Title: "Rasmus",
-  //     Path: "assets\\TestAudio\\Steen med det ekstra ben.mp3",
-  //     Album: "WooYeah",
-  //     Artist: "Rasmus",
-  //     Time: "1:11",
-  //     Favorite: false,
-  //   },
-  //   {
-  //     Id: 6,
-  //     Title: "Rasmus",
-  //     Path: "assets\\TestAudio\\Steen med det ekstra ben.mp3",
-  //     Album: "WooYeah",
-  //     Artist: "Rasmus",
-  //     Time: "1:11",
-  //     Favorite: false,
-  //   },
-  //   {
-  //     Id: 7,
-  //     Title: "Rasmus",
-  //     Path: "assets\\TestAudio\\Steen med det ekstra ben.mp3",
-  //     Album: "WooYeah",
-  //     Artist: "Rasmus",
-  //     Time: "1:11",
-  //     Favorite: false,
-  //   },
-  //   {
-  //     Id: 8,
-  //     Title: "Rasmus",
-  //     Path: "assets\\TestAudio\\Steen med det ekstra ben.mp3",
-  //     Album: "WooYeah",
-  //     Artist: "Rasmus",
-  //     Time: "1:11",
-  //     Favorite: false,
-  //   },
-  //   {
-  //     Id: 9,
-  //     Title: "Rasmus",
-  //     Path: "assets\\TestAudio\\Steen med det ekstra ben.mp3",
-  //     Album: "WooYeah",
-  //     Artist: "Rasmus",
-  //     Time: "1:11",
-  //     Favorite: false,
-  //   },
-  //   {
-  //     Id: 10,
-  //     Title: "Rasmus",
-  //     Path: "assets\\TestAudio\\Steen med det ekstra ben.mp3",
-  //     Album: "WooYeah",
-  //     Artist: "Rasmus",
-  //     Time: "1:11",
-  //     Favorite: false,
-  //   },
-  //   {
-  //     Id: 11,
-  //     Title: "Rasmus",
-  //     Path: "assets\\TestAudio\\Steen med det ekstra ben.mp3",
-  //     Album: "WooYeah",
-  //     Artist: "Rasmus",
-  //     Time: "1:11",
-  //     Favorite: false,
-  //   },
-  //   {
-  //     Id: 12,
-  //     Title: "Rasmus",
-  //     Path: "assets\\TestAudio\\Steen med det ekstra ben.mp3",
-  //     Album: "WooYeah",
-  //     Artist: "Rasmus",
-  //     Time: "1:11",
-  //     Favorite: false,
-  //   },
-  //   {
-  //     Id: 13,
-  //     Title: "Rasmus",
-  //     Path: "assets\\TestAudio\\Steen med det ekstra ben.mp3",
-  //     Album: "WooYeah",
-  //     Artist: "Rasmus",
-  //     Time: "1:11",
-  //     Favorite: false,
-  //   },
-  //   {
-  //     Id: 14,
-  //     Title: "Rasmus",
-  //     Path: "assets\\TestAudio\\Steen med det ekstra ben.mp3",
-  //     Album: "WooYeah",
-  //     Artist: "Rasmus",
-  //     Time: "1:11",
-  //     Favorite: false,
-  //   },
-  //   {
-  //     Id: 15,
-  //     Title: "Rasmus",
-  //     Path: "assets\\TestAudio\\Steen med det ekstra ben.mp3",
-  //     Album: "WooYeah",
-  //     Artist: "Rasmus",
-  //     Time: "1:11",
-  //     Favorite: false,
-  //   },
-  // ];
-
 
 
 }
