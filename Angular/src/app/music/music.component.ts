@@ -5,6 +5,7 @@ import { ExpressionType } from '@angular/compiler';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TrackService } from '../services/track.service';
 
+
 @Component({
   selector: 'app-music',
   templateUrl: './music.component.html',
@@ -13,27 +14,28 @@ import { TrackService } from '../services/track.service';
 })
 export class MusicComponent {
   constructor(@Inject(DOCUMENT) document: Document, private trackService:TrackService){
-    
+
   }
   CurrentId: number = 0;
   playmode: Boolean = false;
   tracks: Track[] = [];
-  
+  isOnFav: Boolean = false;
+
 
   setFavorite(track: Track){
-    track.Favorite = true;    
+    track.Favorite = true;
   }
 
   deleteFavorite(track: Track){
-    track.Favorite = false;    
+    track.Favorite = false;
   }
-  
+
   setCurrentSong(track: Track) {
     const player:any = <HTMLAudioElement>document.getElementById('player');
     player.src = track.Path;
     player.play();
     this.CurrentId = track.Id;
-    (<HTMLDivElement>document.getElementById('card')).focus();  
+    (<HTMLDivElement>document.getElementById('card')).focus();
   }
 
   skipSong(){
@@ -41,24 +43,24 @@ export class MusicComponent {
       if (track.Id === this.CurrentId + 1) {
         console.log("First loop");
         console.log(track);
-    
+
         (<HTMLAudioElement>document.getElementById('player')).src = track.Path;
         (<HTMLAudioElement>document.getElementById('player')).play();
         this.CurrentId = track.Id;
-    
+
         return; // Exit the for...of loop
       }
     }
-    
+
     for (const track of this.tracks) {
       if (track.Id === 1) {
         console.log("second loop");
         console.log(track);
-    
+
         (<HTMLAudioElement>document.getElementById('player')).src = track.Path;
         (<HTMLAudioElement>document.getElementById('player')).play();
         this.CurrentId = track.Id;
-    
+
         return; // Exit the for...of loop
       }
     }
@@ -69,11 +71,11 @@ export class MusicComponent {
       if (track.Id === this.CurrentId - 1) {
         console.log("First loop");
         console.log(track);
-    
+
         (<HTMLAudioElement>document.getElementById('player')).src = track.Path;
         (<HTMLAudioElement>document.getElementById('player')).play();
         this.CurrentId = track.Id;
-    
+
         return; // Exit the for...of loop
       }
     }
@@ -92,7 +94,7 @@ export class MusicComponent {
     for (const track of this.tracks) {
       var divCard = document.createElement("Div");
       divCard.setAttribute("class", "card");
-      
+
 
       var divItemBig = document.createElement("Div");
       divItemBig.setAttribute("class", "item");
@@ -112,7 +114,7 @@ export class MusicComponent {
 
       divItemBig.append(divPartNum, divPartCov, divPartTit);
 
-      
+
       var divItemArt = document.createElement("Div");
       this.createDivWithParagraph(divItemArt, track.Artist, "item", "artist");
 
@@ -127,26 +129,39 @@ export class MusicComponent {
 
     }
   }
-  
+
 
   ngOnInit(){
     var dbTracks;
 
+    //getting favorite songs
+
+    if(this.isOnFav == true)
+    {
+    this.trackService.getAllFavTracks(1).subscribe({
+      next:(res) => {
+        dbTracks = res;
+        console.log(dbTracks);
+        this.tracks = this.trackService.dbTracksToList(dbTracks);
+      }
+    })}
+
+    //getting all songs
+    else{
     this.trackService.getAllTracks().subscribe({
       next:(res) => {
         dbTracks = res;
         console.log(dbTracks);
         this.tracks = this.trackService.dbTracksToList(dbTracks);
       }
-    })
-
+    })}
     // this.createCards();
     const audio = (<HTMLAudioElement>document.getElementById('player'))
     const timer = (<HTMLParagraphElement>document.getElementById('timer'))
     const endTimer = (<HTMLParagraphElement>document.getElementById('end-timer'))
     const progress = (<HTMLDivElement>document.getElementById('progress'))
     const bar = (<HTMLDivElement>document.getElementById('bar'))
-    
+
     audio.addEventListener('timeupdate', () => {
       const minutes = Math.floor(audio.currentTime / 60);
       const seconds = Math.floor(audio.currentTime % 60);
@@ -197,7 +212,7 @@ export class MusicComponent {
     });
   }
 
-  
+
 
   // tracks: Track[] = [
   //   {
@@ -337,6 +352,6 @@ export class MusicComponent {
   //   },
   // ];
 
-  
-  
+
+
 }
