@@ -1,10 +1,3 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  font-weight: 300;
-}
 body {
   font-family: 'Source Sans Pro', sans-serif;
   color: #f5eded;
@@ -37,11 +30,15 @@ body :-ms-input-placeholder {
   font-weight: 300;
 }
 p {
-  padding: 5px;
+  padding: 5px 5px 5px 0px;
   color: #d6d6d6;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 300;
   font-size: 18;
+  margin-bottom: 0;
+}
+.forgotpassword {
+  color: #4ef748;
 }
 a {
   color: #ffdc00;
@@ -49,9 +46,19 @@ a {
   font-weight: 300;
   padding-left: 5px;
   text-decoration: none;
+  font-size: 18px;
 }
 a:hover {
   color: #ffffff;
+  cursor: pointer;
+}
+.btn-primary {
+  background-color: #57ad5e;
+  border-color: #57ad5e;
+}
+.btn-primary:hover {
+  background-color: #3c7e3a;
+  border-color: #479444;
 }
 h1 {
   padding: 5px;
@@ -60,7 +67,7 @@ h1 {
   font-weight: 300;
   font-size: 18;
 }
-.container {
+.login-container {
   max-width: 600px;
   z-index: 3;
   padding: 80px 0;
@@ -79,7 +86,7 @@ h1 {
   /* Opera */
   transform: translate(-50%, -50%);
 }
-.container h1 {
+.login-container .header-text {
   font-size: 40px;
   transition-duration: 1s;
   transition-timing-function: ease-in-put;
@@ -153,7 +160,7 @@ small {
   letter-spacing: 0.5px;
   color: #000000;
 }
-button {
+.login-btn {
   outline: 0;
   color: white;
   border: 0;
@@ -166,16 +173,16 @@ button {
   transition-duration: 0.25s;
   font-weight: 300;
 }
-button:disabled {
+.login-btn:disabled {
   color: rgba(119, 73, 119, 0.74);
   cursor: not-allowed;
   background-color: white;
 }
-button:disabled:hover {
+.login-btn:disabled:hover {
   color: rgba(119, 73, 119, 0.74);
   background-color: white;
 }
-button:hover {
+.login-btn:hover {
   background-color: #892ff0;
   color: white;
 }

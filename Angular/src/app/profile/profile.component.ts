@@ -4,11 +4,7 @@ import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgToastService } from 'ng-angular-popup';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { ImageCropperComponent } from '../image-cropper/image-cropper.component';
-import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs/internal/Observable';
-import { NavbarComponent } from '../navbar/navbar.component';
+
 
 
 
@@ -29,7 +25,6 @@ export class ProfileComponent implements OnInit{
   public username:string = "";
   public email:string = "";
   public id:string ="";
-  // public pictureUrl: string ="";
   public image: string ="";
 
   editUsernameMode: boolean = false;
@@ -40,9 +35,7 @@ export class ProfileComponent implements OnInit{
     private auth: AuthService,
     private formBuilder: FormBuilder,
     private toast: NgToastService,
-    private router: Router,
-    private http: HttpClient,
-    private dialog: MatDialog,
+    private router: Router
     ){
 
       this.updateUsernameForm = this.formBuilder.group({
@@ -53,26 +46,6 @@ export class ProfileComponent implements OnInit{
       });
 
   }
-
-
-// processFile(imageInput:any) {
-//   const file: File = imageInput.files[0];
-//   const reader = new FileReader();
-//   const id = this.id;
-//   reader.addEventListener('load', (event:any)=>{
-//     this.selectedFile = new ImageSnippet(event.target.result, file);
-
-//     this.user.uploadProfilePicture(this.selectedFile, id).subscribe(
-//       (res) => {
-        
-//       },
-//       (err) => {
-      
-//       }
-//     )
-//   })
-//   reader.readAsDataURL(file);
-// }
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0] as File;
@@ -91,11 +64,15 @@ export class ProfileComponent implements OnInit{
           }})
               
           // console.log(res);
-          this.toast.success({detail:"Success", summary:('Image uploaded successfully'), duration: 3000});
+          this.toast.success({
+            detail: "Success", summary: ('Image uploaded successfully'), duration: 3000
+          });
         },
         error:(err)=>{
           console.log(err);
-          this.toast.error({detail:"Error", summary:err?.error.message, duration: 3000});
+          this.toast.error({
+            detail: "Error", summary: err?.error.message, duration: 3000
+          });
         }
     });
   }
@@ -128,11 +105,15 @@ onFavClick(){
       this.auth.storeToken(res.token); //get new token  
       this.username = this.auth.decodedToken().unique_name; //decode new token and get new username from payload
       this.user.setUsername(this.username); //set new username so it can be shown when onInit
-      this.toast.success({detail:"Success", summary:res.message, duration: 3000});
+      this.toast.success({
+        detail: "Success", summary: res.message, duration: 3000
+      });
     },
     error:(err)=>{
       console.log(err);
-      this.toast.error({detail:"Error", summary:err?.error.message, duration: 3000});
+      this.toast.error({
+        detail: "Error", summary: err?.error.message, duration: 3000
+      });
     }
   })
   }
@@ -161,12 +142,15 @@ onFavClick(){
       this.auth.storeToken(res.token); //get new token  
       this.email = this.auth.decodedToken().unique_name; //decode new token and get new username from payload
       this.user.setEmail(this.email); //set new username so it can be shown when onInit
-      this.toast.success({detail:"Success", summary:res.message, duration: 3000});
+      this.toast.success({
+        detail: "Success", summary: res.message, duration: 3000
+      });
     },
     error:(err)=>{
       console.log(err);
-      this.toast.error({detail:"Error", summary:err?.error.message, duration: 3000});
-      // alert(err?.error.message)
+      this.toast.error({
+        detail: "Error", summary: err?.error.message, duration: 3000
+      });
     }
   })
   }
@@ -180,13 +164,17 @@ onFavClick(){
     .subscribe({
       next:(res) => {
         
-        this.toast.success({detail:"Success", summary:res.message, duration: 3000});
+        this.toast.success({
+          detail: "Success", summary: res.message, duration: 3000
+        });
         this.auth.signOut();
         this.router.navigate(['login'])
       },
       error:(err)=>{
         console.log(err);
-        this.toast.error({detail:"Error", summary:err?.error.message, duration: 3000});
+        this.toast.error({
+          detail: "Error", summary: err?.error.message, duration: 3000
+        });
 
       }
     })
@@ -221,10 +209,7 @@ onFavClick(){
     this.user.getProfilePicture().subscribe (val =>{
       this.image = val;
     });
-    // this.user.getProfilePicture().subscribe (val => {
-    //   this.image = 'data:image;base64,'+val;
-    //   console.log(val)
-    // })
+
 
 
   }

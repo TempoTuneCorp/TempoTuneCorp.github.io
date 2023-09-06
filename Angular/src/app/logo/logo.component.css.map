@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,KAAK,CAAA;EACD,OAAO,EAAE,GAAG;EACZ,OAAO,EAAE,CAAC;EACV,MAAM,EAAC,MAAM;EACb,QAAQ,EAAE,QAAQ;EAClB,IAAI,EAAE,GAAG;EACT,GAAG,EAAC,GAAG;EACP,MAAM,EAAC,GAAG;EACd,cAAc,EAAE,qBAAqB;EAAE,aAAa;EACpD,aAAa,EAAE,qBAAqB;EAAG,UAAU;EACjD,iBAAiB,EAAE,qBAAqB;EAAE,sBAAsB;EAChE,YAAY,EAAE,qBAAqB;EAAE,WAAW;EAChD,SAAS,EAAE,qBAAqB;EAC5B,UAAU,EAAE,MAAM;CAGrB",
-    "sources": [
-        "logo.component.scss"
-    ],
-    "names": [],
-    "file": "logo.component.css"
-}
+{"version":3,"sources":["logo.component.scss","logo.component.css"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,UAAA;EACA,cAAA;EACA,kBAAA;EACA,SAAA;EACA,QAAA;EACA,WAAA,EACJ,YAAA,EACA,SAAA,EACA,qBAAA,EACA,UAAA;EACA,gCAAA;EACI,kBAAA;ACCJ","file":"logo.component.css"}

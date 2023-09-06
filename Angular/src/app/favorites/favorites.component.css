@@ -3,9 +3,7 @@ p {
   font-size: 20px;
   position: absolute;
   left: 50%;
-  -webkit-transform: translate(-50%, 0%);
-          transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
   top: 95px;
   color: white;
-}
-/*# sourceMappingURL=favorites.component.css.map */
+}/*# sourceMappingURL=favorites.component.css.map */
