@@ -35,7 +35,9 @@ export class RegisterComponent {
       this.auth.signUp(this.registerForm.value)
       .subscribe({
         next:(res)=>{
-          this.toast.success({detail:"Success", summary:"User created", duration: 5000});
+          this.toast.success({
+            detail: "Success", summary: "User created", duration: 5000
+          });
           this.registerForm.reset();
           this.router.navigate(['login']);
         },

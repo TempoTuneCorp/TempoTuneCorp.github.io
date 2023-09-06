@@ -37,7 +37,9 @@ export class LoginComponent {
       .subscribe({
         next:(res)=>{
           // alert(res.message)
-          this.toast.success({detail:"Success", summary:res.message, duration: 3000});
+          this.toast.success({
+            detail: "Success", summary: res.message, duration: 3000
+          });
           this.loginForm.reset();
           this.auth.storeToken(res.token)
           const tokenPayload = this.auth.decodedToken();
@@ -53,7 +55,9 @@ export class LoginComponent {
           this.router.navigate(['main'])
         },
         error:(err)=>{
-          this.toast.error({detail:"Error", summary:err?.error.message, duration: 3000});
+          this.toast.error({
+            detail: "Error", summary: err?.error.message, duration: 3000
+          });
           // alert(err?.error.message)
         }
       })
