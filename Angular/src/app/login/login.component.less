@@ -1,11 +1,3 @@
-*{
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	overflow:hidden;
-	font-weight: 300;
-}
-
 
 body{
 	font-family: 'Source Sans Pro', sans-serif;
@@ -38,12 +30,17 @@ body{
 }
 
 p{
-	padding:5px; 
+	padding:5px 5px 5px 0px; 
 	color:rgb(214, 214, 214);
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 300;
 	font-size: 18;
+	margin-bottom:0;
 	
+}
+
+.forgotpassword{
+	color:rgb(78, 247, 72)
 }
 
 a{
@@ -52,12 +49,22 @@ a{
 	font-weight: 300;
 	padding-left: 5px;
 	text-decoration: none;
+	font-size: 18px;
 	
 	&:hover{
 	color:rgb(255, 255, 255);
+	cursor:pointer
 }
 }
 
+.btn-primary{
+	background-color:rgb(87, 173, 94) ;
+	border-color:rgb(87, 173, 94);
+	&:hover{
+		background-color:rgb(60, 126, 58) ;
+	border-color:rgb(71, 148, 68);
+	}
+}
 
 h1{
     padding:5px; 
@@ -179,7 +186,7 @@ form{
 		color: rgb(0, 0, 0);
 	}
 	
-	button{
+	.login-btn{
 
 
 		outline: 0;
