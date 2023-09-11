@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TrackService } from '../services/track.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-music',
@@ -15,7 +16,7 @@ import { Observable } from 'rxjs';
   encapsulation: ViewEncapsulation.None,
 })
 export class MusicComponent {
-  constructor(@Inject(DOCUMENT) document: Document, private trackService:TrackService,private route: ActivatedRoute,private auth: AuthService){
+  constructor(@Inject(DOCUMENT) document: Document, private trackService:TrackService,private route: ActivatedRoute,private auth: AuthService,private user: UserService){
 
   }
   CurrentId: number = 0;
@@ -27,6 +28,10 @@ export class MusicComponent {
 
   setFavorite(track: Track){
     track.Favorite = true;
+    this.trackService.AddFav(this.userID,track.dbId).subscribe({
+        next:(res) => {
+          console.log(res)
+        }})
   }
 
   deleteFavorite(track: Track){
@@ -136,8 +141,11 @@ export class MusicComponent {
 
   ngOnInit(){
     var dbTracks;
-    let userIdFromToken = this.auth.getUserIdFromToken();
-    this.userID = userIdFromToken;
+    this.user.getUserId().subscribe ( val=> {
+      let idFromToken = this.auth.getUserIdFromToken();
+      this.userID = val || idFromToken;
+    })
+    console.log(this.userID);
 
     //checks route
     this.route.url.subscribe(([url]) => {

@@ -12,12 +12,12 @@ namespace TempoTuneAPI.Controllers
     [ApiController]
     public class FavouriteController : ControllerBase
     {
-      private readonly TempoTuneDbContext _context;
+        private readonly TempoTuneDbContext _context;
 
-      public FavouriteController(TempoTuneDbContext context)
-      {
-        _context = context;
-      }
+        public FavouriteController(TempoTuneDbContext context)
+        {
+            _context = context;
+        }
         [HttpGet("GetAllFavourites")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -43,7 +43,7 @@ namespace TempoTuneAPI.Controllers
 
                              }).ToList();
 
-            } 
+            }
 
 
             return allList;
@@ -56,7 +56,7 @@ namespace TempoTuneAPI.Controllers
         public async Task<IEnumerable<Track>> GetAllFavByUserID(int id)
         {
 
-            
+
             var user = await _context.Users.FindAsync(id);
             var listOfFavID = new List<int>();
             var allListFav = new List<Favourite>();
@@ -74,23 +74,23 @@ namespace TempoTuneAPI.Controllers
                               Title = t.Title,
                               SongPath = t.SongPath,
                               AlbumName = t.AlbumName,
-                              Artist = new Artist {Name = t.Artist.Name , Id = t.Artist.Id}
+                              Artist = new Artist { Name = t.Artist.Name, Id = t.Artist.Id }
 
-                              
+
                           }).ToList();
 
 
             foreach (var item in allListFav)
             {
-                if(item.User == user) 
+                if (item.User == user)
                 {
-                listOfFavID.Add(item.Track.Id);
+                    listOfFavID.Add(item.Track.Id);
                 }
             }
 
             foreach (var item in tracks)
             {
-                if (listOfFavID.Contains(item.Id)) 
+                if (listOfFavID.Contains(item.Id))
                 {
                     newFavList.Add(item);
                 }
@@ -99,7 +99,7 @@ namespace TempoTuneAPI.Controllers
             return newFavList;
         }
 
-            [HttpGet("{id}")]
+        [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -118,14 +118,15 @@ namespace TempoTuneAPI.Controllers
                              Track = f.Track
 
                          }).FirstOrDefault();
-           return Ok(track);
+            return Ok(track);
 
         }
 
-        [HttpPost("AddFavourite")]
+        [HttpPost("AddFavourite/{userId}/{trackId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status405BadRequest)]
         public async Task<IActionResult> Create(int userId, int trackId)
         {
             var user = await _context.Users.FindAsync(userId);

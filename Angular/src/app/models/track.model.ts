@@ -11,7 +11,7 @@ export class Track{
         this.Favorite = favorite;
     }
     Id: number;
-    dbId?: number;
+    dbId: number;
     Title: string;
     Path: string;
     Album: string;

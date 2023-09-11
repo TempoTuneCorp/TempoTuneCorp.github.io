@@ -23,6 +23,11 @@ export class TrackService {
     return this.http.get<any>(`${this.favBaseUrl}GetFavByUser${id}`);
   }
 
+  AddFav(userId:number,trackId:number): Observable<any>{
+    const requestData = {userId,trackId};
+    return this.http.post<any>(`${this.favBaseUrl}AddFavourite/${userId}/${trackId}`,requestData);
+  }
+
   dbTracksToList(dbTracks: Array<any>){
     var i = 0;
     var tracks: Track[] = [];
