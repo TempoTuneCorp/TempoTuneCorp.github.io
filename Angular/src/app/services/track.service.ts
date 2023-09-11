@@ -28,8 +28,9 @@ export class TrackService {
     var tracks: Track[] = [];
 
     for(const dbTrack of dbTracks){
-      var track = new Track(0, "", "", "", "", "", false);
+      var track = new Track(0,0, "", "", "", "", "", false);
       track.Id = i+1;
+      track.dbId = dbTrack.id;
       track.Title = dbTrack.title;
       track.Path = dbTrack.songPath;
       track.Album = dbTrack.albumName;

@@ -149,7 +149,6 @@ export class MusicComponent {
       this.trackService.getAllFavTracks(this.userID).subscribe({
         next:(res) => {
           dbTracks = res;
-          console.log(dbTracks);
           this.tracks = this.trackService.dbTracksToList(dbTracks);
         }
       })}
@@ -159,7 +158,6 @@ export class MusicComponent {
       this.trackService.getAllTracks().subscribe({
         next:(res) => {
           dbTracks = res;
-          console.log(dbTracks);
           this.tracks = this.trackService.dbTracksToList(dbTracks);
         }
       })}
