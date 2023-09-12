@@ -293,7 +293,6 @@ namespace TempoTuneAPI.Controllers
                 }
 
 
-
                 return Ok();
             }
             // No file was provided, return an error

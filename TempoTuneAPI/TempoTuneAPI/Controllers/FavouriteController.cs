@@ -122,11 +122,11 @@ namespace TempoTuneAPI.Controllers
 
         }
 
+
         [HttpPost("AddFavourite/{userId}/{trackId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status405BadRequest)]
         public async Task<IActionResult> Create(int userId, int trackId)
         {
             var user = await _context.Users.FindAsync(userId);
@@ -180,8 +180,65 @@ namespace TempoTuneAPI.Controllers
             }
 
         }
-       
 
-      
-    }
+
+        [HttpGet("IsSongFav/{userId}/{trackId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<bool> IsSongFav(int userId, int trackId)
+        {
+            //getting favorite tracks by user:
+            var user = await _context.Users.FindAsync(userId);
+            var listOfFavID = new List<int>();
+            var allListFav = new List<Favourite>();
+            allListFav = (List<Favourite>)await GetAllFavorites();
+            var newFavList = new List<Track>();
+
+            var tracks = (from t in _context.Tracks
+                          join od in _context.Artists on t.Id equals od.Id
+                          into x
+                          from rt in x.DefaultIfEmpty()
+                          orderby t.Id
+                          select new Track()
+                          {
+                              Id = t.Id,
+                              Title = t.Title,
+                              SongPath = t.SongPath,
+                              AlbumName = t.AlbumName,
+                              Artist = new Artist { Name = t.Artist.Name, Id = t.Artist.Id }
+
+
+                          }).ToList();
+
+            foreach (var item in allListFav)
+            {
+                if (item.User == user)
+                {
+                    listOfFavID.Add(item.Track.Id);
+                }
+            }
+
+            foreach (var item in tracks)
+            {
+                if (listOfFavID.Contains(item.Id))
+                {
+                    newFavList.Add(item);
+                }
+            }
+
+            foreach (var item in newFavList)
+            {
+                if(item.Id== trackId) 
+                {
+                    return true;
+                }
+            }
+
+            return false;
+
+        }
+
+
+        }
 }

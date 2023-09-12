@@ -6,7 +6,7 @@ import { ExpressionType } from '@angular/compiler';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TrackService } from '../services/track.service';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -16,6 +16,7 @@ import { UserService } from '../services/user.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class MusicComponent {
+
   constructor(@Inject(DOCUMENT) document: Document, private trackService:TrackService,private route: ActivatedRoute,private auth: AuthService,private user: UserService){
 
   }
@@ -139,7 +140,7 @@ export class MusicComponent {
   }
 
 
-  ngOnInit(){
+ async ngOnInit(){
     var dbTracks;
     this.user.getUserId().subscribe ( val=> {
       let idFromToken = this.auth.getUserIdFromToken();
@@ -148,25 +149,25 @@ export class MusicComponent {
     console.log(this.userID);
 
     //checks route
-    this.route.url.subscribe(([url]) => {
-      const { path, parameters } = url;
+    this.route.url.subscribe(async ([url]) => {
+      const { path} = url;
       if(path != "main")
       {
 
       //gets favorite songs
       this.trackService.getAllFavTracks(this.userID).subscribe({
-        next:(res) => {
+        next:async (res) => {
           dbTracks = res;
-          this.tracks = this.trackService.dbTracksToList(dbTracks);
+          this.tracks = await this.trackService.dbTracksToList(dbTracks,this.userID);
         }
       })}
 
       //getting all songs
       else{
       this.trackService.getAllTracks().subscribe({
-        next:(res) => {
+        next:async (res) => {
           dbTracks = res;
-          this.tracks = this.trackService.dbTracksToList(dbTracks);
+          this.tracks = await this.trackService.dbTracksToList(dbTracks,this.userID);
         }
       })}
     });
