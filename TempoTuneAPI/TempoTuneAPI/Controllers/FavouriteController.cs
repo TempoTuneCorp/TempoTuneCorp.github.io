@@ -18,10 +18,12 @@ namespace TempoTuneAPI.Controllers
         {
             _context = context;
         }
+
         [HttpGet("GetAllFavourites")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+
         public async Task<IEnumerable<Favourite>> GetAllFavorites()
         {
             var allList = await _context.Favourites.ToListAsync();
@@ -49,11 +51,12 @@ namespace TempoTuneAPI.Controllers
             return allList;
         }
 
-        [HttpGet("GetFavByUser{id}")]
+        [HttpGet("GetFavSongsByUser{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IEnumerable<Track>> GetAllFavByUserID(int id)
+
+        public async Task<IEnumerable<Track>> GetFavSongsByUserID(int id)
         {
 
 
@@ -98,6 +101,7 @@ namespace TempoTuneAPI.Controllers
 
             return newFavList;
         }
+
 
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -240,5 +244,65 @@ namespace TempoTuneAPI.Controllers
         }
 
 
+
+        [HttpGet("GetFavByUser/{userId}")]
+        public async Task<IEnumerable<Favourite>> GetFavByUser(int userId)
+        {
+            var AllFavorite = await _context.Favourites.ToListAsync();
+            var sortedList = new List<Favourite>();
+
+            foreach (var item in AllFavorite)
+            {
+                
+                
+                var track = (from f in _context.Favourites
+                             join t in _context.Tracks on f.Id equals t.Id
+                             into x
+                             from rt in x.DefaultIfEmpty()
+                             where f.Id == item.Id
+                             orderby f.Id
+                             select new Favourite
+                             {
+                                 Id = f.Id,
+                                 User = f.User,
+                                 Track = f.Track
+                                 
+                             }).ToList();
+            }
+
+            foreach (var fav in AllFavorite)
+            {
+                if(fav.User.Id == userId) 
+                { sortedList.Add(fav); }
+            }
+
+
+            return sortedList;
+        }
+
+
+        [HttpDelete("DeleteFavByUserAndID/{userId}/{trackId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> DeleteFavByUserAndID(int userId, int trackId)
+        {
+            var UserFavList = await GetFavByUser(userId);
+
+            foreach (var item in UserFavList)
+            {
+                if(item.Track.Id == trackId) 
+                {
+                   await Delete(item.Id);
+                    return Ok("deleted item");
+                }
+            }
+
+
+
+            return Ok("no items deleted");
+        }
+
+      
         }
 }

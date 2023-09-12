@@ -27,7 +27,7 @@ isFavorite = false;
   }
 
   getAllFavTracks(id:any): Observable<any>{
-    return this.http.get<any>(`${this.favBaseUrl}GetFavByUser${id}`);
+    return this.http.get<any>(`${this.favBaseUrl}GetFavSongsByUser${id}`);
   }
 
   AddFav(userId:number,trackId:number): Observable<any>{
