@@ -288,19 +288,24 @@ namespace TempoTuneAPI.Controllers
         public async Task<IActionResult> DeleteFavByUserAndID(int userId, int trackId)
         {
             var UserFavList = await GetFavByUser(userId);
+            var deltedThings = false;
+            var amount = 0;
 
             foreach (var item in UserFavList)
             {
                 if(item.Track.Id == trackId) 
                 {
                    await Delete(item.Id);
-                    return Ok("deleted item");
+                    amount++;
+                   deltedThings = true;
+                    
                 }
             }
 
+            if (deltedThings) 
+            { return Ok(new { Message = amount + " deleted item" }); }
 
-
-            return Ok("no items deleted");
+            return Ok(new { Message = "no items deleted" });
         }
 
       

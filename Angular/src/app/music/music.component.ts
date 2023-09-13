@@ -37,6 +37,11 @@ export class MusicComponent {
 
   deleteFavorite(track: Track){
     track.Favorite = false;
+    this.trackService.DeleSongFromFav(this.userID,track.dbId).subscribe({
+      next:(res) => {
+        console.log(res);
+      }
+    })
   }
 
   setCurrentSong(track: Track) {

@@ -40,6 +40,9 @@ isFavorite = false;
     return this.http.get<any>(`${this.favBaseUrl}IsSongFav/${userId}/${trackId}`);
   }
 
+  DeleSongFromFav(userId:number,trackId:number): Observable<any>{
+    return this.http.delete<any>(`${this.favBaseUrl}DeleteFavByUserAndID/${userId}/${trackId}`);
+  }
 
 
 async dbTracksToList(dbTracks: Array<any>, userId:number): Promise<Track[]>{
