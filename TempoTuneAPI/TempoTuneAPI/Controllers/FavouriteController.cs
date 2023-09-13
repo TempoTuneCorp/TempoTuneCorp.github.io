@@ -77,6 +77,7 @@ namespace TempoTuneAPI.Controllers
                               Title = t.Title,
                               SongPath = t.SongPath,
                               AlbumName = t.AlbumName,
+                              Time = t.Time,
                               Artist = new Artist { Name = t.Artist.Name, Id = t.Artist.Id }
 
 
@@ -210,6 +211,7 @@ namespace TempoTuneAPI.Controllers
                               Title = t.Title,
                               SongPath = t.SongPath,
                               AlbumName = t.AlbumName,
+                              Time = t.Time,
                               Artist = new Artist { Name = t.Artist.Name, Id = t.Artist.Id }
 
 
@@ -297,8 +299,8 @@ namespace TempoTuneAPI.Controllers
                 {
                    await Delete(item.Id);
                     amount++;
-                   deltedThings = true;
-                    
+                    deltedThings = true;
+
                 }
             }
 

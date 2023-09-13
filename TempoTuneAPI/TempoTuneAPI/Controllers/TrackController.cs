@@ -26,7 +26,6 @@ namespace TempoTuneAPI.Controllers
          [ProducesResponseType(StatusCodes.Status404NotFound)]
          public async Task<IActionResult> Create(Track track)
         {
-            
             try
             {
                 _context.Tracks.Add(track);
@@ -91,7 +90,8 @@ namespace TempoTuneAPI.Controllers
                                  Title = t.Title,
                                  SongPath = t.SongPath,
                                  AlbumName = t.AlbumName,
-                                 Artist = t.Artist
+                                 Artist = t.Artist,
+                                 Time = t.Time,
                              }).FirstOrDefault(); 
 
                 return Ok(track);
@@ -133,7 +133,8 @@ namespace TempoTuneAPI.Controllers
                                 Title = t.Title,
                                 SongPath = t.SongPath,
                                 AlbumName = t.AlbumName,
-                                Artist = t.Artist
+                                Artist = t.Artist,
+                                Time = t.Time,
                              }).ToList();
             return testTrack;
         }
