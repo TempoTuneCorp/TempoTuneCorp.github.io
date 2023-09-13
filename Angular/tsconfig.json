@@ -12,6 +12,7 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
+    "paths":     {       "tslib": ["node_modules/tslib"]     },
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",

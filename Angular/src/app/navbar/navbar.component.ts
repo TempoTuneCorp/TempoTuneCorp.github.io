@@ -12,9 +12,9 @@ import { UserService } from '../services/user.service';
 export class NavbarComponent implements OnInit {
 
   public id:string ="";
-  public image: string =""; 
+  public image: string ="";
 
-  constructor(private router: Router, private auth: AuthService, private user: UserService) 
+  constructor(private router: Router, private auth: AuthService, private user: UserService)
   {
     window.addEventListener('resize', function() {
       if (window.matchMedia('(min-width: 580px)').matches) {
@@ -41,12 +41,12 @@ export class NavbarComponent implements OnInit {
   logout(){
     this.auth.signOut();
     this.router.navigate(['login'])
+    window.location.reload();
   }
 
   onFavClick(){
     this.router.navigate(['favourites'])
   }
-
 
 
   ngOnInit(): void {

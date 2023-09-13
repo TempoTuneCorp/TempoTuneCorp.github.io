@@ -8,46 +8,94 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TrackService {
+isFav: boolean = false;
+isFavorite = false;
+
 
   constructor(private http : HttpClient) {
     var dbTracks;
+
    }
+
   private baseUrl:string = "https://localhost:7267/api/Track/";
   private favBaseUrl:string = "https://localhost:7267/api/Favourite/";
+
+
 
   getAllTracks(): Observable<any>{
     return this.http.get<any>(`${this.baseUrl}GetAllTracks`);
   }
 
   getAllFavTracks(id:any): Observable<any>{
-    return this.http.get<any>(`${this.favBaseUrl}GetFavByUser${id}`);
+    return this.http.get<any>(`${this.favBaseUrl}GetFavSongsByUser${id}`);
   }
 
-  dbTracksToList(dbTracks: Array<any>){
+  AddFav(userId:number,trackId:number): Observable<any>{
+    const requestData = {userId,trackId};
+    return this.http.post<any>(`${this.favBaseUrl}AddFavourite/${userId}/${trackId}`,requestData);
+  }
+
+  IsSongFav(userId:number,trackId:number): Observable<any>{
+    //const requestData = {userId,trackId};
+    return this.http.get<any>(`${this.favBaseUrl}IsSongFav/${userId}/${trackId}`);
+  }
+
+  DeleSongFromFav(userId:number,trackId:number): Observable<any>{
+    return this.http.delete<any>(`${this.favBaseUrl}DeleteFavByUserAndID/${userId}/${trackId}`);
+  }
+
+
+async dbTracksToList(dbTracks: Array<any>, userId:number): Promise<Track[]>{
     var i = 0;
     var tracks: Track[] = [];
 
     for(const dbTrack of dbTracks){
-      var track = new Track(0, "", "", "", "", "", false);
+      var track = new Track(0,0, "", "", "", "", "", false);
       track.Id = i+1;
+      track.dbId = dbTrack.id;
       track.Title = dbTrack.title;
       track.Path = dbTrack.songPath;
       track.Album = dbTrack.albumName;
       track.Artist = dbTrack.artist.name;
       track.Time = "1:21";
 
+      track.Favorite = await fetchApiAndSetVariable(userId,track.dbId);
 
-      console.log(track.Id);
-      console.log(track.Title);
 
-      tracks.push(track);
+    console.log(track.Favorite);
+    tracks.push(track);
 
-      console.log(tracks);
 
       i++;
 
     }
     return tracks;
+  }
+
+  }
+
+
+//Method fetces Favorite bool from API. Bool is true if the song is favorited by the user.
+  async function fetchApiAndSetVariable(userId:number,trackId:number): Promise<boolean> {
+    try {
+      const response = await fetch("https://localhost:7267/api/Favourite/"+`IsSongFav/${userId}/${trackId}`);
+
+      if (!response.ok) {
+        throw new Error('API request failed');
+      }
+
+      const result = await response.json();
+
+      if (typeof result === 'boolean') {
+        const yourVariable = result;
+        return yourVariable; // Return the boolean value
+      } else {
+        throw new Error('API response is not a boolean');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      throw error;
+    }
   }
 
 
@@ -188,4 +236,4 @@ export class TrackService {
   //     Favorite: false,
   //   },
   // ];
-}
+

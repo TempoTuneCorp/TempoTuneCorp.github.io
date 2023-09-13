@@ -1,6 +1,8 @@
 export class Track{
-    constructor(id: number, title: string, path: string, album: string, artist: string, time: string, favorite: boolean) {
+
+    constructor(id: number,dbID: number, title: string, path: string, album: string, artist: string, time: string, favorite: boolean) {
         this.Id = id;
+        this.dbId = dbID;
         this.Title = title;
         this.Path = path;
         this.Album = album;
@@ -9,7 +11,7 @@ export class Track{
         this.Favorite = favorite;
     }
     Id: number;
-    dbId?: number;
+    dbId: number;
     Title: string;
     Path: string;
     Album: string;
@@ -17,5 +19,4 @@ export class Track{
     Time: string;
     Favorite: boolean;
 
-    
 }
