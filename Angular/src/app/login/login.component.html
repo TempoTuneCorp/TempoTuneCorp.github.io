@@ -2,7 +2,7 @@
 <div class="wrapper">
 	<div class="login-container">
 		<h1 class="header-text">Login</h1>
-		<form class="form" [formGroup]="loginForm">
+		<form class="login-form1" [formGroup]="loginForm">
 			<div class="input-box">
 				<input formControlName="username" type="text" required>
 				<i>Username</i>
@@ -21,6 +21,8 @@
 			  
 		</form>
 	</div>
+
+	<form class="reset-form1" [formGroup]="resetPassForm">
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
 		  <div class="modal-content">
@@ -34,11 +36,11 @@
 					<b style="margin-right:20px;display:flex;">Email</b><input formControlName="email" type="text" required style="width: 300px;">					
 				</div>
 			</div>
-			<div class="modal-footer"><button type="button" class="btn btn-primary" >Reset Password</button>
-			  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>			  
+			<div class="modal-footer"><button type="button" class="btn btn-primary" (click)="onResetPassword()">Reset Password</button>
+			  <button id="close-button" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>			  
 			</div>
 		  </div>
 		</div>
 	  </div>
-
+	</form>
 <div>

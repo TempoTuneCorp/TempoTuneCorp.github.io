@@ -3,10 +3,11 @@
 *{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     caret-color: transparent;
+    
 
 }
 
-.container{
+.container-songs{
 
     position: absolute;
     margin: auto;
@@ -22,7 +23,7 @@
 
 .song-cards-div{
     height: 70%;
-    overflow-y: scroll;
+    overflow-y: overlay;
 
 }
 
@@ -37,31 +38,40 @@
 
 }
 
-.header-text{
+.header-text-songs{
     align-items: center;
     justify-content: center;
     display:flex;
     align-content: center;
+    height:50px;
 
 }
 
-.text{
+.text-songs{
     display: flex;
     margin-right: auto;
     width: 100px;
     margin-left:80px;
-    margin-bottom: 5px;
-    margin-top:5px;
     align-items: center;
-    margin-top: 20px;
     color: var(--top-text-color);
 }
 
-.clock{
-    height: 20px;
+.title-songs{
+    display: flex;
+    width:max-content;
 }
 
-.line{
+p{
+    margin-bottom:0;
+}
+
+.clock-songs{
+    position:absolute;
+    height: 20px;
+    margin-right:20%;
+}
+
+.line-songs{
     margin: 0 auto;
     border: 0;
     width: 90%;
@@ -72,7 +82,7 @@
 
 }
 
-.card{
+.card-songs{
     align-items: center;
     justify-content: center;
     display:flex;
@@ -81,28 +91,37 @@
 }
 
 .timeStar {
+  line-height:55px;
   z-index: 2;
   position: relative;
-  right: -81%;
-  top: -185%;
-  width: 10%;
+  width: 25%;
+
   color: var(--white-text-color);
   display: flex;
-  gap: 4%;
-  justify-content: left;
-  text-align: left;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+
+
 }
 
-.part{
+
+
+.part-songs{
     margin-right: 8px;
 }
 
-.item svg{
+.item-songs svg{
     padding-left: 20px;
 
 }
 
-.trackline:hover{
+.trackline-songs{
+    display:flex;
+}
+
+.trackline-songs:hover{
     cursor: pointer;
     background-color: rgba(71, 64, 97, 0.7);
 }
@@ -113,13 +132,13 @@
 
 } */
 
-.trackline:focus-within{
+.trackline-songs:focus-within{
 
   background-color: var(--musicplayer-background);
 
 }
 
-.item{
+.item-songs{
     display: flex;
     margin-right: auto;
     width: 100px;
@@ -137,17 +156,17 @@
 
 
 
- audio{
+ .audio-songs{
     position: absolute;
     z-index: 10;
  }
 
- button{
+ .play-button-songs.previous-button-songs.pause-button-songs.skip-button-songs{
     z-index: 10;
     position: relative;
  }
 
-.progress-bar{
+.progress-bar-songs{
     position: absolute;
     left:50%;
     bottom:20px;
@@ -156,7 +175,7 @@
     width: 80%;
 }
 
-.bar{
+.bar-songs{
     background-color: rgb(214, 214, 214);
     position: absolute;
     z-index: 10;
@@ -166,7 +185,7 @@
     cursor:pointer;
 }
 
-.progress{
+.progress-songs{
     background-image: linear-gradient(to right, #3252bd 0%, #3e62da 100%);
     position: absolute;
     z-index: 20;
@@ -176,7 +195,7 @@
     cursor:pointer;
 }
 
-.controls{
+.controls-songs{
     position: absolute;
     left:50%;
     bottom:35px;
@@ -185,7 +204,7 @@
     display: flex;
 }
 
-.play-button{
+.play-button-songs{
     width: 60px;
     height: 60px;
     border-radius: 50px;
@@ -203,7 +222,7 @@
     border-image-outset: 1em; */
 }
 
-.play-button:hover{
+.play-button-songs:hover{
     background-position: right center;
     border-color: rgb(170, 170, 170);
     -webkit-box-shadow: 0 0 10px #161616;
@@ -212,12 +231,12 @@
     text-shadow: 1px 1px 10px #080808;
 }
 
-.play-button svg{
+.play-button-songs svg{
     color:rgb(255, 255, 255);
 }
 
 
-.pause-button{
+.pause-button-songs{
     width: 60px;
     height: 60px;
     border-radius: 50px;
@@ -235,7 +254,7 @@
     border-image-outset: 1em;
 }
 
-.pause-button:hover{
+.pause-button-songs:hover{
     background-position: right center;
     border-color: rgb(170, 170, 170);
     -webkit-box-shadow: 0 0 10px #161616;
@@ -244,11 +263,11 @@
     text-shadow: 1px 1px 10px #080808;
 }
 
-.pause-button svg{
+.pause-button-songs svg{
     color:white;
 }
 
-.skip-button{
+.skip-button-songs{
     position: absolute;
     background-color: transparent;
     border: 0;
@@ -256,20 +275,20 @@
     right:2px;
 }
 
-.skip-button svg{
+.skip-button-songs svg{
     color:white;
 
 }
 
-.skip-button:hover{
+.skip-button-songs:hover{
     color:grey;
 
 }
-.skip-button:active svg{
+.skip-button-songs:active svg{
     height:24px;
 }
 
-.previous-button{
+.previous-button-songs{
     position:absolute;
     background-color: transparent;
     border: 0;
@@ -279,10 +298,10 @@
     left:2px;
 }
 
-.previous-button:hover{
+.previous-button-songs:hover{
     fill:url('#grad1');
 }
-.previous-button:active svg{
+.previous-button-songs:active svg{
     height:24px;
 
 }
@@ -296,7 +315,7 @@
 
 }
 
-.timer{
+.timer-songs{
     position: absolute;
     left:5%;
     bottom:9px;
@@ -304,7 +323,7 @@
     color:white;
 }
 
-.end-timer{
+.end-timer-songs{
     position: absolute;
     display:flex;
     color:white;

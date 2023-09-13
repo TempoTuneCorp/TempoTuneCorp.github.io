@@ -4,7 +4,7 @@
   caret-color: transparent;
 }
 
-.container {
+.container-profile {
   overflow: hidden;
   width: 1200px;
   height: 600px;
@@ -79,10 +79,7 @@
   justify-content: center;
   top: 130px;
   left: 130px;
-  width: 20px;
-  height: 20px;
   border-radius: 50%;
-  padding: 10px;
 }
 .profile-picture-container .profile-picture .pic input {
   width: 20px;
@@ -119,23 +116,23 @@
   font-size: 30px;
   position: relative;
 }
-.profile-info-container-right .profile-info-card {
+.profile-info-container-right .profile-info-card1 {
   background: rgba(0, 0, 0, 0.233);
   border-radius: 10px;
   margin: 20px 0px;
   padding: 10px 20px;
-  height: 54px;
+  height: 74px;
 }
-.profile-info-container-right .profile-info-card .profile-info-box {
+.profile-info-container-right .profile-info-card1 .profile-info-box {
   color: white;
   float: left;
 }
-.profile-info-container-right .profile-info-card .profile-info-box .info-hero-text {
+.profile-info-container-right .profile-info-card1 .profile-info-box .info-hero-text {
   font-size: 15px;
   margin: -2px 0px 2px 0px;
   color: rgba(190, 190, 190, 0.76);
 }
-.profile-info-container-right .profile-info-card .profile-info-box .info-user-text {
+.profile-info-container-right .profile-info-card1 .profile-info-box .info-user-text {
   font-size: 22px;
 }
 
@@ -280,7 +277,7 @@ form {
 }
 
 @media screen and (max-width: 1210px) {
-  .container {
+  .container-profile {
     margin-top: 30px;
     width: 700px;
     height: 730px;
@@ -325,7 +322,7 @@ form {
   }
 }
 @media screen and (max-width: 710px) {
-  .container {
+  .container-profile {
     width: 95%;
     height: 85%;
     position: absolute;
@@ -344,7 +341,7 @@ form {
     width: 120px;
     height: 120px;
   }
-  .profile-picture-container .pic {
+  .profile-picture-container .profile-picture .pic {
     position: absolute;
     top: 85px;
     left: 85px;
@@ -376,21 +373,22 @@ form {
     color: white;
     font-size: 17px;
   }
-  .right-container .profile-info-card {
+  .right-container .profile-info-card1 {
     background: rgba(0, 0, 0, 0.233);
     border-radius: 10px;
     margin: 17px 0px;
     padding: 10px 20px;
-    height: 39px;
+    height: 59px;
   }
-  .right-container .profile-info-card .profile-info-box {
+  .right-container .profile-info-card1 .profile-info-box {
     color: white;
     float: left;
+    height: 39px;
   }
-  .right-container .profile-info-card .profile-info-box .info-hero-text {
+  .right-container .profile-info-card1 .profile-info-box .info-hero-text {
     font-size: 12px;
   }
-  .right-container .profile-info-card .profile-info-box .info-user-text {
+  .right-container .profile-info-card1 .profile-info-box .info-user-text {
     font-size: 17px;
   }
   .btn-edit {

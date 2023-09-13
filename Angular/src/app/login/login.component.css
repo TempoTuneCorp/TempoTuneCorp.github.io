@@ -89,16 +89,16 @@ h1 {
   transition-timing-function: ease-in-put;
   font-weight: 200;
 }
-form {
+.login-form1 {
   padding: 20px 0;
   position: relative;
 }
-form .input-box {
+.login-form1 .input-box {
   position: relative;
   height: 48px;
   margin-bottom: 10px;
 }
-form .input-box i {
+.login-form1 .input-box i {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -112,7 +112,7 @@ form .input-box i {
   pointer-events: none;
   transition: 0.25s ease-in;
 }
-form input {
+.login-form1 input {
   height: 48px;
   appearance: none;
   outline: 0;
@@ -129,14 +129,14 @@ form input {
   transition-duration: 0.25s;
   font-weight: 600;
 }
-form input:hover {
+.login-form1 input:hover {
   background-color: rgba(255, 255, 255, 0.4);
 }
-form input:focus {
+.login-form1 input:focus {
   background-color: white;
   color: var(--secondary-text-color);
 }
-form input:focus ~ i {
+.login-form1 input:focus ~ i {
   font-size: 12px;
   top: 2px;
   left: 5px;
@@ -146,7 +146,7 @@ form input:focus ~ i {
   font-weight: 600;
   transition: 0.25s ease-out;
 }
-form input:valid ~ i {
+.login-form1 input:valid ~ i {
   font-size: 12px;
   top: 2px;
   left: 5px;
