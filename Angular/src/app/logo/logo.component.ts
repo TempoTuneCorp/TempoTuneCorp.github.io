@@ -16,7 +16,6 @@ import { AppComponent } from '../app.component';
 export class LogoComponent {
 
   constructor(private router: Router) {
-    console.log(this.router);
 
   }
 }

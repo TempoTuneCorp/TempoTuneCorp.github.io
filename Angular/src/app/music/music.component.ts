@@ -6,7 +6,8 @@ import { ExpressionType } from '@angular/compiler';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TrackService } from '../services/track.service';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-music',
@@ -15,7 +16,8 @@ import { Observable } from 'rxjs';
   encapsulation: ViewEncapsulation.None,
 })
 export class MusicComponent {
-  constructor(@Inject(DOCUMENT) document: Document, private trackService:TrackService,private route: ActivatedRoute,private auth: AuthService){
+
+  constructor(@Inject(DOCUMENT) document: Document, private trackService:TrackService,private route: ActivatedRoute,private auth: AuthService,private user: UserService){
 
   }
   CurrentId: number = 0;
@@ -27,10 +29,27 @@ export class MusicComponent {
 
   setFavorite(track: Track){
     track.Favorite = true;
+    this.trackService.AddFav(this.userID,track.dbId).subscribe({
+        next:(res) => {
+          console.log(res)
+        }})
   }
 
   deleteFavorite(track: Track){
+
     track.Favorite = false;
+    this.trackService.DeleSongFromFav(this.userID,track.dbId).subscribe({
+      next:(res) => {
+        console.log(res);
+      }
+    });
+
+    this.route.url.subscribe( ([url]) => {
+      const { path} = url;
+      if(path != "main")
+      {
+    (<HTMLDivElement>document.getElementById(track.Id.toString())).remove();
+       }})
   }
 
   setCurrentSong(track: Track) {
@@ -38,7 +57,11 @@ export class MusicComponent {
     player.src = track.Path;
     player.play();
     this.CurrentId = track.Id;
+
+
     (<HTMLDivElement>document.getElementById('card')).focus();
+
+
   }
 
   skipSong(){
@@ -134,33 +157,34 @@ export class MusicComponent {
   }
 
 
-  ngOnInit(){
+ async ngOnInit(){
     var dbTracks;
-    let userIdFromToken = this.auth.getUserIdFromToken();
-    this.userID = userIdFromToken;
+    this.user.getUserId().subscribe ( val=> {
+      let idFromToken = this.auth.getUserIdFromToken();
+      this.userID = val || idFromToken;
+    })
+    console.log(this.userID);
 
     //checks route
-    this.route.url.subscribe(([url]) => {
-      const { path, parameters } = url;
+    this.route.url.subscribe(async ([url]) => {
+      const { path} = url;
       if(path != "main")
       {
 
       //gets favorite songs
       this.trackService.getAllFavTracks(this.userID).subscribe({
-        next:(res) => {
+        next:async (res) => {
           dbTracks = res;
-          console.log(dbTracks);
-          this.tracks = this.trackService.dbTracksToList(dbTracks);
+          this.tracks = await this.trackService.dbTracksToList(dbTracks,this.userID);
         }
       })}
 
       //getting all songs
       else{
       this.trackService.getAllTracks().subscribe({
-        next:(res) => {
+        next:async (res) => {
           dbTracks = res;
-          console.log(dbTracks);
-          this.tracks = this.trackService.dbTracksToList(dbTracks);
+          this.tracks = await this.trackService.dbTracksToList(dbTracks,this.userID);
         }
       })}
     });
