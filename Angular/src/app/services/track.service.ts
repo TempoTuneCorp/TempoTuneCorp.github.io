@@ -15,6 +15,7 @@ isFavorite = false;
   constructor(private http : HttpClient) {
     var dbTracks;
 
+
    }
 
   private baseUrl:string = "https://localhost:7267/api/Track/";
@@ -48,6 +49,7 @@ isFavorite = false;
 async dbTracksToList(dbTracks: Array<any>, userId:number): Promise<Track[]>{
     var i = 0;
     var tracks: Track[] = [];
+
 
     for(const dbTrack of dbTracks){
       var track = new Track(0,0, "", "", "", "", "", false);
