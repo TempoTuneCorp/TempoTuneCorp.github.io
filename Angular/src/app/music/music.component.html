@@ -17,7 +17,7 @@
     <hr class="line">
 
     <div class="song-cards-div">
-        <div  *ngFor="let track of tracks; index as i;" class="trackline" style="display: grid;">
+        <div  *ngFor="let track of tracks; index as i;" class="trackline" style="display: grid;" id={{track.Id}}>
         <div (click)="setCurrentSong(track)" class="card" tabindex="0">
         <div class="item">
             <div class="part"><p class="number"><!--{{}}--></p></div>

@@ -36,12 +36,20 @@ export class MusicComponent {
   }
 
   deleteFavorite(track: Track){
+
     track.Favorite = false;
     this.trackService.DeleSongFromFav(this.userID,track.dbId).subscribe({
       next:(res) => {
         console.log(res);
       }
-    })
+    });
+
+    this.route.url.subscribe( ([url]) => {
+      const { path} = url;
+      if(path != "main")
+      {
+    (<HTMLDivElement>document.getElementById(track.Id.toString())).remove();
+       }})
   }
 
   setCurrentSong(track: Track) {
@@ -49,7 +57,11 @@ export class MusicComponent {
     player.src = track.Path;
     player.play();
     this.CurrentId = track.Id;
+
+
     (<HTMLDivElement>document.getElementById('card')).focus();
+
+
   }
 
   skipSong(){
