@@ -53,13 +53,11 @@ export class MusicComponent {
   }
 
   setCurrentSong(track: Track) {
-    const player:any = <HTMLAudioElement>document.getElementById('player');
+    const player:any = <HTMLAudioElement>document.getElementById('songplayer');
     player.src = track.Path;
     player.play();
     this.CurrentId = track.Id;
-
-
-    (<HTMLDivElement>document.getElementById('card')).focus();
+    (<HTMLDivElement>document.getElementById('card-songs')).focus();
 
 
   }
@@ -70,9 +68,10 @@ export class MusicComponent {
         console.log("First loop");
         console.log(track);
 
-        (<HTMLAudioElement>document.getElementById('player')).src = track.Path;
-        (<HTMLAudioElement>document.getElementById('player')).play();
+        (<HTMLAudioElement>document.getElementById('songplayer')).src = track.Path;
+        (<HTMLAudioElement>document.getElementById('songplayer')).play();
         this.CurrentId = track.Id;
+
 
         return; // Exit the for...of loop
       }
@@ -83,8 +82,8 @@ export class MusicComponent {
         console.log("second loop");
         console.log(track);
 
-        (<HTMLAudioElement>document.getElementById('player')).src = track.Path;
-        (<HTMLAudioElement>document.getElementById('player')).play();
+        (<HTMLAudioElement>document.getElementById('songplayer')).src = track.Path;
+        (<HTMLAudioElement>document.getElementById('songplayer')).play();
         this.CurrentId = track.Id;
 
         return; // Exit the for...of loop
@@ -98,8 +97,8 @@ export class MusicComponent {
         console.log("First loop");
         console.log(track);
 
-        (<HTMLAudioElement>document.getElementById('player')).src = track.Path;
-        (<HTMLAudioElement>document.getElementById('player')).play();
+        (<HTMLAudioElement>document.getElementById('songplayer')).src = track.Path;
+        (<HTMLAudioElement>document.getElementById('songplayer')).play();
         this.CurrentId = track.Id;
 
         return; // Exit the for...of loop
@@ -119,39 +118,39 @@ export class MusicComponent {
   createCards() {
     for (const track of this.tracks) {
       var divCard = document.createElement("Div");
-      divCard.setAttribute("class", "card");
+      divCard.setAttribute("class", "card-songs");
 
 
       var divItemBig = document.createElement("Div");
-      divItemBig.setAttribute("class", "item");
+      divItemBig.setAttribute("class", "item-songs");
 
       var divPartNum = document.createElement("Div");
-      this.createDivWithParagraph(divPartNum, track.Id.toString(), "part", "number");
+      this.createDivWithParagraph(divPartNum, track.Id.toString(), "part-songs", "number-songs");
 
       var divPartCov = document.createElement("Div");
-      divPartCov.setAttribute("class", "part");
+      divPartCov.setAttribute("class", "part-songs");
       var image = document.createElement("img");
       image.setAttribute("class", "small-cover");
       image.setAttribute("src", "assets\\images\\AbstractCover.png");
       divPartCov.appendChild(image);
 
       var divPartTit = document.createElement("Div");
-      this.createDivWithParagraph(divPartTit, track.Title, "part", "title");
+      this.createDivWithParagraph(divPartTit, track.Title, "part", "title-songs");
 
       divItemBig.append(divPartNum, divPartCov, divPartTit);
 
 
       var divItemArt = document.createElement("Div");
-      this.createDivWithParagraph(divItemArt, track.Artist, "item", "artist");
+      this.createDivWithParagraph(divItemArt, track.Artist, "item-songs", "artist-songs");
 
       var divItemAlb = document.createElement("Div");
-      this.createDivWithParagraph(divItemAlb, track.Album, "item", "album");
+      this.createDivWithParagraph(divItemAlb, track.Album, "item-songs", "album-songs");
 
       var divItemTime = document.createElement("Div");
-      this.createDivWithParagraph(divItemTime, track.Time, "item", "time");
+      this.createDivWithParagraph(divItemTime, track.Time, "item-songs", "time-songs");
 
       divCard.append(divItemBig, divItemArt, divItemAlb, divItemTime);
-      document.getElementById("container")?.appendChild(divCard);
+      document.getElementById("container-songs")?.appendChild(divCard);
 
     }
   }
@@ -192,11 +191,12 @@ export class MusicComponent {
 
 
     // this.createCards();
-    const audio = (<HTMLAudioElement>document.getElementById('player'))
-    const timer = (<HTMLParagraphElement>document.getElementById('timer'))
-    const endTimer = (<HTMLParagraphElement>document.getElementById('end-timer'))
-    const progress = (<HTMLDivElement>document.getElementById('progress'))
-    const bar = (<HTMLDivElement>document.getElementById('bar'))
+    const audio = (<HTMLAudioElement>document.getElementById('songplayer'))
+    const timer = (<HTMLParagraphElement>document.getElementById('timer-songs'))
+    const endTimer = (<HTMLParagraphElement>document.getElementById('end-timer-songs'))
+    const progress = (<HTMLDivElement>document.getElementById('progress-songs'))
+    const bar = (<HTMLDivElement>document.getElementById('bar-songs'))
+    const card = (<HTMLDivElement>document.getElementById('card-songs'));
 
     audio.addEventListener('timeupdate', () => {
       const minutes = Math.floor(audio.currentTime / 60);
@@ -205,6 +205,7 @@ export class MusicComponent {
       const secondsDuration = Math.floor(audio.duration % 60);
       timer.innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
       endTimer.innerText = `${minutesDuration}:${secondsDuration < 10 ? '0' : ''}${secondsDuration}`;
+      
     });
 
     audio.addEventListener('timeupdate', () => {
@@ -227,6 +228,7 @@ export class MusicComponent {
       }
     });
 
+    
     bar.addEventListener("click", function(event) {
       var rect = bar.getBoundingClientRect();
       var x = event.clientX - rect.left;
@@ -244,8 +246,14 @@ export class MusicComponent {
       console.log(percent);
 
       audio.currentTime = (audio.duration*(percent/100));
-
+      
     });
+
+    card.addEventListener("click", () => {
+      const background = (<HTMLDivElement>document.getElementById('card-songs'));
+      background.style.backgroundColor = 'black';
+    }
+    );
   }
 
 

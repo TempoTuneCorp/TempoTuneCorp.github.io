@@ -7,7 +7,7 @@
 
 }
 
-.container{
+.container-profile{
     overflow:hidden;
     width:1200px;
     height: 600px;
@@ -91,10 +91,7 @@
         justify-content: center;
         top:130px;
         left:130px;
-        width: 20px;
-        height: 20px;
         border-radius: 50%;
-        padding: 10px;
 
         input{
             width: 20px;
@@ -142,12 +139,12 @@
 
     }
 
-    .profile-info-card{
+    .profile-info-card1{
         background: rgba(0, 0, 0, 0.233);
         border-radius: 10px;
         margin: 20px 0px;
         padding: 10px 20px;
-        height:54px;
+        height:74px;
 
         .profile-info-box{
             color: white;
@@ -211,6 +208,7 @@
     box-shadow: 0 0 10px #2e2e2e;
     color: rgb(255, 255, 255);
     text-shadow: 1px 1px 10px #080808;
+    
   }
 
   .space {
@@ -331,7 +329,7 @@
   @media screen and (max-width: 1210px) {
 
     
-    .container{
+    .container-profile{
         margin-top:30px;
         width:700px;
         height: 730px;
@@ -398,7 +396,7 @@
 
     
 
-    .container{
+    .container-profile{
 
         width: 95%;
         height: 85%;
@@ -424,13 +422,17 @@
         width: 120px;
         height: 120px;
 
+        .profile-picture{
         .pic{
-            position:absolute;
-            top:85px;
-            left:85px;
-
+        position:absolute;
+        top:85px;
+        left:85px;
         }
+        }
+
+        
     }
+    
 
     .btn-favourites {
             display:none;
@@ -467,16 +469,17 @@
             font-size: 17px;
         }
 
-        .profile-info-card{
+        .profile-info-card1{
             background: rgba(0, 0, 0, 0.233);
             border-radius: 10px;
             margin: 17px 0px;
             padding: 10px 20px;
-            height:39px;
+            height: 59px;
 
             .profile-info-box{
                 color: white;
                 float:left;
+                height:39px;
 
                 .info-hero-text{
                     font-size: 12px;
@@ -491,7 +494,6 @@
 
     .btn-edit {
         padding: 10px 10px;
-
 
 
         svg{

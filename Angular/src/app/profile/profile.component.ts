@@ -140,7 +140,7 @@ onFavClick(){
       console.log(res);
       this.auth.removeToken(localStorage.getItem('token')); //remove existing token
       this.auth.storeToken(res.token); //get new token  
-      this.email = this.auth.decodedToken().unique_name; //decode new token and get new username from payload
+      this.email = this.auth.decodedToken().email; //decode new token and get new username from payload
       this.user.setEmail(this.email); //set new username so it can be shown when onInit
       this.toast.success({
         detail: "Success", summary: res.message, duration: 3000

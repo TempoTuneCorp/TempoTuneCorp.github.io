@@ -13,6 +13,7 @@ import { UserService } from '../services/user.service';
 export class LoginComponent {
 
   loginForm!: FormGroup;
+  resetPassForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder, 
@@ -27,6 +28,20 @@ export class LoginComponent {
       username: ['', Validators.required],
       password: ['', Validators.required]
     })
+
+    this.resetPassForm = this.fb.group({
+      email: ['', Validators.required]
+    })
+  }
+
+  onResetPassword(){
+    if(this.resetPassForm.valid){
+      console.log(this.resetPassForm.value);
+
+
+      // const closeBtnRef = document.getElementById('close-button');
+      // closeBtnRef?.click();
+    }
   }
 
   onLogin(){
