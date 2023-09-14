@@ -26,12 +26,10 @@ namespace TempoTuneAPI.Controllers
          [ProducesResponseType(StatusCodes.Status404NotFound)]
          public async Task<IActionResult> Create(Track track)
         {
-            
             try
             {
                 _context.Tracks.Add(track);
-                var artist = await _context.Artists.FindAsync(track.ArtistId);
-                
+                //Artist Newartist = await _context.Artists.FindAsync(track.ArtistId);
 
                 await _context.SaveChangesAsync();
                 return Ok(track);
@@ -91,7 +89,8 @@ namespace TempoTuneAPI.Controllers
                                  Title = t.Title,
                                  SongPath = t.SongPath,
                                  AlbumName = t.AlbumName,
-                                 Artist = t.Artist
+                                 Artist = t.Artist,
+                                 Time = t.Time,
                              }).FirstOrDefault(); 
 
                 return Ok(track);
@@ -132,8 +131,10 @@ namespace TempoTuneAPI.Controllers
                                 Id = t.Id,
                                 Title = t.Title,
                                 SongPath = t.SongPath,
+                                ArtistId = t.ArtistId,
                                 AlbumName = t.AlbumName,
-                                Artist = t.Artist
+                                Artist = t.Artist,
+                                Time = t.Time,
                              }).ToList();
             return testTrack;
         }

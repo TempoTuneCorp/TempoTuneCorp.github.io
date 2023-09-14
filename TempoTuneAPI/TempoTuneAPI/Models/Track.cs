@@ -12,9 +12,9 @@ namespace TempoTuneAPI.Models
         public string Title { get; set; }
         public string SongPath { get; set; }
         public string AlbumName { get; set; }
-
         public int ArtistId { get; set; }
         public Artist Artist { get; set; } = null!;
-
+        public string Time { get; set; }
+        
     }
 }

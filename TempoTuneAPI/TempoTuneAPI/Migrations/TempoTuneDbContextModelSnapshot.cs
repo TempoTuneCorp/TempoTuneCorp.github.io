@@ -78,6 +78,9 @@ namespace TempoTuneAPI.Migrations
                     b.Property<string>("SongPath")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Time")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 

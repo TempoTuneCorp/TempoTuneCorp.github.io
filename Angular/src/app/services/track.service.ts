@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Track } from '../models/track.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import * as ffprobe from 'ffprobe-static';
+
 
 
 @Injectable({
@@ -14,6 +16,7 @@ isFavorite = false;
 
   constructor(private http : HttpClient) {
     var dbTracks;
+
 
    }
 
@@ -49,6 +52,7 @@ async dbTracksToList(dbTracks: Array<any>, userId:number): Promise<Track[]>{
     var i = 0;
     var tracks: Track[] = [];
 
+
     for(const dbTrack of dbTracks){
       var track = new Track(0,0, "", "", "", "", "", false);
       track.Id = i+1;
@@ -57,9 +61,9 @@ async dbTracksToList(dbTracks: Array<any>, userId:number): Promise<Track[]>{
       track.Path = dbTrack.songPath;
       track.Album = dbTrack.albumName;
       track.Artist = dbTrack.artist.name;
-      track.Time = "1:21";
-
+      track.Time = dbTrack.time;
       track.Favorite = await fetchApiAndSetVariable(userId,track.dbId);
+
 
 
     console.log(track.Favorite);
@@ -97,7 +101,6 @@ async dbTracksToList(dbTracks: Array<any>, userId:number): Promise<Track[]>{
       throw error;
     }
   }
-
 
 
   //   {
