@@ -57,7 +57,7 @@ export class MusicComponent {
     player.src = track.Path;
     player.play();
     this.CurrentId = track.Id;
-    (<HTMLDivElement>document.getElementById('card-songs')).focus();
+   
 
 
   }
@@ -249,11 +249,11 @@ export class MusicComponent {
       
     });
 
-    card.addEventListener("click", () => {
-      const background = (<HTMLDivElement>document.getElementById('card-songs'));
-      background.style.backgroundColor = 'black';
-    }
-    );
+    // card.addEventListener("click", () => {
+    //   const background = (<HTMLDivElement>document.getElementById('card-songs'));
+    //   background.style.backgroundColor = 'black';
+    // }
+    // );
   }
 
 

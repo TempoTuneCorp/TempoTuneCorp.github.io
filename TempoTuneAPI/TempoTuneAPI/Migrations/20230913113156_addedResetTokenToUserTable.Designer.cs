@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TempoTuneAPI.Data;
 
@@ -11,9 +12,11 @@ using TempoTuneAPI.Data;
 namespace TempoTuneAPI.Migrations
 {
     [DbContext(typeof(TempoTuneDbContext))]
-    partial class TempoTuneDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230913113156_addedResetTokenToUserTable")]
+    partial class addedResetTokenToUserTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

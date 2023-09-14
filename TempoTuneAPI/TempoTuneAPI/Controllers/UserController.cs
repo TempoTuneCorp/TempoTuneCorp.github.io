@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using TempoTuneAPI.Data;
 using TempoTuneAPI.Helpers;
 using TempoTuneAPI.Models;
+using TempoTuneAPI.Services;
 
 namespace TempoTuneAPI.Controllers
 {
@@ -22,11 +23,13 @@ namespace TempoTuneAPI.Controllers
         private readonly HttpClient _httpClient = new HttpClient();
         private readonly string _fileServerUrl = "http://192.168.23.122/";
         private readonly TempoTuneDbContext _context;
+        private readonly EmailService _emailService;
 
         //Constructor
-        public UserController(TempoTuneDbContext context)
+        public UserController(TempoTuneDbContext context, EmailService emailService)
         {
             _context = context;
+            _emailService = emailService;
         }
 
         [HttpPost("authenticate")]
@@ -95,6 +98,31 @@ namespace TempoTuneAPI.Controllers
             });
 
         }
+
+        [HttpPost("ResetPassword")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> ResetPassword(User UserObj)
+        {
+            if (await CheckEmailExistsAsync(UserObj.Email))
+            {
+                var user = _context.Users.FirstOrDefault(u => u.Email == UserObj.Email);
+                string resetToken = Guid.NewGuid().ToString();
+                user.ResetToken = resetToken;
+                user.ResetTokenExpiryTime = DateTime.UtcNow.AddMinutes(10);
+                _context.SaveChanges();
+                string resetLink = $"https://localhost:4200/reset-password?token={resetToken}";
+                await _emailService.SendPasswordResetEmailAsync(UserObj.Email, resetLink);
+
+                return Ok(new
+                {
+                    Message = $"An Email has been sent to {UserObj.Email}"
+                });
+            }
+            else return BadRequest(new { Message = "Email doesn't exist in database" });
+
+        }
+
 
         [HttpGet("id")]
         [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]

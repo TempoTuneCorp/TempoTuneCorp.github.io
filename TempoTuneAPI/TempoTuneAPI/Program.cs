@@ -3,6 +3,7 @@ using TempoTuneAPI.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using TempoTuneAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,8 @@ builder.Services.AddCors(option =>
 
 builder.Services.AddDbContext<TempoTuneAPI.Data.TempoTuneDbContext>(
     o => o.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
+
+builder.Services.AddScoped<EmailService>();
 
 builder.Services.AddAuthentication(x =>
 {

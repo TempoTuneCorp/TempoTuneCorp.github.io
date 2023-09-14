@@ -24,6 +24,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
 
 import { FavoritesComponent } from './favorites/favorites.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 
@@ -41,6 +42,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
     AboutComponent,
     MiniGameComponent,
     FavoritesComponent,
+    ResetPasswordComponent,
 
   ],
   imports: [
