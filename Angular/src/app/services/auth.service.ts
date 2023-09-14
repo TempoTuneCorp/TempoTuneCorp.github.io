@@ -21,6 +21,10 @@ export class AuthService {
     return this.http.post<any>(`${this.baseUrl}authenticate`,loginObj)
   }
 
+  resetPassword(userObj:any){
+    return this.http.post<any>(`${this.baseUrl}ResetPassword`,userObj)
+  }
+
   
   signOut(){
     localStorage.clear();
