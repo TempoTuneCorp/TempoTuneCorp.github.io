@@ -35,12 +35,32 @@ export class LoginComponent {
   }
 
   onResetPassword(){
+    
     if(this.resetPassForm.valid){
+      const emailToReset = this.resetPassForm.value;
       console.log(this.resetPassForm.value);
 
+      this.auth.resetPassword(emailToReset)
+    .subscribe({
+      next:(res)=> {
 
-      // const closeBtnRef = document.getElementById('close-button');
-      // closeBtnRef?.click();
+      const closeBtnRef = document.getElementById('close-button');
+      closeBtnRef?.click();
+      this.toast.success({
+        detail: "Success", summary: res.message, duration: 3000
+      });
+      
+    },
+    error:(err)=>{
+      console.log(err);
+      this.toast.error({
+        detail: "Error", summary: err?.error.message, duration: 3000
+      });
+    }
+  })
+
+
+      
     }
   }
 
