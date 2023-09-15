@@ -584,3 +584,5 @@ C:\Users\rjn\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\obj\Debug\net
 C:\Users\rjn\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\obj\Debug\net6.0\ref\TempoTuneAPI.dll
 C:\Users\rjn\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\SendGrid.dll
 C:\Users\rjn\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\StarkbankEcdsa.dll
+C:\Users\rms\Desktop\newTempo\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\SendGrid.dll
+C:\Users\rms\Desktop\newTempo\TempoTune\TempoTuneAPI\TempoTuneAPI\bin\Debug\net6.0\StarkbankEcdsa.dll
