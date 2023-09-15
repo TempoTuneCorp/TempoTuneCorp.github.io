@@ -3,7 +3,7 @@
 *{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     caret-color: transparent;
-    
+
 
 }
 
@@ -329,4 +329,11 @@ p{
     right:5%;
     bottom:9px;
     justify-content: center;
+}
+
+@media screen and (max-width: 1700px) {
+.container-songs{
+  width: 95%;
+}
+
 }
