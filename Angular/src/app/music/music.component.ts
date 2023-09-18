@@ -57,7 +57,7 @@ export class MusicComponent {
     player.src = track.Path;
     player.play();
     this.CurrentId = track.Id;
-   
+
 
 
   }
@@ -205,7 +205,7 @@ export class MusicComponent {
       const secondsDuration = Math.floor(audio.duration % 60);
       timer.innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
       endTimer.innerText = `${minutesDuration}:${secondsDuration < 10 ? '0' : ''}${secondsDuration}`;
-      
+
     });
 
     audio.addEventListener('timeupdate', () => {
@@ -228,7 +228,7 @@ export class MusicComponent {
       }
     });
 
-    
+
     bar.addEventListener("click", function(event) {
       var rect = bar.getBoundingClientRect();
       var x = event.clientX - rect.left;
@@ -246,7 +246,7 @@ export class MusicComponent {
       console.log(percent);
 
       audio.currentTime = (audio.duration*(percent/100));
-      
+
     });
 
     // card.addEventListener("click", () => {
