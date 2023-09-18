@@ -129,6 +129,7 @@ onFavClick(){
 
   updateEmail(){
     const Id = this.auth.getUserIdFromToken();
+    console.log(Id);
     const Email = this.updateEmailForm.get('email')?.value;
     const userObj = {Id, Email}
     console.log(userObj);

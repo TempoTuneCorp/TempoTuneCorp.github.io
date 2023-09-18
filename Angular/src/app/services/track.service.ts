@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Track } from '../models/track.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import * as ffprobe from 'ffprobe-static';
+
 
 
 
