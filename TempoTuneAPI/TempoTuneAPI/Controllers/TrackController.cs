@@ -139,7 +139,18 @@ namespace TempoTuneAPI.Controllers
             return testTrack;
         }
 
+        [HttpGet("GetAlbumCover{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult> GetAlbumCover(int id) 
+        {
+            Track track = await _context.Tracks.FindAsync(id);
+            
+            string pictureUrl = track.Artist.Name;
 
-      
+            return Ok(pictureUrl);
+        }
+
     }
 }
