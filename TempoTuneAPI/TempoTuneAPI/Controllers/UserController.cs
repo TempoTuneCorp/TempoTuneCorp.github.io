@@ -121,17 +121,42 @@ namespace TempoTuneAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> ValidateUserToResetPassword(User UserObj)
         {
-            if (string.IsNullOrEmpty(UserObj.ResetToken))
-               return BadRequest(new { Message = "Invalid reset token" });
-            
             if (UserObj == null)
                return NotFound(new { Message = "User not found" });
 
+            try
+            {
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.ResetToken == UserObj.ResetToken);
+                if (user == null)
+                {
+                    return BadRequest(new { Message = "Reset token has expired" });
+                }
+            }
+            catch (Exception)
+            {
 
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.ResetToken == UserObj.ResetToken);
+                throw;
+               
+            }
 
-            return Ok(new { Message = $"update password for user: {user.UserName}" });     
 
+
+
+            //return Ok(new { Message = $"update password for user: {user.UserName}" });
+
+            //if (UserObj == null)
+            //    return NotFound(new { Message = "User not found" });
+
+            //var user = await _context.Users.FirstOrDefaultAsync(u => u.ResetToken == UserObj.ResetToken);
+
+            //if (user.ResetTokenExpiryTime <= DateTime.UtcNow)
+            //{
+            //    return BadRequest(new { Message = "Reset token has expired" });
+            //}
+
+
+
+            return Ok(new { Message = $"update password for user" });
         }
 
         [HttpPut("updatePassword")]
