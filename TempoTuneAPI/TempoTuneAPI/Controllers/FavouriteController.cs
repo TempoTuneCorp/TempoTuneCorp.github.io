@@ -310,6 +310,33 @@ namespace TempoTuneAPI.Controllers
             return Ok(new { Message = "no items deleted" });
         }
 
-      
+
+
+        [HttpDelete("DeleteAllFavByUserID/{userId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> DeleteAllFavByUserID(int userId) 
+        {
+            var UserFavList = await GetFavByUser(userId);
+            var deltedThings = false;
+            var amount = 0;
+
+            foreach (var item in UserFavList)
+            {
+                    await Delete(item.Id);
+                    amount++;
+                    deltedThings = true;
+            }
+
+            if (deltedThings)
+            { return Ok(new { Message = amount + " deleted item" }); }
+
+            return Ok(new { Message = "no items deleted" });
+
+            throw new NotImplementedException();
         }
+
+
+    }
 }
