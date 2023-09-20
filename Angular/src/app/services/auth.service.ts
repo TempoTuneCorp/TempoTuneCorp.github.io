@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,14 +23,23 @@ export class AuthService {
     return this.http.post<any>(`${this.baseUrl}authenticate`,loginObj)
   }
 
-  resetPassword(userObj:any){
-    return this.http.post<any>(`${this.baseUrl}ResetPassword`,userObj)
+  sendEmailResetPassword(userObj:any){
+    return this.http.post<any>(`${this.baseUrl}SendEmailResetPassword`,userObj)
   }
 
+
+
+  validateResetToken(userObj: any): Observable<any>{
+    return this.http.post<any>(`${this.baseUrl}ValidateUserToResetPassword`,userObj);
+  }
+
+  updatePassword(userObj: any): Observable<any>{
+    return this.http.put<any>(`${this.baseUrl}updatePassword`,userObj);
+  }
   
   signOut(){
     localStorage.clear();
-    
+
   }
 
   removeToken(tokenValue: any){

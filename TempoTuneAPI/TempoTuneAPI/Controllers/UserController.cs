@@ -20,8 +20,6 @@ namespace TempoTuneAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly HttpClient _httpClient = new HttpClient();
-        private readonly string _fileServerUrl = "http://192.168.23.122/";
         private readonly TempoTuneDbContext _context;
         private readonly EmailService _emailService;
 
@@ -84,10 +82,6 @@ namespace TempoTuneAPI.Controllers
             if (!isValidEmail(userObj.Email))
                 return BadRequest(new { Message = "Email must be right format: a1@b2.c3" });
 
-            //if (!isValidEmail(userObj.Email))
-            //    return BadRequest(new { Message = "Email must be the right format" });
-
-
             userObj.Password = PasswordHasher.HashPassword(userObj.Password);
 
             await _context.Users.AddAsync(userObj);
@@ -99,10 +93,10 @@ namespace TempoTuneAPI.Controllers
 
         }
 
-        [HttpPost("ResetPassword")]
+        [HttpPost("SendEmailResetPassword")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> ResetPassword(User UserObj)
+        public async Task<IActionResult> SendEmailResetPassword(User UserObj)
         {
             if (await CheckEmailExistsAsync(UserObj.Email))
             {
@@ -111,7 +105,7 @@ namespace TempoTuneAPI.Controllers
                 user.ResetToken = resetToken;
                 user.ResetTokenExpiryTime = DateTime.UtcNow.AddMinutes(10);
                 _context.SaveChanges();
-                string resetLink = $"https://localhost:4200/reset-password?token={resetToken}";
+                string resetLink = $"localhost:4200/reset-password?resetToken={resetToken}";
                 await _emailService.SendPasswordResetEmailAsync(UserObj.Email, resetLink);
 
                 return Ok(new
@@ -120,6 +114,48 @@ namespace TempoTuneAPI.Controllers
                 });
             }
             else return BadRequest(new { Message = "Email doesn't exist in database" });
+        }
+
+        [HttpPost("ValidateUserToResetPassword")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> ValidateUserToResetPassword(User UserObj)
+        {
+            if (string.IsNullOrEmpty(UserObj.ResetToken))
+               return BadRequest(new { Message = "Invalid reset token" });
+            
+            if (UserObj == null)
+               return NotFound(new { Message = "User not found" });
+
+
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.ResetToken == UserObj.ResetToken);
+
+            return Ok(new { Message = $"update password for user: {user.UserName}" });     
+
+        }
+
+        [HttpPut("updatePassword")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> UpdatePassword(User UserObj)
+        {
+
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.ResetToken == UserObj.ResetToken);
+            
+            var pass = CheckPasswordStrength(UserObj.Password);
+            if (!string.IsNullOrEmpty(pass))
+                return BadRequest(new { Message = pass.ToString() });
+
+
+            UserObj.Password = PasswordHasher.HashPassword(UserObj.Password);
+            user.Password = UserObj.Password;
+            _context.Entry(user).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            user.Token = CreateJwt(user);
+            return Ok(new
+            {
+                Message = "Password updated successfully"
+            });
 
         }
 
@@ -150,12 +186,8 @@ namespace TempoTuneAPI.Controllers
             if (user == null)
                 return BadRequest(new { Message = "User not found" });
 
-
-
             if (await CheckUserNameExistsAsync(UserObj.UserName))
                 return BadRequest(new { Message = "Username already exists" });
-
-
 
             user.UserName = UserObj.UserName;
             _context.Entry(user).State = EntityState.Modified;
@@ -169,8 +201,6 @@ namespace TempoTuneAPI.Controllers
                 Message = "Your username was updated succesfully"
             });
             //return NoContent();
-
-
         }
 
         [HttpPut("updateEmail")]
@@ -205,8 +235,6 @@ namespace TempoTuneAPI.Controllers
                 Message = "Your email was updated succesfully"
             });
             //return NoContent();
-
-
         }
 
         [HttpDelete("deleteUser")]
@@ -234,7 +262,6 @@ namespace TempoTuneAPI.Controllers
         {
             return await _context.Users.AnyAsync(x => x.UserName == username);
         }
-
         private async Task<bool> CheckEmailExistsAsync(string email)
         {
             return await _context.Users.AnyAsync(x => x.Email == email);
@@ -287,7 +314,6 @@ namespace TempoTuneAPI.Controllers
             return jwtTokenHandler.WriteToken(token);
         }
 
-
         [HttpGet]
         public async Task<ActionResult<User>> GetAllUsers()
         {
@@ -326,50 +352,6 @@ namespace TempoTuneAPI.Controllers
             // No file was provided, return an error
             return BadRequest("No profile picture file was uploaded.");
         }
-
-
-
-
-        //[HttpPost("uploadPicture/{id}")]
-        //public async Task<IHttpActionResult> UploadPicture(IFormFile file, int id)
-        //{
-        //    // Perform validation on the file size, type, etc.
-        //    if (file == null || file.Length <= 0)
-        //        return BadRequest(new { Message = "choose a file to upload" });
-
-        //    User user = await _context.Users.FindAsync(id);
-
-        //    //var fileExtension = Path.GetExtension(file.FileName);
-        //    string fileName = $"{id}_{file.FileName}";
-
-        //    // Save the file to the file server
-        //    //var filePath = Path.Combine("\\Users\\rjn\\Desktop\\profilepicture\\", fileName);
-        //    var filePath = $"http://localhost:3000/profilepictures/{fileName}";
-
-        //    using (var stream = new FileStream(filePath, FileMode.Create))
-        //    {
-        //        await file.CopyToAsync(stream);
-        //    }
-
-        //    // Update the user table with pictureURL
-
-        //    if (user.profilePictureURL == null)
-        //    {
-        //        user.profilePictureURL = filePath;
-        //    }               
-
-        //    else
-        //    {
-        //        user.profilePictureURL = filePath;
-        //        _context.Entry(user).State = EntityState.Modified;
-        //    }
-
-        //    await _context.SaveChangesAsync();
-
-        //    // Return a response with the file path or URL
-        //    System.Diagnostics.Debug.Print("##################\n" + filePath+ "\n##################");
-        //    return Ok(filePath);
-        //}
 
         
         [HttpGet("getPictureUrl/{id}")]

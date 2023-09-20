@@ -10,27 +10,25 @@ import { LogoComponent } from './logo/logo.component';
 import { AboutComponent } from './about/about.component';
 import { MiniGameComponent } from './mini-game/mini-game.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
-  {
-    path:'', redirectTo: 'profile', pathMatch: 'full'
-  },
+  // {
+  //   path:'', redirectTo: 'profile', pathMatch: 'full'
+  // },
   {
     path: 'login',
     component: LoginComponent,
   },
-
   {
     path: 'register',
     component: RegisterComponent,
   },
-
   {
     path: 'main',
     canActivate: [AuthGuard],
     component: MainComponent,
   },
-
   {
     path: 'music',
     component: MusicComponent,
@@ -50,6 +48,10 @@ const routes: Routes = [
   {
     path: 'favourites',
     component: FavoritesComponent,
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
   }
   ];
 

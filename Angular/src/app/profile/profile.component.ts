@@ -129,6 +129,7 @@ onFavClick(){
 
   updateEmail(){
     const Id = this.auth.getUserIdFromToken();
+    console.log(Id);
     const Email = this.updateEmailForm.get('email')?.value;
     const userObj = {Id, Email}
     console.log(userObj);
@@ -155,6 +156,27 @@ onFavClick(){
   })
   }
 
+  updatePassword(){
+    if(confirm('Are you sure u want to reset your password?')){
+      const emailToReset = {Email: this.email};
+    console.log(emailToReset);
+      this.auth.sendEmailResetPassword(emailToReset)
+    .subscribe({
+      next:(res)=> {
+      this.toast.success({
+        detail: "Success", summary: res.message, duration: 3000
+      });
+      
+    },
+    error:(err)=>{
+      console.log(err);
+      this.toast.error({
+        detail: "Error", summary: err?.error.message, duration: 3000
+      });
+    }})
+  }
+}
+
   deleteUser(){
     if(confirm('Are you sure u want to delete your user?'))
     {
@@ -175,13 +197,9 @@ onFavClick(){
         this.toast.error({
           detail: "Error", summary: err?.error.message, duration: 3000
         });
-
       }
     })
-    }
-   
-    
-  }
+  }}
 
   ngOnInit(){
     this.user.getUsername().subscribe(val => { 
@@ -209,9 +227,6 @@ onFavClick(){
     this.user.getProfilePicture().subscribe (val =>{
       this.image = val;
     });
-
-
-
   }
 }
 

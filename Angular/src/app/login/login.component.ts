@@ -40,7 +40,7 @@ export class LoginComponent {
       const emailToReset = this.resetPassForm.value;
       console.log(this.resetPassForm.value);
 
-      this.auth.resetPassword(emailToReset)
+      this.auth.sendEmailResetPassword(emailToReset)
     .subscribe({
       next:(res)=> {
 

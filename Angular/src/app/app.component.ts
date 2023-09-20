@@ -14,7 +14,7 @@ export class AppComponent{
 
   constructor(private router: Router) {
 
-    this.router.navigate(['/login'])
+    // this.router.navigate(['/login'])
 
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
@@ -26,12 +26,5 @@ export class AppComponent{
       }
     });
   }
-
-
-  // route for button: ((click)="redirect in the html button")
-  //
-  // redirect(){
-  //   this.router.navigate(['/someComponent']);
-  //
 
 }
