@@ -41,7 +41,7 @@ export class NavbarComponent implements OnInit {
   logout(){
     this.auth.signOut();
     this.router.navigate(['login'])
-    window.location.reload();
+    // window.global.reload();
   }
 
   onFavClick(){

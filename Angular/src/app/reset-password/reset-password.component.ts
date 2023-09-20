@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { NgToastService } from 'ng-angular-popup';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -14,7 +14,7 @@ export class ResetPasswordComponent implements OnInit {
   resetToken: any;
   updatePasswordForm: FormGroup;
 
-  constructor(private route: ActivatedRoute,private formBuilder: FormBuilder, private auth:AuthService, private toast:NgToastService){
+  constructor(private route: ActivatedRoute,private formBuilder: FormBuilder, private auth:AuthService, private toast:NgToastService, private router: Router){
     this.updatePasswordForm = this.formBuilder.group({
       newPassword: ['', Validators.required],
       confirmNewPassword: ['', Validators.required],
@@ -35,9 +35,9 @@ export class ResetPasswordComponent implements OnInit {
       next:(res)=> {
       console.log(res);
       this.toast.success({
-        detail: "Success", summary: res.message, duration: 3000
-        
+        detail: "Success", summary: res.message, duration: 3000 
       });
+      this.router.navigate(['login'])
     },
     error:(err)=>{
       console.log(err);

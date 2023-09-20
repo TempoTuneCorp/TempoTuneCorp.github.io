@@ -13,9 +13,9 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
-  {
-    path:'', redirectTo: 'profile', pathMatch: 'full'
-  },
+  // {
+  //   path:'', redirectTo: 'profile', pathMatch: 'full'
+  // },
   {
     path: 'login',
     component: LoginComponent,
