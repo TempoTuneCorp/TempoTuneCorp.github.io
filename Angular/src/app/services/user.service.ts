@@ -8,9 +8,10 @@ import { AuthService } from './auth.service';
 })
 export class UserService {
   private baseUrl:string = "https://localhost:7267/api/User/";
-  
+  private favUrl:string = "https://localhost:7267/api/Favourite/";
 
-  private username$ = new BehaviorSubject<string>("");  
+
+  private username$ = new BehaviorSubject<string>("");
   private email$ = new BehaviorSubject<string>("");
   private id$ = new BehaviorSubject<number>(0);
   private profilePicture$ = new BehaviorSubject<string>("");
@@ -57,13 +58,21 @@ export class UserService {
     return this.http.put<any>(`${this.baseUrl}updateEmail`, userObj);
   }
 
-  deleteUser(id: any): Observable<any>{
+async deleteUserFavorites(id: any): Promise<Observable<any>>{
+
+  const response = await this.http.delete<any>(`${this.favUrl}DeleteAllFavByUserID/${id}`);
+  return response;
+}
+
+ async deleteUser(id: any): Promise<Observable<any>>{
     const params = new HttpParams().set('id', id);
     const options = {
       params: params
     };
-    return this.http.delete<any>(`${this.baseUrl}deleteUser`, options);
+    const response = await this.http.delete<any>(`${this.baseUrl}deleteUser`, options);
+    return response;
   }
+
 
   getUserById(id: any): Observable<any>{
     return this.http.get<any>(`${this.baseUrl}getById`, id);
