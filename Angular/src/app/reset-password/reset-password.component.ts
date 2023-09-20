@@ -13,6 +13,8 @@ export class ResetPasswordComponent implements OnInit {
 
   resetToken: any;
   updatePasswordForm: FormGroup;
+  canUpdatePassword: boolean = false;
+  cannotUpdatePassword: boolean = false;
 
   constructor(private route: ActivatedRoute,private formBuilder: FormBuilder, private auth:AuthService, private toast:NgToastService, private router: Router){
     this.updatePasswordForm = this.formBuilder.group({
@@ -52,6 +54,9 @@ export class ResetPasswordComponent implements OnInit {
   });}
 }
 
+onClick(){
+  this.router.navigate(['login'])
+}
 
   ngOnInit(): void {
 
@@ -65,13 +70,14 @@ export class ResetPasswordComponent implements OnInit {
     this.auth.validateResetToken(userObj)
       .subscribe({
         next:(res)=> {
-  
+          this.canUpdatePassword = true;
         this.toast.success({
           detail: "Success", summary: res.message, duration: 3000
         });
       },
       error:(err)=>{
         console.log(err);
+        this.cannotUpdatePassword = true;
         this.toast.error({
           detail: "Error", summary: err?.error.message, duration: 3000
         });
