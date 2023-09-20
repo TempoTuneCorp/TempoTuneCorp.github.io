@@ -1,7 +1,7 @@
 <div class="container-songs" id="container-songs">
     <div class="header-text-songs">
         <div id="title-songs" class="text-songs">
-            <p># Title</p>
+            <p>#Title</p>
         </div>
         <div id="artist-songs" class="text-songs">
             <p>Artist</p>
@@ -21,7 +21,7 @@
          <div  *ngFor="let track of tracks; index as i;" class="trackline-songs" id={{track.Id}}>
         <div (click)="setCurrentSong(track)" class="card-songs" id="card-songs" tabindex="0">
         <div class="item-songs">
-            <div class="part-songs"><p class="number-songs"><!--{{}}--></p></div>
+            <div class="part-songs"><p class="number-songs"><!--{{track.id}}--></p></div>
             <div class="part-songs"><img class="small-cover" src="assets\images\Album\{{track.dbId}}.jpg" alt="cover"></div>
             <div class="part-songs"><p class="title-songs">{{track.Title}}</p></div>
 

@@ -63,14 +63,10 @@ async dbTracksToList(dbTracks: Array<any>, userId:number): Promise<Track[]>{
       track.Artist = dbTrack.artist.name;
       track.Time = dbTrack.time;
       track.Favorite = await fetchApiAndSetVariable(userId,track.dbId);
-
-
-
-    console.log(track.Favorite);
-    tracks.push(track);
-
-
+      console.log(track.Favorite);
+      tracks.push(track);
       i++;
+
 
     }
     return tracks;

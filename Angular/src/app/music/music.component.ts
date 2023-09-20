@@ -17,7 +17,7 @@ import { UserService } from '../services/user.service';
 })
 export class MusicComponent {
 
-  constructor(@Inject(DOCUMENT) document: Document, private trackService:TrackService,private route: ActivatedRoute,private auth: AuthService,private user: UserService){
+  constructor(private trackService:TrackService,private route: ActivatedRoute,private auth: AuthService,private user: UserService){
 
   }
   CurrentId: number = 0;
@@ -57,7 +57,7 @@ export class MusicComponent {
     player.src = track.Path;
     player.play();
     this.CurrentId = track.Id;
-   
+
 
 
   }
@@ -196,7 +196,6 @@ export class MusicComponent {
     const endTimer = (<HTMLParagraphElement>document.getElementById('end-timer-songs'))
     const progress = (<HTMLDivElement>document.getElementById('progress-songs'))
     const bar = (<HTMLDivElement>document.getElementById('bar-songs'))
-    const card = (<HTMLDivElement>document.getElementById('card-songs'));
 
     audio.addEventListener('timeupdate', () => {
       const minutes = Math.floor(audio.currentTime / 60);
@@ -205,7 +204,6 @@ export class MusicComponent {
       const secondsDuration = Math.floor(audio.duration % 60);
       timer.innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
       endTimer.innerText = `${minutesDuration}:${secondsDuration < 10 ? '0' : ''}${secondsDuration}`;
-      
     });
 
     audio.addEventListener('timeupdate', () => {
@@ -228,7 +226,7 @@ export class MusicComponent {
       }
     });
 
-    
+
     bar.addEventListener("click", function(event) {
       var rect = bar.getBoundingClientRect();
       var x = event.clientX - rect.left;
@@ -246,7 +244,7 @@ export class MusicComponent {
       console.log(percent);
 
       audio.currentTime = (audio.duration*(percent/100));
-      
+
     });
 
     // card.addEventListener("click", () => {

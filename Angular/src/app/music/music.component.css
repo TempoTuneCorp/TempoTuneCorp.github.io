@@ -3,7 +3,7 @@
 *{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     caret-color: transparent;
-    
+
 
 }
 
@@ -58,7 +58,7 @@
 
 .title-songs{
     display: flex;
-    width:max-content;
+    width:140%;
 }
 
 p{
@@ -114,6 +114,7 @@ p{
 .item-songs svg{
     padding-left: 20px;
 
+
 }
 
 .trackline-songs{
@@ -140,8 +141,8 @@ p{
 .item-songs{
     display: flex;
     margin-right: auto;
-    width: 100px;
-    margin-left:80px;
+    width: 100%;
+    margin-left:8%;
     margin-bottom: 10px;
     margin-top: 10px;
     align-items: center;
@@ -329,4 +330,12 @@ p{
     right:5%;
     bottom:9px;
     justify-content: center;
+}
+
+@media screen and (max-width: 1700px) {
+.container-songs{
+  width: 95%;
+
+}
+
 }
