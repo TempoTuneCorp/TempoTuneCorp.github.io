@@ -190,6 +190,10 @@ onFavClick(){
         this.toast.success({
           detail: "Success", summary: res.message, duration: 3000
         });
+
+        this.auth.signOut();
+        this.router.navigate([''])
+
         (await (this.user.deleteUser(id)))
         .subscribe({
           next:(res: { message: any; }) => {
@@ -207,6 +211,7 @@ onFavClick(){
             });
           }
         })
+
       },
       error:(err: { error: { message: any; }; })=>{
         console.log(err);
@@ -243,6 +248,7 @@ onFavClick(){
         this.user.setProfilePicture(this.image);
 
     }})
+    
     this.user.getProfilePicture().subscribe (val =>{
       this.image = val;
     });

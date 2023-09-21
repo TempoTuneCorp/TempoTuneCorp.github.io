@@ -18,7 +18,7 @@ class PermissionsService {
         return true;
       }
       else{
-        this.router.navigate(['login']);
+        this.router.navigate(['']);
         this.toast.error({detail:"Error", summary: "You need to be logged in to enter this page."});
 
         return false;

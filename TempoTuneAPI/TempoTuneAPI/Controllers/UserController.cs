@@ -131,30 +131,18 @@ namespace TempoTuneAPI.Controllers
                 {
                     return BadRequest(new { Message = "Reset token has expired" });
                 }
+
+                if (user.ResetTokenExpiryTime <= DateTime.UtcNow)
+                {
+                return BadRequest(new { Message = "Reset token has expired" });
+                }
+
             }
             catch (Exception)
             {
-
                 throw;
                
             }
-
-
-
-
-            //return Ok(new { Message = $"update password for user: {user.UserName}" });
-
-            //if (UserObj == null)
-            //    return NotFound(new { Message = "User not found" });
-
-            //var user = await _context.Users.FirstOrDefaultAsync(u => u.ResetToken == UserObj.ResetToken);
-
-            //if (user.ResetTokenExpiryTime <= DateTime.UtcNow)
-            //{
-            //    return BadRequest(new { Message = "Reset token has expired" });
-            //}
-
-
 
             return Ok(new { Message = $"update password for user" });
         }

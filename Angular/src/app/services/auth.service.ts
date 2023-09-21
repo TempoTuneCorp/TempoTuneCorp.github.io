@@ -27,8 +27,6 @@ export class AuthService {
     return this.http.post<any>(`${this.baseUrl}SendEmailResetPassword`,userObj)
   }
 
-
-
   validateResetToken(userObj: any): Observable<any>{
     return this.http.post<any>(`${this.baseUrl}ValidateUserToResetPassword`,userObj);
   }
