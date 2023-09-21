@@ -16,7 +16,7 @@
 
     <hr class="line-songs">
 
-    <div class="song-cards-div">
+    <div class="song-cards-div" id = "songCards">
 
          <div  *ngFor="let track of tracks; index as i;" class="trackline-songs" id={{track.Id}}>
         <div (click)="setCurrentSong(track)" class="card-songs" id="card-songs" tabindex="0">
