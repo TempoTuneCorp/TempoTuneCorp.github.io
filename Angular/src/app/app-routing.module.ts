@@ -17,7 +17,7 @@ const routes: Routes = [
   //   path:'', redirectTo: 'profile', pathMatch: 'full'
   // },
   {
-    path: 'login',
+    path: '',
     component: LoginComponent,
   },
   {

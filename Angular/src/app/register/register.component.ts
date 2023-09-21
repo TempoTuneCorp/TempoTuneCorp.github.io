@@ -39,7 +39,7 @@ export class RegisterComponent {
             detail: "Success", summary: "User created", duration: 5000
           });
           this.registerForm.reset();
-          this.router.navigate(['login']);
+          this.router.navigate(['']);
         },
         error:(err)=>{
           this.toast.error({detail:"Error", summary: err?.error.message, duration: 5000});

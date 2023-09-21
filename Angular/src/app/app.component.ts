@@ -16,15 +16,7 @@ export class AppComponent{
 
     // this.router.navigate(['/login'])
 
-    router.events.subscribe((val) => {
-      if (val instanceof NavigationEnd) {
-        if (val.url == '/login' || val.url == '/register' || val.url == '/') {
-          this.showNavbar = true;
-        } else {
-          this.showNavbar = false;
-        }
-      }
-    });
+    
   }
 
 }

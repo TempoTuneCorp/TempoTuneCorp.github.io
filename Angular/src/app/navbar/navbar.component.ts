@@ -40,7 +40,7 @@ export class NavbarComponent implements OnInit {
   }
   logout(){
     this.auth.signOut();
-    this.router.navigate(['login'])
+    this.router.navigate([''])
     // window.global.reload();
   }
 
@@ -56,6 +56,11 @@ export class NavbarComponent implements OnInit {
       this.id = val || idFromToken;
     })
 
+    this.user.getPictureUrl(this.id).subscribe({
+      next: (base64Data:string) => { 
+        this.image = 'data:image;base64,' + base64Data;
+        this.user.setProfilePicture(this.image);
+    }})
 
     this.user.getProfilePicture().subscribe(val => {
     this.image = val;

@@ -39,7 +39,7 @@ export class ResetPasswordComponent implements OnInit {
       this.toast.success({
         detail: "Success", summary: res.message, duration: 3000 
       });
-      this.router.navigate(['login'])
+      this.router.navigate([''])
     },
     error:(err)=>{
       console.log(err);
@@ -55,7 +55,7 @@ export class ResetPasswordComponent implements OnInit {
 }
 
 onClick(){
-  this.router.navigate(['login'])
+  this.router.navigate([''])
 }
 
   ngOnInit(): void {

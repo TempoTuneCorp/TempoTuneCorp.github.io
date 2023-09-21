@@ -1,6 +1,6 @@
 <app-logo></app-logo>
 <div class="wrapper">
-	<div class="container">
+	<div class="register-container">
         <h1>Register</h1>
 		<form [formGroup]="registerForm" class="form">
 			<div class="input-box">
@@ -19,7 +19,7 @@
 			</div>
 			
 			<button (click)="onRegister()" [disabled]="registerForm.invalid" type="submit" id="register-button">Create</button>
-			<p>Already got Tempo? <a routerLink="/login"> Login</a></p>
+			<p>Already got Tempo? <a routerLink="/"> Login</a></p>
 
 		</form>
 	</div>

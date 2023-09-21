@@ -190,7 +190,7 @@ onFavClick(){
           detail: "Success", summary: res.message, duration: 3000
         });
         this.auth.signOut();
-        this.router.navigate(['login'])
+        this.router.navigate([''])
       },
       error:(err)=>{
         console.log(err);
@@ -222,8 +222,8 @@ onFavClick(){
       next: (base64Data:string) => { 
         this.image = 'data:image;base64,' + base64Data;
         this.user.setProfilePicture(this.image);
-      
     }})
+    
     this.user.getProfilePicture().subscribe (val =>{
       this.image = val;
     });
