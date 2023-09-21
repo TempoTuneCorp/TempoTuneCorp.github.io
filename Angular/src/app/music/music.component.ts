@@ -35,6 +35,7 @@ export class MusicComponent {
         }})
   }
 
+
   deleteFavorite(track: Track){
 
     track.Favorite = false;
@@ -51,6 +52,7 @@ export class MusicComponent {
     (<HTMLDivElement>document.getElementById(track.Id.toString())).remove();
        }})
   }
+
 
   setCurrentSong(track: Track) {
     const player:any = <HTMLAudioElement>document.getElementById('songplayer');
@@ -71,6 +73,7 @@ export class MusicComponent {
     const trackLine:any = <HTMLAudioElement>document.getElementById(this.CurrentId.toString());
     trackLine.style.setProperty('background-color','rgba(45, 40, 62, 0.7');
   }
+
 
   skipSong(){
     for (const track of this.tracks) {

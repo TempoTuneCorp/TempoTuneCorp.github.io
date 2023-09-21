@@ -177,28 +177,47 @@ onFavClick(){
   }
 }
 
-  deleteUser(){
+  async deleteUser(){
     if(confirm('Are you sure u want to delete your user?'))
     {
     const id = this.auth.decodedToken().id;
     console.log(id);
-    this.user.deleteUser(id)
+
+    (await this.user.deleteUserFavorites(id))
     .subscribe({
-      next:(res) => {
+      next:async (res: { message: any; }) => {
 
         this.toast.success({
           detail: "Success", summary: res.message, duration: 3000
         });
-        this.auth.signOut();
-        this.router.navigate(['login'])
+        (await (this.user.deleteUser(id)))
+        .subscribe({
+          next:(res: { message: any; }) => {
+
+            this.toast.success({
+              detail: "Success", summary: res.message, duration: 3000
+            });
+            this.auth.signOut();
+            this.router.navigate(['login'])
+          },
+          error:(err: { error: { message: any; }; })=>{
+            console.log(err);
+            this.toast.error({
+              detail: "Error", summary: err?.error.message, duration: 3000
+            });
+          }
+        })
       },
-      error:(err)=>{
+      error:(err: { error: { message: any; }; })=>{
         console.log(err);
         this.toast.error({
           detail: "Error", summary: err?.error.message, duration: 3000
         });
       }
-    })
+    });
+
+
+
   }}
 
   ngOnInit(){
