@@ -192,7 +192,7 @@ onFavClick(){
         });
 
         this.auth.signOut();
-        this.router.navigate([''])
+        this.router.navigate(['']);
 
         (await (this.user.deleteUser(id)))
         .subscribe({
@@ -248,7 +248,7 @@ onFavClick(){
         this.user.setProfilePicture(this.image);
 
     }})
-    
+
     this.user.getProfilePicture().subscribe (val =>{
       this.image = val;
     });
