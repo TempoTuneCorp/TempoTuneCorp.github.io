@@ -35,6 +35,7 @@ export class MusicComponent {
         }})
   }
 
+
   deleteFavorite(track: Track){
 
     track.Favorite = false;
@@ -52,15 +53,27 @@ export class MusicComponent {
        }})
   }
 
+
   setCurrentSong(track: Track) {
     const player:any = <HTMLAudioElement>document.getElementById('songplayer');
     player.src = track.Path;
     player.play();
     this.CurrentId = track.Id;
-
-
+    this.setTrackBackrounds();
 
   }
+
+
+  setTrackBackrounds(){
+    this.tracks.forEach(function(value){
+      const trackLine:any = <HTMLAudioElement>document.getElementById(value.Id.toString());
+      trackLine.style.setProperty('background-color','transparent');
+    })
+
+    const trackLine:any = <HTMLAudioElement>document.getElementById(this.CurrentId.toString());
+    trackLine.style.setProperty('background-color','rgba(45, 40, 62, 0.7');
+  }
+
 
   skipSong(){
     for (const track of this.tracks) {
@@ -91,6 +104,7 @@ export class MusicComponent {
     }
   }
 
+
   previousSong(){
     for (const track of this.tracks) {
       if (track.Id === this.CurrentId - 1) {
@@ -106,6 +120,7 @@ export class MusicComponent {
     }
   }
 
+
   createDivWithParagraph(div: Element, text :string, divClass: string, paragraphClass: string) {
     div.setAttribute("class", divClass);
     var number = document.createElement("P");
@@ -114,6 +129,7 @@ export class MusicComponent {
     number.appendChild(numberText);
     div.appendChild(number);
   }
+
 
   createCards() {
     for (const track of this.tracks) {

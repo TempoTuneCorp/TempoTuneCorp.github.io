@@ -132,12 +132,6 @@ p{
 
 } */
 
-.trackline-songs:focus-within{
-
-  background-color: var(--musicplayer-background);
-
-}
-
 .item-songs{
     display: flex;
     margin-right: auto;

@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit{
 
   updateUsernameForm: FormGroup;
   updateEmailForm: FormGroup;
- 
+
   selectedFile: File | null=null;
 
   public username:string = "";
@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit{
   editEmailMode: boolean = false;
 
   constructor(
-    private user: UserService, 
+    private user: UserService,
     private auth: AuthService,
     private formBuilder: FormBuilder,
     private toast: NgToastService,
@@ -55,14 +55,14 @@ export class ProfileComponent implements OnInit{
       console.log(this.id)
       this.user.uploadProfilePicture(this.selectedFile, this.id).subscribe({
         next:(res)=> {
-          
+
           this.user.getPictureUrl(this.id).subscribe({
-            next: (base64Data:string) => { 
+            next: (base64Data:string) => {
               this.image = 'data:image;base64,' + base64Data;
               this.user.setProfilePicture(this.image);
-            
+
           }})
-              
+
           // console.log(res);
           this.toast.success({
             detail: "Success", summary: ('Image uploaded successfully'), duration: 3000
@@ -85,7 +85,7 @@ onFavClick(){
   enableEditUsername(){
     this.editUsernameMode = true;
   }
-  
+
   cancelUsernameUpdate(){
     this.editUsernameMode = false;
   }
@@ -102,7 +102,7 @@ onFavClick(){
       this.editUsernameMode = false;
       console.log(res);
       this.auth.removeToken(localStorage.getItem('token')); //remove existing token
-      this.auth.storeToken(res.token); //get new token  
+      this.auth.storeToken(res.token); //get new token
       this.username = this.auth.decodedToken().unique_name; //decode new token and get new username from payload
       this.user.setUsername(this.username); //set new username so it can be shown when onInit
       this.toast.success({
@@ -140,7 +140,7 @@ onFavClick(){
       this.editEmailMode = false;
       console.log(res);
       this.auth.removeToken(localStorage.getItem('token')); //remove existing token
-      this.auth.storeToken(res.token); //get new token  
+      this.auth.storeToken(res.token); //get new token
       this.email = this.auth.decodedToken().email; //decode new token and get new username from payload
       this.user.setEmail(this.email); //set new username so it can be shown when onInit
       this.toast.success({
@@ -166,7 +166,7 @@ onFavClick(){
       this.toast.success({
         detail: "Success", summary: res.message, duration: 3000
       });
-      
+
     },
     error:(err)=>{
       console.log(err);
@@ -177,36 +177,60 @@ onFavClick(){
   }
 }
 
-  deleteUser(){
+  async deleteUser(){
     if(confirm('Are you sure u want to delete your user?'))
     {
     const id = this.auth.decodedToken().id;
     console.log(id);
-    this.user.deleteUser(id)
+
+    (await this.user.deleteUserFavorites(id))
     .subscribe({
-      next:(res) => {
-        
+      next:async (res: { message: any; }) => {
+
         this.toast.success({
           detail: "Success", summary: res.message, duration: 3000
         });
+
         this.auth.signOut();
         this.router.navigate([''])
+
+        (await (this.user.deleteUser(id)))
+        .subscribe({
+          next:(res: { message: any; }) => {
+
+            this.toast.success({
+              detail: "Success", summary: res.message, duration: 3000
+            });
+            this.auth.signOut();
+            this.router.navigate(['login'])
+          },
+          error:(err: { error: { message: any; }; })=>{
+            console.log(err);
+            this.toast.error({
+              detail: "Error", summary: err?.error.message, duration: 3000
+            });
+          }
+        })
+
       },
-      error:(err)=>{
+      error:(err: { error: { message: any; }; })=>{
         console.log(err);
         this.toast.error({
           detail: "Error", summary: err?.error.message, duration: 3000
         });
       }
-    })
+    });
+
+
+
   }}
 
   ngOnInit(){
-    this.user.getUsername().subscribe(val => { 
+    this.user.getUsername().subscribe(val => {
       let usernameFromToken = this.auth.getUsernameFromToken();
     this.username = val || usernameFromToken;
     })
-    
+
 
     this.user.getEmail().subscribe ( val=> {
       let emailFromToken = this.auth.getEmailFromToken();
@@ -219,9 +243,10 @@ onFavClick(){
     })
 
     this.user.getPictureUrl(this.id).subscribe({
-      next: (base64Data:string) => { 
+      next: (base64Data:string) => {
         this.image = 'data:image;base64,' + base64Data;
         this.user.setProfilePicture(this.image);
+
     }})
     
     this.user.getProfilePicture().subscribe (val =>{
