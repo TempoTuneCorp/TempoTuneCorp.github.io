@@ -3,8 +3,6 @@
 *{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     caret-color: transparent;
-   
-
 }
 
 .container-profile{
@@ -26,8 +24,6 @@
     height: 100%;
     background-color: rgba(71, 171, 252, 0.473);
     border-radius: 30px 0px 0px 30px;
-
-    
     .btn-favourites {
         position: relative;
         top: 194px;
@@ -44,7 +40,6 @@
         color: rgb(255, 255, 255);
         border-radius: 10px;
       }
-
       .btn-favourites:hover {
         cursor:pointer;
         background-position: right center;
@@ -56,8 +51,6 @@
       }
 }
 
-
-
 .profile-picture-container{
     width: 170px;
     height: 170px;
@@ -66,7 +59,6 @@
     position: relative;
     transform: translate(-50%, -50%);
     overflow:visible;
-
     .profile-picture{
     border-radius: 50%;
     position: relative;
@@ -76,14 +68,11 @@
     box-shadow: 0px 0px 24px 1px rgba(63, 63, 63, 0.76);
     background-size: cover;
     background-position: center;
-
     .placeholder-image{
         border-radius:50%;
         width: 100%;
         height: 100%;
-        
     }
-
     .pic{
         position:absolute;
         display:flex;
@@ -92,14 +81,12 @@
         top:130px;
         left:130px;
         border-radius: 50%;
-
         input{
             width: 20px;
             height: 20px;
         }
-    
-}
-}
+    }
+  }
 }
 
 
@@ -107,15 +94,11 @@
     position: relative;
     top: 100px;
     text-align: center;
-
     p{
         color: white;
         font-size: 18px;
-       
         padding:0 40px 0 40px;
     }
-
-    
 }
 
 .right-container{
@@ -131,43 +114,33 @@
     left: 50%;
     top:50%;
     transform: translate(-50%, -50%);
-
     h1{
         color:white;
         font-size: 30px;
         position:relative;
-
     }
-
     .profile-info-card1{
         background: rgba(0, 0, 0, 0.233);
         border-radius: 10px;
         margin: 20px 0px;
         padding: 10px 20px;
         height:74px;
-
         .profile-info-box{
             color: white;
             float:left;
-
-
             .info-hero-text{
                 font-size: 15px;
                 margin:-2px 0px 2px 0px;
                 color:rgba(190, 190, 190, 0.76);
             }
-
             .info-user-text{
                 font-size: 22px;
-
             }
         }
     }
 }
 
 .update-input{
-
-
     width: 400px;
     font-size: 20px;
     background-color: #0808081c;
@@ -179,15 +152,12 @@
     margin-left:-12px;
     transition: 0.5s;
     outline: none;
-
     &:focus{
         border-color:#ffffff;
         caret-color: rgb(128, 128, 126);
         font-size: 20px;
-
     }
 }
-
 .btn-edit {
     float:right;
     padding: 15px 15px;
@@ -197,9 +167,7 @@
     background-size: 1000% auto;
     color: rgb(255, 255, 255);
     border-radius: 10px;
-
   }
-
   .btn-edit:hover {
     cursor:pointer;
     background-position: right center;
@@ -208,19 +176,15 @@
     box-shadow: 0 0 10px #2e2e2e;
     color: rgb(255, 255, 255);
     text-shadow: 1px 1px 10px #080808;
-    
   }
-
   .space {
     background-image: -webkit-gradient(linear, left top, right top, from(#743ad5), color-stop(51%, #d53a9d), to(#743ad5));
     background-image: linear-gradient(to right, #743ad5 0%, #d53a9d 51%, #743ad5 100%);
     border-image-source: linear-gradient(45deg, #743ad5, #d53a9d );
     border-image-outset: 0em;
-    
   }
 
   .btn-delete {
-
     float:right;
     padding: 15px 25px;
     text-align: center;
@@ -233,16 +197,12 @@
     color: rgb(255, 255, 255);
     border-radius: 10px;
     margin-top: 63px;
-
-
     svg{
         color:rgb(255, 255, 255);
         float:left;
         margin-right:10px;
     }
-
-
-  }
+}
 
   .btn-delete:hover {
     cursor:pointer;
@@ -253,18 +213,15 @@
     color: rgb(255, 255, 255);
     text-shadow: 1px 1px 10px #080808;
   }
-
   .red {
     background-image: -webkit-gradient(linear, left top, right top, from(#e62f2f), color-stop(51%, #eb612a), to(#fa0404));
     background-image: linear-gradient(to right, #f82929 0%, #f8654b 51%, #e62f2f 100%);
     border-image-source: linear-gradient(45deg, #e62f2f, #eb2a64);
     border-image-outset: 1em;
   }
-
   form{
     display:flex;
     justify-content: center;
-    
   }
   .btn-cancel-update {
     color: rgb(155, 70, 70);
@@ -273,13 +230,10 @@
     padding: 0 5px 0 5px;
     margin-left: -35px;
     cursor: pointer;
-
-
   }
   .btn-cancel-update:hover svg {
     color: rgb(216, 54, 54);
   }
-
   .btn-update {
     float: right;
     padding: 11px 11px;
@@ -306,7 +260,6 @@
     box-shadow: none;
     color: rgba(174, 218, 181, 0.74);
   }
-  
   .btn-update:hover {
     cursor: pointer;
     background-position: right center;
@@ -315,20 +268,13 @@
     color: rgb(255, 255, 255);
     text-shadow: 1px 1px 10px #080808;
   }
-
   .space1 {
     background-image: linear-gradient(to right, #1d850f 0%, #10d874 51%, #1d850f 100%);
     border-image-source: linear-gradient(45deg, #77ac17, #47d53a);
     border-image-outset: 1em;
   }
 
-
-
-
-
   @media screen and (max-width: 1210px) {
-
-    
     .container-profile{
         margin-top:30px;
         width:700px;
@@ -342,7 +288,6 @@
         height: 250px;
         border-radius: 30px 30px 0px 0px;
         position: relative;
-
         .btn-favourites {
         position:absolute;
         left: 470px;
@@ -350,17 +295,10 @@
         }
     }
 
-    
-
-
     .profile-picture-container{
         top: 125px;
         left: 150px;
         position:relative;
-        
-
-
-  
     }
 
     .profile-info-container-left{
@@ -377,7 +315,6 @@
     }
 
     .profile-info-container-right{
-
         margin-top:-30px;
     }
 
@@ -386,33 +323,23 @@
         margin-top:10px;
         left:50%;
         transform: translate(-50%);
-
     }
 
 }
 
 
 @media screen and (max-width: 710px) {
-
-    
-
     .container-profile{
-
         width: 95%;
         height: 85%;
         position: absolute;
     }
-
     .left-container{
         width: 100%;
         float: left;
         height: 30%;
         border-radius: 30px 30px 0px 0px;
         min-height: 200px;
-
-        
-
-
     }
 
     .profile-picture-container{
@@ -421,18 +348,13 @@
         left: 50%;
         width: 120px;
         height: 120px;
-
         .profile-picture{
         .pic{
         position:absolute;
         top:85px;
         left:85px;
-        }
-        }
-
-        
+        }}
     }
-    
 
     .btn-favourites {
             display:none;
@@ -444,27 +366,20 @@
         left: 50%;
         top:86%;
         transform: translate(-50%, -50%);
-
         p{
             font-size: 14px;
             padding:1px;
         }
-        
-
-        
     }
-
     .right-container{
         width: 100%;
         float: right;
         height: 100%;
-
         .profile-info-container-right{
             width: 95%;
             margin-top:-30px;
         }
         h1{
-
             color:white;
             font-size: 17px;
         }
@@ -494,8 +409,6 @@
 
     .btn-edit {
         padding: 10px 10px;
-
-
         svg{
             height:15px;
             width: 15px;
@@ -517,7 +430,6 @@
             height: 18px;
         }
       }
-
       .btn-cancel-update
       {
         svg{
@@ -526,9 +438,9 @@
             margin-left:3px;
         }
       }
-
       .btn-update {
         padding: 6.5px;
+
         svg{
             height:22px;
             width: 22px;
@@ -544,15 +456,10 @@
         width: 100%;
         font-size: 15px;
 
-        &:focus{
-        font-size: 15px;
+          &:focus{
+          font-size: 15px;
+          }
         }
       }
-      }
-      
+
     }
-
-
-
-
-

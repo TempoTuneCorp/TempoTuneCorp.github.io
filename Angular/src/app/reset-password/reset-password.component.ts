@@ -23,21 +23,19 @@ export class ResetPasswordComponent implements OnInit {
     });
   }
 
-
   onUpdatePassword(){
     if (this.updatePasswordForm.get('newPassword')?.value === this.updatePasswordForm.get('confirmNewPassword')?.value)
-  { 
+  {
     const resetToken = this.resetToken;
     const Password = this.updatePasswordForm.get('newPassword')?.value;
     const userObj = {resetToken, Password}
     console.log(userObj);
-
     this.auth.updatePassword(userObj)
     .subscribe({
       next:(res)=> {
       console.log(res);
       this.toast.success({
-        detail: "Success", summary: res.message, duration: 3000 
+        detail: "Success", summary: res.message, duration: 3000
       });
       this.router.navigate([''])
     },
@@ -59,12 +57,10 @@ onClick(){
 }
 
   ngOnInit(): void {
-
     this.route.queryParams.subscribe(params => {
       this.resetToken = params['resetToken'];
     });
     console.log(this.resetToken);
-
     const resetToken = this.resetToken;
     const userObj = {resetToken};
     this.auth.validateResetToken(userObj)

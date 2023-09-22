@@ -1,6 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {DOCUMENT} from "@angular/common"
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 
@@ -25,8 +24,6 @@ export class NavbarComponent implements OnInit {
 
   }
 
-
-
   onLogoClick(){
     this.router.navigate(['main'])
   }
@@ -41,23 +38,20 @@ export class NavbarComponent implements OnInit {
   logout(){
     this.auth.signOut();
     this.router.navigate([''])
-    // window.global.reload();
   }
 
   onFavClick(){
     this.router.navigate(['favourites'])
   }
 
-
   ngOnInit(): void {
-
     this.user.getUserId().subscribe ( val=> {
       let idFromToken = this.auth.getUserIdFromToken();
       this.id = val || idFromToken;
     })
 
     this.user.getPictureUrl(this.id).subscribe({
-      next: (base64Data:string) => { 
+      next: (base64Data:string) => {
         this.image = 'data:image;base64,' + base64Data;
         this.user.setProfilePicture(this.image);
     }})
