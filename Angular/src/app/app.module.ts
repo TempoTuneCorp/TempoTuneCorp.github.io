@@ -18,7 +18,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {NgToastModule} from 'ng-angular-popup';
 import { AboutComponent } from './about/about.component';
 import { TokenInterceptor } from './Interceptors/token.interceptor';
-import { MiniGameComponent } from './mini-game/mini-game.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
@@ -40,7 +39,6 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     ProfileComponent,
     NavbarComponent,
     AboutComponent,
-    MiniGameComponent,
     FavoritesComponent,
     ResetPasswordComponent,
 

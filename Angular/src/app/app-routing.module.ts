@@ -8,7 +8,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LogoComponent } from './logo/logo.component';
 import { AboutComponent } from './about/about.component';
-import { MiniGameComponent } from './mini-game/mini-game.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
@@ -40,10 +39,6 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent,
-  },
-  {
-    path: 'mini-game',
-    component: MiniGameComponent,
   },
   {
     path: 'favourites',
