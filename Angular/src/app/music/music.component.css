@@ -8,7 +8,6 @@
 }
 
 .container-songs{
-
     position: absolute;
     margin: auto;
     height: 80%;
@@ -126,12 +125,6 @@ p{
     background-color: rgba(71, 64, 97, 0.7);
 }
 
-
-/* .card::after{
-    background-color: var(--hover-grey-color);
-
-} */
-
 .item-songs{
     display: flex;
     margin-right: auto;
@@ -147,8 +140,6 @@ p{
 .small-cover{
     width: 35px;
 }
-
-
 
  .audio-songs{
     position: absolute;
@@ -212,8 +203,6 @@ p{
     border-color: rgb(170, 170, 170);
 
     background-image: linear-gradient(to right, #3a5ed5 0%, #3ad5cd 51%, #3a7dd5 100%);
-    /* border-image-source: linear-gradient(45deg, #3a5ed5, #3ad5cd );
-    border-image-outset: 1em; */
 }
 
 .play-button-songs:hover{
@@ -328,7 +317,7 @@ p{
 
 @media screen and (max-width: 1700px) {
 .container-songs{
-  width: 95%;
+  width: 98%;
 
 }
 
