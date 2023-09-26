@@ -7,8 +7,8 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class UserService {
-  private baseUrl:string = "https://localhost:7267/api/User/";
-  private favUrl:string = "https://localhost:7267/api/Favourite/";
+  private baseUrl:string = "http://192.168.23.122:8082/api/User/";
+  private favUrl:string = "http://192.168.23.122:8082/api/Favourite/";
 
 
   private username$ = new BehaviorSubject<string>("");
