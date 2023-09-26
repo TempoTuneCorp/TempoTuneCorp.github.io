@@ -67,11 +67,11 @@ export class MusicComponent {
   setTrackBackrounds(){
     this.tracks.forEach(function(value){
       const trackLine:any = <HTMLAudioElement>document.getElementById(value.Id.toString());
-      trackLine.style.setProperty('background-color','transparent');
+      trackLine.style.setProperty('background-color','');
     })
 
     const trackLine:any = <HTMLAudioElement>document.getElementById(this.CurrentId.toString());
-    trackLine.style.setProperty('background-color','rgba(45, 40, 62, 0.7');
+    trackLine.style.setProperty('background-color','rgba(45, 40, 62, 0.7)');
   }
 
 
