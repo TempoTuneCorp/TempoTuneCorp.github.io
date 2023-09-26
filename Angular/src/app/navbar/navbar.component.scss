@@ -13,7 +13,7 @@
   z-index: 10 ;
   text-align: center;
   color: rgb(37, 32, 105);
-  
+
 
 }
 
@@ -56,7 +56,7 @@
   transform: translate(-50%, -50%);
   border: 0;
   cursor: pointer;
-  
+
 }
 
 .profile-nav-container
@@ -74,16 +74,13 @@ width: 150px;
 }
 
 .profilebutton{
-width: 60px;
-height:60px;
-
-
+  width: 60px;
+  height:60px;
   background-color: transparent;
   border: 0;
-
-
   position: absolute;
   display:block;
+
   img{
     border-radius: 50%;
     width: 100%;
@@ -92,7 +89,6 @@ height:60px;
 }
 
 .profilebuttonText{
-
   background-color: transparent;
   border: 0;
   width: fit-content;
@@ -104,14 +100,11 @@ height:60px;
   position: relative;
   display:block;
   cursor: pointer;
-
-  
 }
 
 .profilebuttonText:after {
   content: "";
   position: absolute;
-
   left: 0;
   right: 100%;
   bottom: 15px;
@@ -129,27 +122,22 @@ height:60px;
 }
 
 .FavoritebuttonText{
-
   background-color: transparent;
   border: 0;
   width: fit-content;
   align-self: center;
   height:  100%;
   left: 50%;
-  
   transform: translate(-50%, -0%);
   margin:0;
   padding: 0px 10px 0px 10px;
   position: absolute;
   cursor: pointer;
-
-  
 }
 
 .FavoritebuttonText:after {
   content: "";
   position: absolute;
-
   left: 0;
   right: 100%;
   bottom: 15px;
@@ -160,6 +148,7 @@ height:60px;
   transition-duration: 0.3s;
   transition-timing-function: ease-out;
 }
+
 .FavoritebuttonText:hover:after,
 .FavoritebuttonText:focus:after,
 .FavoritebuttonText:active:after {
@@ -167,7 +156,6 @@ height:60px;
 }
 
 .AboutbuttonText{
-
   background-color: transparent;
   border: 0;
   width: fit-content;
@@ -179,14 +167,11 @@ height:60px;
   padding: 0px 10px 0px 10px;
   position: absolute;
   cursor: pointer;
-
-  
 }
 
 .AboutbuttonText:after {
   content: "";
   position: absolute;
-
   left: 0;
   right: 100%;
   bottom: 15px;
@@ -197,6 +182,7 @@ height:60px;
   transition-duration: 0.3s;
   transition-timing-function: ease-out;
 }
+
 .AboutbuttonText:hover:after,
 .AboutbuttonText:focus:after,
 .AboutbuttonText:active:after {
@@ -204,7 +190,6 @@ height:60px;
 }
 
 .LogoutbuttonText{
-
   background-color: transparent;
   border: 0;
   width: fit-content;
@@ -216,14 +201,11 @@ height:60px;
   padding: 0px 10px 0px 10px;
   position: relative;
   cursor: pointer;
-
-  
   }
 
   .LogoutbuttonText:after {
     content: "";
     position: absolute;
-  
     left: 0;
     right: 100%;
     bottom: 15px;
@@ -234,6 +216,7 @@ height:60px;
     transition-duration: 0.3s;
     transition-timing-function: ease-out;
   }
+
   .LogoutbuttonText:hover:after,
   .LogoutbuttonText:focus:after,
   .LogoutbuttonText:active:after {
@@ -247,20 +230,15 @@ height:60px;
   transform: translate(-20%, -40%);
   border: 0;
   cursor: pointer;
-
 }
-
 .logo:hover{
   height:21px;
 }
 
-
 @media screen and (max-width: 710px) {
-
   .profilebutton {
     display: none;
   }
-
   .profile-nav-container{
     position:relative;
     left: 50%;
@@ -268,44 +246,33 @@ height:60px;
     width: fit-content;
     align-self: center;
   }
-
   .profilebuttonText{
     left: 50%;
     transform: translate(-50%, 0%);
   }
-
   .nav-list{
     transform: translateY(-500%);
     transition: .0s;
     justify-content: center;
   }
-
     .nabar-toggler{
       display: grid !important;
   }
-
   .AboutbuttonText{
     width: 100%;
     left: 50%;
     transform: translate(-50%, 0%);
     position:relative;
   }
-
   .LogoutbuttonText{
-
     align-content: center;
     width: 100%;
     left: 50%;
     transform: translate(-50%, 0%);
   }
-
   .FavoritebuttonText{
     position:relative;
   }
-
-  
-
-
 
 }
 .nav-toggler-container{
@@ -317,11 +284,10 @@ height:60px;
   transform: translate(-0%, -50%);
   right:30px;
   cursor:pointer;
-
 }
 
 .nabar-toggler{
-  display: none; 
+  display: none;
   position: relative;
   justify-content: center;
   width: 100%;
@@ -330,18 +296,15 @@ height:60px;
   left:50%;
   transform: translate(-50%, -50%);
   cursor:pointer;
- 
 }
 
 .nabar-toggler .bar{
-
   width: 40px;
   height: 5px;
   margin-bottom: 10px;
   background-color: white;
   border-radius: 20px;
   transition: .4s;
-
   pointer-events: none;
 }
 
@@ -358,7 +321,6 @@ input{
 }
 
 input:checked ~ * .nav-list {
-  
   transform: translate(-50%, 33%);
   padding:0%;
   transition: .0s;
@@ -373,7 +335,6 @@ input:checked ~ * .nav-list {
   background-color: rgb(71, 171, 252);
   border-radius: 10px;
   border-width: 2px;
-  
   border-top-style:groove;
   border-color: rgba(88, 72, 179, 0.295);
 }
@@ -383,7 +344,6 @@ input:checked ~ * .nabar-toggler .bar:nth-child(1){
   top:14px;
   left:6px;
   transform: rotate(45deg);
-
 }
 
 input:checked ~ * .nabar-toggler .bar:nth-child(2){
@@ -394,8 +354,6 @@ input:checked ~ * .nabar-toggler .bar:nth-child(3){
   position: absolute;
   top: 18px;
   left:6px;
-
   transform: rotate(-45deg);
-
 }
 

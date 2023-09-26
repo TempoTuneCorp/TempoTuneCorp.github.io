@@ -1,6 +1,4 @@
 import { Component} from '@angular/core';
-import { Navigation, NavigationEnd, Router } from '@angular/router';
-
 
 
 @Component({
@@ -12,11 +10,8 @@ export class AppComponent{
   title = 'TempoTune';
   showNavbar: boolean = true;
 
-  constructor(private router: Router) {
+  constructor() {
 
-    // this.router.navigate(['/login'])
-
-    
   }
 
 }
