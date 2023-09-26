@@ -105,7 +105,7 @@ namespace TempoTuneAPI.Controllers
                 user.ResetToken = resetToken;
                 user.ResetTokenExpiryTime = DateTime.UtcNow.AddMinutes(10);
                 _context.SaveChanges();
-                string resetLink = $"localhost:4200/reset-password?resetToken={resetToken}";
+                string resetLink = $"http://192.168.23.122:8082/reset-password?resetToken={resetToken}";
                 await _emailService.SendPasswordResetEmailAsync(UserObj.Email, resetLink);
 
                 return Ok(new
