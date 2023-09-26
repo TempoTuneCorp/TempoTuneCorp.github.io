@@ -28,19 +28,18 @@ const routes: Routes = [
     component: MainComponent,
   },
   {
-    path: 'music',
-    component: MusicComponent,
-  },
-  {
     path: 'profile',
+    canActivate: [AuthGuard],
     component: ProfileComponent,
   },
   {
     path: 'about',
+    canActivate: [AuthGuard],
     component: AboutComponent,
   },
   {
     path: 'favourites',
+    canActivate: [AuthGuard],
     component: FavoritesComponent,
   },
   {
