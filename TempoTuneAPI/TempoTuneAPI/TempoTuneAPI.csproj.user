@@ -5,7 +5,12 @@
     <Controller_SelectedScaffolderID>ApiControllerWithActionsScaffolder</Controller_SelectedScaffolderID>
     <Controller_SelectedScaffolderCategoryPath>root/Common/Api</Controller_SelectedScaffolderCategoryPath>
     <WebStackScaffolding_ControllerDialogWidth>650</WebStackScaffolding_ControllerDialogWidth>
+<<<<<<< HEAD
+    <ActiveDebugProfile>IIS Express</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\Administrator\source\repos\RasmusJuelN\TempoTune\TempoTuneAPI\TempoTuneAPI\Properties\PublishProfiles\IISProfile.pubxml</NameOfLastUsedPublishProfile>
+=======
     <ActiveDebugProfile>TempoTuneAPI</ActiveDebugProfile>
+>>>>>>> master
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
