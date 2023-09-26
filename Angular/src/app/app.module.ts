@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BackgroundComponent } from './background/background.component';
@@ -13,20 +12,14 @@ import { MainComponent } from './main/main.component';
 import { MusicComponent } from './music/music.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule } from '@angular/forms';
-
 import { NavbarComponent } from './navbar/navbar.component';
 import {NgToastModule} from 'ng-angular-popup';
 import { AboutComponent } from './about/about.component';
 import { TokenInterceptor } from './Interceptors/token.interceptor';
-import { MiniGameComponent } from './mini-game/mini-game.component';
-
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatIcon, MatIconModule} from '@angular/material/icon';
-
+import {MatIconModule} from '@angular/material/icon';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-
-
 
 @NgModule({
   declarations: [
@@ -40,10 +33,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     ProfileComponent,
     NavbarComponent,
     AboutComponent,
-    MiniGameComponent,
     FavoritesComponent,
     ResetPasswordComponent,
-
   ],
   imports: [
     BrowserModule,

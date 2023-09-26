@@ -1,12 +1,8 @@
 import { AuthService } from './../services/auth.service';
-import { Component, Inject, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Track } from '../models/track.model'
-import { DOCUMENT } from '@angular/common'
-import { ExpressionType } from '@angular/compiler';
-import { ReactiveFormsModule } from '@angular/forms';
 import { TrackService } from '../services/track.service';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -263,11 +259,6 @@ export class MusicComponent {
 
     });
 
-    // card.addEventListener("click", () => {
-    //   const background = (<HTMLDivElement>document.getElementById('card-songs'));
-    //   background.style.backgroundColor = 'black';
-    // }
-    // );
   }
 
 
