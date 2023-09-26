@@ -1,12 +1,25 @@
+<app-logo></app-logo>
 <div class="wrapper">
-	<div class="container">
+	<div class="register-container">
         <h1>Register</h1>
 		<form [formGroup]="registerForm" class="form">
-			<input formControlName="username" type="text" placeholder="Username">
-			<input formControlName="password" type="password" placeholder="Password">
-			<input formControlName="email" type="text" placeholder="Email">
+			<div class="input-box">
+				<input formControlName="username" type="text" required>
+				<i>Username</i>
+			</div>
+			
+			<div class="input-box">
+				<input formControlName="password" type="password" required>
+				<i>Password</i>
+			</div>
+
+			<div class="input-box">
+				<input formControlName="email" type="text" required>
+				<i>Email</i>
+			</div>
+			
 			<button (click)="onRegister()" [disabled]="registerForm.invalid" type="submit" id="register-button">Create</button>
-			<p>Already got Tempo? <a routerLink="/login"> Login</a></p>
+			<p>Already got Tempo? <a routerLink="/"> Login</a></p>
 
 		</form>
 	</div>

@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<div class = "ContainerBox">
+
+  <div class ="ContainerBoxRight">
+    <p class = "Headline">Contact Us</p>
+    <p class = "BreadText">Interested in doing business or working with us? <br> Or maybe you found errors on the site? Please send us a message.</p>
+    <form class="about-form" style="z-index: 100;" ngNoForm action="https://formspree.io/f/mleyryzy" method="POST">
+
+
+        <label for="Name" class="labelName">Your name:</label>
+        <input type="text" id="name" name="Name" placeholder="Your Name..." required>
+
+        <input type="text" name="Email" hidden [(ngModel)]="Email">
+
+        <label for="MessageTopic" class="labelTopic">Messages topic:</label>
+        <select id="MessageTopic" name="messageTopic">
+          <option value="error/bug">Reporting error/bug</option>
+          <option value="buissness">Wanna do business</option>
+          <option value="work">Applying for job position</option>
+        </select>
+
+        <label for="Message" class="labelMessage">Your Message:</label>
+        <textarea name="message" id="message" cols="30" rows="8" placeholder="Your message here..."></textarea>
+
+        <input type="submit" value="submit" class="submit-button">
+    </form>
+    
+  </div>
+
+
+  <div class ="ContainerBoxLeft">
+    <p class = "Headline">About TempoTune </p>
+    <p class = "BreadText"><br> TempoTune is a passion project, created from our love for music. <br>
+      Our mission is to bring quality music to our users without interruptions.  <br> <br><br>
+      We are a team of 4 Devolopers, trying to create the ultimate website for all things music. Our skills in both web design and programmning are unmatched. Our office is located in Denmark Ballerup, where we work everyday to give listernes amasing music, and creators the greatest place to be heard.
+      <br>
+    </p>
+  </div>
+</div>

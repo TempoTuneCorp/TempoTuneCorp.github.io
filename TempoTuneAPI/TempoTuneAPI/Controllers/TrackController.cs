@@ -28,9 +28,9 @@ namespace TempoTuneAPI.Controllers
         {
             try
             {
-
                 _context.Tracks.Add(track);
-               
+                //Artist Newartist = await _context.Artists.FindAsync(track.ArtistId);
+
                 await _context.SaveChangesAsync();
                 return Ok(track);
             }
@@ -45,19 +45,22 @@ namespace TempoTuneAPI.Controllers
          [HttpDelete("DeleteTrack")]
         [ProducesResponseType(typeof(Track), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Delete(Track track)
+        public async Task<IActionResult> Delete(int id)
         {
+            var trackToDelete = await _context.Tracks.FindAsync(id);
+            if (trackToDelete == null) return NotFound(new { Message = "track not found" });
+            _context.Tracks.Remove(trackToDelete);
+            foreach (var favoritesTrack in _context.Favourites)
+            {
+                if (favoritesTrack.Track == trackToDelete)
+                {
+                    _context.Favourites.Remove(favoritesTrack);
+                }
+            }
+            await _context.SaveChangesAsync();
 
-            try
-            {
-                _context.Tracks.Remove(track);
-                await _context.SaveChangesAsync();
-                return Ok(track);
-            }
-            catch(Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return Ok(new { Message = "track was deleted :-)" });
+
 
         }
 
@@ -86,7 +89,8 @@ namespace TempoTuneAPI.Controllers
                                  Title = t.Title,
                                  SongPath = t.SongPath,
                                  AlbumName = t.AlbumName,
-                                 Artist = t.Artist
+                                 Artist = t.Artist,
+                                 Time = t.Time,
                              }).FirstOrDefault(); 
 
                 return Ok(track);
@@ -127,13 +131,26 @@ namespace TempoTuneAPI.Controllers
                                 Id = t.Id,
                                 Title = t.Title,
                                 SongPath = t.SongPath,
+                                ArtistId = t.ArtistId,
                                 AlbumName = t.AlbumName,
-                                Artist = t.Artist
+                                Artist = t.Artist,
+                                Time = t.Time,
                              }).ToList();
             return testTrack;
         }
 
+        [HttpGet("GetAlbumCover{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult> GetAlbumCover(int id) 
+        {
+            Track track = await _context.Tracks.FindAsync(id);
+            
+            string pictureUrl = track.Artist.Name;
 
-      
+            return Ok(pictureUrl);
+        }
+
     }
 }

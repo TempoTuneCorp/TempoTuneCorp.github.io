@@ -1,15 +1,20 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {DOCUMENT} from "@angular/common"
 import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
-  constructor(private router: Router, private auth: AuthService) {
+export class NavbarComponent implements OnInit {
+
+  public id:string ="";
+  public image: string ="";
+
+  constructor(private router: Router, private auth: AuthService, private user: UserService)
+  {
     window.addEventListener('resize', function() {
       if (window.matchMedia('(min-width: 580px)').matches) {
           const ele = document.getElementById('toggle') as HTMLInputElement;
@@ -19,8 +24,6 @@ export class NavbarComponent {
 
   }
 
-
-
   onLogoClick(){
     this.router.navigate(['main'])
   }
@@ -29,10 +32,33 @@ export class NavbarComponent {
     this.router.navigate(['profile'])
   }
 
+  onAboutClick(){
+    this.router.navigate(['about'])
+  }
   logout(){
     this.auth.signOut();
-    this.router.navigate(['login'])
+    this.router.navigate([''])
   }
 
+  onFavClick(){
+    this.router.navigate(['favourites'])
+  }
+
+  ngOnInit(): void {
+    this.user.getUserId().subscribe ( val=> {
+      let idFromToken = this.auth.getUserIdFromToken();
+      this.id = val || idFromToken;
+    })
+
+    this.user.getPictureUrl(this.id).subscribe({
+      next: (base64Data:string) => {
+        this.image = 'data:image;base64,' + base64Data;
+        this.user.setProfilePicture(this.image);
+    }})
+
+    this.user.getProfilePicture().subscribe(val => {
+    this.image = val;
+   })
+  }
 }
 

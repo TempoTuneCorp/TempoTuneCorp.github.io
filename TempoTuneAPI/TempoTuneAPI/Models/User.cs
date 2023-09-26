@@ -17,6 +17,14 @@ namespace TempoTuneAPI.Models
         public string Password { get; set; }
 
         public string Token { get; set; }
+        
+        public string ResetToken { get; set; }
 
+        public DateTime ResetTokenExpiryTime { get; set; }
+
+        public string profilePictureURL { get; set; }
+
+        
+        
     }
 }

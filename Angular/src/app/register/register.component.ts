@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,8 +14,8 @@ export class RegisterComponent {
 
   registerForm!: FormGroup;
   constructor(
-    private fb: FormBuilder, 
-    private auth: AuthService, 
+    private fb: FormBuilder,
+    private auth: AuthService,
     private router: Router,
     private toast: NgToastService
     ) { }
@@ -35,9 +35,11 @@ export class RegisterComponent {
       this.auth.signUp(this.registerForm.value)
       .subscribe({
         next:(res)=>{
-          this.toast.success({detail:"Success", summary:"User created", duration: 5000});
+          this.toast.success({
+            detail: "Success", summary: "User created", duration: 5000
+          });
           this.registerForm.reset();
-          this.router.navigate(['login']);
+          this.router.navigate(['']);
         },
         error:(err)=>{
           this.toast.error({detail:"Error", summary: err?.error.message, duration: 5000});

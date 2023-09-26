@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +13,14 @@ import { NgToastService } from 'ng-angular-popup';
 export class LoginComponent {
 
   loginForm!: FormGroup;
+  resetPassForm!: FormGroup;
 
   constructor(
-    private fb: FormBuilder, 
-    private auth: AuthService, 
+    private fb: FormBuilder,
+    private auth: AuthService,
     private router: Router,
-    private toast: NgToastService
+    private toast: NgToastService,
+    private user: UserService
   ) { }
 
   ngOnInit(): void{
@@ -25,27 +28,65 @@ export class LoginComponent {
       username: ['', Validators.required],
       password: ['', Validators.required]
     })
+
+    this.resetPassForm = this.fb.group({
+      email: ['', Validators.required]
+    })
+  }
+
+  onResetPassword(){
+
+    if(this.resetPassForm.valid){
+      const emailToReset = this.resetPassForm.value;
+      console.log(this.resetPassForm.value);
+      this.auth.sendEmailResetPassword(emailToReset)
+    .subscribe({
+      next:(res)=> {
+      const closeBtnRef = document.getElementById('close-button');
+      closeBtnRef?.click();
+      this.toast.success({
+        detail: "Success", summary: res.message, duration: 3000
+      });
+
+    },
+    error:(err)=>{
+      console.log(err);
+      this.toast.error({
+        detail: "Error", summary: err?.error.message, duration: 3000
+      });
+    }
+  })
+    }
   }
 
   onLogin(){
     if(this.loginForm.valid){
-      console.log(this.loginForm.value)
       // Send the object to database
       this.auth.login(this.loginForm.value)
       .subscribe({
         next:(res)=>{
           // alert(res.message)
-          this.toast.success({detail:"Success", summary:res.message, duration: 5000});
+          this.toast.success({
+            detail: "Success", summary: res.message, duration: 3000
+          });
           this.loginForm.reset();
           this.auth.storeToken(res.token)
+          const tokenPayload = this.auth.decodedToken();
+          this.user.setUsername(tokenPayload.unique_name);
+          this.user.setEmail(tokenPayload.email);
+          this.user.setUserId(tokenPayload.id);
+          this.user.getPictureUrl(tokenPayload.id).subscribe({
+            next: (base64Data:string) => {
+              this.user.setProfilePicture('data:image;base64,' + base64Data);
+          }})
           this.router.navigate(['main'])
         },
         error:(err)=>{
-          this.toast.error({detail:"Error", summary:"Failed to login", duration: 5000});
-          // alert(err?.error.message)
+          this.toast.error({
+            detail: "Error", summary: err?.error.message, duration: 3000
+          });
         }
       })
-
     }
     else{
       console.log("Form is invalid")
@@ -55,7 +96,6 @@ export class LoginComponent {
     }
     return false;
   }
-
   private validateAllFormFields(formGroup:FormGroup){
     Object.keys(formGroup.controls).forEach(field=>{
       const control = formGroup.get(field);

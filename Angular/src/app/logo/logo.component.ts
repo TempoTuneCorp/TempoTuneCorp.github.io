@@ -1,10 +1,4 @@
-import { NavbarComponent } from '../navbar/navbar.component';
-import { AppModule } from './../app.module';
-import { Router, RouterOutlet, RouterModule, RouterState, RouterStateSnapshot } from '@angular/router';
-import { AppRoutingModule } from './../app-routing.module';
 import { Component } from '@angular/core';
-import { Navigation, NavigationEnd,} from '@angular/router';
-import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -15,8 +9,7 @@ import { AppComponent } from '../app.component';
 
 export class LogoComponent {
 
-  constructor(private router: Router) {
-    console.log(this.router);
+  constructor() {
 
   }
 }

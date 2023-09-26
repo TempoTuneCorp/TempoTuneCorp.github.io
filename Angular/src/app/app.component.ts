@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import { Navigation, NavigationEnd, Router } from '@angular/router';
-
+import { Component} from '@angular/core';
 
 
 @Component({
@@ -8,29 +6,12 @@ import { Navigation, NavigationEnd, Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'TempoTune';
-  showLogo: boolean = true;
+  showNavbar: boolean = true;
 
+  constructor() {
 
-
-  constructor(private router: Router) {
-    this.router.navigate(['/profile'])
-    router.events.subscribe((val) => {
-      if (val instanceof NavigationEnd) {
-        if (val.url == '/login' || val.url == '/register') {
-          this.showLogo = true;
-        } else {
-          this.showLogo = false;
-        }
-      }
-    });
   }
-
-  // route for button: ((click)="redirect in the html button")
-  //
-  // redirect(){
-  //   this.router.navigate(['/someComponent']);
-  //
 
 }
