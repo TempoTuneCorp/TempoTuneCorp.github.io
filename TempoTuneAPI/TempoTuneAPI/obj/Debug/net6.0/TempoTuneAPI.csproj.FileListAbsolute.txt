@@ -1,0 +1,7 @@
+C:\Users\rjn\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\obj\Debug\net6.0\TempoTuneAPI.csproj.AssemblyReference.cache
+C:\Users\rjn\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\obj\Debug\net6.0\TempoTuneAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rjn\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\obj\Debug\net6.0\TempoTuneAPI.AssemblyInfoInputs.cache
+C:\Users\rjn\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\obj\Debug\net6.0\TempoTuneAPI.AssemblyInfo.cs
+C:\Users\rjn\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\obj\Debug\net6.0\TempoTuneAPI.csproj.CoreCompileInputs.cache
+C:\Users\rjn\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\obj\Debug\net6.0\TempoTuneAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\rjn\Desktop\TempoTune\TempoTune\TempoTuneAPI\TempoTuneAPI\obj\Debug\net6.0\TempoTuneAPI.MvcApplicationPartsAssemblyInfo.cache
