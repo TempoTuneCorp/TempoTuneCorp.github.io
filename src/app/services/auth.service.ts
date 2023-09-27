@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl:string = "https://192.168.23.122:443/api/User/";
+  private baseUrl:string = "http://192.168.23.122:8082/api/User/";
   private userPayload:any;
 
   constructor(private http : HttpClient) {
@@ -37,7 +37,6 @@ export class AuthService {
   
   signOut(){
     localStorage.clear();
-
   }
 
   removeToken(tokenValue: any){

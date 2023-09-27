@@ -20,8 +20,8 @@ isFavorite = false;
 
    }
 
-  private baseUrl:string = "https://192.168.23.122:443/api/Track/";
-  private favBaseUrl:string = "https://192.168.23.122:443/api/Favourite/";
+  private baseUrl:string = "http://192.168.23.122:8082/api/Track/";
+  private favBaseUrl:string = "http://192.168.23.122:8082/api/Favourite/";
 
 
 
@@ -78,7 +78,7 @@ async dbTracksToList(dbTracks: Array<any>, userId:number): Promise<Track[]>{
 //Method fetces Favorite bool from API. Bool is true if the song is favorited by the user.
   async function fetchApiAndSetVariable(userId:number,trackId:number): Promise<boolean> {
     try {
-      const response = await fetch("https://192.168.23.122:443/api/Favourite/"+`IsSongFav/${userId}/${trackId}`);
+      const response = await fetch("http://192.168.23.122:8082/api/Favourite/"+`IsSongFav/${userId}/${trackId}`);
 
       if (!response.ok) {
         throw new Error('API request failed');

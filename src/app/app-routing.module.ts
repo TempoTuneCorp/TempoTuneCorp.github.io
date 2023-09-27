@@ -9,7 +9,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { AboutComponent } from './about/about.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { VerifyComponent } from './verify/verify.component';
+
 
 const routes: Routes = [
   // {
@@ -46,10 +46,6 @@ const routes: Routes = [
   {
     path: 'reset-password',
     component: ResetPasswordComponent,
-  },
-  {
-    path: '.well-known/pki-validation/41FED3C4B6E3E9B25C44DEA7A9ED1FDC.txt',
-    
   }
   ];
 

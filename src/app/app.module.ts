@@ -20,7 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material/icon';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { VerifyComponent } from './verify/verify.component';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { VerifyComponent } from './verify/verify.component';
     AboutComponent,
     FavoritesComponent,
     ResetPasswordComponent,
-    VerifyComponent,
+
   ],
   imports: [
     BrowserModule,

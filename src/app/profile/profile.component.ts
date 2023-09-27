@@ -91,7 +91,8 @@ onFavClick(){
   }
 
   updateUsername(){
-    const Id = this.auth.getUserIdFromToken();
+    
+    const Id = this.id;
     const UserName = this.updateUsernameForm.get('username')?.value;
     const userObj = {Id, UserName}
     console.log(userObj);
@@ -128,7 +129,7 @@ onFavClick(){
   }
 
   updateEmail(){
-    const Id = this.auth.getUserIdFromToken();
+    const Id = this.id;
     console.log(Id);
     const Email = this.updateEmailForm.get('email')?.value;
     const userObj = {Id, Email}
@@ -252,6 +253,11 @@ onFavClick(){
     this.user.getProfilePicture().subscribe (val =>{
       this.image = val;
     });
+    
+    const tokenId = this.auth.getUserIdFromToken();
+    console.log(this.id);
+    console.log(tokenId);
   }
+  
 }
 

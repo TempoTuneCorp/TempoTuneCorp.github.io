@@ -38,6 +38,7 @@ export class NavbarComponent implements OnInit {
   logout(){
     this.auth.signOut();
     this.router.navigate([''])
+
   }
 
   onFavClick(){
